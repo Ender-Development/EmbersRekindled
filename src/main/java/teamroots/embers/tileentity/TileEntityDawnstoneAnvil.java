@@ -52,10 +52,6 @@ public class TileEntityDawnstoneAnvil extends TileEntity implements ITileEntityB
     };
     Random random = new Random();
 
-    public TileEntityDawnstoneAnvil() {
-        super();
-    }
-
     @Override
     public NBTTagCompound writeToNBT(NBTTagCompound tag) {
         super.writeToNBT(tag);
