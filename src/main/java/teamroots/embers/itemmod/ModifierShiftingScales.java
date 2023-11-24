@@ -219,8 +219,9 @@ public class ModifierShiftingScales extends ModifierBase {
             int v = 0;
 
             for (int i = 0; i < segs; i++) {
-                if (i == segs - 1) u = ((last + 2) % 3) * 9;
-
+                if (i == segs - 1) {
+                    u = ((last + 2) % 3) * 9;
+                }
                 RenderUtil.drawTexturedModalRect(x + 8 * (i % 10), y - 10 * (i / 10), 0, u / 256.0, v / 256.0, (u + 9) / 256.0, (v + 9) / 256.0, 9, 9);
             }
 
