@@ -31,7 +31,7 @@ import javax.annotation.Nullable;
 import java.util.List;
 
 public class TileEntityStampBase extends TileFluidHandler implements ITileEntityBase, IExtraCapabilityInformation {
-	public static int capacity = ConfigMachine.STAMPER_CATEGORY.capacity;
+	public static int capacity = ConfigMachine.STAMPER.capacity;
 	public ItemStackHandler inputs = new ItemStackHandler(1){
         @Override
         protected void onContentsChanged(int slot) {

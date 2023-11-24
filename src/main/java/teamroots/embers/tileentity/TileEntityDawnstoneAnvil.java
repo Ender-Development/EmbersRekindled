@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityDawnstoneAnvil extends TileEntity implements ITileEntityBase, IHammerable, ISpecialFilter {
-    public static int MAX_HITS = ConfigMachine.DAWN_STONE_ANVIL_CATEGORY.maxHits;
+    public static int MAX_HITS = ConfigMachine.DAWNSTONE_ANVIL.maxHits;
     int ticksExisted = 0;
     int progress = 0;
     public ItemStackHandler inventory = new ItemStackHandler(2) {

@@ -21,12 +21,12 @@ import teamroots.embers.damage.DamageEmber;
 import teamroots.embers.util.EmberInventoryUtil;
 
 public class ItemIgnitionCannon extends ItemBase implements IProjectileWeapon {
-	public static double EMBER_COST = ConfigTool.BLAZING_RAY_CATEGORY.cost;
-	public static int COOLDOWN = ConfigTool.BLAZING_RAY_CATEGORY.cooldown;
-	public static double MAX_CHARGE = ConfigTool.BLAZING_RAY_CATEGORY.charge;
-	public static float DAMAGE = ConfigTool.BLAZING_RAY_CATEGORY.damage;
-	public static double MAX_SPREAD = ConfigTool.BLAZING_RAY_CATEGORY.spread;
-	public static float MAX_DISTANCE = ConfigTool.BLAZING_RAY_CATEGORY.distance;
+	public static double EMBER_COST = ConfigTool.BLAZING_RAY.cost;
+	public static int COOLDOWN = ConfigTool.BLAZING_RAY.cooldown;
+	public static double MAX_CHARGE = ConfigTool.BLAZING_RAY.charge;
+	public static float DAMAGE = ConfigTool.BLAZING_RAY.damage;
+	public static double MAX_SPREAD = ConfigTool.BLAZING_RAY.spread;
+	public static float MAX_DISTANCE = ConfigTool.BLAZING_RAY.distance;
 
 
 	public ItemIgnitionCannon() {

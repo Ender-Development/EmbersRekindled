@@ -112,13 +112,13 @@ public class TileEntitySteamEngine extends TileEntity implements ITileEntityBase
         }
     }
 
-    public static int NORMAL_FLUID_THRESHOLD = ConfigMachine.STEAM_ENGINE_CATEGORY.fluidThreshold;
-    public static int NORMAL_FLUID_CONSUMPTION = ConfigMachine.STEAM_ENGINE_CATEGORY.fluidConsumption;
-    public static int GAS_CONSUMPTION = ConfigMachine.STEAM_ENGINE_CATEGORY.gasConsumption;
-    public static double MAX_POWER = ConfigMachine.STEAM_ENGINE_CATEGORY.maximumPower;
-    public static int CAPACITY = ConfigMachine.STEAM_ENGINE_CATEGORY.capacity;
-    public static double SOLID_POWER = ConfigMachine.STEAM_ENGINE_CATEGORY.fuelPower;
-    public static double FUEL_MULTIPLIER = ConfigMachine.STEAM_ENGINE_CATEGORY.fuelEfficiency;
+    public static int NORMAL_FLUID_THRESHOLD = ConfigMachine.STEAM_ENGINE.fluidThreshold;
+    public static int NORMAL_FLUID_CONSUMPTION = ConfigMachine.STEAM_ENGINE.fluidConsumption;
+    public static int GAS_CONSUMPTION = ConfigMachine.STEAM_ENGINE.gasConsumption;
+    public static double MAX_POWER = ConfigMachine.STEAM_ENGINE.maximumPower;
+    public static int CAPACITY = ConfigMachine.STEAM_ENGINE.capacity;
+    public static double SOLID_POWER = ConfigMachine.STEAM_ENGINE.fuelPower;
+    public static double FUEL_MULTIPLIER = ConfigMachine.STEAM_ENGINE.fuelEfficiency;
 
     public static final int SOUND_BURN = 1;
     public static final int SOUND_STEAM = 2;

@@ -31,13 +31,13 @@ import teamroots.embers.util.Misc;
 import java.awt.*;
 
 public class ItemCinderStaff extends ItemBase implements IProjectileWeapon {
-    public static double EMBER_COST = ConfigTool.CINDER_STAFF_CATEGORY.cost;
-    public static int COOLDOWN = ConfigTool.CINDER_STAFF_CATEGORY.cooldown;
-    public static double MAX_CHARGE = ConfigTool.CINDER_STAFF_CATEGORY.charge;
-    public static float DAMAGE = ConfigTool.CINDER_STAFF_CATEGORY.damage;
-    public static float SIZE = ConfigTool.CINDER_STAFF_CATEGORY.size;
-    public static float AOE_SIZE = ConfigTool.CINDER_STAFF_CATEGORY.aoe;
-    public static int LIFETIME = ConfigTool.CINDER_STAFF_CATEGORY.lifetime;
+    public static double EMBER_COST = ConfigTool.CINDER_STAFF.cost;
+    public static int COOLDOWN = ConfigTool.CINDER_STAFF.cooldown;
+    public static double MAX_CHARGE = ConfigTool.CINDER_STAFF.charge;
+    public static float DAMAGE = ConfigTool.CINDER_STAFF.damage;
+    public static float SIZE = ConfigTool.CINDER_STAFF.size;
+    public static float AOE_SIZE = ConfigTool.CINDER_STAFF.aoe;
+    public static int LIFETIME = ConfigTool.CINDER_STAFF.lifetime;
 
     public static boolean soundPlaying = false; //Clientside anyway so whatever
 

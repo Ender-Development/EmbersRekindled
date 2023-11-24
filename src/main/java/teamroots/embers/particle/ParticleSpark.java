@@ -41,7 +41,7 @@ public class ParticleSpark extends Particle implements IEmberParticle{
 	    this.setParticleTexture(sprite);
 	    this.particleGravity = 0.04f;
 
-		this.canCollide = ConfigMain.CLIENT_CATEGORY.enableParticleCollisions;
+		this.canCollide = ConfigMain.CLIENT.enableParticleCollisions;
 	}
 	/*
 	@Override

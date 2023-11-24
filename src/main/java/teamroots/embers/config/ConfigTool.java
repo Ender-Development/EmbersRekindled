@@ -9,17 +9,17 @@ public class ConfigTool {
     @Config.Name("Blazing Ray")
     @Config.LangKey("cfg.embers.tool.blazing_ray")
     @Config.Comment("Options about the Blazing Ray")
-    public static final BlazingRayCategory BLAZING_RAY_CATEGORY = new BlazingRayCategory();
+    public static final BlazingRayCategory BLAZING_RAY = new BlazingRayCategory();
 
     @Config.Name("Cinder Staff")
     @Config.LangKey("cfg.embers.tool.cinder_staff")
     @Config.Comment("Options about the Cinder Staff")
-    public static final CinderStaffCategory CINDER_STAFF_CATEGORY = new CinderStaffCategory();
+    public static final CinderStaffCategory CINDER_STAFF = new CinderStaffCategory();
 
     @Config.Name("Shifting Scales")
     @Config.LangKey("cfg.embers.tool.shifting_scales")
     @Config.Comment("Options about the Shifting Scales")
-    public static final ShiftingScalesCategory SHIFTING_SCALES_CATEGORY = new ShiftingScalesCategory();
+    public static final ShiftingScalesCategory SHIFTING_SCALES = new ShiftingScalesCategory();
 
     public static class BlazingRayCategory {
         @Config.RequiresMcRestart

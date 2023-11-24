@@ -123,7 +123,7 @@ public class TileEntityLargeTank extends TileEntityOpenTank implements ITileEnti
 	public void updateCapacity(){
 		int capacity = 0;
 		for (int i = 1; isReservoirPart(getPos().add(0, i, 0)); i++){
-			capacity += ConfigMachine.RESERVOIR_CATEGORY.capacity;
+			capacity += ConfigMachine.RESERVOIR.capacity;
 		}
 		if(tank.getCapacity() != capacity) {
 			this.tank.setCapacity(capacity);
@@ -154,7 +154,7 @@ public class TileEntityLargeTank extends TileEntityOpenTank implements ITileEnti
 	protected void updateEscapeParticles() {
 		Color fluidColor = new Color(FluidColorHelper.getColor(lastEscaped), true);
 		Random random = new Random();
-		int height = getCapacity() / ConfigMachine.RESERVOIR_CATEGORY.capacity;
+		int height = getCapacity() / ConfigMachine.RESERVOIR.capacity;
 		for (int i = 0; i < 3; i++) {
 			float xOffset = 0.5f + (random.nextFloat() - 0.5f) * 2 * 0.6f;
 			float yOffset = height+0.9f;

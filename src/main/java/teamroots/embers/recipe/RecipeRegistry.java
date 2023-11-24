@@ -1169,11 +1169,11 @@ public class RecipeRegistry {
 		GameRegistry.addSmelting(new ItemStack(RegistryManager.stamp_flat_raw), new ItemStack(RegistryManager.stamp_flat), 0.35f);
 		GameRegistry.addSmelting(new ItemStack(RegistryManager.stamp_gear_raw), new ItemStack(RegistryManager.stamp_gear), 0.35f);
 
-		int plateAmount = ConfigMachine.STAMPER_CATEGORY.stampPlateAmount * INGOT_AMOUNT;
+		int plateAmount = ConfigMachine.STAMPER.stampPlateAmount * INGOT_AMOUNT;
 
 		OreIngredient ingotIron = new OreIngredient("ingotIron");
 		OreIngredient plateIron = new OreIngredient("plateIron");
-		int oreMeltAmount = ConfigMachine.MELTER_CATEGORY.melterOreAmount;
+		int oreMeltAmount = ConfigMachine.MELTER.melterOreAmount;
 		meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreIron"), new FluidStack(RegistryManager.fluid_molten_iron, oreMeltAmount))
 				.addBonusOutput(new FluidStack(RegistryManager.fluid_molten_nickel, NUGGET_AMOUNT))
 		);
@@ -1332,7 +1332,7 @@ public class RecipeRegistry {
 		stampingRecipes.add(new ItemStampingRecipe(emberCrystal,null,stampFlat,new ItemStack(RegistryManager.shard_ember,6)));
 		stampingRecipes.add(new ItemStampingRecipe(blazeRod,null,stampFlat,new ItemStack(Items.BLAZE_POWDER,4)));
 
-		int aspectusAmount = ConfigMachine.STAMPER_CATEGORY.stampAspectusAmount * INGOT_AMOUNT;
+		int aspectusAmount = ConfigMachine.STAMPER.stampAspectusAmount * INGOT_AMOUNT;
 		stampingRecipes.add(new ItemStampingRecipe(emberShard,new FluidStack(RegistryManager.fluid_molten_iron, aspectusAmount),stampPlate,new ItemStack(RegistryManager.aspectus_iron,1)));
 		stampingRecipes.add(new ItemStampingRecipe(emberShard,new FluidStack(RegistryManager.fluid_molten_lead, aspectusAmount),stampPlate,new ItemStack(RegistryManager.aspectus_lead,1)));
 		stampingRecipes.add(new ItemStampingRecipe(emberShard,new FluidStack(RegistryManager.fluid_molten_silver, aspectusAmount),stampPlate,new ItemStack(RegistryManager.aspectus_silver,1)));

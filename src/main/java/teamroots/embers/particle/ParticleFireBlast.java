@@ -17,7 +17,7 @@ public class ParticleFireBlast extends Particle implements IEmberParticle {
         this.particleScale = scale;
         this.particleMaxAge = lifetime;
 
-        this.canCollide = ConfigMain.CLIENT_CATEGORY.enableParticleCollisions;
+        this.canCollide = ConfigMain.CLIENT.enableParticleCollisions;
     }
 
     @Override

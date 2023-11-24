@@ -40,7 +40,7 @@ public class ParticleStar extends Particle implements IEmberParticle{
 	    TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(texture.toString());
 	    this.setParticleTexture(sprite);
 
-		this.canCollide = ConfigMain.CLIENT_CATEGORY.enableParticleCollisions;
+		this.canCollide = ConfigMain.CLIENT.enableParticleCollisions;
 	}
 	/*
 	@Override

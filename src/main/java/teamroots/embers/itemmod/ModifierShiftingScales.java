@@ -83,8 +83,8 @@ public class ModifierShiftingScales extends ModifierBase {
     public static final double MOVE_PER_SECOND_THRESHOLD = 0.5;
 
 
-    public static Map<String, Double> scaleDamagePasses = generateMapFromConfig(ConfigTool.SHIFTING_SCALES_CATEGORY.damagePasses);
-    public static Map<String, Double> scaleDamageRates = generateMapFromConfig(ConfigTool.SHIFTING_SCALES_CATEGORY.damageRates);
+    public static Map<String, Double> scaleDamagePasses = generateMapFromConfig(ConfigTool.SHIFTING_SCALES.damagePasses);
+    public static Map<String, Double> scaleDamageRates = generateMapFromConfig(ConfigTool.SHIFTING_SCALES.damageRates);
 
     public static HashSet<String> unaffectedDamageTypes = new HashSet<>();
     public static HashMap<UUID, Integer> cooldownTicksServer = new HashMap<>();

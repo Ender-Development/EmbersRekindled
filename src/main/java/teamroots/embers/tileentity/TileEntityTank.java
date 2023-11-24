@@ -27,7 +27,7 @@ import java.awt.*;
 import java.util.Random;
 
 public class TileEntityTank extends TileEntityOpenTank implements ITileEntityBase, ITickable {
-    public static int capacity = ConfigMachine.TANK_CATEGORY.capacity;
+    public static int capacity = ConfigMachine.TANK.capacity;
 
 
     public TileEntityTank() {

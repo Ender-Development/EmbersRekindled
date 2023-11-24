@@ -39,7 +39,7 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityCharger extends TileEntity implements ITileEntityBase, ITickable, ISoundController, IExtraDialInformation, IExtraCapabilityInformation {
-    public static double MAX_TRANSFER = ConfigMachine.CHARGER_CATEGORY.maxTransfer;
+    public static double MAX_TRANSFER = ConfigMachine.CHARGER.maxTransfer;
 
     public IEmberCapability capability = new DefaultEmberCapability();
     int angle = 0;

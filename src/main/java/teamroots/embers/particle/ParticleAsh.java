@@ -17,7 +17,7 @@ public class ParticleAsh extends Particle implements IEmberParticle {
         depth = z2 - z1;
         this.particleMaxAge = (int)(lifetime *0.5f);
 
-        this.canCollide = ConfigMain.CLIENT_CATEGORY.enableParticleCollisions;
+        this.canCollide = ConfigMain.CLIENT.enableParticleCollisions;
     }
 
     @Override

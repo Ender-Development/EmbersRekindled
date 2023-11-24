@@ -45,7 +45,7 @@ public class ParticleRenderer {
         Iterator<Particle> iterator = particles.iterator();
         while (iterator.hasNext()) {
             Particle particle = iterator.next();
-            if (((IEmberParticle) particle).alive() && (ConfigMain.CLIENT_CATEGORY.enableParticles || particle instanceof ParticleGlow))
+            if (((IEmberParticle) particle).alive() && (ConfigMain.CLIENT.enableParticles || particle instanceof ParticleGlow))
                 particle.onUpdate();
             else
                 iterator.remove();
@@ -114,7 +114,7 @@ public class ParticleRenderer {
     }
 
     public void addParticle(Particle particle) {
-        if (!ConfigMain.CLIENT_CATEGORY.enableParticles && !(particle instanceof ParticleGlow))
+        if (!ConfigMain.CLIENT.enableParticles && !(particle instanceof ParticleGlow))
             return;
 
         if (particle instanceof IEmberParticle) {

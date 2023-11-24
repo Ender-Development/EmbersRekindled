@@ -66,7 +66,7 @@ public class AspectRenderUtil {
             int min = aspectRange.getMin(aspect);
             int aspectTotal = aspectRange.getMaxAspects().getTotal();
             int exact = aspectRange.getExact(aspect, Minecraft.getMinecraft().world);
-            String cheatsheet = ConfigMain.COMPAT_CATEGORY.enableJeiCheat ? String.format(" §e(%d)§r", exact) : "";
+            String cheatsheet = ConfigMain.COMPAT.enableJeiCheat ? String.format(" §e(%d)§r", exact) : "";
             IDrawable ashBar = helper.createDrawable(resourceLocation, u, v, ((width * min)/aspectTotal), height);
             IDrawable ashPartialBar = helper.createDrawable(resourceLocation, u, v + height, ((width * max)/aspectTotal), height);
             ashPartialBar.draw(minecraft, x, y);

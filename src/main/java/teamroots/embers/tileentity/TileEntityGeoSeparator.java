@@ -109,7 +109,7 @@ public class TileEntityGeoSeparator extends TileEntityOpenTank implements ITileE
 	}
 
 	public int getCapacity(){
-		return ConfigMachine.GEO_SEPARATOR_CATEGORY.capacity;
+		return ConfigMachine.GEO_SEPARATOR.capacity;
 	}
 
 	@Override

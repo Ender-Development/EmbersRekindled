@@ -38,11 +38,11 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityFurnaceBottom extends TileEntity implements ITileEntityBase, ITickable, ISoundController {
-	public static int PROCESS_TIME = ConfigMachine.MELTER_CATEGORY.processTime;
+	public static int PROCESS_TIME = ConfigMachine.MELTER.processTime;
 	public IEmberCapability capability = new DefaultEmberCapability();
 	Random random = new Random();
 	int progress = -1;
-	public static double EMBER_COST = ConfigMachine.MELTER_CATEGORY.emberCost;
+	public static double EMBER_COST = ConfigMachine.MELTER.emberCost;
 
 	public static final int SOUND_PROCESS = 1;
 	public static final int[] SOUND_IDS = new int[]{SOUND_PROCESS};

@@ -15,12 +15,12 @@ public class ConfigMain {
     @Config.Name("Client")
     @Config.LangKey("cfg.embers.main.client")
     @Config.Comment("Rendering stuff")
-    public static final ClientCategory CLIENT_CATEGORY = new ClientCategory();
+    public static final ClientCategory CLIENT = new ClientCategory();
 
     @Config.Name("Compat")
     @Config.LangKey("cfg.embers.main.compat")
     @Config.Comment("Settings related to compatibility with other mods.")
-    public static final CompatCategory COMPAT_CATEGORY = new CompatCategory();
+    public static final CompatCategory COMPAT = new CompatCategory();
 
     @Config.Name("Everybody is considered an Enemy")
     @Config.Comment("If true, Embers homing projectiles will go for neutral players.")

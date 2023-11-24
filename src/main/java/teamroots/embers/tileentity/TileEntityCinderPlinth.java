@@ -44,8 +44,8 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityCinderPlinth extends TileEntity implements ITileEntityBase, ITickable, ISoundController, IExtraCapabilityInformation {
-    public static double EMBER_COST = ConfigMachine.CINDER_PLINTH_CATEGORY.emberCost;
-    public static int PROCESS_TIME = ConfigMachine.CINDER_PLINTH_CATEGORY.processTime;
+    public static double EMBER_COST = ConfigMachine.CINDER_PLINTH.emberCost;
+    public static int PROCESS_TIME = ConfigMachine.CINDER_PLINTH.processTime;
     public IEmberCapability capability = new DefaultEmberCapability();
     int angle = 0;
     int turnRate = 0;

@@ -42,11 +42,11 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityInfernoForge extends TileEntity implements ITileEntityBase, ITickable, IMultiblockMachine, ISoundController {
-	public static double EMBER_COST = ConfigMachine.INFERNO_FORGE_CATEGORY.emberCost;
-	public static int MAX_LEVEL = ConfigMachine.INFERNO_FORGE_CATEGORY.maxLevel;
-	public static double MAX_CRYSTAL_VALUE = ConfigMachine.INFERNO_FORGE_CATEGORY.maxCrystalValue;
-	public static double CHANCE_MIDPOINT = ConfigMachine.INFERNO_FORGE_CATEGORY.chanceMidpoint;
-	public static int PROCESS_TIME = ConfigMachine.INFERNO_FORGE_CATEGORY.processTime;
+	public static double EMBER_COST = ConfigMachine.INFERNO_FORGE.emberCost;
+	public static int MAX_LEVEL = ConfigMachine.INFERNO_FORGE.maxLevel;
+	public static double MAX_CRYSTAL_VALUE = ConfigMachine.INFERNO_FORGE.maxCrystalValue;
+	public static double CHANCE_MIDPOINT = ConfigMachine.INFERNO_FORGE.chanceMidpoint;
+	public static int PROCESS_TIME = ConfigMachine.INFERNO_FORGE.processTime;
 	public IEmberCapability capability = new DefaultEmberCapability() {
 		@Override
 		public boolean acceptsVolatile() {
@@ -66,7 +66,7 @@ public class TileEntityInfernoForge extends TileEntity implements ITileEntityBas
 
 	public TileEntityInfernoForge(){
 		super();
-		capability.setEmberCapacity(ConfigMachine.INFERNO_FORGE_CATEGORY.capacity);
+		capability.setEmberCapacity(ConfigMachine.INFERNO_FORGE.capacity);
 	}
 	
 	@Override

@@ -42,15 +42,15 @@ import java.util.stream.IntStream;
 
 public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, ITickable, IMultiblockMachine, ISoundController, IMechanicallyPowered, IExtraDialInformation, IExtraCapabilityInformation {
     public static final int MAX_LEVEL = 7;
-    public static int BORE_TIME = ConfigMachine.EMBER_BORE_CATEGORY.processTime;
+    public static int BORE_TIME = ConfigMachine.EMBER_BORE.processTime;
     public static final int SLOT_FUEL = 8;
-    public static double FUEL_CONSUMPTION = ConfigMachine.EMBER_BORE_CATEGORY.fuelCost;
+    public static double FUEL_CONSUMPTION = ConfigMachine.EMBER_BORE.fuelCost;
 
     public static final int SOUND_ON = 1;
     public static final int SOUND_ON_DRILL = 2;
     public static final int[] SOUND_IDS = new int[]{SOUND_ON, SOUND_ON_DRILL};
 
-    public static final List<Integer> BLACKLIST = IntStream.of(ConfigMachine.EMBER_BORE_CATEGORY.blacklist).boxed().collect(Collectors.toList());
+    public static final List<Integer> BLACKLIST = IntStream.of(ConfigMachine.EMBER_BORE.blacklist).boxed().collect(Collectors.toList());
 
     Random random = new Random();
     public long ticksExisted = 0;
@@ -136,9 +136,9 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
 
     public boolean canMine() {
         boolean onBlacklist = BLACKLIST.contains(world.provider.getDimension());
-        boolean isWhitelist = ConfigMachine.EMBER_BORE_CATEGORY.isWhiteList;
+        boolean isWhitelist = ConfigMachine.EMBER_BORE.isWhiteList;
         boolean isAvailable = onBlacklist == isWhitelist; // XNOR
-        boolean underYMax = getPos().getY() <= ConfigMachine.EMBER_BORE_CATEGORY.yMax;
+        boolean underYMax = getPos().getY() <= ConfigMachine.EMBER_BORE.yMax;
         return isAvailable && underYMax;
     }
 
@@ -172,7 +172,7 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
             return;
         if (getWorld().isRemote)
             handleSound();
-        speedMod = UpgradeUtil.getTotalSpeedModifier(this, upgrades) * ConfigMachine.EMBER_BORE_CATEGORY.speedMod;
+        speedMod = UpgradeUtil.getTotalSpeedModifier(this, upgrades) * ConfigMachine.EMBER_BORE.speedMod;
         lastAngle = angle;
         if (isRunning) {
             angle += 12.0 * speedMod;

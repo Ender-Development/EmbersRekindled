@@ -10,62 +10,62 @@ public class ConfigMachine {
     @Config.Name("Ember Conduit")
     @Config.LangKey("cfg.embers.machine.ember_conduit")
     @Config.Comment("Options about the Ember Conduit")
-    public static final EmberConduitCategory EMBER_CONDUIT_CATEGORY = new EmberConduitCategory();
+    public static final EmberConduitCategory EMBER_CONDUIT = new EmberConduitCategory();
 
     @Config.Name("Melter")
     @Config.LangKey("cfg.embers.machine.melter")
     @Config.Comment("Options about the Melter")
-    public static final MelterCategory MELTER_CATEGORY = new MelterCategory();
+    public static final MelterCategory MELTER = new MelterCategory();
 
     @Config.Name("Stamper")
     @Config.LangKey("cfg.embers.machine.stamper")
     @Config.Comment("Options about the Stamper")
-    public static final StamperCategory STAMPER_CATEGORY = new StamperCategory();
+    public static final StamperCategory STAMPER = new StamperCategory();
 
     @Config.Name("Inferno Forge")
     @Config.LangKey("cfg.embers.machine.inferno_forge")
     @Config.Comment("Options about the Inferno Forge")
-    public static final InfernoForgeCategory INFERNO_FORGE_CATEGORY = new InfernoForgeCategory();
+    public static final InfernoForgeCategory INFERNO_FORGE = new InfernoForgeCategory();
 
     @Config.Name("Geo Separator")
     @Config.LangKey("cfg.embers.machine.geo_separator")
     @Config.Comment("Options about the Geo Separator")
-    public static final GeoSeparatorCategory GEO_SEPARATOR_CATEGORY = new GeoSeparatorCategory();
+    public static final GeoSeparatorCategory GEO_SEPARATOR = new GeoSeparatorCategory();
 
     @Config.Name("Dawnstone Anvil")
     @Config.LangKey("cfg.embers.machine.dawnstone_anvil")
     @Config.Comment("Options about the Dawnstone Anvil")
-    public static final DawnStoneAnvilCategory DAWN_STONE_ANVIL_CATEGORY = new DawnStoneAnvilCategory();
+    public static final DawnStoneAnvilCategory DAWNSTONE_ANVIL = new DawnStoneAnvilCategory();
 
     @Config.Name("Charger")
     @Config.LangKey("cfg.embers.machine.charger")
     @Config.Comment("Options about the Charger")
-    public static final ChargerCategory CHARGER_CATEGORY = new ChargerCategory();
+    public static final ChargerCategory CHARGER = new ChargerCategory();
 
     @Config.Name("Cinder Plinth")
     @Config.LangKey("cfg.embers.machine.cinder_plinth")
     @Config.Comment("Options about the Cinder Plinth")
-    public static final CinderPlinthCategory CINDER_PLINTH_CATEGORY = new CinderPlinthCategory();
+    public static final CinderPlinthCategory CINDER_PLINTH = new CinderPlinthCategory();
 
     @Config.Name("Fluid Vessel")
     @Config.LangKey("cfg.embers.machine.tank")
     @Config.Comment("Options about the Fluid Vessel")
-    public static final TankCategory TANK_CATEGORY = new TankCategory();
+    public static final TankCategory TANK = new TankCategory();
 
     @Config.Name("Reservoir")
     @Config.LangKey("cfg.embers.machine.reservoir")
     @Config.Comment("Options about the Reservoir")
-    public static final ReservoirCategory RESERVOIR_CATEGORY = new ReservoirCategory();
+    public static final ReservoirCategory RESERVOIR = new ReservoirCategory();
 
     @Config.Name("Mini Boiler")
     @Config.LangKey("cfg.embers.machine.mini_boiler")
     @Config.Comment("Options about the Mini Boiler")
-    public static final MiniBoilerCategory MINI_BOILER_CATEGORY = new MiniBoilerCategory();
+    public static final MiniBoilerCategory MINI_BOILER = new MiniBoilerCategory();
 
     @Config.Name("Ember Bore")
     @Config.LangKey("cfg.embers.machine.ember_bore")
     @Config.Comment("Options about the Ember Bore")
-    public static final EmberBoreCategory EMBER_BORE_CATEGORY = new EmberBoreCategory();
+    public static final EmberBoreCategory EMBER_BORE = new EmberBoreCategory();
 
     @Config.Name("Steam Engine [MM]")
     @Config.LangKey("cfg.embers.machine.steam_engine")
@@ -73,7 +73,7 @@ public class ConfigMachine {
             "Requires Mystical Mechanics!",
             "Options about the Steam Engine"
     })
-    public static final SteamEngineCategory STEAM_ENGINE_CATEGORY = new SteamEngineCategory();
+    public static final SteamEngineCategory STEAM_ENGINE = new SteamEngineCategory();
 
 
     @Config.RequiresMcRestart

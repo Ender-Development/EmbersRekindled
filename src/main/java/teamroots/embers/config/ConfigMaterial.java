@@ -13,7 +13,7 @@ public class ConfigMaterial {
         /**
          * FORCE - Register the material independent of other mods
          * OFF - Don't register the material at all
-         * SMART - Don't register the material if it already exists
+         * SMART - Don't register the material if it already exists in another mod
          */
         FORCE, OFF, SMART
     }

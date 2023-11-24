@@ -136,7 +136,7 @@ public class TileEntityReactionChamber extends TileEntity implements ITileEntity
 	}
 
 	public int getCapacity(){
-		return ConfigMachine.MINI_BOILER_CATEGORY.capacity;
+		return ConfigMachine.MINI_BOILER.capacity;
 	}
 	
 	public int getFluidAmount(){

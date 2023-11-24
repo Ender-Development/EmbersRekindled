@@ -52,8 +52,8 @@ public class TileEntityMiniBoiler extends TileEntity implements ITileEntityBase,
 
 	Random random = new Random();
 	HashSet<Integer> soundsPlaying = new HashSet<>();
-	protected FluidTank fluidTank = new FluidTank(ConfigMachine.MINI_BOILER_CATEGORY.capacity);
-	protected FluidTank gasTank = new FluidTank(ConfigMachine.MINI_BOILER_CATEGORY.capacity);
+	protected FluidTank fluidTank = new FluidTank(ConfigMachine.MINI_BOILER.capacity);
+	protected FluidTank gasTank = new FluidTank(ConfigMachine.MINI_BOILER.capacity);
 	protected UpgradeMiniBoiler upgrade;
 	int lastBoil;
 	int boilTime;
@@ -141,7 +141,7 @@ public class TileEntityMiniBoiler extends TileEntity implements ITileEntityBase,
 	}
 
 	public int getCapacity(){
-		return ConfigMachine.MINI_BOILER_CATEGORY.capacity;
+		return ConfigMachine.MINI_BOILER.capacity;
 	}
 	
 	public int getFluidAmount(){
@@ -187,7 +187,7 @@ public class TileEntityMiniBoiler extends TileEntity implements ITileEntityBase,
 		FluidStack fluid = getFluidStack();
 		ILiquidFuel fuelHandler = EmbersAPI.getBoilerFluid(fluid);
 		if(fuelHandler != null && fluid.amount > 0 && heat > 0) {
-			int fluidBoiled = MathHelper.clamp((int) (ConfigMachine.MINI_BOILER_CATEGORY.heatMultiplier  * heat),1,fluid.amount);
+			int fluidBoiled = MathHelper.clamp((int) (ConfigMachine.MINI_BOILER.heatMultiplier  * heat),1,fluid.amount);
 
 			if(fluidBoiled > 0) {
 				fluid = fluidTank.drain(fluidBoiled,false);
@@ -195,7 +195,7 @@ public class TileEntityMiniBoiler extends TileEntity implements ITileEntityBase,
 				if(gas != null) {
 					fluidTank.drain(fluidBoiled,true);
 					gas.amount -= gasTank.fill(gas,true);
-					if(ConfigMachine.MINI_BOILER_CATEGORY.canExplode && gas.amount > 0 && !world.isRemote) {
+					if(ConfigMachine.MINI_BOILER.canExplode && gas.amount > 0 && !world.isRemote) {
 						explode();
 					}
 				}
