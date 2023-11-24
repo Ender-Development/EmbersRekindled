@@ -96,7 +96,8 @@ public class ResearchManager {
 
     @SubscribeEvent
     public void onJoin(EntityJoinWorldEvent event) {
-        if (event.getEntity() instanceof EntityPlayerMP player && !event.getWorld().isRemote) {
+        if (event.getEntity() instanceof EntityPlayerMP && !event.getWorld().isRemote) {
+            EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
             sendResearchData(player);
         }
     }
