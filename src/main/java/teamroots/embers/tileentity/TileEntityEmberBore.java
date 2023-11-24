@@ -303,11 +303,14 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
     public float getCurrentVolume(int id, float volume) {
         boolean isMining = canMine();
 
-        return switch (id) {
-            case SOUND_ON -> !isMining ? 1.0f : 0.0f;
-            case SOUND_ON_DRILL -> isMining ? 1.0f : 0.0f;
-            default -> 0f;
-        };
+        switch (id) {
+            case SOUND_ON:
+                return !isMining ? 1.0f : 0.0f;
+            case SOUND_ON_DRILL:
+                return isMining ? 1.0f : 0.0f;
+            default:
+                return 0f;
+        }
     }
 
     @Override
