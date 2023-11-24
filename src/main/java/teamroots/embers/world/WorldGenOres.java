@@ -16,7 +16,7 @@ import java.util.stream.IntStream;
 
 public class WorldGenOres implements IWorldGenerator {
 
-    private boolean isOreSpawnEnabled(int dimension) {
+    public static boolean isOreSpawnEnabled(int dimension) {
         return IntStream.of(ConfigWorld.ORE.blacklist).boxed().collect(Collectors.toList()).contains(dimension) == ConfigWorld.ORE.isWhitelist;
     }
 

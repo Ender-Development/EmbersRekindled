@@ -80,18 +80,18 @@ public class TileEntitySteamEngine extends TileEntity implements ITileEntityBase
         }
 
         public NBTTagCompound writeToNBT(NBTTagCompound tag) {
-            if(liquidFuel != null)
+            if (liquidFuel != null)
                 tag.setTag("fluid", liquidFuel.writeToNBT(new NBTTagCompound()));
-            if(!solidFuel.isEmpty())
+            if (!solidFuel.isEmpty())
                 tag.setTag("item", solidFuel.serializeNBT());
-            tag.setInteger("timeLeft",timeLeft);
+            tag.setInteger("timeLeft", timeLeft);
             return tag;
         }
 
         public void readFromNBT(NBTTagCompound tag) {
-            if(tag.hasKey("fluid"))
+            if (tag.hasKey("fluid"))
                 liquidFuel = FluidStack.loadFluidStackFromNBT(tag.getCompoundTag("fluid"));
-            if(tag.hasKey("item"))
+            if (tag.hasKey("item"))
                 solidFuel = new ItemStack(tag.getCompoundTag("item"));
             timeLeft = tag.getInteger("timeLeft");
         }
@@ -101,14 +101,14 @@ public class TileEntitySteamEngine extends TileEntity implements ITileEntityBase
         }
 
         public Color getColor() {
-            if(isSolid())
-                return new Color(72,72,72, 128);
-            if(isLiquid()) {
+            if (isSolid())
+                return new Color(72, 72, 72, 128);
+            if (isLiquid()) {
                 ILiquidFuel fuelHandler = EmbersAPI.getSteamEngineFuel(liquidFuel);
-                if(fuelHandler != null)
+                if (fuelHandler != null)
                     return fuelHandler.getBurnColor(liquidFuel);
             }
-            return new Color(0,0,0,0);
+            return new Color(0, 0, 0, 0);
         }
     }
 
@@ -294,7 +294,7 @@ public class TileEntitySteamEngine extends TileEntity implements ITileEntityBase
             handleSound();
         }
 
-        if(!world.isRemote && !currentFuel.isEmpty()) {
+        if (!world.isRemote && !currentFuel.isEmpty()) {
             currentFuel.tick();
             if (currentFuel.isEmpty()) {
                 currentFuel.reset();
@@ -349,7 +349,7 @@ public class TileEntitySteamEngine extends TileEntity implements ITileEntityBase
             }
         }
 
-        if(dirty)
+        if (dirty)
             markDirty();
 
         if (!world.isRemote && capability.getPower(null) != powerGenerated) {

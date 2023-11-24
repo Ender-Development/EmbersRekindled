@@ -54,9 +54,9 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
 
     Random random = new Random();
     public long ticksExisted = 0;
-    public float angle = 0;
+    public double angle = 0;
     public double ticksFueled = 0;
-    public float lastAngle;
+    public double lastAngle;
     boolean isRunning;
 
     HashSet<Integer> soundsPlaying = new HashSet<>();
@@ -175,7 +175,7 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
         speedMod = UpgradeUtil.getTotalSpeedModifier(this, upgrades) * ConfigMachine.EMBER_BORE_CATEGORY.speedMod;
         lastAngle = angle;
         if (isRunning) {
-            angle += (float) (12.0f * speedMod);
+            angle += 12.0 * speedMod;
         }
         boolean previousRunning = isRunning;
         if (!getWorld().isRemote) {
@@ -303,14 +303,11 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
     public float getCurrentVolume(int id, float volume) {
         boolean isMining = canMine();
 
-        switch (id) {
-            case SOUND_ON:
-                return !isMining ? 1.0f : 0.0f;
-            case SOUND_ON_DRILL:
-                return isMining ? 1.0f : 0.0f;
-            default:
-                return 0f;
-        }
+        return switch (id) {
+            case SOUND_ON -> !isMining ? 1.0f : 0.0f;
+            case SOUND_ON_DRILL -> isMining ? 1.0f : 0.0f;
+            default -> 0f;
+        };
     }
 
     @Override
