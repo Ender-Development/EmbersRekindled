@@ -5,6 +5,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import teamroots.embers.Embers;
 import teamroots.embers.config.ConfigMain;
 import teamroots.embers.util.Vec2i;
 
@@ -16,8 +17,8 @@ public class ResearchCategory {
     public String name = "";
     public double u = 192.0;
     public double v = 0;
-    public ResourceLocation texture = new ResourceLocation("embers:textures/gui/codex_index.png");
-    public ResourceLocation background = new ResourceLocation("embers:textures/gui/codex_category.png");
+    public ResourceLocation texture = new ResourceLocation(Embers.MODID,"textures/gui/codex_index.png");
+    public ResourceLocation background = new ResourceLocation(Embers.MODID,"textures/gui/codex_category.png");
     public ArrayList<ResearchBase> researches = new ArrayList<>();
     public ArrayList<ResearchBase> prerequisites = new ArrayList<>();
     public LinkedList<Vec2i> goodLocations = new LinkedList<>();
