@@ -47,6 +47,7 @@ import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.config.ConfigMain;
 import teamroots.embers.config.ConfigMaterial;
 import teamroots.embers.config.ConfigMob;
+import teamroots.embers.config.ConfigTool;
 import teamroots.embers.damage.DamageEmber;
 import teamroots.embers.entity.*;
 import teamroots.embers.fluid.*;
@@ -171,16 +172,27 @@ public class RegistryManager {
         };
     }
 
+    private static Item.ToolMaterial createToolMaterial(String name, ConfigTool.ToolCategory.Tool toolMaterial) {
+        return EnumHelper.addToolMaterial(
+                Embers.MODID + ":" + name,
+                toolMaterial.harvestLevel,
+                toolMaterial.durability,
+                toolMaterial.efficiency,
+                toolMaterial.damage,
+                toolMaterial.enchantability
+        );
+    }
+
     public static void registerAll() {
         registerCapabilities();
 
         damage_ember = new DamageEmber();
 
-        tool_mat_copper = EnumHelper.addToolMaterial(Embers.MODID + ":copper", 2, 181, 5.4f, 1.5f, 16);
-        tool_mat_silver = EnumHelper.addToolMaterial(Embers.MODID + ":silver", 2, 202, 7.6f, 2.0f, 20);
-        tool_mat_lead = EnumHelper.addToolMaterial(Embers.MODID + ":lead", 2, 168, 6.0f, 2.0f, 4);
-        tool_mat_dawnstone = EnumHelper.addToolMaterial(Embers.MODID + ":dawnstone", 2, 644, 7.5f, 2.5f, 18);
-        tool_mat_tyrfing = EnumHelper.addToolMaterial(Embers.MODID + ":tyrfing", 2, 512, 7.5f, 0.0f, 24);
+        tool_mat_copper = createToolMaterial("copper", ConfigTool.METAL_TOOL.COPPER);
+        tool_mat_silver = createToolMaterial("silver", ConfigTool.METAL_TOOL.SILVER);
+        tool_mat_lead = createToolMaterial("lead", ConfigTool.METAL_TOOL.LEAD);
+        tool_mat_dawnstone = createToolMaterial("dawnstone", ConfigTool.METAL_TOOL.DAWNSTONE);
+        tool_mat_tyrfing = createToolMaterial("tyrfing", ConfigTool.METAL_TOOL.TYRFING);
 
         armor_mat_ashen_cloak = EnumHelper.addArmorMaterial(Embers.MODID + ":ashen_cloak", Embers.MODID + ":ashen_cloak", 19, new int[]{3, 5, 7, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 
@@ -421,28 +433,28 @@ public class RegistryManager {
         items.add(dust_ember = new ItemBase("dust_ember", true));
         items.add(shard_ember = new ItemBase("shard_ember", true));
         items.add(crystal_ember = new ItemBase("crystal_ember", true));
-        if (ConfigMaterial.TOOL.COPPER.register && ConfigMaterial.COPPER.isNotOff()) {
+        if (ConfigTool.METAL_TOOL.COPPER.register && ConfigMaterial.COPPER.isNotOff()) {
             items.add(pickaxe_copper = new ItemPickaxeBase(tool_mat_copper, "pickaxe_copper", true).setCreativeTab(Embers.resource_tab));
             items.add(axe_copper = new ItemAxeBase2(tool_mat_copper, "axe_copper", true, 8.5f, 0.9f).setCreativeTab(Embers.resource_tab));
             items.add(shovel_copper = new ItemShovelBase(tool_mat_copper, "shovel_copper", true).setCreativeTab(Embers.resource_tab));
             items.add(hoe_copper = new ItemHoeBase(tool_mat_copper, "hoe_copper", true).setCreativeTab(Embers.resource_tab));
             items.add(sword_copper = new ItemSwordBase(tool_mat_copper, "sword_copper", true).setCreativeTab(Embers.resource_tab));
         }
-        if (ConfigMaterial.TOOL.SILVER.register && ConfigMaterial.SILVER.isNotOff()) {
+        if (ConfigTool.METAL_TOOL.SILVER.register && ConfigMaterial.SILVER.isNotOff()) {
             items.add(pickaxe_silver = new ItemPickaxeBase(tool_mat_silver, "pickaxe_silver", true).setCreativeTab(Embers.resource_tab));
             items.add(axe_silver = new ItemAxeBase2(tool_mat_silver, "axe_silver", true, 9f, 1.0f).setCreativeTab(Embers.resource_tab));
             items.add(shovel_silver = new ItemShovelBase(tool_mat_silver, "shovel_silver", true).setCreativeTab(Embers.resource_tab));
             items.add(hoe_silver = new ItemHoeBase(tool_mat_silver, "hoe_silver", true).setCreativeTab(Embers.resource_tab));
             items.add(sword_silver = new ItemSwordBase(tool_mat_silver, "sword_silver", true).setCreativeTab(Embers.resource_tab));
         }
-        if (ConfigMaterial.TOOL.LEAD.register && ConfigMaterial.LEAD.isNotOff()) {
+        if (ConfigTool.METAL_TOOL.LEAD.register && ConfigMaterial.LEAD.isNotOff()) {
             items.add(pickaxe_lead = new ItemPickaxeBase(tool_mat_lead, "pickaxe_lead", true).setCreativeTab(Embers.resource_tab));
             items.add(axe_lead = new ItemAxeBase2(tool_mat_lead, "axe_lead", true, 9f, 0.9f).setCreativeTab(Embers.resource_tab));
             items.add(shovel_lead = new ItemShovelBase(tool_mat_lead, "shovel_lead", true).setCreativeTab(Embers.resource_tab));
             items.add(hoe_lead = new ItemHoeBase(tool_mat_lead, "hoe_lead", true).setCreativeTab(Embers.resource_tab));
             items.add(sword_lead = new ItemSwordBase(tool_mat_lead, "sword_lead", true).setCreativeTab(Embers.resource_tab));
         }
-        if (ConfigMaterial.TOOL.DAWNSTONE.register) {
+        if (ConfigTool.METAL_TOOL.DAWNSTONE.register && ConfigMaterial.DAWNSTONE.isNotOff()) {
             items.add(pickaxe_dawnstone = new ItemPickaxeBase(tool_mat_dawnstone, "pickaxe_dawnstone", true).setCreativeTab(Embers.resource_tab));
             items.add(axe_dawnstone = new ItemAxeBase2(tool_mat_dawnstone, "axe_dawnstone", true, 9.5f, 1f).setCreativeTab(Embers.resource_tab));
             items.add(shovel_dawnstone = new ItemShovelBase(tool_mat_dawnstone, "shovel_dawnstone", true).setCreativeTab(Embers.resource_tab));
@@ -509,8 +521,8 @@ public class RegistryManager {
             items.add(plate_aluminum = new ItemBase("plate_aluminum", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_aluminum = new ItemBase("nugget_aluminum", true).setCreativeTab(Embers.resource_tab));
 
-            if (ConfigMaterial.TOOL.ALUMINUM.register) {
-                tool_mat_aluminum = EnumHelper.addToolMaterial(Embers.MODID + ":aluminum", 2, 220, 5.2f, 1.5f, 14);
+            if (ConfigTool.METAL_TOOL.ALUMINUM.register) {
+                tool_mat_aluminum = createToolMaterial("aluminum", ConfigTool.METAL_TOOL.ALUMINUM);
                 tool_mat_aluminum.setRepairItem(new ItemStack(ingot_aluminum));
                 items.add(pickaxe_aluminum = new ItemPickaxeBase(tool_mat_aluminum, "pickaxe_aluminum", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_aluminum = new ItemAxeBase(tool_mat_aluminum, "axe_aluminum", true).setCreativeTab(Embers.resource_tab));
@@ -525,8 +537,8 @@ public class RegistryManager {
             items.add(plate_bronze = new ItemBase("plate_bronze", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_bronze = new ItemBase("nugget_bronze", true).setCreativeTab(Embers.resource_tab));
 
-            if (ConfigMaterial.TOOL.BRONZE.register) {
-                tool_mat_bronze = EnumHelper.addToolMaterial(Embers.MODID + ":bronze", 2, 510, 6.5f, 2.0f, 20);
+            if (ConfigTool.METAL_TOOL.BRONZE.register) {
+                tool_mat_bronze = createToolMaterial("bronze", ConfigTool.METAL_TOOL.BRONZE);
                 tool_mat_bronze.setRepairItem(new ItemStack(ingot_bronze));
                 items.add(pickaxe_bronze = new ItemPickaxeBase(tool_mat_bronze, "pickaxe_bronze", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_bronze = new ItemAxeBase(tool_mat_bronze, "axe_bronze", true).setCreativeTab(Embers.resource_tab));
@@ -540,8 +552,8 @@ public class RegistryManager {
             items.add(ingot_electrum = new ItemBase("ingot_electrum", true).setCreativeTab(Embers.resource_tab));
             items.add(plate_electrum = new ItemBase("plate_electrum", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_electrum = new ItemBase("nugget_electrum", true).setCreativeTab(Embers.resource_tab));
-            if (ConfigMaterial.TOOL.ELECTRUM.register) {
-                tool_mat_electrum = EnumHelper.addToolMaterial(Embers.MODID + ":electrum", 2, 71, 10.8f, 1.0f, 30);
+            if (ConfigTool.METAL_TOOL.ELECTRUM.register) {
+                tool_mat_electrum = createToolMaterial("electrum", ConfigTool.METAL_TOOL.ELECTRUM);
                 tool_mat_electrum.setRepairItem(new ItemStack(ingot_electrum));
                 items.add(pickaxe_electrum = new ItemPickaxeBase(tool_mat_electrum, "pickaxe_electrum", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_electrum = new ItemAxeBase(tool_mat_electrum, "axe_electrum", true).setCreativeTab(Embers.resource_tab));
@@ -555,8 +567,8 @@ public class RegistryManager {
             items.add(ingot_nickel = new ItemBase("ingot_nickel", true).setCreativeTab(Embers.resource_tab));
             items.add(plate_nickel = new ItemBase("plate_nickel", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_nickel = new ItemBase("nugget_nickel", true).setCreativeTab(Embers.resource_tab));
-            if (ConfigMaterial.TOOL.NICKEL.register) {
-                tool_mat_nickel = EnumHelper.addToolMaterial(Embers.MODID + ":nickel", 2, 331, 6.4f, 2.0f, 18);
+            if (ConfigTool.METAL_TOOL.NICKEL.register) {
+                tool_mat_nickel = createToolMaterial("nickel", ConfigTool.METAL_TOOL.NICKEL);
                 tool_mat_nickel.setRepairItem(new ItemStack(ingot_nickel));
                 items.add(pickaxe_nickel = new ItemPickaxeBase(tool_mat_nickel, "pickaxe_nickel", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_nickel = new ItemAxeBase(tool_mat_nickel, "axe_nickel", true).setCreativeTab(Embers.resource_tab));
@@ -570,8 +582,8 @@ public class RegistryManager {
             items.add(ingot_tin = new ItemBase("ingot_tin", true).setCreativeTab(Embers.resource_tab));
             items.add(plate_tin = new ItemBase("plate_tin", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_tin = new ItemBase("nugget_tin", true).setCreativeTab(Embers.resource_tab));
-            if (ConfigMaterial.TOOL.TIN.register) {
-                tool_mat_tin = EnumHelper.addToolMaterial(Embers.MODID + ":tin", 1, 145, 4.9f, 1.0f, 12);
+            if (ConfigTool.METAL_TOOL.TIN.register) {
+                tool_mat_tin = createToolMaterial("tin", ConfigTool.METAL_TOOL.TIN);
                 tool_mat_tin.setRepairItem(new ItemStack(ingot_tin));
                 items.add(pickaxe_tin = new ItemPickaxeBase(tool_mat_tin, "pickaxe_tin", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_tin = new ItemAxeBase(tool_mat_tin, "axe_tin", true).setCreativeTab(Embers.resource_tab));
@@ -610,7 +622,6 @@ public class RegistryManager {
             items.add(alchemic_cluster = new ItemBase("alchemic_cluster", true));
             items.add(alchemic_mote = new ItemBase("alchemic_mote", true));
             items.add(alchemic_piece = new ItemBase("alchemic_piece", true));
-            //items.add(alchemic_seed = new ItemBase("alchemic_seed", true));
             items.add(alchemic_shard = new ItemBase("alchemic_shard", true));
             items.add(burst_emitter = new ItemBase("burst_emitter", true));
             items.add(crystal_lens = new ItemBase("crystal_lens", true));
