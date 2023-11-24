@@ -16,7 +16,7 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidUtil;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.util.FluidColorHelper;

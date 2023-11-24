@@ -18,7 +18,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.event.InfoGogglesEvent;
 import teamroots.embers.api.item.IInfoGoggles;
 import teamroots.embers.compat.BaublesIntegration;

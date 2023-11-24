@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntity;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.util.IngredientSpecial;
 
 import java.util.List;

@@ -1,8 +1,6 @@
 package teamroots.embers.entity;
 
-import net.minecraft.block.state.IBlockState;
 import net.minecraft.entity.Entity;
-import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.util.math.BlockPos;
@@ -10,13 +8,10 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.network.PacketHandler;
-import teamroots.embers.network.message.MessageEmberSizedBurstFX;
 import teamroots.embers.network.message.MessageEmberSparkleFX;
 import teamroots.embers.particle.ParticleUtil;
-
-import java.awt.*;
 
 public class EntityEmberLight extends Entity {
     BlockPos pos = new BlockPos(0,0,0);

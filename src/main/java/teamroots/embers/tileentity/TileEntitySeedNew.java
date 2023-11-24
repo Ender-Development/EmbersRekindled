@@ -13,7 +13,7 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.tile.IEmberInjectable;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;

@@ -16,7 +16,7 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.projectile.EffectDamage;
 import teamroots.embers.config.ConfigMob;

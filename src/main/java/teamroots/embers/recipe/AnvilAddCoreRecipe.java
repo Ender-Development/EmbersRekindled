@@ -5,12 +5,10 @@ import mezz.jei.api.recipe.IFocus;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntity;
-import teamroots.embers.RegistryManager;
-import teamroots.embers.api.EmbersAPI;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.itemmod.ItemModUtil;
 import teamroots.embers.api.itemmod.ModifierBase;
 import teamroots.embers.util.IngredientSpecial;
-import teamroots.embers.util.Misc;
 
 import java.util.List;
 import java.util.stream.Collectors;

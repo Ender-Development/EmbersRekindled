@@ -11,7 +11,7 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.compat.jei.wrapper.DawnstoneAnvilWrapper;
 
 import javax.annotation.Nonnull;

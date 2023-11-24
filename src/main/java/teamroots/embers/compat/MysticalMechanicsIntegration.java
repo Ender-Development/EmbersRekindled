@@ -25,7 +25,7 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.block.BlockMechActuator;
 import teamroots.embers.block.BlockMechActuatorSingle;

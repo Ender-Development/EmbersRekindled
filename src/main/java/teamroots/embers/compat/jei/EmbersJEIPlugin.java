@@ -8,7 +8,7 @@ import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.misc.ILiquidFuel;
 import teamroots.embers.apiimpl.EmbersAPIImpl;
 import teamroots.embers.compat.MysticalMechanicsIntegration;

@@ -3,7 +3,7 @@ package teamroots.embers.util;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.event.furnace.FurnaceFuelBurnTimeEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 
 public class EmbersFuelHandler {
 	@SubscribeEvent

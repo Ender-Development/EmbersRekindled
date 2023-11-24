@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import mezz.jei.api.recipe.IFocus;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.itemmod.ItemModUtil;
 import teamroots.embers.util.IngredientSpecial;
 

@@ -1,7 +1,7 @@
 package teamroots.embers.item;
 
 import net.minecraft.item.ItemStack;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 
 @Deprecated
 public enum EnumStampType {

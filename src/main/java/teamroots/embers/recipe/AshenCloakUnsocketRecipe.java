@@ -6,7 +6,7 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.item.IInflictorGemHolder;
 
 public class AshenCloakUnsocketRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {

@@ -1,4 +1,4 @@
-package teamroots.embers;
+package teamroots.embers.register;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
@@ -38,6 +38,7 @@ import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.registries.DataSerializerEntry;
+import teamroots.embers.Embers;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
@@ -67,46 +68,17 @@ import teamroots.embers.world.WorldGenSmallRuin;
 import javax.annotation.Nullable;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.function.BiFunction;
-import java.util.stream.IntStream;
+
+// I am currently dead!
 
 public class RegistryManager {
-    public static ArrayList<Block> blocks = new ArrayList<Block>();
     public static ArrayList<Item> items = new ArrayList<Item>();
 
     public static ToolMaterial tool_mat_tyrfing, tool_mat_copper, tool_mat_silver, tool_mat_lead, tool_mat_dawnstone;
     public static ToolMaterial tool_mat_aluminum, tool_mat_bronze, tool_mat_tin, tool_mat_electrum, tool_mat_nickel;
     public static ArmorMaterial armor_mat_ashen_cloak;
 
-    public static Block mechanical_pump, creative_ember_source, caminite_lever, inferno_forge, inferno_forge_edge, ember_pulser, field_chart, catalyzer, combustor, reactor, archaic_tile, archaic_edge, wrapped_sealed_planks, structure_marker, boiler, ember_injector, breaker, vacuum, sealed_planks, ore_quartz, auto_hammer, dawnstone_anvil, archaic_light, archaic_bricks, glow, beam_cannon, item_transfer, alchemy_tablet, alchemy_pedestal, knowledge_table, cinder_plinth, ashen_tile, stairs_ashen_tile, wall_ashen_tile, ashen_tile_slab, ashen_tile_slab_double, ashen_stone, ashen_brick, stairs_ashen_stone, wall_ashen_stone, ashen_stone_slab, ashen_stone_slab_double, stairs_ashen_brick, wall_ashen_brick, ashen_brick_slab, ashen_brick_slab_double, block_caminite_brick_slab, block_caminite_brick_slab_double, charger, crystal_cell, advanced_edge, ember_relay, beam_splitter, block_lantern, ember_gauge, item_gauge, fluid_gauge, large_tank, item_dropper, heat_coil, wall_caminite_brick, block_dawnstone, mixer, stone_edge, ember_activator, mech_core, stairs_caminite_brick, mech_accessor, ember_bore, mech_edge, item_pump, item_pipe, block_oven, stamp_base, stamper, block_caminite_large_brick, bin, copper_cell, deep_line, ember_emitter, ember_receiver, block_furnace, pump, block_copper, block_lead, block_silver, block_mithril, ore_copper, ore_lead, ore_silver, block_caminite_brick, block_tank, pipe;
-    @Deprecated
-    public static Block seed;
-    public static Block block_molten_dawnstone, block_molten_gold, block_molten_copper, block_molten_lead, block_molten_silver, block_molten_iron,
-            block_molten_aluminum, block_molten_tin, block_molten_bronze, block_molten_electrum, block_molten_nickel;
-    public static Block ore_nickel, block_nickel;
-    public static Block ore_aluminum, block_aluminum;
-    public static Block ore_tin, block_tin;
-    public static Block block_bronze;
-    public static Block block_electrum;
-    public static Block catalytic_plug;
-    public static Block ember_funnel;
-    public static Block block_alchemical_redstone;
-    public static Block mini_boiler;
-    public static Block reaction_chamber;
-    public static Block fluid_transfer;
-    public static Block ember_siphon;
-    public static Block stirling;
-    public static Block clockwork_attenuator;
-    public static Block seed_iron, seed_gold, seed_copper, seed_silver, seed_lead, seed_tin, seed_aluminum, seed_nickel, seed_dawnstone, seed_alchemic;
-    public static Block archaic_mech_edge;
-    public static Block archaic_geysir;
-    public static Block blockCaminiteLargeBrick;
-    public static Block stone_valve;
-    public static Block geo_separator;
-    public static Block item_request;
-    public static Block ember_pipe;
-    public static Block turret;
-    public static Block fluid_dropper;
+
 
     public static Fluid fluid_steam, fluid_molten_dawnstone, fluid_molten_gold, fluid_molten_copper, fluid_molten_lead, fluid_molten_silver, fluid_molten_iron,
             fluid_molten_aluminum, fluid_molten_tin, fluid_molten_bronze, fluid_molten_electrum, fluid_molten_nickel, fluid_alchemical_redstone;
@@ -158,50 +130,21 @@ public class RegistryManager {
     public static Block seed_mithril;
 
 
-    private static BlockSeedNew createSimpleSeed(Material material, String name, ResourceLocation texture, BiFunction<TileEntitySeedNew, Integer, ItemStack> nuggetGenerator) {
-        return new BlockSeedNew(material, name, true) {
-            @Override
-            public ResourceLocation getTexture(TileEntitySeedNew tile) {
-                return texture;
-            }
-
-            @Override
-            public ItemStack[] getNuggetDrops(TileEntitySeedNew tile, int n) {
-                return IntStream.range(0, n).mapToObj(i -> nuggetGenerator.apply(tile, n)).toArray(ItemStack[]::new);
-            }
-        };
-    }
-
-    private static Item.ToolMaterial createToolMaterial(String name, ConfigTool.ToolCategory.Tool toolMaterial) {
-        return EnumHelper.addToolMaterial(
-                Embers.MODID + ":" + name,
-                toolMaterial.harvestLevel,
-                toolMaterial.durability,
-                toolMaterial.efficiency,
-                toolMaterial.damage,
-                toolMaterial.enchantability
-        );
-    }
-
     public static void registerAll() {
         registerCapabilities();
 
         damage_ember = new DamageEmber();
 
-        tool_mat_copper = createToolMaterial("copper", ConfigTool.METAL_TOOL.COPPER);
-        tool_mat_silver = createToolMaterial("silver", ConfigTool.METAL_TOOL.SILVER);
-        tool_mat_lead = createToolMaterial("lead", ConfigTool.METAL_TOOL.LEAD);
-        tool_mat_dawnstone = createToolMaterial("dawnstone", ConfigTool.METAL_TOOL.DAWNSTONE);
-        tool_mat_tyrfing = createToolMaterial("tyrfing", ConfigTool.METAL_TOOL.TYRFING);
+        tool_mat_copper = Util.createToolMaterial("copper", ConfigTool.METAL_TOOL.COPPER);
+        tool_mat_silver = Util.createToolMaterial("silver", ConfigTool.METAL_TOOL.SILVER);
+        tool_mat_lead = Util.createToolMaterial("lead", ConfigTool.METAL_TOOL.LEAD);
+        tool_mat_dawnstone = Util.createToolMaterial("dawnstone", ConfigTool.METAL_TOOL.DAWNSTONE);
+        tool_mat_tyrfing = Util.createToolMaterial("tyrfing", ConfigTool.METAL_TOOL.TYRFING);
 
         armor_mat_ashen_cloak = EnumHelper.addArmorMaterial(Embers.MODID + ":ashen_cloak", Embers.MODID + ":ashen_cloak", 19, new int[]{3, 5, 7, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 
         unpushable = new MaterialUnpushable();
 
-        if (ConfigMaterial.COPPER.mustLoad()) {
-            blocks.add(block_copper = (new BlockBase(Material.ROCK, "block_copper", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(1.4f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-            blocks.add(ore_copper = (new BlockBase(Material.ROCK, "ore_copper", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 1).setHardness(1.8f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-        }
         if (ConfigMaterial.LEAD.mustLoad()) {
             blocks.add(block_lead = (new BlockBase(Material.ROCK, "block_lead", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 2).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
             blocks.add(ore_lead = (new BlockBase(Material.ROCK, "ore_lead", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 2).setHardness(2.5f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
@@ -327,25 +270,25 @@ public class RegistryManager {
 
 
         if (ConfigMaterial.IRON.isNotOff()) {
-            blocks.add(seed_iron = createSimpleSeed(Material.ROCK, "seed_iron", new ResourceLocation(Embers.MODID + ":textures/blocks/material_iron.png"), (tile, i) -> new ItemStack(Items.IRON_NUGGET)));
+            blocks.add(seed_iron = Util.createSimpleSeed(Material.ROCK, "seed_iron", new ResourceLocation(Embers.MODID + ":textures/blocks/material_iron.png"), (tile, i) -> new ItemStack(Items.IRON_NUGGET)));
         }
         if (ConfigMaterial.GOLD.isNotOff()) {
-            blocks.add(seed_gold = createSimpleSeed(Material.ROCK, "seed_gold", new ResourceLocation(Embers.MODID + ":textures/blocks/material_gold.png"), (tile, i) -> new ItemStack(Items.GOLD_NUGGET)));
+            blocks.add(seed_gold = Util.createSimpleSeed(Material.ROCK, "seed_gold", new ResourceLocation(Embers.MODID + ":textures/blocks/material_gold.png"), (tile, i) -> new ItemStack(Items.GOLD_NUGGET)));
         }
         if (ConfigMaterial.COPPER.isNotOff()) {
-            blocks.add(seed_copper = createSimpleSeed(Material.ROCK, "seed_copper", new ResourceLocation(Embers.MODID + ":textures/blocks/material_copper.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_copper)));
+            blocks.add(seed_copper = Util.createSimpleSeed(Material.ROCK, "seed_copper", new ResourceLocation(Embers.MODID + ":textures/blocks/material_copper.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_copper)));
         }
         if (ConfigMaterial.SILVER.isNotOff()) {
-            blocks.add(seed_silver = createSimpleSeed(Material.ROCK, "seed_silver", new ResourceLocation(Embers.MODID + ":textures/blocks/material_silver.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_silver)));
+            blocks.add(seed_silver = Util.createSimpleSeed(Material.ROCK, "seed_silver", new ResourceLocation(Embers.MODID + ":textures/blocks/material_silver.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_silver)));
         }
         if (ConfigMaterial.LEAD.isNotOff()) {
-            blocks.add(seed_lead = createSimpleSeed(Material.ROCK, "seed_lead", new ResourceLocation(Embers.MODID + ":textures/blocks/material_lead.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_lead)));
+            blocks.add(seed_lead = Util.createSimpleSeed(Material.ROCK, "seed_lead", new ResourceLocation(Embers.MODID + ":textures/blocks/material_lead.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_lead)));
         }
         if (ConfigMaterial.DAWNSTONE.isNotOff()) {
-            blocks.add(seed_dawnstone = createSimpleSeed(Material.ROCK, "seed_dawnstone", new ResourceLocation(Embers.MODID + ":textures/blocks/material_dawnstone.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_dawnstone)));
+            blocks.add(seed_dawnstone = Util.createSimpleSeed(Material.ROCK, "seed_dawnstone", new ResourceLocation(Embers.MODID + ":textures/blocks/material_dawnstone.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_dawnstone)));
         }
         if (ConfigMaterial.MITHRIL.isNotOff()){
-            blocks.add(seed_mithril = createSimpleSeed(Material.ROCK, "seed_mithril", new ResourceLocation(Embers.MODID + ":textures/blocks/material_mithril.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_mithril)));
+            blocks.add(seed_mithril = Util.createSimpleSeed(Material.ROCK, "seed_mithril", new ResourceLocation(Embers.MODID + ":textures/blocks/material_mithril.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_mithril)));
         }
 
 
@@ -360,7 +303,7 @@ public class RegistryManager {
         blocks.add(turret = (new BlockTurret(Material.IRON, "turret", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
 
         if (ConfigMaterial.ALUMINUM.isNotOff()) {
-            blocks.add(seed_aluminum = createSimpleSeed(Material.ROCK, "seed_aluminum", new ResourceLocation(Embers.MODID + ":textures/blocks/material_aluminum.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_aluminum)));
+            blocks.add(seed_aluminum = Util.createSimpleSeed(Material.ROCK, "seed_aluminum", new ResourceLocation(Embers.MODID + ":textures/blocks/material_aluminum.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_aluminum)));
             if (ConfigMaterial.ALUMINUM.mustLoad()) {
                 blocks.add(block_aluminum = (new BlockBase(Material.ROCK, "block_aluminum", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
                 blocks.add(ore_aluminum = (new BlockBase(Material.ROCK, "ore_aluminum", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 1).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
@@ -376,14 +319,14 @@ public class RegistryManager {
         }
 
         if (ConfigMaterial.NICKEL.isNotOff()) {
-            blocks.add(seed_nickel = createSimpleSeed(Material.ROCK, "seed_nickel", new ResourceLocation(Embers.MODID + ":textures/blocks/material_nickel.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_nickel)));
+            blocks.add(seed_nickel = Util.createSimpleSeed(Material.ROCK, "seed_nickel", new ResourceLocation(Embers.MODID + ":textures/blocks/material_nickel.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_nickel)));
             if (ConfigMaterial.NICKEL.mustLoad()) {
                 blocks.add(block_nickel = (new BlockBase(Material.ROCK, "block_nickel", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(2.2f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
                 blocks.add(ore_nickel = (new BlockBase(Material.ROCK, "ore_nickel", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 1).setHardness(2.2f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
             }
         }
         if (ConfigMaterial.TIN.isNotOff()) {
-            blocks.add(seed_tin = createSimpleSeed(Material.ROCK, "seed_tin", new ResourceLocation(Embers.MODID + ":textures/blocks/material_tin.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_tin)));
+            blocks.add(seed_tin = Util.createSimpleSeed(Material.ROCK, "seed_tin", new ResourceLocation(Embers.MODID + ":textures/blocks/material_tin.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_tin)));
             if (ConfigMaterial.TIN.mustLoad()) {
                 blocks.add(block_tin = (new BlockBase(Material.ROCK, "block_tin", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(1.3f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
                 blocks.add(ore_tin = (new BlockBase(Material.ROCK, "ore_tin", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 1).setHardness(1.3f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
@@ -522,7 +465,7 @@ public class RegistryManager {
             items.add(nugget_aluminum = new ItemBase("nugget_aluminum", true).setCreativeTab(Embers.resource_tab));
 
             if (ConfigTool.METAL_TOOL.ALUMINUM.register) {
-                tool_mat_aluminum = createToolMaterial("aluminum", ConfigTool.METAL_TOOL.ALUMINUM);
+                tool_mat_aluminum = Util.createToolMaterial("aluminum", ConfigTool.METAL_TOOL.ALUMINUM);
                 tool_mat_aluminum.setRepairItem(new ItemStack(ingot_aluminum));
                 items.add(pickaxe_aluminum = new ItemPickaxeBase(tool_mat_aluminum, "pickaxe_aluminum", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_aluminum = new ItemAxeBase(tool_mat_aluminum, "axe_aluminum", true).setCreativeTab(Embers.resource_tab));
@@ -538,7 +481,7 @@ public class RegistryManager {
             items.add(nugget_bronze = new ItemBase("nugget_bronze", true).setCreativeTab(Embers.resource_tab));
 
             if (ConfigTool.METAL_TOOL.BRONZE.register) {
-                tool_mat_bronze = createToolMaterial("bronze", ConfigTool.METAL_TOOL.BRONZE);
+                tool_mat_bronze = Util.createToolMaterial("bronze", ConfigTool.METAL_TOOL.BRONZE);
                 tool_mat_bronze.setRepairItem(new ItemStack(ingot_bronze));
                 items.add(pickaxe_bronze = new ItemPickaxeBase(tool_mat_bronze, "pickaxe_bronze", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_bronze = new ItemAxeBase(tool_mat_bronze, "axe_bronze", true).setCreativeTab(Embers.resource_tab));
@@ -553,7 +496,7 @@ public class RegistryManager {
             items.add(plate_electrum = new ItemBase("plate_electrum", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_electrum = new ItemBase("nugget_electrum", true).setCreativeTab(Embers.resource_tab));
             if (ConfigTool.METAL_TOOL.ELECTRUM.register) {
-                tool_mat_electrum = createToolMaterial("electrum", ConfigTool.METAL_TOOL.ELECTRUM);
+                tool_mat_electrum = Util.createToolMaterial("electrum", ConfigTool.METAL_TOOL.ELECTRUM);
                 tool_mat_electrum.setRepairItem(new ItemStack(ingot_electrum));
                 items.add(pickaxe_electrum = new ItemPickaxeBase(tool_mat_electrum, "pickaxe_electrum", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_electrum = new ItemAxeBase(tool_mat_electrum, "axe_electrum", true).setCreativeTab(Embers.resource_tab));
@@ -568,7 +511,7 @@ public class RegistryManager {
             items.add(plate_nickel = new ItemBase("plate_nickel", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_nickel = new ItemBase("nugget_nickel", true).setCreativeTab(Embers.resource_tab));
             if (ConfigTool.METAL_TOOL.NICKEL.register) {
-                tool_mat_nickel = createToolMaterial("nickel", ConfigTool.METAL_TOOL.NICKEL);
+                tool_mat_nickel = Util.createToolMaterial("nickel", ConfigTool.METAL_TOOL.NICKEL);
                 tool_mat_nickel.setRepairItem(new ItemStack(ingot_nickel));
                 items.add(pickaxe_nickel = new ItemPickaxeBase(tool_mat_nickel, "pickaxe_nickel", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_nickel = new ItemAxeBase(tool_mat_nickel, "axe_nickel", true).setCreativeTab(Embers.resource_tab));
@@ -583,7 +526,7 @@ public class RegistryManager {
             items.add(plate_tin = new ItemBase("plate_tin", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_tin = new ItemBase("nugget_tin", true).setCreativeTab(Embers.resource_tab));
             if (ConfigTool.METAL_TOOL.TIN.register) {
-                tool_mat_tin = createToolMaterial("tin", ConfigTool.METAL_TOOL.TIN);
+                tool_mat_tin = Util.createToolMaterial("tin", ConfigTool.METAL_TOOL.TIN);
                 tool_mat_tin.setRepairItem(new ItemStack(ingot_tin));
                 items.add(pickaxe_tin = new ItemPickaxeBase(tool_mat_tin, "pickaxe_tin", true).setCreativeTab(Embers.resource_tab));
                 items.add(axe_tin = new ItemAxeBase(tool_mat_tin, "axe_tin", true).setCreativeTab(Embers.resource_tab));
@@ -645,7 +588,7 @@ public class RegistryManager {
             items.add(truemetal_clump = new ItemBase("truemetal_clump", true));
             items.add(sulfur_dust = new ItemBase("sulfur_dust", true));
 
-            blocks.add(seed_alchemic = createSimpleSeed(Material.ROCK, "seed_alchemic", new ResourceLocation(Embers.MODID + ":textures/blocks/material_alchemic.png"), (tile, i) -> new ItemStack(RegistryManager.alchemic_piece)));
+            blocks.add(seed_alchemic = Util.createSimpleSeed(Material.ROCK, "seed_alchemic", new ResourceLocation(Embers.MODID + ":textures/blocks/material_alchemic.png"), (tile, i) -> new ItemStack(RegistryManager.alchemic_piece)));
         }
 
 
@@ -842,9 +785,7 @@ public class RegistryManager {
 
     @SubscribeEvent
     public void registerBlocks(RegistryEvent.Register<Block> event) {
-        for (Block b : blocks) {
-            event.getRegistry().register(b);
-        }
+        BlockRegister.INSTANCE.register(event);
     }
 
     @SubscribeEvent

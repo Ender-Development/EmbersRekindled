@@ -34,7 +34,7 @@ import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.alchemy.AspectList;
 import teamroots.embers.api.alchemy.AspectList.AspectRangeList;
