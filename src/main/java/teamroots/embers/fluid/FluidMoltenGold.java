@@ -3,18 +3,18 @@ package teamroots.embers.fluid;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import teamroots.embers.Embers;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 
 import java.awt.*;
 
 public class FluidMoltenGold extends Fluid {
 	public FluidMoltenGold() {
-		super("gold",new ResourceLocation(Embers.MODID+":blocks/molten_gold_still"),new ResourceLocation(Embers.MODID+":blocks/molten_gold_flowing"));
+		super("gold",new ResourceLocation(Embers.MODID,"blocks/molten_gold_still"),new ResourceLocation(Embers.MODID,"blocks/molten_gold_flowing"));
 		setViscosity(6000);
 		setDensity(2000);
 		setLuminosity(15);
 		setTemperature(900);
-		setBlock(RegistryManager.block_molten_gold);
+		setBlock(BlockRegister.BLOCK_MOLTEN_GOLD);
 		setUnlocalizedName("gold");
 	}
 	

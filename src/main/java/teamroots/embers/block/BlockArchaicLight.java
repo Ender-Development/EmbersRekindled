@@ -4,9 +4,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.entity.EntityAncientGolem;
 import teamroots.embers.particle.ParticleUtil;
+import teamroots.embers.register.BlockRegister;
 
 import java.util.Random;
 
@@ -45,7 +45,7 @@ public class BlockArchaicLight extends BlockBase {
 	
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state){
-		if (world.getBlockState(pos.down()).getBlock() == RegistryManager.archaic_bricks && world.getBlockState(pos.down(2)).getBlock() == RegistryManager.archaic_bricks){
+		if (world.getBlockState(pos.down()).getBlock() == BlockRegister.ARCHAIC_BRICKS && world.getBlockState(pos.down(2)).getBlock() == BlockRegister.ARCHAIC_BRICKS){
 			if (!world.isRemote){
 				EntityAncientGolem golem = new EntityAncientGolem(world);
 				golem.onInitialSpawn(world.getDifficultyForLocation(pos), null);

@@ -25,7 +25,6 @@ import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import teamroots.embers.Embers;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.block.BlockMechActuator;
 import teamroots.embers.block.BlockMechActuatorSingle;
@@ -35,6 +34,8 @@ import teamroots.embers.item.ItemBase;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.recipe.ItemStampingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
+import teamroots.embers.register.BlockRegister;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchBase;
 import teamroots.embers.research.ResearchManager;
 import teamroots.embers.research.subtypes.ResearchFakePage;
@@ -82,14 +83,14 @@ public class MysticalMechanicsIntegration {
         event.getRegistry().register(new ShapedOreRecipe(getRL("mech_actuator_single"),new ItemStack(mech_actuator_single,1),true,new Object[]{
                 "SPI",
                 'P', "gearIron",
-                'S', RegistryManager.mech_accessor,
+                'S', BlockRegister.MECH_ACCESSOR,
                 'I', axle_iron}).setRegistryName(getRL("mech_actuator_single")));
         event.getRegistry().register(new ShapedOreRecipe(getRL("mech_actuator"),new ItemStack(mech_actuator,1),true,new Object[]{
                 " I ",
                 "IPI",
                 "SI ",
                 'P', "gearIron",
-                'S', RegistryManager.mech_accessor,
+                'S', BlockRegister.MECH_ACCESSOR,
                 'I', axle_iron}).setRegistryName(getRL("mech_actuator")));
         event.getRegistry().register(new ShapedOreRecipe(getRL("steam_engine"),new ItemStack(steam_engine,1),true,new Object[]{
                 " II",
@@ -98,7 +99,7 @@ public class MysticalMechanicsIntegration {
                 'C', "plateCopper",
                 'P', "gearIron",
                 'A', axle_iron,
-                'I', RegistryManager.pipe,
+                'I', BlockRegister.PIPE,
                 'F', "plateIron"}).setRegistryName(getRL("steam_engine")));
 
         Ingredient stampGear = Ingredient.fromItem(RegistryManager.stamp_gear);
@@ -203,11 +204,11 @@ public class MysticalMechanicsIntegration {
                 .addPage(new ResearchShowItem("gear_dawnstone", gearDawnstone,0,0).addItem(new ResearchShowItem.DisplayItem(gearDawnstone)));
         ResearchManager.actuator = new ResearchBase("actuator", new ItemStack(mech_actuator_single), 9, 5).addAncestor(ResearchManager.gearbox)
                 .addPage(new ResearchShowItem("actuator_multi",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(mech_actuator))))
-                .addPage(new ResearchShowItem("actuator_bore",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(RegistryManager.ember_bore))))
-                .addPage(new ResearchShowItem("actuator_pump",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(RegistryManager.mechanical_pump))))
-                .addPage(new ResearchShowItem("actuator_stamper",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(RegistryManager.stamper))))
-                .addPage(new ResearchShowItem("actuator_mixer",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(RegistryManager.mixer))))
-                .addPage(new ResearchShowItem("actuator_auto_hammer",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(RegistryManager.auto_hammer))));
+                .addPage(new ResearchShowItem("actuator_bore",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(BlockRegister.EMBER_BORE))))
+                .addPage(new ResearchShowItem("actuator_pump",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(BlockRegister.MECHANICAL_PUMP))))
+                .addPage(new ResearchShowItem("actuator_stamper",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(BlockRegister.STAMPER))))
+                .addPage(new ResearchShowItem("actuator_mixer",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(BlockRegister.MIXER))))
+                .addPage(new ResearchShowItem("actuator_auto_hammer",ItemStack.EMPTY,0,0).addItem(new ResearchShowItem.DisplayItem(new ItemStack(BlockRegister.AUTO_HAMMER))));
         ResearchFakePage mechanical_mini_boiler = new ResearchFakePage(ResearchManager.mini_boiler, 12, 0);
         ResearchManager.steam_engine = new ResearchBase("steam_engine", new ItemStack(steam_engine), 9, 2).addAncestor(ResearchManager.gearbox).addAncestor(mechanical_mini_boiler)
                 .addPage(new ResearchBase("steam_engine_overclock",ItemStack.EMPTY,0,0));

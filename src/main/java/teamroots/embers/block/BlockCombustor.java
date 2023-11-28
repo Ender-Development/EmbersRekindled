@@ -18,7 +18,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.ITileEntityBase;
 import teamroots.embers.tileentity.TileEntityCombustor;
 
@@ -45,7 +45,7 @@ public class BlockCombustor extends BlockTEBase {
 	@Override
 	public void neighborChanged(IBlockState state, World world, BlockPos pos, Block block, BlockPos fromPos){
 		if (state.getValue(type) == 1){
-			if (world.getBlockState(fromPos).getBlock() == RegistryManager.reactor){
+			if (world.getBlockState(fromPos).getBlock() == BlockRegister.REACTOR){
 				if (fromPos.compareTo(pos.offset(EnumFacing.NORTH)) == 0){
 					world.setBlockState(pos, getStateFromMeta(2));
 					world.notifyBlockUpdate(pos, state, getStateFromMeta(2), 8);
@@ -67,20 +67,20 @@ public class BlockCombustor extends BlockTEBase {
 		else if (this.getFacingFromMeta(state.getValue(type)) != EnumFacing.DOWN){
 			BlockPos offPos = pos.offset(getFacingFromMeta(state.getValue(type)));
 			if (offPos.compareTo(fromPos) == 0){
-				if (world.getBlockState(offPos).getBlock() != RegistryManager.reactor){
-					if (world.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock() == RegistryManager.reactor){
+				if (world.getBlockState(offPos).getBlock() != BlockRegister.REACTOR){
+					if (world.getBlockState(pos.offset(EnumFacing.NORTH)).getBlock() == BlockRegister.REACTOR){
 						world.setBlockState(pos, getStateFromMeta(2));
 						world.notifyBlockUpdate(pos, state, getStateFromMeta(2), 8);
 					}
-					else if (world.getBlockState(pos.offset(EnumFacing.EAST)).getBlock() == RegistryManager.reactor){
+					else if (world.getBlockState(pos.offset(EnumFacing.EAST)).getBlock() == BlockRegister.REACTOR){
 						world.setBlockState(pos, getStateFromMeta(3));
 						world.notifyBlockUpdate(pos, state, getStateFromMeta(3), 8);
 					}
-					else if (world.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock() == RegistryManager.reactor){
+					else if (world.getBlockState(pos.offset(EnumFacing.SOUTH)).getBlock() == BlockRegister.REACTOR){
 						world.setBlockState(pos, getStateFromMeta(4));
 						world.notifyBlockUpdate(pos, state, getStateFromMeta(4), 8);
 					}
-					else if (world.getBlockState(pos.offset(EnumFacing.WEST)).getBlock() == RegistryManager.reactor){
+					else if (world.getBlockState(pos.offset(EnumFacing.WEST)).getBlock() == BlockRegister.REACTOR){
 						world.setBlockState(pos, getStateFromMeta(5));
 						world.notifyBlockUpdate(pos, state, getStateFromMeta(5), 8);
 					}
@@ -132,19 +132,19 @@ public class BlockCombustor extends BlockTEBase {
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state){
 		if (this.getMetaFromState(state) == 0){
-			if (world.getBlockState(pos.up().offset(EnumFacing.NORTH)).getBlock() == RegistryManager.reactor){
+			if (world.getBlockState(pos.up().offset(EnumFacing.NORTH)).getBlock() == BlockRegister.REACTOR){
 				world.setBlockState(pos.up(), getStateFromMeta(2));
 				world.notifyBlockUpdate(pos.up(), state, getStateFromMeta(2), 8);
 			}
-			else if (world.getBlockState(pos.up().offset(EnumFacing.EAST)).getBlock() == RegistryManager.reactor){
+			else if (world.getBlockState(pos.up().offset(EnumFacing.EAST)).getBlock() == BlockRegister.REACTOR){
 				world.setBlockState(pos.up(), getStateFromMeta(3));
 				world.notifyBlockUpdate(pos.up(), state, getStateFromMeta(3), 8);
 			}
-			else if (world.getBlockState(pos.up().offset(EnumFacing.SOUTH)).getBlock() == RegistryManager.reactor){
+			else if (world.getBlockState(pos.up().offset(EnumFacing.SOUTH)).getBlock() == BlockRegister.REACTOR){
 				world.setBlockState(pos.up(), getStateFromMeta(4));
 				world.notifyBlockUpdate(pos.up(), state, getStateFromMeta(4), 8);
 			}
-			else if (world.getBlockState(pos.up().offset(EnumFacing.WEST)).getBlock() == RegistryManager.reactor){
+			else if (world.getBlockState(pos.up().offset(EnumFacing.WEST)).getBlock() == BlockRegister.REACTOR){
 				world.setBlockState(pos.up(), getStateFromMeta(5));
 				world.notifyBlockUpdate(pos.up(), state, getStateFromMeta(5), 8);
 			}

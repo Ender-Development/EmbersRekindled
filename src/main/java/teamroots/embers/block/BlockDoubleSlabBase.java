@@ -33,7 +33,7 @@ public class BlockDoubleSlabBase extends BlockSlab implements IModeledBlock, IBl
 	public static AxisAlignedBB FULL_AABB = new AxisAlignedBB(0,0,0,1,1,1);
 	public BlockRenderLayer layer = BlockRenderLayer.SOLID;
 	
-	public BlockDoubleSlabBase(Material material, String name, boolean addToTab){
+	public BlockDoubleSlabBase(Material material, String name, boolean addToTab, Block slab){
 		super(material);
 		setUnlocalizedName(name);
 		setRegistryName(Embers.MODID+":"+name);
@@ -41,6 +41,7 @@ public class BlockDoubleSlabBase extends BlockSlab implements IModeledBlock, IBl
 			setCreativeTab(Embers.tab);
 		}
 		itemBlock = (new ItemBlock(this).setRegistryName(this.getRegistryName()));
+		this.slab = slab;
 	}
 
 	@Override

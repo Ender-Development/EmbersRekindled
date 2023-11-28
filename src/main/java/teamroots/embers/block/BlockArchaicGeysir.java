@@ -5,7 +5,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.TileEntityArchaicGeysir;
 
 public class BlockArchaicGeysir extends BlockTEBase {
@@ -40,13 +40,13 @@ public class BlockArchaicGeysir extends BlockTEBase {
 
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state){
-		world.setBlockState(pos.north(), RegistryManager.archaic_mech_edge.getStateFromMeta(0));
-		world.setBlockState(pos.north().west(), RegistryManager.archaic_mech_edge.getStateFromMeta(1));
-		world.setBlockState(pos.west(), RegistryManager.archaic_mech_edge.getStateFromMeta(2));
-		world.setBlockState(pos.south().west(), RegistryManager.archaic_mech_edge.getStateFromMeta(3));
-		world.setBlockState(pos.south(), RegistryManager.archaic_mech_edge.getStateFromMeta(4));
-		world.setBlockState(pos.south().east(), RegistryManager.archaic_mech_edge.getStateFromMeta(5));
-		world.setBlockState(pos.east(), RegistryManager.archaic_mech_edge.getStateFromMeta(6));
-		world.setBlockState(pos.north().east(), RegistryManager.archaic_mech_edge.getStateFromMeta(7));
+		world.setBlockState(pos.north(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(0));
+		world.setBlockState(pos.north().west(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(1));
+		world.setBlockState(pos.west(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(2));
+		world.setBlockState(pos.south().west(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(3));
+		world.setBlockState(pos.south(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(4));
+		world.setBlockState(pos.south().east(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(5));
+		world.setBlockState(pos.east(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(6));
+		world.setBlockState(pos.north().east(), BlockRegister.ARCHAIC_EDGE.getStateFromMeta(7));
 	}
 }

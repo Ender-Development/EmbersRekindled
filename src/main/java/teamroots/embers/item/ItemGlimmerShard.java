@@ -9,9 +9,9 @@ import net.minecraft.util.EnumFacing;
 import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageEmberSparkleFX;
+import teamroots.embers.register.BlockRegister;
 
 import java.awt.*;
 
@@ -44,7 +44,7 @@ public class ItemGlimmerShard extends ItemBase {
 				BlockPos lightPos = pos.offset(face);
 				if (world.isAirBlock(lightPos)){
 					stack.getTagCompound().setInteger("light",stack.getTagCompound().getInteger("light")-10);
-					world.setBlockState(lightPos, RegistryManager.glow.getDefaultState());
+					world.setBlockState(lightPos, BlockRegister.GLOW.getDefaultState());
 					//world.notifyBlockUpdate(lightPos, Blocks.AIR.getDefaultState(), RegistryManager.glow.getDefaultState(), 8);
 					PacketHandler.INSTANCE.sendToAll(new MessageEmberSparkleFX(lightPos.getX()+0.5,lightPos.getY()+0.5,lightPos.getZ()+0.5,false));
 					return EnumActionResult.SUCCESS;

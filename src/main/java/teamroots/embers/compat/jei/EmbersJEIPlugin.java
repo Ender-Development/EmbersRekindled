@@ -8,13 +8,13 @@ import mezz.jei.api.recipe.VanillaRecipeCategoryUid;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.misc.ILiquidFuel;
 import teamroots.embers.apiimpl.EmbersAPIImpl;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.compat.jei.category.*;
 import teamroots.embers.compat.jei.wrapper.*;
 import teamroots.embers.recipe.*;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.util.CompatUtil;
 
 import java.util.ArrayList;
@@ -75,16 +75,16 @@ public class EmbersJEIPlugin implements IModPlugin {
         reg.addRecipes(expandLiquidFuels(EmbersAPIImpl.boilerLiquids),BoilerRecipeCategory.UID);
         reg.addRecipes(expandRecipes(RecipeRegistry.fluidReactionRecipes),ReactionChamberCategory.UID);
 
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.stamper),StampRecipeCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.block_furnace),MelterRecipeCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.geo_separator),GeologicSeparatorRecipeCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.block_furnace),GeologicSeparatorRecipeCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.mixer),MixingRecipeCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.alchemy_tablet),AlchemyRecipeCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.dawnstone_anvil),DawnstoneAnvilCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.mini_boiler),BoilerRecipeCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.reaction_chamber),ReactionChamberCategory.UID);
-        reg.addRecipeCatalyst(new ItemStack(RegistryManager.heat_coil), VanillaRecipeCategoryUid.SMELTING);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.STAMPER),StampRecipeCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.BLOCK_FURNACE),MelterRecipeCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.GEO_SEPARATOR),GeologicSeparatorRecipeCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.BLOCK_FURNACE),GeologicSeparatorRecipeCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.MIXER),MixingRecipeCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.ALCHEMY_TABLET),AlchemyRecipeCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.DAWNSTONE_ANVIL),DawnstoneAnvilCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.MINI_BOILER),BoilerRecipeCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.REACTION_CHAMBER),ReactionChamberCategory.UID);
+        reg.addRecipeCatalyst(new ItemStack(BlockRegister.HEAT_COIL), VanillaRecipeCategoryUid.SMELTING);
 
         if(CompatUtil.isMysticalMechanicsIntegrationEnabled()) {
             reg.handleRecipes(LiquidFuelWithInput.class, recipe -> new EngineRecipeWrapper(recipe.handler, recipe.input), EngineRecipeCategory.UID);

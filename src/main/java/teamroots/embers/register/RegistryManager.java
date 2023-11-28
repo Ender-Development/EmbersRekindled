@@ -1,10 +1,8 @@
 package teamroots.embers.register;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.Items;
 import net.minecraft.init.SoundEvents;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
@@ -42,7 +40,8 @@ import teamroots.embers.Embers;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
-import teamroots.embers.block.*;
+import teamroots.embers.block.IBlock;
+import teamroots.embers.block.IModeledBlock;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.config.ConfigMain;
@@ -73,6 +72,7 @@ import java.util.List;
 
 public class RegistryManager {
     public static ArrayList<Item> items = new ArrayList<Item>();
+    public static ArrayList<Block> blocks = new ArrayList<Block>();
 
     public static ToolMaterial tool_mat_tyrfing, tool_mat_copper, tool_mat_silver, tool_mat_lead, tool_mat_dawnstone;
     public static ToolMaterial tool_mat_aluminum, tool_mat_bronze, tool_mat_tin, tool_mat_electrum, tool_mat_nickel;
@@ -101,24 +101,20 @@ public class RegistryManager {
     public static Item spark_plug;
     public static Item core_stone;
     public static Item ingot_astralite;
-    public static Block block_astralite;
     public static Item plate_astralite;
     public static Item nugget_astralite;
     public static Item ingot_umber_steel;
     public static Item plate_umber_steel;
     public static Item nugget_umber_steel;
-    public static Block block_umber_steel;
 
     public static Item fulgurite;
     public static Item aster, shard_aster;
 
-    public static Item alchemic_chunk,alchemic_cluster,alchemic_mote,alchemic_piece,alchemic_seed,alchemic_shard,burst_emitter,crystal_lens,eyepiece,glimmer_charm,intelligent_eye,karma_charm,mass_caldera,radiant_crown,sigil_cross,sigil_empty,sigil_explosion,sigil_eye,sigil_fork,sigil_home,sigil_ring,sigil_skull,sigil_sun,silver_eye_closed,silver_eye_open,truemetal_clump,sulfur_dust;
+    public static Item alchemic_chunk,alchemic_cluster,alchemic_mote,alchemic_piece,alchemic_shard,burst_emitter,crystal_lens,eyepiece,glimmer_charm,intelligent_eye,karma_charm,mass_caldera,radiant_crown,sigil_cross,sigil_empty,sigil_explosion,sigil_eye,sigil_fork,sigil_home,sigil_ring,sigil_skull,sigil_sun,silver_eye_closed,silver_eye_open,truemetal_clump,sulfur_dust;
 
     public static Item creative_heat;
 
     public static DamageSource damage_ember;
-
-    public static Material unpushable;
 
     public static Biome biome_cave;
 
@@ -127,9 +123,9 @@ public class RegistryManager {
     public static WorldGenOres world_gen_ores;
 
     public static IWorldGenerator world_gen_small_ruin;
-    public static Block seed_mithril;
 
 
+    @Deprecated
     public static void registerAll() {
         registerCapabilities();
 
@@ -143,195 +139,10 @@ public class RegistryManager {
 
         armor_mat_ashen_cloak = EnumHelper.addArmorMaterial(Embers.MODID + ":ashen_cloak", Embers.MODID + ":ashen_cloak", 19, new int[]{3, 5, 7, 3}, 18, SoundEvents.ITEM_ARMOR_EQUIP_GENERIC, 0);
 
-        unpushable = new MaterialUnpushable();
-
-        if (ConfigMaterial.LEAD.mustLoad()) {
-            blocks.add(block_lead = (new BlockBase(Material.ROCK, "block_lead", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 2).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-            blocks.add(ore_lead = (new BlockBase(Material.ROCK, "ore_lead", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 2).setHardness(2.5f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-        }
-        if (ConfigMaterial.SILVER.mustLoad()) {
-            blocks.add(block_silver = (new BlockBase(Material.ROCK, "block_silver", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 2).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-            blocks.add(ore_silver = (new BlockBase(Material.ROCK, "ore_silver", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 2).setHardness(2.5f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-        }
-        if (ConfigMaterial.DAWNSTONE.isNotOff()) {
-            blocks.add(block_dawnstone = (new BlockBase(Material.ROCK, "block_dawnstone", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 2).setHardness(1.6f).setLightLevel(0.0625f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-        }
-        if (ConfigMaterial.MITHRIL.isNotOff()) {
-            // Gloomshroud - Add Mithril Block. May need property adjustment.
-            blocks.add(block_mithril = (new BlockBase(Material.ROCK, "block_mithril", true)).setHarvestProperties("pickaxe", 2).setHardness(1.6f).setLightLevel(0.0625f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-        }
-        blocks.add(block_caminite_brick = (new BlockBase(Material.ROCK, "block_caminite_brick", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(block_caminite_brick_slab_double = new BlockDoubleSlabBase(Material.WOOD, "block_caminite_brick_slab_double", false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(block_caminite_brick_slab = new BlockSlabBase(block_caminite_brick_slab_double, "block_caminite_brick_slab", true).setHarvestProperties("pickaxe", 0).setIsFullCube(false).setIsOpaqueCube(false).setHardness(1.6f).setLightOpacity(1));
-        ((BlockDoubleSlabBase) block_caminite_brick_slab_double).setSlab(block_caminite_brick_slab);
-        items.add(new ItemBlockSlab(block_caminite_brick_slab, block_caminite_brick_slab_double));
-        blocks.add(stairs_caminite_brick = (new BlockStairsBase(RegistryManager.block_caminite_brick.getDefaultState(), "stairs_caminite_brick", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(wall_caminite_brick = (new BlockWallBase(RegistryManager.block_caminite_brick, "wall_caminite_brick", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        if (ConfigMain.enableWipStuff) {
-            blocks.add(block_caminite_large_brick = (new BlockBase(Material.ROCK, "block_caminite_large_brick", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        }
-        blocks.add(block_tank = (new BlockTank(Material.ROCK, "block_tank", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(pipe = (new BlockFluidPipe(Material.ROCK, "pipe", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(pump = (new BlockFluidExtractor(Material.ROCK, "pump", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(block_furnace = (new BlockFurnace(Material.ROCK, "block_furnace", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_receiver = (new BlockEmberReceiver(Material.ROCK, "ember_receiver", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(0.6f));
-        blocks.add(ember_emitter = (new BlockEmberEmitter(Material.ROCK, "ember_emitter", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(0.6f));
-        blocks.add(copper_cell = (new BlockCopperCell(Material.ROCK, "copper_cell", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.4f));
-        blocks.add(item_pipe = (new BlockItemPipe(Material.ROCK, "item_pipe", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(item_pump = (new BlockItemExtractor(Material.ROCK, "item_pump", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(bin = (new BlockBin(Material.ROCK, "bin", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(stamper = (new BlockStamper(Material.ROCK, "stamper", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(stamp_base = (new BlockStampBase(Material.ROCK, "stamper_base", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(mech_edge = (new BlockMechEdge(unpushable, "mech_edge", false)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_bore = (new BlockEmberBore(Material.ROCK, "ember_bore", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(mech_accessor = (new BlockMechAccessor(Material.ROCK, "mech_accessor", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(mech_core = (new BlockMechCore(Material.ROCK, "mech_core", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_activator = (new BlockActivator(Material.ROCK, "ember_activator", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(stone_edge = (new BlockStoneEdge(unpushable, "stone_edge", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(mixer = (new BlockMixer(Material.ROCK, "mixer", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(heat_coil = (new BlockHeatCoil(Material.ROCK, "heat_coil", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(item_dropper = (new BlockDropper(Material.ROCK, "item_dropper", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(fluid_dropper = (new BlockFluidDropper(Material.ROCK, "fluid_dropper", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(large_tank = (new BlockLargeTank(Material.ROCK, "large_tank", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_gauge = (new BlockEmberGauge(Material.ROCK, "ember_gauge", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        if (ConfigMain.enableWipStuff) {
-            blocks.add(item_gauge = (new BlockItemGauge(Material.ROCK, "item_gauge", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        }
-        blocks.add(fluid_gauge = (new BlockFluidGauge(Material.ROCK, "fluid_gauge", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(block_lantern = (new BlockLantern(Material.ROCK, "block_lantern", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightLevel(1.0f));
-        blocks.add(beam_splitter = (new BlockBeamSplitter(Material.ROCK, "beam_splitter", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_relay = (new BlockRelay(Material.ROCK, "ember_relay", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(advanced_edge = (new BlockAdvancedEdge(unpushable, "advanced_edge", false)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(crystal_cell = (new BlockCrystalCell(Material.ROCK, "crystal_cell", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(charger = (new BlockCharger(Material.ROCK, "charger", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ashen_stone = (new BlockBase(Material.ROCK, "ashen_stone", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(ashen_stone_slab_double = new BlockDoubleSlabBase(Material.WOOD, "ashen_stone_slab_double", false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(ashen_stone_slab = new BlockSlabBase(ashen_stone_slab_double, "ashen_stone_slab", true).setHarvestProperties("pickaxe", 0).setIsFullCube(false).setIsOpaqueCube(false).setHardness(1.6f).setLightOpacity(1));
-        ((BlockDoubleSlabBase) ashen_stone_slab_double).setSlab(ashen_stone_slab);
-        items.add(new ItemBlockSlab(ashen_stone_slab, ashen_stone_slab_double));
-        blocks.add(stairs_ashen_stone = (new BlockStairsBase(RegistryManager.ashen_stone.getDefaultState(), "stairs_ashen_stone", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(wall_ashen_stone = (new BlockWallBase(RegistryManager.ashen_stone, "wall_ashen_stone", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ashen_brick = (new BlockBase(Material.ROCK, "ashen_brick", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(ashen_brick_slab_double = new BlockDoubleSlabBase(Material.WOOD, "ashen_brick_slab_double", false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(ashen_brick_slab = new BlockSlabBase(ashen_brick_slab_double, "ashen_brick_slab", true).setHarvestProperties("pickaxe", 0).setIsFullCube(false).setIsOpaqueCube(false).setHardness(1.6f).setLightOpacity(1));
-        ((BlockDoubleSlabBase) ashen_brick_slab_double).setSlab(ashen_brick_slab);
-        items.add(new ItemBlockSlab(ashen_brick_slab, ashen_brick_slab_double));
-        blocks.add(stairs_ashen_brick = (new BlockStairsBase(RegistryManager.ashen_brick.getDefaultState(), "stairs_ashen_brick", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(wall_ashen_brick = (new BlockWallBase(RegistryManager.ashen_brick, "wall_ashen_brick", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ashen_tile = (new BlockBase(Material.ROCK, "ashen_tile", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(ashen_tile_slab_double = new BlockDoubleSlabBase(Material.WOOD, "ashen_tile_slab_double", false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(ashen_tile_slab = new BlockSlabBase(ashen_tile_slab_double, "ashen_tile_slab", true).setHarvestProperties("pickaxe", 0).setIsFullCube(false).setIsOpaqueCube(false).setHardness(1.6f).setLightOpacity(1));
-        ((BlockDoubleSlabBase) ashen_tile_slab_double).setSlab(ashen_tile_slab);
-        items.add(new ItemBlockSlab(ashen_tile_slab, ashen_tile_slab_double));
-        blocks.add(stairs_ashen_tile = (new BlockStairsBase(RegistryManager.ashen_tile.getDefaultState(), "stairs_ashen_tile", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(wall_ashen_tile = (new BlockWallBase(RegistryManager.ashen_tile, "wall_ashen_tile", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(cinder_plinth = (new BlockCinderPlinth(Material.ROCK, "cinder_plinth", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(alchemy_pedestal = (new BlockAlchemyPedestal(Material.ROCK, "alchemy_pedestal", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(alchemy_tablet = (new BlockAlchemyTablet(Material.ROCK, "alchemy_tablet", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(item_transfer = (new BlockItemTransfer(Material.ROCK, "item_transfer", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(beam_cannon = (new BlockBeamCannon(Material.ROCK, "beam_cannon", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(glow = (new BlockGlow(Material.CIRCUITS, "glow", false)).setIsFullCube(false).setIsOpaqueCube(false).setHardness(0.0f).setLightLevel(1.0f));
-        blocks.add(archaic_bricks = (new BlockBase(Material.ROCK, "archaic_bricks", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(archaic_edge = (new BlockBase(Material.ROCK, "archaic_edge", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(archaic_tile = (new BlockBase(Material.ROCK, "archaic_tile", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(16));
-        blocks.add(archaic_light = (new BlockArchaicLight(Material.ROCK, "archaic_light", true)).setHarvestProperties("pickaxe", 0).setHardness(1.6f).setLightOpacity(0).setLightLevel(1.0f));
-        blocks.add(dawnstone_anvil = (new BlockDawnstoneAnvil(Material.ANVIL, "dawnstone_anvil", true)).setHarvestProperties("pickaxe", 1).setIsFullCube(false).setIsOpaqueCube(false).setHardness(1.6f).setLightOpacity(0));
-        blocks.add(auto_hammer = (new BlockAutoHammer(Material.ROCK, "auto_hammer", true)).setHarvestProperties("pickaxe", 0).setIsFullCube(false).setIsOpaqueCube(false).setHardness(1.6f).setLightOpacity(0));
-        blocks.add(ore_quartz = (new BlockQuartzOre(Material.ROCK, "ore_quartz", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 2).setHardness(1.9f).setLightOpacity(16));
-        blocks.add(sealed_planks = (new BlockBase(Material.WOOD, "sealed_planks", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("axe", -1).setHardness(2.5f).setLightOpacity(16));
-        blocks.add(wrapped_sealed_planks = (new BlockBase(Material.WOOD, "wrapped_sealed_planks", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("axe", -1).setHardness(3.1f).setLightOpacity(16));
-        blocks.add(vacuum = (new BlockVacuum(Material.ROCK, "vacuum", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(breaker = (new BlockBreaker(Material.ROCK, "breaker", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(seed = (new BlockSeed(Material.ROCK, "seed", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_injector = (new BlockEmberInjector(Material.ROCK, "ember_injector", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(boiler = (new BlockBoiler(Material.ROCK, "boiler", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(structure_marker = (new BlockStructureMarker()).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(reactor = (new BlockReactor(Material.ROCK, "reactor", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(combustor = (new BlockCombustor(Material.ROCK, "combustor", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(catalyzer = (new BlockCatalyzer(Material.ROCK, "catalyzer", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(field_chart = (new BlockFieldChart(Material.ROCK, "field_chart", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_pulser = (new BlockEmberPulser(Material.ROCK, "ember_pulser", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(inferno_forge_edge = (new BlockInfernoForgeEdge(unpushable, "inferno_forge_edge", false)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(inferno_forge = (new BlockInfernoForge(Material.ROCK, "inferno_forge", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(caminite_lever = (new BlockCaminiteLever("caminite_lever", true)).setHardness(0.75f));
-        //blocks.add(axle_iron = (new BlockAxle(Material.ROCK,"axle_iron",true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        //blocks.add(creative_mech_source = (new BlockCreativeMechSource(Material.ROCK,"creative_mech_source",true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(creative_ember_source = (new BlockCreativeEmberSource(Material.ROCK, "creative_ember_source", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        //blocks.add(gearbox_frame = (new BlockGearbox(Material.ROCK,"gearbox_frame",true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(mechanical_pump = (new BlockPump(Material.ROCK, "mechanical_pump", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(catalytic_plug = (new BlockCatalyticPlug(Material.ROCK, "catalytic_plug", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_funnel = (new BlockEmberFunnel(Material.IRON, "ember_funnel", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(mini_boiler = (new BlockMiniBoiler(Material.IRON, "mini_boiler", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(reaction_chamber = (new BlockReactionChamber(Material.IRON, "reaction_chamber", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(fluid_transfer = (new BlockFluidTransfer(Material.ROCK, "fluid_transfer", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_siphon = (new BlockEmberSiphon(Material.ROCK, "ember_siphon", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(stirling = (new BlockStirling(Material.ROCK, "stirling", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(clockwork_attenuator = (new BlockClockworkAttenuator(Material.ROCK, "clockwork_attenuator", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-
-
-        if (ConfigMaterial.IRON.isNotOff()) {
-            blocks.add(seed_iron = Util.createSimpleSeed(Material.ROCK, "seed_iron", new ResourceLocation(Embers.MODID + ":textures/blocks/material_iron.png"), (tile, i) -> new ItemStack(Items.IRON_NUGGET)));
-        }
-        if (ConfigMaterial.GOLD.isNotOff()) {
-            blocks.add(seed_gold = Util.createSimpleSeed(Material.ROCK, "seed_gold", new ResourceLocation(Embers.MODID + ":textures/blocks/material_gold.png"), (tile, i) -> new ItemStack(Items.GOLD_NUGGET)));
-        }
-        if (ConfigMaterial.COPPER.isNotOff()) {
-            blocks.add(seed_copper = Util.createSimpleSeed(Material.ROCK, "seed_copper", new ResourceLocation(Embers.MODID + ":textures/blocks/material_copper.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_copper)));
-        }
-        if (ConfigMaterial.SILVER.isNotOff()) {
-            blocks.add(seed_silver = Util.createSimpleSeed(Material.ROCK, "seed_silver", new ResourceLocation(Embers.MODID + ":textures/blocks/material_silver.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_silver)));
-        }
-        if (ConfigMaterial.LEAD.isNotOff()) {
-            blocks.add(seed_lead = Util.createSimpleSeed(Material.ROCK, "seed_lead", new ResourceLocation(Embers.MODID + ":textures/blocks/material_lead.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_lead)));
-        }
-        if (ConfigMaterial.DAWNSTONE.isNotOff()) {
-            blocks.add(seed_dawnstone = Util.createSimpleSeed(Material.ROCK, "seed_dawnstone", new ResourceLocation(Embers.MODID + ":textures/blocks/material_dawnstone.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_dawnstone)));
-        }
-        if (ConfigMaterial.MITHRIL.isNotOff()){
-            blocks.add(seed_mithril = Util.createSimpleSeed(Material.ROCK, "seed_mithril", new ResourceLocation(Embers.MODID + ":textures/blocks/material_mithril.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_mithril)));
-        }
-
-
-        blocks.add(stone_valve = (new BlockStoneValve(unpushable, "stone_valve", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        if (ConfigMain.enableWipStuff) {
-            blocks.add(archaic_geysir = (new BlockArchaicGeysir(Material.ROCK, "archaic_geysir", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        }
-        blocks.add(archaic_mech_edge = (new BlockMechEdge(unpushable, "archaic_mech_edge", false)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(geo_separator = (new BlockGeoSeparator(Material.IRON, "geo_separator", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(item_request = (new BlockItemRequisition(Material.IRON, "item_request", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(ember_pipe = (new BlockEmberPipe(Material.IRON, "ember_pipe", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-        blocks.add(turret = (new BlockTurret(Material.IRON, "turret", true)).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f));
-
-        if (ConfigMaterial.ALUMINUM.isNotOff()) {
-            blocks.add(seed_aluminum = Util.createSimpleSeed(Material.ROCK, "seed_aluminum", new ResourceLocation(Embers.MODID + ":textures/blocks/material_aluminum.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_aluminum)));
-            if (ConfigMaterial.ALUMINUM.mustLoad()) {
-                blocks.add(block_aluminum = (new BlockBase(Material.ROCK, "block_aluminum", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-                blocks.add(ore_aluminum = (new BlockBase(Material.ROCK, "ore_aluminum", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 1).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-            }
-        }
-
-        if (ConfigMaterial.BRONZE.mustLoad()) {
-            blocks.add(block_bronze = (new BlockBase(Material.ROCK, "block_bronze", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(2.3f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-        }
-
-        if (ConfigMaterial.ELECTRUM.mustLoad()) {
-            blocks.add(block_electrum = (new BlockBase(Material.ROCK, "block_electrum", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-        }
-
-        if (ConfigMaterial.NICKEL.isNotOff()) {
-            blocks.add(seed_nickel = Util.createSimpleSeed(Material.ROCK, "seed_nickel", new ResourceLocation(Embers.MODID + ":textures/blocks/material_nickel.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_nickel)));
-            if (ConfigMaterial.NICKEL.mustLoad()) {
-                blocks.add(block_nickel = (new BlockBase(Material.ROCK, "block_nickel", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(2.2f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-                blocks.add(ore_nickel = (new BlockBase(Material.ROCK, "ore_nickel", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 1).setHardness(2.2f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-            }
-        }
-        if (ConfigMaterial.TIN.isNotOff()) {
-            blocks.add(seed_tin = Util.createSimpleSeed(Material.ROCK, "seed_tin", new ResourceLocation(Embers.MODID + ":textures/blocks/material_tin.png"), (tile, i) -> new ItemStack(RegistryManager.nugget_tin)));
-            if (ConfigMaterial.TIN.mustLoad()) {
-                blocks.add(block_tin = (new BlockBase(Material.ROCK, "block_tin", true)).setBeaconBase(true).setHarvestProperties("pickaxe", 1).setHardness(1.3f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-                blocks.add(ore_tin = (new BlockBase(Material.ROCK, "ore_tin", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("pickaxe", 1).setHardness(1.3f).setLightOpacity(16).setCreativeTab(Embers.resource_tab));
-            }
-        }
+        items.add(new ItemBlockSlab(BlockRegister.BLOCK_CAMINITE_BRICK_SLAB, BlockRegister.BLOCK_CAMINITE_BRICK_SLAB_DOUBLE));
+        items.add(new ItemBlockSlab(BlockRegister.ASHEN_STONE_SLAB, BlockRegister.ASHEN_STONE_SLAB_DOUBLE));
+        items.add(new ItemBlockSlab(BlockRegister.ASHEN_BRICK_SLAB, BlockRegister.ASHEN_BRICK_SLAB_DOUBLE));
+        items.add(new ItemBlockSlab(BlockRegister.ASHEN_TILE_SLAB, BlockRegister.ASHEN_TILE_SLAB_DOUBLE));
 
         items.add(ingot_copper = new ItemBase("ingot_copper", true).setCreativeTab(Embers.resource_tab));
         items.add(ingot_lead = new ItemBase("ingot_lead", true).setCreativeTab(Embers.resource_tab));
@@ -548,13 +359,11 @@ public class RegistryManager {
             items.add(ingot_astralite = new ItemBase("ingot_astralite", true).setCreativeTab(Embers.resource_tab));
             items.add(plate_astralite = new ItemBase("plate_astralite", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_astralite = new ItemBase("nugget_astralite", true).setCreativeTab(Embers.resource_tab));
-            blocks.add(block_astralite = (new BlockBase(Material.ROCK, "block_astralite", true)).setHarvestProperties("pickaxe", 2).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab).setCreativeTab(Embers.resource_tab));
         }
         if (ConfigMaterial.UMBERSTEEL.isNotOff()) {
             items.add(ingot_umber_steel = new ItemBase("ingot_umber_steel", true).setCreativeTab(Embers.resource_tab));
             items.add(plate_umber_steel = new ItemBase("plate_umber_steel", true).setCreativeTab(Embers.resource_tab));
             items.add(nugget_umber_steel = new ItemBase("nugget_umber_steel", true).setCreativeTab(Embers.resource_tab));
-            blocks.add(block_umber_steel = (new BlockBase(Material.ROCK, "block_umber_steel", true)).setHarvestProperties("pickaxe", 2).setHardness(1.6f).setLightOpacity(16).setCreativeTab(Embers.resource_tab).setCreativeTab(Embers.resource_tab));
         }
         if (ConfigMain.enableWipStuff) {
 
@@ -588,7 +397,6 @@ public class RegistryManager {
             items.add(truemetal_clump = new ItemBase("truemetal_clump", true));
             items.add(sulfur_dust = new ItemBase("sulfur_dust", true));
 
-            blocks.add(seed_alchemic = Util.createSimpleSeed(Material.ROCK, "seed_alchemic", new ResourceLocation(Embers.MODID + ":textures/blocks/material_alchemic.png"), (tile, i) -> new ItemStack(RegistryManager.alchemic_piece)));
         }
 
 
@@ -814,51 +622,39 @@ public class RegistryManager {
         FluidRegistry.registerFluid(fluid_gas = new FluidGas());
 
         FluidRegistry.registerFluid(fluid_molten_iron = new FluidMoltenIron());
-        blocks.add(block_molten_iron = (new BlockMolten(fluid_molten_iron)));
         FluidRegistry.addBucketForFluid(fluid_molten_iron);
 
         FluidRegistry.registerFluid(fluid_molten_gold = new FluidMoltenGold());
-        blocks.add(block_molten_gold = (new BlockMolten(fluid_molten_gold)));
         FluidRegistry.addBucketForFluid(fluid_molten_gold);
 
         FluidRegistry.registerFluid(fluid_molten_lead = new FluidMoltenLead());
-        blocks.add(block_molten_lead = (new BlockMolten(fluid_molten_lead)));
         FluidRegistry.addBucketForFluid(fluid_molten_lead);
 
         FluidRegistry.registerFluid(fluid_molten_copper = new FluidMoltenCopper());
-        blocks.add(block_molten_copper = (new BlockMolten(fluid_molten_copper)));
         FluidRegistry.addBucketForFluid(fluid_molten_copper);
 
         FluidRegistry.registerFluid(fluid_molten_silver = new FluidMoltenSilver());
-        blocks.add(block_molten_silver = (new BlockMolten(fluid_molten_silver)));
         FluidRegistry.addBucketForFluid(fluid_molten_silver);
 
         FluidRegistry.registerFluid(fluid_molten_dawnstone = new FluidMoltenDawnstone());
-        blocks.add(block_molten_dawnstone = (new BlockMolten(fluid_molten_dawnstone)));
         FluidRegistry.addBucketForFluid(fluid_molten_dawnstone);
 
         FluidRegistry.registerFluid(fluid_molten_tin = new FluidMoltenTin());
-        blocks.add(block_molten_tin = (new BlockMolten(fluid_molten_tin)));
         FluidRegistry.addBucketForFluid(fluid_molten_tin);
 
         FluidRegistry.registerFluid(fluid_molten_aluminum = new FluidMoltenAluminum());
-        blocks.add(block_molten_aluminum = (new BlockMolten(fluid_molten_aluminum)));
         FluidRegistry.addBucketForFluid(fluid_molten_aluminum);
 
         FluidRegistry.registerFluid(fluid_molten_nickel = new FluidMoltenNickel());
-        blocks.add(block_molten_nickel = (new BlockMolten(fluid_molten_nickel)));
         FluidRegistry.addBucketForFluid(fluid_molten_nickel);
 
         FluidRegistry.registerFluid(fluid_molten_bronze = new FluidMoltenBronze());
-        blocks.add(block_molten_bronze = (new BlockMolten(fluid_molten_bronze)));
         FluidRegistry.addBucketForFluid(fluid_molten_bronze);
 
         FluidRegistry.registerFluid(fluid_molten_electrum = new FluidMoltenElectrum());
-        blocks.add(block_molten_electrum = (new BlockMolten(fluid_molten_electrum)));
         FluidRegistry.addBucketForFluid(fluid_molten_electrum);
 
         FluidRegistry.registerFluid(fluid_alchemical_redstone = new FluidMoltenMetal("alchemical_redstone", "alchemic_slurry"));
-        blocks.add(block_alchemical_redstone = (new BlockMolten(fluid_alchemical_redstone)));
         FluidRegistry.addBucketForFluid(fluid_alchemical_redstone);
     }
 

@@ -13,7 +13,7 @@ import net.minecraft.util.NonNullList;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.ITileEntityBase;
 
 import java.util.ArrayList;
@@ -67,7 +67,7 @@ public class BlockInfernoForgeEdge extends BlockBase {
 		for (int i = -1; i <= 1; i ++){
 			for (int j = -1; j <= 0; j ++){
 				for (int k = -1; k <= 1; k ++){
-					if (world.getBlockState(pos.add(i,j,k)).getBlock() == RegistryManager.inferno_forge){
+					if (world.getBlockState(pos.add(i,j,k)).getBlock() == BlockRegister.INFERNO_FORGE){
 						if (!world.getBlockState(pos.add(i, j, k)).getValue(BlockInfernoForge.isTop)){
 							breakBlockSafe(world,pos.add(i, j, k),player);
 							break;  // we found The Forge

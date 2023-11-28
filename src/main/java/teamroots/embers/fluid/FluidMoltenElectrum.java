@@ -3,18 +3,18 @@ package teamroots.embers.fluid;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import teamroots.embers.Embers;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 
 import java.awt.*;
 
 public class FluidMoltenElectrum extends Fluid {
 	public FluidMoltenElectrum() {
-		super("electrum",new ResourceLocation(Embers.MODID+":blocks/molten_electrum_still"),new ResourceLocation(Embers.MODID+":blocks/molten_electrum_flowing"));
+		super("electrum",new ResourceLocation(Embers.MODID,"blocks/molten_electrum_still"),new ResourceLocation(Embers.MODID,"blocks/molten_electrum_flowing"));
 		setViscosity(6000);
 		setDensity(2000);
 		setLuminosity(15);
 		setTemperature(900);
-		setBlock(RegistryManager.block_molten_electrum);
+		setBlock(BlockRegister.BLOCK_MOLTEN_ELECTRUM);
 		setUnlocalizedName("electrum");
 	}
 	

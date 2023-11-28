@@ -8,10 +8,10 @@ import net.minecraft.util.math.RayTraceResult;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.event.ForgeEventFactory;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageEmberSparkleFX;
 import teamroots.embers.particle.ParticleUtil;
+import teamroots.embers.register.BlockRegister;
 
 public class EntityEmberLight extends Entity {
     BlockPos pos = new BlockPos(0,0,0);
@@ -63,7 +63,7 @@ public class EntityEmberLight extends Entity {
 			BlockPos hitPos = raytraceresult.getBlockPos().offset(side);
 			boolean hitGlimmer = false;
 			if (getEntityWorld().isAirBlock(hitPos) || getEntityWorld().getBlockState(hitPos).getBlock().isReplaceable(getEntityWorld(), hitPos)){
-				getEntityWorld().setBlockState(hitPos, RegistryManager.glow.getDefaultState());
+				getEntityWorld().setBlockState(hitPos, BlockRegister.GLOW.getDefaultState());
 				PacketHandler.INSTANCE.sendToAll(new MessageEmberSparkleFX(hitPos.getX()+0.5,hitPos.getY()+0.5,hitPos.getZ()+0.5,false));
 				hitGlimmer = true;
 			}

@@ -19,7 +19,6 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import teamroots.embers.Embers;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.alchemy.AspectList.AspectRangeList;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
@@ -28,6 +27,8 @@ import teamroots.embers.item.ItemEmberStorage;
 import teamroots.embers.item.bauble.*;
 import teamroots.embers.recipe.AlchemyRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
+import teamroots.embers.register.BlockRegister;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchBase;
 import teamroots.embers.research.ResearchManager;
 import teamroots.embers.research.subtypes.ResearchShowItem;
@@ -109,7 +110,7 @@ public class BaublesIntegration {
         RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 32, 64).setRange("silver", 32, 64), Ingredient.fromItem(ashen_amulet), Lists.newArrayList(archaicCircuit, archaicBrick, archaicCircuit, eldritchInsignia), new ItemStack(nonbeliever_amulet, 1)));
         RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("copper", 16, 24).setRange("silver", 16, 24),
                 Ingredient.fromItem(RegistryManager.dust_ember),
-                Lists.newArrayList( Ingredient.EMPTY, Ingredient.fromItem(explosion_charm), Ingredient.EMPTY, Ingredient.fromStacks(new ItemStack(RegistryManager.alchemy_pedestal))),
+                Lists.newArrayList( Ingredient.EMPTY, Ingredient.fromItem(explosion_charm), Ingredient.EMPTY, Ingredient.fromStacks(new ItemStack(BlockRegister.ALCHEMY_PEDESTAL))),
                 new ItemStack(explosion_pedestal,1)));
     }
 
