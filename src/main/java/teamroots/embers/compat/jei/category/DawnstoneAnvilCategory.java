@@ -13,7 +13,7 @@ import net.minecraft.util.ResourceLocation;
 import teamroots.embers.Embers;
 import teamroots.embers.compat.jei.wrapper.DawnstoneAnvilWrapper;
 import teamroots.embers.register.BlockRegister;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.ItemRegister;
 
 import javax.annotation.Nonnull;
 import java.util.Arrays;
@@ -70,6 +70,6 @@ public class DawnstoneAnvilCategory implements IRecipeCategory<DawnstoneAnvilWra
         guiItemStacks.set(0,isFocused ? recipeWrapper.getFocusRecipe().getInputs(focus,0) : ingredients.getInputs(ItemStack.class).get(0));
         guiItemStacks.set(1,isFocused ? recipeWrapper.getFocusRecipe().getInputs(focus,1) : ingredients.getInputs(ItemStack.class).get(1));
         guiItemStacks.set(2,isFocused ? recipeWrapper.getFocusRecipe().getOutputs(focus,2) : ingredients.getOutputs(ItemStack.class).get(0));
-        guiItemStacks.set(3, Arrays.asList(new ItemStack(RegistryManager.tinker_hammer),new ItemStack(BlockRegister.AUTO_HAMMER)));
+        guiItemStacks.set(3, Arrays.asList(new ItemStack(ItemRegister.TINKER_HAMMER),new ItemStack(BlockRegister.AUTO_HAMMER)));
     }
 }

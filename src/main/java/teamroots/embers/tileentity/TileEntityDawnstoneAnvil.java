@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.filter.IFilter;
 import teamroots.embers.api.tile.IBin;
 import teamroots.embers.api.tile.IHammerable;
@@ -27,6 +26,7 @@ import teamroots.embers.network.message.MessageAnvilSparksFX;
 import teamroots.embers.network.message.MessageStamperFX;
 import teamroots.embers.recipe.DawnstoneAnvilRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.util.FilterUtil;
 import teamroots.embers.util.Misc;
 
@@ -115,7 +115,7 @@ public class TileEntityDawnstoneAnvil extends TileEntity implements ITileEntityB
                     return true;
                 }
             }
-        } else if (heldItem.getItem() == RegistryManager.tinker_hammer) {
+        } else if (heldItem.getItem() == ItemRegister.TINKER_HAMMER) {
             onHit();
             return true;
         } else if (!heldItem.isEmpty() && hand == EnumHand.MAIN_HAND) {

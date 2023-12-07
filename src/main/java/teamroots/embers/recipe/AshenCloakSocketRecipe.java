@@ -8,9 +8,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.item.IInflictorGem;
 import teamroots.embers.api.item.IInflictorGemHolder;
+import teamroots.embers.register.ItemRegister;
 
 public class AshenCloakSocketRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -73,7 +73,7 @@ public class AshenCloakSocketRecipe extends IForgeRegistryEntry.Impl<IRecipe> im
 
 	@Override
 	public ItemStack getRecipeOutput() {
-		return new ItemStack(RegistryManager.ashen_cloak_chest,1);
+		return new ItemStack(ItemRegister.ASHEN_CLOAK_CHEST,1);
 	}
 
 	@Override

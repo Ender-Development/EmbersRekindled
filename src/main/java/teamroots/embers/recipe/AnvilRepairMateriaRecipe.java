@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntity;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.util.IngredientSpecial;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 
 public class AnvilRepairMateriaRecipe extends DawnstoneAnvilRecipe {
     public AnvilRepairMateriaRecipe() {
-        super(new IngredientSpecial(stack -> stack.getItem().isRepairable() && !RecipeRegistry.isBlacklistedFromMateriaRepair(stack)), Ingredient.fromItem(RegistryManager.isolated_materia), new ItemStack[0]);
+        super(new IngredientSpecial(stack -> stack.getItem().isRepairable() && !RecipeRegistry.isBlacklistedFromMateriaRepair(stack)), Ingredient.fromItem(ItemRegister.ISOLATED_MATERIA), new ItemStack[0]);
     }
 
     @Override
@@ -35,7 +35,7 @@ public class AnvilRepairMateriaRecipe extends DawnstoneAnvilRecipe {
 
     @Override
     public boolean matches(ItemStack input1, ItemStack input2) {
-        return !input1.isEmpty() && input1.getItem().isRepairable() && input2.getItem() == RegistryManager.isolated_materia && !RecipeRegistry.isBlacklistedFromMateriaRepair(input1);
+        return !input1.isEmpty() && input1.getItem().isRepairable() && input2.getItem() == ItemRegister.ISOLATED_MATERIA && !RecipeRegistry.isBlacklistedFromMateriaRepair(input1);
     }
 
     @Override

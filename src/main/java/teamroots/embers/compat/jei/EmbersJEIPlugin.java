@@ -10,7 +10,6 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import teamroots.embers.api.misc.ILiquidFuel;
 import teamroots.embers.apiimpl.EmbersAPIImpl;
-import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.compat.jei.category.*;
 import teamroots.embers.compat.jei.wrapper.*;
 import teamroots.embers.recipe.*;
@@ -91,7 +90,7 @@ public class EmbersJEIPlugin implements IModPlugin {
 
             reg.addRecipes(expandLiquidFuels(EmbersAPIImpl.steamEngineFuels),EngineRecipeCategory.UID);
 
-            reg.addRecipeCatalyst(new ItemStack(MysticalMechanicsIntegration.steam_engine),EngineRecipeCategory.UID);
+            reg.addRecipeCatalyst(new ItemStack(BlockRegister.STEAM_ENGINE),EngineRecipeCategory.UID);
         }
     }
 

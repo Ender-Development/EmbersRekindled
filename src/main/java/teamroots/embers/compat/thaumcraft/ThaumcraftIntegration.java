@@ -4,7 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import teamroots.embers.register.BlockRegister;
-import teamroots.embers.register.RegistryManager;
+import teamroots.embers.register.ItemRegister;
 import thaumcraft.api.ThaumcraftApi;
 import thaumcraft.api.aspects.Aspect;
 import thaumcraft.api.aspects.AspectEventProxy;
@@ -29,83 +29,83 @@ public class ThaumcraftIntegration {
     }
 
     private static void registerItemAspects(AspectEventProxy register) {
-        register.registerObjectTag(new ItemStack(RegistryManager.brick_caminite),
+        register.registerObjectTag(new ItemStack(ItemRegister.BRICK_CAMINITE),
                 new AspectList().add(Aspect.EARTH, 2).add(Aspect.WATER, 1).add(Aspect.FIRE, 1));
-        register.registerObjectTag(new ItemStack(RegistryManager.plate_caminite),
+        register.registerObjectTag(new ItemStack(ItemRegister.PLATE_CAMINITE),
                 new AspectList().add(Aspect.EARTH, 3).add(Aspect.WATER, 1).add(Aspect.FIRE, 1));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.tinker_hammer),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.TINKER_HAMMER),
                 new AspectList().add(Aspect.TOOL, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.stamp_bar),
+        register.registerObjectTag(new ItemStack(ItemRegister.STAMP_BAR),
                 new AspectList().add(Aspect.EARTH, 6).add(Aspect.WATER, 3).add(Aspect.FIRE, 1).add(Aspect.CRAFT, 5));
-        register.registerObjectTag(new ItemStack(RegistryManager.stamp_flat),
+        register.registerObjectTag(new ItemStack(ItemRegister.STAMP_FLAT),
                 new AspectList().add(Aspect.EARTH, 12).add(Aspect.WATER, 6).add(Aspect.FIRE, 1).add(Aspect.CRAFT, 5));
-        register.registerObjectTag(new ItemStack(RegistryManager.stamp_plate),
+        register.registerObjectTag(new ItemStack(ItemRegister.STAMP_PLATE),
                 new AspectList().add(Aspect.EARTH, 6).add(Aspect.WATER, 3).add(Aspect.FIRE, 1).add(Aspect.CRAFT, 5));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.ember_detector),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.EMBER_DETECTOR),
                 new AspectList().add(Aspect.MECHANISM, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.dust_ember),
+        register.registerObjectTag(new ItemStack(ItemRegister.DUST_EMBER),
                 new AspectList().add(Aspect.FIRE, 15).add(Aspect.ENERGY, 15).add(Aspect.ENTROPY, 5));
-        register.registerObjectTag(new ItemStack(RegistryManager.shard_ember),
+        register.registerObjectTag(new ItemStack(ItemRegister.SHARD_EMBER),
                 new AspectList().add(Aspect.FIRE, 3).add(Aspect.ENERGY, 3).add(Aspect.CRYSTAL, 3));
-        register.registerObjectTag(new ItemStack(RegistryManager.crystal_ember),
+        register.registerObjectTag(new ItemStack(ItemRegister.CRYSTAL_EMBER),
                 new AspectList().add(Aspect.FIRE, 18).add(Aspect.ENERGY, 18).add(Aspect.CRYSTAL, 10));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.ember_jar),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.EMBER_JAR),
                 new AspectList().add(Aspect.VOID, 5));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.ember_cartridge),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.EMBER_CARTRIDGE),
                 new AspectList().add(Aspect.VOID, 10));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.ignition_cannon),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.IGNITION_CANNON),
                 new AspectList().add(Aspect.AVERSION, 15));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.staff_ember),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.STAFF_EMBER),
                 new AspectList().add(Aspect.AVERSION, 15));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.pickaxe_clockwork),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.PICKAXE_CLOCKWORK),
                 new AspectList().add(Aspect.MECHANISM, 15));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.grandhammer),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.GRANDHAMMER),
                 new AspectList().add(Aspect.AVERSION, 8));
-        register.registerObjectTag(new ItemStack(RegistryManager.dust_ash),
+        register.registerObjectTag(new ItemStack(ItemRegister.DUST_ASH),
                 new AspectList().add(Aspect.ENTROPY, 5).add(Aspect.FIRE, 3));
-        register.registerObjectTag(new ItemStack(RegistryManager.aspectus_iron),
+        register.registerObjectTag(new ItemStack(ItemRegister.ASPECTUS_IRON),
                 new AspectList().add(Aspect.METAL, 15).add(Aspect.ALCHEMY, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.aspectus_copper),
+        register.registerObjectTag(new ItemStack(ItemRegister.ASPECTUS_COPPER),
                 new AspectList().add(Aspect.METAL, 10).add(Aspect.EXCHANGE, 5).add(Aspect.ALCHEMY, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.aspectus_lead),
+        register.registerObjectTag(new ItemStack(ItemRegister.ASPECTUS_LEAD),
                 new AspectList().add(Aspect.METAL, 10).add(Aspect.ORDER, 5).add(Aspect.ALCHEMY, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.aspectus_silver),
+        register.registerObjectTag(new ItemStack(ItemRegister.ASPECTUS_SILVER),
                 new AspectList().add(Aspect.METAL, 10).add(Aspect.DESIRE, 5).add(Aspect.ALCHEMY, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.aspectus_dawnstone),
+        register.registerObjectTag(new ItemStack(ItemRegister.ASPECTUS_DAWNSTONE),
                 new AspectList().add(Aspect.METAL, 10).add(Aspect.MECHANISM, 5).add(Aspect.FIRE, 5).add(Aspect.ALCHEMY, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.alchemic_waste),
+        register.registerObjectTag(new ItemStack(ItemRegister.ALCHEMIC_WASTE),
                 new AspectList().add(Aspect.ENTROPY, 7).add(Aspect.ALCHEMY, 5));
-        register.registerObjectTag(new ItemStack(RegistryManager.inflictor_gem),
+        register.registerObjectTag(new ItemStack(ItemRegister.INFLICTOR_GEM),
                 new AspectList().add(Aspect.PROTECT, 15).add(Aspect.CRYSTAL, 15).add(Aspect.METAL, 7).add(Aspect.ALCHEMY, 2));
-        register.registerObjectTag(new ItemStack(RegistryManager.glimmer_shard),
+        register.registerObjectTag(new ItemStack(ItemRegister.GLIMMER_SHARD),
                 new AspectList().add(Aspect.LIGHT, 25).add(Aspect.CRYSTAL, 15).add(Aspect.FIRE, 10).add(Aspect.ENERGY, 10).add(Aspect.ALCHEMY, 5));
-        register.registerObjectTag(new ItemStack(RegistryManager.ashen_cloth),
+        register.registerObjectTag(new ItemStack(ItemRegister.ASHEN_CLOTH),
                 new AspectList().add(Aspect.ENTROPY, 4).add(Aspect.FIRE, 3).add(Aspect.CRAFT, 5).add(Aspect.BEAST, 7).add(Aspect.ALCHEMY, 1));
-        register.registerObjectTag(new ItemStack(RegistryManager.archaic_brick),
+        register.registerObjectTag(new ItemStack(ItemRegister.ARCHAIC_BRICK),
                 new AspectList().add(Aspect.EARTH, 3).add(Aspect.DARKNESS, 1).add(Aspect.ORDER, 1));
-        register.registerObjectTag(new ItemStack(RegistryManager.ancient_motive_core),
+        register.registerObjectTag(new ItemStack(ItemRegister.ANCIENT_MOTIVE_CORE),
                 new AspectList().add(Aspect.MIND, 10).add(Aspect.SOUL, 5).add(Aspect.ELDRITCH, 3).add(Aspect.ALCHEMY, 2));
-        register.registerObjectTag(new ItemStack(RegistryManager.isolated_materia),
+        register.registerObjectTag(new ItemStack(ItemRegister.ISOLATED_MATERIA),
                 new AspectList().add(Aspect.ALCHEMY, 15).add(Aspect.EXCHANGE, 10).add(Aspect.CRAFT, 10).add(Aspect.ORDER, 15));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.tyrfing),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.TYRFING),
                 new AspectList().add(Aspect.METAL, 26).add(Aspect.FIRE, 54).add(Aspect.ENERGY, 50).add(Aspect.ORDER, 4).add(Aspect.ALCHEMY, 6));
-        register.registerObjectTag(new ItemStack(RegistryManager.adhesive),
+        register.registerObjectTag(new ItemStack(ItemRegister.ADHESIVE),
                 new AspectList().add(Aspect.WATER, 5).add(Aspect.CRAFT, 5).add(Aspect.ALCHEMY, 2));
-        register.registerObjectTag(new ItemStack(RegistryManager.ember_cluster),
+        register.registerObjectTag(new ItemStack(ItemRegister.EMBER_CLUSTER),
                 new AspectList().add(Aspect.FIRE, 27).add(Aspect.ENERGY, 27).add(Aspect.CRYSTAL, 15).add(Aspect.ALCHEMY, 3));
-        register.registerObjectTag(new ItemStack(RegistryManager.wildfire_core),
+        register.registerObjectTag(new ItemStack(ItemRegister.WILDFIRE_CORE),
                 new AspectList().add(Aspect.METAL, 20).add(Aspect.FIRE, 27).add(Aspect.ENERGY, 20).add(Aspect.CRYSTAL, 11).add(Aspect.ALCHEMY, 5));
-        register.registerComplexObjectTag(new ItemStack(RegistryManager.codex),
+        register.registerComplexObjectTag(new ItemStack(ItemRegister.CODEX),
                 new AspectList().add(Aspect.MIND, 10));
-        register.registerObjectTag(new ItemStack(RegistryManager.blasting_core),
+        register.registerObjectTag(new ItemStack(ItemRegister.BLASTING_CORE),
                 new AspectList().add(Aspect.METAL, 41).add(Aspect.FIRE, 10).add(Aspect.ENTROPY, 10).add(Aspect.ENERGY, 7).add(Aspect.ALCHEMY, 4));
-        register.registerObjectTag(new ItemStack(RegistryManager.flame_barrier),
+        register.registerObjectTag(new ItemStack(ItemRegister.FLAME_BARRIER),
                 new AspectList().add(Aspect.FIRE, 24).add(Aspect.METAL, 30).add(Aspect.MECHANISM, 11).add(Aspect.AVERSION, 10).add(Aspect.PROTECT, 10).add(Aspect.ALCHEMY, 2));
-        register.registerObjectTag(new ItemStack(RegistryManager.eldritch_insignia),
+        register.registerObjectTag(new ItemStack(ItemRegister.ELDRITCH_INSIGNIA),
                 new AspectList().add(Aspect.DARKNESS, 3).add(Aspect.ELDRITCH, 5).add(Aspect.EARTH, 11).add(Aspect.PROTECT, 15).add(Aspect.SOUL, 15).add(Aspect.ALCHEMY, 4));
-        register.registerObjectTag(new ItemStack(RegistryManager.intelligent_apparatus),
+        register.registerObjectTag(new ItemStack(ItemRegister.INTELLIGENT_APPARATUS),
                 new AspectList().add(Aspect.METAL, 33).add(Aspect.MIND, 10).add(Aspect.EXCHANGE, 15).add(Aspect.ORDER, 4).add(Aspect.DESIRE, 7).add(Aspect.ALCHEMY, 3));
-        register.registerObjectTag(new ItemStack(RegistryManager.dust_metallurgic),
+        register.registerObjectTag(new ItemStack(ItemRegister.DUST_METALLURGIC),
                 new AspectList().add(Aspect.METAL, 15).add(Aspect.ENTROPY, 5).add(Aspect.ALCHEMY, 5));
     }
 

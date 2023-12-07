@@ -16,11 +16,11 @@ import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import teamroots.embers.Embers;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.projectile.EffectDamage;
 import teamroots.embers.config.ConfigMob;
 import teamroots.embers.damage.DamageEmber;
+import teamroots.embers.register.ItemRegister;
 
 public class EntityAncientGolem extends EntityMob {
     public long lastPickaxeHit;
@@ -68,7 +68,7 @@ public class EntityAncientGolem extends EntityMob {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
         if(world.getTotalWorldTime() - lastPickaxeHit < 400 || isPickaxeHit(source)) {
-            dropItem(RegistryManager.golems_eye,1);
+            dropItem(ItemRegister.GOLEMS_EYE,1);
         }
     }
 

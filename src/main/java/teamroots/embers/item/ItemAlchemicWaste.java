@@ -8,8 +8,8 @@ import net.minecraft.world.World;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import teamroots.embers.Embers;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.alchemy.AspectList;
+import teamroots.embers.register.ItemRegister;
 
 import java.text.DecimalFormat;
 import java.util.List;
@@ -61,7 +61,7 @@ public class ItemAlchemicWaste extends ItemBase {
 	}
 
 	public static ItemStack create(AspectList inaccuracies) {
-		ItemStack stack = new ItemStack(RegistryManager.alchemic_waste,1);
+		ItemStack stack = new ItemStack(ItemRegister.ALCHEMIC_WASTE,1);
 		NBTTagCompound tagCompound = new NBTTagCompound();
 		tagCompound.setTag(TAG_INACCURACY,inaccuracies.serializeNBT());
 		tagCompound.setInteger(TAG_TOTAL_ASH,inaccuracies.getTotal());

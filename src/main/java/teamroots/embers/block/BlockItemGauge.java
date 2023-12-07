@@ -27,12 +27,18 @@ public class BlockItemGauge extends BlockBaseGauge {
 	protected void getTEData(EnumFacing facing, ArrayList<String> text, TileEntity tileEntity) {
 		if (tileEntity.hasCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing)){
 			IItemHandler handler = tileEntity.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, facing);
-			if (handler != null){
+			// TODO figure out why this doesn't work for vanilla inventories
+			if (handler != null) {
 				for (int i = 0; i < handler.getSlots(); i++){
-					ItemStack stack = handler.getStackInSlot(i);
-					String item;
-					item = formatItemStack(stack);
-					text.add(I18n.format("embers.tooltip.itemdial.slot",i,item));
+					if (i < 10) {
+						ItemStack stack = handler.getStackInSlot(i);
+						String item;
+						item = formatItemStack(stack);
+						text.add(I18n.format("embers.tooltip.itemdial.slot", i, item));
+					} else {
+						text.add("...");
+						return;
+					}
 				}
 			}
 		}

@@ -4,8 +4,8 @@ import com.google.common.collect.Lists;
 import mezz.jei.api.recipe.IFocus;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.itemmod.ItemModUtil;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.util.IngredientSpecial;
 
 import java.util.List;
@@ -33,7 +33,7 @@ public class AnvilAddModifierFakeRecipe extends DawnstoneAnvilRecipe implements 
     private ItemStack prepareInput(ItemStack stack) {
         ItemStack input = stack.copy();
         if(!ItemModUtil.hasHeat(input))
-            ItemModUtil.addModifier(input, new ItemStack(RegistryManager.ancient_motive_core));
+            ItemModUtil.addModifier(input, new ItemStack(ItemRegister.ANCIENT_MOTIVE_CORE));
         ItemModUtil.setLevel(input, ItemModUtil.getLevel(input)+1);
         return input;
     }

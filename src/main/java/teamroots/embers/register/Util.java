@@ -33,7 +33,7 @@ public final class Util {
 
     static Item.ToolMaterial createToolMaterial(String name, ConfigTool.ToolCategory.Tool toolMaterial) {
         return EnumHelper.addToolMaterial(
-                Embers.MODID + ":" + name,
+                new ResourceLocation(Embers.MODID,name).toString(),
                 toolMaterial.harvestLevel,
                 toolMaterial.durability,
                 toolMaterial.efficiency,

@@ -21,7 +21,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.event.DialInformationEvent;
@@ -40,6 +39,7 @@ import teamroots.embers.network.message.MessageStamperFX;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.recipe.ItemStampingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.util.Misc;
 
 import javax.annotation.Nullable;
@@ -141,7 +141,7 @@ public class TileEntityStamper extends TileEntity implements ITileEntityBase, IT
         this.ticksExisted++;
         prevPowered = powered;
         EnumFacing face = getWorld().getBlockState(getPos()).getValue(BlockStamper.facing);
-        if (getWorld().getBlockState(getPos().offset(face, 2)).getBlock() == RegistryManager.stamp_base) {
+        if (getWorld().getBlockState(getPos().offset(face, 2)).getBlock() == BlockRegister.STAMP_BASE) {
             upgrades = UpgradeUtil.getUpgrades(world, pos, EnumFacing.HORIZONTALS);
             UpgradeUtil.verifyUpgrades(this, upgrades);
             if (UpgradeUtil.doTick(this, upgrades))

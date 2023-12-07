@@ -6,8 +6,8 @@ import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.util.NonNullList;
 import net.minecraft.world.World;
 import net.minecraftforge.registries.IForgeRegistryEntry;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.item.IInflictorGemHolder;
+import teamroots.embers.register.ItemRegister;
 
 public class AshenCloakUnsocketRecipe extends IForgeRegistryEntry.Impl<IRecipe> implements IRecipe {
 
@@ -48,7 +48,7 @@ public class AshenCloakUnsocketRecipe extends IForgeRegistryEntry.Impl<IRecipe> 
 
     @Override
     public ItemStack getRecipeOutput() {
-        return new ItemStack(RegistryManager.ashen_cloak_chest, 1);
+        return new ItemStack(ItemRegister.ASHEN_CLOAK_CHEST, 1);
     }
 
     @Override

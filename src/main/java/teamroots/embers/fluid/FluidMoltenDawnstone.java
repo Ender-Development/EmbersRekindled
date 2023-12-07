@@ -3,7 +3,6 @@ package teamroots.embers.fluid;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fluids.Fluid;
 import teamroots.embers.Embers;
-import teamroots.embers.register.BlockRegister;
 
 import java.awt.*;
 
@@ -14,7 +13,6 @@ public class FluidMoltenDawnstone extends Fluid {
 		setDensity(2000);
 		setLuminosity(15);
 		setTemperature(900);
-		setBlock(BlockRegister.BLOCK_MOLTEN_DAWNSTONE);
 		setUnlocalizedName("dawnstone");
 	}
 	
