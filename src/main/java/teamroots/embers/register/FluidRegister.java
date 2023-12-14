@@ -63,4 +63,9 @@ public class FluidRegister implements IRegistrable<Fluid> {
             FluidRegistry.addBucketForFluid(f);
         }
     }
+
+    @Override
+    public void add(Fluid registrable) {
+        REGISTRY.add(registrable);
+    }
 }

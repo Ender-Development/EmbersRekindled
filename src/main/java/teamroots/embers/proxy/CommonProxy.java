@@ -17,18 +17,18 @@ import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
 import teamroots.embers.Embers;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.apiimpl.EmbersAPIImpl;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.compat.thaumcraft.ThaumcraftIntegration;
 import teamroots.embers.gui.GuiHandler;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.recipe.RecipeRegistry;
 import teamroots.embers.reflection.Fields;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchManager;
 import teamroots.embers.tileentity.*;
-import teamroots.embers.util.CompatUtil;
 import teamroots.embers.util.OreTransmutationUtil;
 
 import java.awt.*;
@@ -48,9 +48,9 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event){
-		if(CompatUtil.isBaublesIntegrationEnabled())
+		if(Util.isBaublesIntegrationEnabled())
 			BaublesIntegration.init();
-		if(CompatUtil.isMysticalMechanicsIntegrationEnabled())
+		if(Util.isMysticalMechanicsIntegrationEnabled())
 			MysticalMechanicsIntegration.init();
 	}
 	

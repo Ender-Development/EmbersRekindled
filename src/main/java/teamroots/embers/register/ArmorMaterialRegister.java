@@ -40,4 +40,9 @@ public class ArmorMaterialRegister implements IRegistrable<ItemArmor.ArmorMateri
     public void register() {
 
     }
+
+    @Override
+    public void add(ItemArmor.ArmorMaterial registrable) {
+        REGISTRY.add(registrable);
+    }
 }

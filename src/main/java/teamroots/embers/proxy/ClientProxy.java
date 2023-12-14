@@ -18,14 +18,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.api.event.InfoGogglesEvent;
 import teamroots.embers.api.item.IInfoGoggles;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.model.ModelManager;
 import teamroots.embers.particle.*;
-import teamroots.embers.util.CompatUtil;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.util.DecimalFormats;
 import teamroots.embers.util.FluidColorHelper;
 import teamroots.embers.util.sound.ItemUseSound;
@@ -53,9 +53,9 @@ public class ClientProxy extends CommonProxy{
 	public void init(FMLInitializationEvent event){
 		super.init(event);
 		RegistryManager.registerColorHandlers();
-		if(CompatUtil.isBaublesIntegrationEnabled())
+		if(Util.isBaublesIntegrationEnabled())
 			BaublesIntegration.registerClientSide();
-		if(CompatUtil.isMysticalMechanicsIntegrationEnabled())
+		if(Util.isMysticalMechanicsIntegrationEnabled())
 			MysticalMechanicsIntegration.registerClientSide();
 
 		((IReloadableResourceManager) Minecraft.getMinecraft().getResourceManager()).registerReloadListener(new DecimalFormats());

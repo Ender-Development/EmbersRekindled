@@ -70,6 +70,7 @@ import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.api.tile.IMechanicallyPowered;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.gui.GuiCodex;
 import teamroots.embers.item.ItemEmberGauge;
 import teamroots.embers.item.ItemGrandhammer;
@@ -78,14 +79,13 @@ import teamroots.embers.network.message.MessageEmberBurstFX;
 import teamroots.embers.network.message.MessageEmberGenOffset;
 import teamroots.embers.network.message.MessageTyrfingBurstFX;
 import teamroots.embers.proxy.ClientProxy;
+import teamroots.embers.register.DamageSourceRegister;
 import teamroots.embers.register.FluidRegister;
 import teamroots.embers.register.ItemRegister;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchBase;
 import teamroots.embers.tileentity.ITileEntitySpecialRendererLater;
 import teamroots.embers.tileentity.TileEntityExplosionPedestal;
 import teamroots.embers.tileentity.TileEntityMechAccessor;
-import teamroots.embers.util.CompatUtil;
 import teamroots.embers.util.EmberGenUtil;
 import teamroots.embers.util.Misc;
 import teamroots.embers.util.RenderUtil;
@@ -447,7 +447,7 @@ public class EventManager {
         addCapabilityItemDescription(text, tile, facing);
         addCapabilityFluidDescription(text, tile, facing);
         addCapabilityEmberDescription(text, tile, facing);
-        if (CompatUtil.isMysticalMechanicsIntegrationEnabled())
+        if (Util.isMysticalMechanicsIntegrationEnabled())
             MysticalMechanicsIntegration.addCapabilityInformation(text, tile, facing);
         if (tile.hasCapability(EmbersCapabilities.UPGRADE_PROVIDER_CAPABILITY, facing))
             text.add(I18n.format("embers.tooltip.goggles.upgrade"));
@@ -545,7 +545,7 @@ public class EventManager {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onEntityDamaged(LivingHurtEvent event) {
-        if (event.getSource().damageType.equals(RegistryManager.damage_ember.damageType)) {
+        if (event.getSource().damageType.equals(DamageSourceRegister.DAMAGE_EMBER.damageType)) {
             if (event.getEntityLiving().isPotionActive(Potion.getPotionFromResourceLocation("fire_resistance"))) {
                 event.setAmount(event.getAmount() * 0.5f);
             }

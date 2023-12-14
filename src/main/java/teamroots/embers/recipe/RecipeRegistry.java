@@ -44,13 +44,17 @@ import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.block.BlockSeedNew;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.config.ConfigMaterial;
 import teamroots.embers.item.EnumStampType;
 import teamroots.embers.register.BlockRegister;
 import teamroots.embers.register.FluidRegister;
 import teamroots.embers.register.ItemRegister;
-import teamroots.embers.util.*;
+import teamroots.embers.util.AlchemyUtil;
+import teamroots.embers.util.FilterUtil;
+import teamroots.embers.util.IngredientSpecial;
+import teamroots.embers.util.WeightedItemStack;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -227,7 +231,7 @@ public class RecipeRegistry {
 	public void initLater(RegistryEvent.Register<Item> event){
 		initOreDict();
 
-		if(CompatUtil.isMysticalMechanicsIntegrationEnabled())
+		if(Util.isMysticalMechanicsIntegrationEnabled())
 			MysticalMechanicsIntegration.initOreDict();
 	}
 
@@ -1145,9 +1149,9 @@ public class RecipeRegistry {
 		event.getRegistry().register(new AshenCloakSocketRecipe().setRegistryName(getRL("cloak_socketing")));
 		event.getRegistry().register(new AshenCloakUnsocketRecipe().setRegistryName(getRL("cloak_unsocketing")));
 
-		if(CompatUtil.isBaublesIntegrationEnabled())
+		if(Util.isBaublesIntegrationEnabled())
 			BaublesIntegration.registerRecipes(event);
-		if(CompatUtil.isMysticalMechanicsIntegrationEnabled())
+		if(Util.isMysticalMechanicsIntegrationEnabled())
 			MysticalMechanicsIntegration.registerRecipes(event);
 
 		GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_COPPER), new ItemStack(ItemRegister.INGOT_COPPER), 0.65f);

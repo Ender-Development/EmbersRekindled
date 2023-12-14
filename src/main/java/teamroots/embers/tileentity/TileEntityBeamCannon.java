@@ -16,7 +16,6 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import teamroots.embers.register.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.event.EmberEvent;
@@ -30,6 +29,7 @@ import teamroots.embers.block.BlockBeamCannon;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageBeamCannonFX;
 import teamroots.embers.power.DefaultEmberCapability;
+import teamroots.embers.register.DamageSourceRegister;
 import teamroots.embers.util.Misc;
 
 import javax.annotation.Nonnull;
@@ -214,7 +214,7 @@ public class TileEntityBeamCannon extends TileEntity implements ITileEntityBase,
 				//TODO: OPTIMIZE THIS, THIS CALL IS GARBAGE
 				List<EntityLivingBase> rawEntities = getWorld().getEntitiesWithinAABB(EntityLivingBase.class, new AxisAlignedBB(posX-0.85,posY-0.85,posZ-0.85,posX+0.85,posY+0.85,posZ+0.85));
 				for (EntityLivingBase rawEntity : rawEntities) {
-					rawEntity.attackEntityFrom(RegistryManager.damage_ember, (float)damage);
+					rawEntity.attackEntityFrom(DamageSourceRegister.DAMAGE_EMBER, (float)damage);
 				}
 				if(!doContinue) {
 					world.playSound(null, posX, posY, posZ, SoundManager.BEAM_CANNON_HIT, SoundCategory.BLOCKS, 1.0f, 1.0f);

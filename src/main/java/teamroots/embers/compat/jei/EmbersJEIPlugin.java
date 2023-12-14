@@ -10,11 +10,12 @@ import net.minecraft.item.crafting.Ingredient;
 import net.minecraftforge.fluids.FluidStack;
 import teamroots.embers.api.misc.ILiquidFuel;
 import teamroots.embers.apiimpl.EmbersAPIImpl;
+import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.compat.jei.category.*;
 import teamroots.embers.compat.jei.wrapper.*;
 import teamroots.embers.recipe.*;
 import teamroots.embers.register.BlockRegister;
-import teamroots.embers.util.CompatUtil;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -46,7 +47,7 @@ public class EmbersJEIPlugin implements IModPlugin {
         registry.addRecipeCategories(new AlchemyRecipeCategory(guiHelper));
         registry.addRecipeCategories(new DawnstoneAnvilCategory(guiHelper));
         registry.addRecipeCategories(new BoilerRecipeCategory(guiHelper));
-        if(CompatUtil.isMysticalMechanicsIntegrationEnabled())
+        if(Util.isMysticalMechanicsIntegrationEnabled())
             registry.addRecipeCategories(new EngineRecipeCategory(guiHelper));
         registry.addRecipeCategories(new ReactionChamberCategory(guiHelper));
     }
@@ -85,12 +86,12 @@ public class EmbersJEIPlugin implements IModPlugin {
         reg.addRecipeCatalyst(new ItemStack(BlockRegister.REACTION_CHAMBER),ReactionChamberCategory.UID);
         reg.addRecipeCatalyst(new ItemStack(BlockRegister.HEAT_COIL), VanillaRecipeCategoryUid.SMELTING);
 
-        if(CompatUtil.isMysticalMechanicsIntegrationEnabled()) {
+        if(Util.isMysticalMechanicsIntegrationEnabled()) {
             reg.handleRecipes(LiquidFuelWithInput.class, recipe -> new EngineRecipeWrapper(recipe.handler, recipe.input), EngineRecipeCategory.UID);
 
             reg.addRecipes(expandLiquidFuels(EmbersAPIImpl.steamEngineFuels),EngineRecipeCategory.UID);
 
-            reg.addRecipeCatalyst(new ItemStack(BlockRegister.STEAM_ENGINE),EngineRecipeCategory.UID);
+            reg.addRecipeCatalyst(new ItemStack(MysticalMechanicsIntegration.STEAM_ENGINE),EngineRecipeCategory.UID);
         }
     }
 

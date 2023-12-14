@@ -10,6 +10,7 @@ import teamroots.embers.api.item.IHeldEmberCell;
 import teamroots.embers.api.item.IInventoryEmberCell;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.compat.BaublesIntegration;
+import teamroots.embers.compat.Util;
 
 public class EmberInventoryUtil {
     public static double getEmberCapacityTotal(EntityPlayer player) {
@@ -34,7 +35,7 @@ public class EmberInventoryUtil {
             if (capability instanceof IHeldEmberCell)
                 amount += capability.getEmberCapacity();
         }
-        if (CompatUtil.isBaublesIntegrationEnabled()) {
+        if (Util.isBaublesIntegrationEnabled()) {
             amount += BaublesIntegration.getEmberCapacityTotal(player);
         }
         return amount;
@@ -62,7 +63,7 @@ public class EmberInventoryUtil {
             if (capability instanceof IHeldEmberCell)
                 amount += capability.getEmber();
         }
-        if (CompatUtil.isBaublesIntegrationEnabled()) {
+        if (Util.isBaublesIntegrationEnabled()) {
             amount += BaublesIntegration.getEmberTotal(player);
         }
         return amount;
@@ -85,7 +86,7 @@ public class EmberInventoryUtil {
             if (capability instanceof IHeldEmberCell)
                 temp -= capability.removeAmount(temp, true);
         }
-        if (CompatUtil.isBaublesIntegrationEnabled()) {
+        if (Util.isBaublesIntegrationEnabled()) {
             temp = BaublesIntegration.removeEmber(player, temp);
         }
         for (int i = 0; i < 36; i++) {

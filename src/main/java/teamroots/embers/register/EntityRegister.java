@@ -33,4 +33,9 @@ public class EntityRegister implements IRegistrable<Entity> {
         EntityRegistry.registerModEntity(new ResourceLocation(Embers.MODID, "magma_projectile"), EntityMagmaProjectile.class, "magma_projectile", id, Embers.instance, 64, 1, true);
 
     }
+
+    @Override
+    public void add(Entity registrable) {
+
+    }
 }

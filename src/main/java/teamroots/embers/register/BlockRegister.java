@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import teamroots.embers.Embers;
 import teamroots.embers.block.*;
+import teamroots.embers.config.ConfigMain;
 import teamroots.embers.config.ConfigMaterial;
-import teamroots.embers.util.CompatUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -19,7 +19,8 @@ public class BlockRegister implements IRegistrable<Block> {
 
     public static final BlockRegister INSTANCE = new BlockRegister();
 
-    private BlockRegister(){}
+    private BlockRegister() {
+    }
 
     public static final Block ADVANCED_EDGE = new BlockAdvancedEdge(MaterialRegister.UNPUSHABLE, "advanced_edge", false).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block ALCHEMY_PEDESTAL = new BlockAlchemyPedestal(Material.ROCK, "alchemy_pedestal", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
@@ -164,21 +165,12 @@ public class BlockRegister implements IRegistrable<Block> {
     public static final Block WALL_CAMINITE_BRICK = new BlockWallBase(BLOCK_CAMINITE_BRICK, "wall_caminite_brick", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block WRAPPED_SEALED_PLANKS = (new BlockBase(Material.WOOD, "wrapped_sealed_planks", true)).setIsFullCube(true).setIsOpaqueCube(true).setHarvestProperties("axe", -1).setHardness(3.1f).setLightOpacity(16);
 
-    // Baubles
-    public static final Block EXPLOSION_PEDESTAL = new BlockExplosionPedestal(Material.ROCK, "explosion_pedestal",true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
-    // Mystical Mechanics
-    public static final Block STEAM_ENGINE = new BlockSteamEngine(Material.ROCK, "steam_engine", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0f);
-    public static final Block MECH_ACTUATOR = new BlockMechActuator(Material.ROCK, "mech_actuator", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0f);
-    public static final Block MECH_ACTUATOR_SINGLE = new BlockMechActuatorSingle(Material.ROCK, "mech_actuator_single", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0f);
-
-
     private final static List<Block> REGISTRY = new ArrayList<>(Arrays.asList(
             ADVANCED_EDGE,
             ALCHEMY_PEDESTAL,
             ALCHEMY_TABLET,
             ARCHAIC_BRICKS,
             ARCHAIC_EDGE,
-            ARCHAIC_GEYSIR,
             ARCHAIC_LIGHT,
             ARCHAIC_MECH_EDGE,
             ARCHAIC_TILE,
@@ -265,7 +257,6 @@ public class BlockRegister implements IRegistrable<Block> {
             REACTION_CHAMBER,
             REACTOR,
             SEALED_PLANKS,
-            SEED_ALCHEMIC,
             STAIRS_ASHEN_BRICK,
             STAIRS_ASHEN_STONE,
             STAIRS_ASHEN_TILE,
@@ -286,6 +277,11 @@ public class BlockRegister implements IRegistrable<Block> {
     ));
 
     static {
+        if (ConfigMain.enableWipStuff) {
+            REGISTRY.add(ARCHAIC_GEYSIR);
+            REGISTRY.add(KNOWLEDGE_TABLE);
+            REGISTRY.add(SEED_ALCHEMIC);
+        }
         if (ConfigMaterial.ALUMINUM.isNotOff()) {
             REGISTRY.add(SEED_ALUMINUM);
             if (ConfigMaterial.ALUMINUM.mustLoad()) {
@@ -366,14 +362,6 @@ public class BlockRegister implements IRegistrable<Block> {
                 REGISTRY.add(BLOCK_UMBER_STEEL);
             }
         }
-        if (CompatUtil.isBaublesIntegrationEnabled()) {
-            REGISTRY.add(EXPLOSION_PEDESTAL);
-        }
-        if (CompatUtil.isMysticalMechanicsIntegrationEnabled()) {
-            REGISTRY.add(STEAM_ENGINE);
-            REGISTRY.add(MECH_ACTUATOR);
-            REGISTRY.add(MECH_ACTUATOR_SINGLE);
-        }
 
         ((BlockDoubleSlabBase) ASHEN_TILE_SLAB_DOUBLE).setSlab(ASHEN_TILE_SLAB);
         ((BlockDoubleSlabBase) ASHEN_BRICK_SLAB_DOUBLE).setSlab(ASHEN_BRICK_SLAB);
@@ -388,5 +376,10 @@ public class BlockRegister implements IRegistrable<Block> {
 
     @Override
     public void register() {
+    }
+
+    @Override
+    public void add(Block block) {
+        REGISTRY.add(block);
     }
 }

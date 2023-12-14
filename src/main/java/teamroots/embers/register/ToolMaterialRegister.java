@@ -72,4 +72,9 @@ public class ToolMaterialRegister implements IRegistrable<Item.ToolMaterial> {
     public void register() {
 
     }
+
+    @Override
+    public void add(Item.ToolMaterial registrable) {
+        REGISTRY.add(registrable);
+    }
 }

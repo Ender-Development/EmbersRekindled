@@ -20,4 +20,9 @@ public class MaterialRegister implements IRegistrable<Material> {
     public void register() {
 
     }
+
+    @Override
+    public void add(Material registrable) {
+
+    }
 }

@@ -68,25 +68,9 @@ public class ConfigMain {
         public boolean enableBaublesIntegration = true;
 
         @Config.RequiresMcRestart
-        @Config.Name("Force Baubles Integration")
-        @Config.Comment({
-                "If true, Embers will register items, blocks and recipes providing Baubles integration",
-                "Even if Baubles isn't installed"
-        })
-        public boolean forceBaublesIntegration = false;
-
-        @Config.RequiresMcRestart
         @Config.Name("Enable Mystical Mechanics Integration")
         @Config.Comment("If true, Embers will register items, blocks and recipes providing Mystical Mechanics integration.")
         public boolean enableMysticalMechanicsIntegration = true;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Force Mystical Mechanics Integration")
-        @Config.Comment({
-                "If true, Embers will register items, blocks and recipes providing Mystical Mechanics integration",
-                "Even if Mystical Mechanics isn't installed"
-        })
-        public boolean forceMysticalMechanicsIntegration = false;
     }
 
     @SubscribeEvent

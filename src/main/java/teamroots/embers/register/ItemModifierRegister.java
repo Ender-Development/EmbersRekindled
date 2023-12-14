@@ -50,4 +50,9 @@ public class ItemModifierRegister implements IRegistrable<ModifierBase> {
         EmbersAPI.registerModifier(ItemRegister.SHIFTING_SCALES, EmbersAPI.SHIFTING_SCALES);
         EmbersAPI.registerModifier(ItemRegister.WINDING_GEARS, EmbersAPI.WINDING_GEARS);
     }
+
+    @Override
+    public void add(ModifierBase registrable) {
+
+    }
 }

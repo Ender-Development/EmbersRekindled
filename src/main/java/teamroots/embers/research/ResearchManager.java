@@ -18,6 +18,7 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import teamroots.embers.Embers;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.item.ItemEmberStorage;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageResearchData;
@@ -31,7 +32,6 @@ import teamroots.embers.research.capability.ResearchCapabilityProvider;
 import teamroots.embers.research.subtypes.ResearchFakePage;
 import teamroots.embers.research.subtypes.ResearchShowItem;
 import teamroots.embers.research.subtypes.ResearchSwitchCategory;
-import teamroots.embers.util.CompatUtil;
 import teamroots.embers.util.Vec2i;
 
 import java.util.*;
@@ -376,7 +376,7 @@ public class ResearchManager {
 
 
         ResearchBase mechanicalPowerSwitch;
-        if (CompatUtil.isMysticalMechanicsIntegrationEnabled()) {
+        if (Util.isMysticalMechanicsIntegrationEnabled()) {
             mechanicalPowerSwitch = makeCategorySwitch(subCategoryMechanicalPower, 8, 7, ItemStack.EMPTY, 4, 1);
 
             MysticalMechanicsIntegration.initMysticalMechanicsCategory();
@@ -385,7 +385,7 @@ public class ResearchManager {
         mechanicalPowerSwitch.addAncestor(access);
 
         ResearchBase baublesSwitch;
-        if (CompatUtil.isBaublesIntegrationEnabled()) {
+        if (Util.isBaublesIntegrationEnabled()) {
             baublesSwitch = makeCategorySwitch(subCategoryBaubles, 5, 7, ItemStack.EMPTY, 5, 1);
 
             BaublesIntegration.initBaublesCategory();

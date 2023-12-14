@@ -89,7 +89,6 @@ minecraft {
 }
 
 repositories {
-    maven { url "https://maven.bluexin.be/repository/snapshots/" }
     maven { url "https://repo.spongepowered.org/maven" }
     maven { url "https://repo.cleanroommc.com/releases" }
     maven { url "https://dvs1.progwml6.com/files/maven" }
@@ -113,7 +112,6 @@ dependencies {
     implementation "CraftTweaker2:ZenScript:4.1.8.476"
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.8.476"
 
-    implementation "com.azanor.baubles:Baubles:1.12-1.5.2"
     implementation rfg.deobf("curse.maven:had-enough-items-557549:4810661")
     implementation("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // so it doesn't installs JEI
 
@@ -122,9 +120,13 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:mantle-74924:2713386")
     }
 
-    compileOnly rfg.deobf("curse.maven:inspirations-284007:2843007")
     if (project.debug_inspirations.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:inspirations-284007:2843007")
+    }
+
+    compileOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
+    if (project.debug_baubles.toBoolean()) {
+        runtimeOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
     }
 
     compileOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
@@ -135,6 +137,7 @@ dependencies {
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4746213")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:4800687")
     runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:4275356")
+    // runtimeOnly rfg.deobf("curse.maven:carbon-config-898104:4952983") // will be used later
     // runtimeOnly rfg.deobf("curse.maven:lolasm-460609:4800875") // causes a mapping error, thus making baubles unusable
 }
 

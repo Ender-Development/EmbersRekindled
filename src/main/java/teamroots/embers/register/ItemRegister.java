@@ -3,13 +3,13 @@ package teamroots.embers.register;
 import net.minecraft.inventory.EntityEquipmentSlot;
 import net.minecraft.item.Item;
 import teamroots.embers.Embers;
+import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.config.ConfigMain;
 import teamroots.embers.config.ConfigMaterial;
 import teamroots.embers.config.ConfigTool;
 import teamroots.embers.item.*;
-import teamroots.embers.item.bauble.*;
 import teamroots.embers.item.block.ItemBlockSlab;
-import teamroots.embers.util.CompatUtil;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -200,24 +200,6 @@ public class ItemRegister implements IRegistrable<Item> {
     public static final Item WILDFIRE_CORE = new ItemBase("wildfire_core", true);
     public static final Item WINDING_GEARS = new ItemBase("winding_gears", true);
 
-    // Baubles
-    public static final Item ASHEN_AMULET = new ItemAshenAmulet("ashen_amulet", true);
-    public static final Item CLIMBERS_BELT = new ItemTrinket("climbers_belt",true);
-    public static final Item CRYSTAL_LENSES = new ItemTrinket("crystal_lenses",true);
-    public static final Item DAWNSTONE_MAIL = new ItemDawnstoneMail("dawnstone_mail", true);
-    public static final Item EMBER_AMULET = new ItemEmberAmulet("ember_amulet", true);
-    public static final Item EMBER_BELT = new ItemEmberBelt("ember_belt", true);
-    public static final Item EMBER_RING = new ItemEmberRing("ember_ring", true);
-    public static final Item EXPLOSION_CHARM = new ItemExplosionCharm("explosion_charm", true);
-    public static final Item GLIMMER_CHARM_BAUBLE = new ItemTrinket("glimmer_charm",true);
-    public static final Item MANTLE_BULB = new ItemEmberBulb();
-    public static final Item NONBELIEVER_AMULET = new ItemNonbelieverAmulet("nonbeliever_amulet", true);
-    public static final Item RADIANT_CROWN_BAUBLE = new ItemTrinket("radiant_crown",true);
-    public static final Item ROCKET_BOOSTER = new ItemTrinket("rocket_booster",true);
-
-    // Mystical Mechanics
-    public static final Item GEAR_DAWNSTONE = new ItemBase("gear_dawnstone", true);
-
     private final static List<Item> REGISTRY = new ArrayList<>(Arrays.asList(
             ADHESIVE,
             ALCHEMIC_WASTE,
@@ -288,25 +270,8 @@ public class ItemRegister implements IRegistrable<Item> {
     ));
 
     static {
-        if (CompatUtil.isBaublesIntegrationEnabled()) {
-            if (ConfigMain.enableWipStuff) {
-                REGISTRY.add(CLIMBERS_BELT);
-                REGISTRY.add(CRYSTAL_LENSES);
-                REGISTRY.add(GLIMMER_CHARM_BAUBLE);
-                REGISTRY.add(RADIANT_CROWN_BAUBLE);
-                REGISTRY.add(ROCKET_BOOSTER);
-            }
-            REGISTRY.add(ASHEN_AMULET);
-            REGISTRY.add(DAWNSTONE_MAIL);
-            REGISTRY.add(EMBER_AMULET);
-            REGISTRY.add(EMBER_BELT);
-            REGISTRY.add(EMBER_RING);
-            REGISTRY.add(EXPLOSION_CHARM);
-            REGISTRY.add(MANTLE_BULB);
-            REGISTRY.add(NONBELIEVER_AMULET);
-        }
-        if (CompatUtil.isMysticalMechanicsIntegrationEnabled()) {
-            REGISTRY.add(GEAR_DAWNSTONE);
+        if (Util.isMysticalMechanicsIntegrationEnabled()) {
+            REGISTRY.add(MysticalMechanicsIntegration.GEAR_DAWNSTONE);
         }
         if (ConfigMaterial.ALUMINUM.mustLoad()) {
             if (ConfigTool.METAL_TOOL.ALUMINUM.register) {
@@ -480,5 +445,10 @@ public class ItemRegister implements IRegistrable<Item> {
 
     @Override
     public void register() {
+    }
+
+    @Override
+    public void add(Item item) {
+        REGISTRY.add(item);
     }
 }
