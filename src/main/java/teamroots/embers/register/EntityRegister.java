@@ -36,6 +36,6 @@ public class EntityRegister implements IRegistrable<Entity> {
 
     @Override
     public void add(Entity registrable) {
-
+        //NOOP
     }
 }

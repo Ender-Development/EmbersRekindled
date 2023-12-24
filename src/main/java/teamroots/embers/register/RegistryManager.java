@@ -2,6 +2,9 @@ package teamroots.embers.register;
 
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.entity.Render;
+import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
+import net.minecraft.entity.Entity;
 import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.item.Item;
 import net.minecraft.nbt.NBTBase;
@@ -19,8 +22,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.common.capabilities.CapabilityManager;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fml.client.registry.ClientRegistry;
-import net.minecraftforge.fml.client.registry.RenderingRegistry;
 import net.minecraftforge.fml.common.IWorldGenerator;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.fml.common.registry.EntityRegistry;
@@ -37,7 +38,7 @@ import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.compat.Util;
 import teamroots.embers.config.ConfigMob;
-import teamroots.embers.entity.*;
+import teamroots.embers.entity.EntityAncientGolem;
 import teamroots.embers.item.IModeledItem;
 import teamroots.embers.item.ItemEmberCartridge;
 import teamroots.embers.item.ItemEmberJar;
@@ -46,7 +47,7 @@ import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.power.EmberCapabilityStorage;
 import teamroots.embers.research.capability.DefaultResearchCapability;
 import teamroots.embers.research.capability.IResearchCapability;
-import teamroots.embers.tileentity.*;
+import teamroots.embers.tileentity.TileEntityBeamCannon;
 import teamroots.embers.upgrade.UpgradeCatalyticPlug;
 import teamroots.embers.util.DefaultUpgradeProvider;
 import teamroots.embers.util.EmbersFuelHandler;
@@ -173,50 +174,8 @@ public class RegistryManager {
 
     @SideOnly(Side.CLIENT)
     public static void registerEntityRendering() {
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTank.class, new TileEntityTankRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFluidPipe.class, new TileEntityFluidPipeRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFluidExtractor.class, new TileEntityFluidExtractorRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFurnaceTop.class, new TileEntityFurnaceTopRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEmitter.class, new TileEntityEmitterRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemPipe.class, new TileEntityItemPipeRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemExtractor.class, new TileEntityItemExtractorRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBin.class, new TileEntityBinRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStamper.class, new TileEntityStamperRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityStampBase.class, new TileEntityStampBaseRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEmberBore.class, new TileEntityEmberBoreRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityHeatCoil.class, new TileEntityHeatCoilRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityLargeTank.class, new TileEntityLargeTankRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCrystalCell.class, new TileEntityCrystalCellRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCharger.class, new TileEntityChargerRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityCinderPlinth.class, new TileEntityCinderPlinthRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityKnowledgeTable.class, new TileEntityKnowledgeTableRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAlchemyPedestal.class, new TileEntityAlchemyPedestalRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAlchemyTablet.class, new TileEntityAlchemyTabletRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemTransfer.class, new TileEntityItemTransferRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBeamCannon.class, new TileEntityBeamCannonRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityDawnstoneAnvil.class, new TileEntityDawnstoneAnvilRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityAutoHammer.class, new TileEntityAutoHammerRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityBreaker.class, new TileEntityBreakerRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySeed.class, new TileEntitySeedRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntitySeedNew.class, new TileEntitySeedNewRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFieldChart.class, new TileEntityFieldChartRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPulser.class, new TileEntityPulserRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityInfernoForgeOpening.class, new TileEntityInfernoForgeOpeningRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityPumpBottom.class, new TileEntityPumpRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFluidTransfer.class, new TileEntityFluidTransferRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityGeoSeparator.class, new TileEntityGeoSeparatorRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityItemRequisition.class, new TileEntityItemRequisitionRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityEmberPipe.class, new TileEntityEmberPipeRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMiniBoiler.class, new TileEntityMiniBoilerRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityReactionChamber.class, new TileEntityReactionChamberRenderer());
-        ClientRegistry.bindTileEntitySpecialRenderer(TileEntityTurret.class, new TileEntityTurretRenderer());
-
-        RenderingRegistry.registerEntityRenderingHandler(EntityEmberPacket.class, new RenderEmberPacket(Minecraft.getMinecraft().getRenderManager()));
-        RenderingRegistry.registerEntityRenderingHandler(EntityEmberProjectile.class, new RenderEmberPacket(Minecraft.getMinecraft().getRenderManager()));
-        RenderingRegistry.registerEntityRenderingHandler(EntityAncientGolem.class, new RenderAncientGolem.Factory());
-        RenderingRegistry.registerEntityRenderingHandler(EntityEmberLight.class, new RenderEmberPacket(Minecraft.getMinecraft().getRenderManager()));
-        RenderingRegistry.registerEntityRenderingHandler(EntityMagmaWorm.class, new RenderMagmaWorm.Factory());
-        RenderingRegistry.registerEntityRenderingHandler(EntityMagmaProjectile.class, new RenderEmberPacket(Minecraft.getMinecraft().getRenderManager()));
+        TileEntitySpecialRendererRegister.INSTANCE.register();
+        EntityRenderingHandlerRegister.INSTANCE.register();
     }
 
     @SideOnly(Side.CLIENT)
@@ -240,13 +199,33 @@ public class RegistryManager {
         event.getRegistry().register(new DataSerializerEntry(ExtraSerializers.FLOAT_ARRAY).setRegistryName(Embers.MODID, "serializer_float_array"));
     }
 
-    public static class dummyTileEntity {
+    public static class tupleTileEntity {
         protected final Class<? extends TileEntity> te_class;
         protected final ResourceLocation location;
 
-        public dummyTileEntity(Class<? extends TileEntity> te_class, String name) {
+        public tupleTileEntity(Class<? extends TileEntity> te_class, String name) {
             this.te_class = te_class;
             this.location = new ResourceLocation(Embers.MODID, name);
+        }
+    }
+
+    public static class tupleTESR { // TileEntitySpecialRenderer
+        protected final Class<? extends TileEntity> tileEntityClass;
+        protected final TileEntitySpecialRenderer<? super TileEntity> specialRenderer;
+
+        public tupleTESR(Class<? extends TileEntity> tileEntityClass, TileEntitySpecialRenderer<? super TileEntity> specialRenderer) {
+            this.tileEntityClass = tileEntityClass;
+            this.specialRenderer = specialRenderer;
+        }
+    }
+
+    public static class tupleERH { // EntityRenderingHandler
+        protected final Class<? extends Entity> entityClass;
+        protected final Render<? extends Entity> renderer;
+
+        public tupleERH(Class<? extends Entity> entityClass, Render<? extends Entity> renderer) {
+            this.entityClass = entityClass;
+            this.renderer = renderer;
         }
     }
 }
