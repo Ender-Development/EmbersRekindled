@@ -20,7 +20,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.client.model.ModelLoader;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.ITileEntityBase;
 import teamroots.embers.tileentity.TileEntitySeed;
 
@@ -62,12 +62,11 @@ public class BlockSeed extends BlockBase implements ITileEntityProvider, IModele
 		if(state.getBlock() == this) //I swear to god this will trip at least once in the lifetime of this mod.
 			switch(state.getValue(type))
 			{
-				case(0): return Item.getItemFromBlock(RegistryManager.seed_iron);
-				case(1): return Item.getItemFromBlock(RegistryManager.seed_gold);
-				case(2): return Item.getItemFromBlock(RegistryManager.seed_copper);
-				case(3): return Item.getItemFromBlock(RegistryManager.seed_lead);
-				case(4): return Item.getItemFromBlock(RegistryManager.seed_silver);
-				default: return Item.getItemFromBlock(RegistryManager.seed_iron);
+                case(1): return Item.getItemFromBlock(BlockRegister.SEED_GOLD);
+				case(2): return Item.getItemFromBlock(BlockRegister.SEED_COPPER);
+				case(3): return Item.getItemFromBlock(BlockRegister.SEED_LEAD);
+				case(4): return Item.getItemFromBlock(BlockRegister.SEED_SILVER);
+				default: return Item.getItemFromBlock(BlockRegister.SEED_IRON);
 			}
 
 		return super.getItemDropped(state, random, fortune);

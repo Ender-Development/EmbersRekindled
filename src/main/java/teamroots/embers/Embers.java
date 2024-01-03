@@ -13,6 +13,8 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import teamroots.embers.proxy.CommonProxy;
 import teamroots.embers.recipe.RecipeRegistry;
+import teamroots.embers.register.ItemRegister;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchManager;
 
 @Mod(modid = Embers.MODID, name = Embers.MODNAME, dependencies = Embers.DEPENDENCIES)
@@ -33,7 +35,7 @@ public class Embers {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem(){
-			return new ItemStack(RegistryManager.crystal_ember,1);
+			return new ItemStack(ItemRegister.CRYSTAL_EMBER,1);
 		}
 	};
 	
@@ -45,7 +47,7 @@ public class Embers {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem(){
-			return new ItemStack(RegistryManager.ingot_dawnstone,1);
+			return new ItemStack(ItemRegister.INGOT_DAWNSTONE,1);
 		}
 	};
 	

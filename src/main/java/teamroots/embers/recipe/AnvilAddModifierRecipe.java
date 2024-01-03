@@ -3,9 +3,9 @@ package teamroots.embers.recipe;
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.api.itemmod.ItemModUtil;
 import teamroots.embers.api.itemmod.ModifierBase;
+import teamroots.embers.register.ItemRegister;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -29,6 +29,6 @@ public class AnvilAddModifierRecipe extends DawnstoneAnvilRecipe implements IWra
 
     @Override
     public List<DawnstoneAnvilRecipe> getWrappers() {
-        return ItemModUtil.getAllModifierItems().stream().filter(stack -> stack.getItem() != RegistryManager.ancient_motive_core).map(AnvilAddModifierFakeRecipe::new).collect(Collectors.toList());
+        return ItemModUtil.getAllModifierItems().stream().filter(stack -> stack.getItem() != ItemRegister.ANCIENT_MOTIVE_CORE).map(AnvilAddModifierFakeRecipe::new).collect(Collectors.toList());
     }
 }

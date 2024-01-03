@@ -9,7 +9,6 @@ import net.minecraft.util.NonNullList;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDamageEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import teamroots.embers.RegistryManager;
 
 public class ItemNonbelieverAmulet extends ItemBaubleBase {
     public ItemNonbelieverAmulet(String name, boolean addToTab) {

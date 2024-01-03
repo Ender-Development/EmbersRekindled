@@ -21,7 +21,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.event.EmberEvent;
@@ -35,6 +34,7 @@ import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageAshenAmuletFX;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.power.DefaultEmberCapability;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.util.Misc;
 import teamroots.embers.util.sound.ISoundController;
 
@@ -182,7 +182,7 @@ public class TileEntityCinderPlinth extends TileEntity implements ITileEntityBas
                 if (progress > UpgradeUtil.getWorkTime(this, PROCESS_TIME, upgrades)) {
                     progress = 0;
                     TileEntity tile = getWorld().getTileEntity(getPos().down());
-                    List<ItemStack> outputs = Lists.newArrayList(new ItemStack(RegistryManager.dust_ash, 1));
+                    List<ItemStack> outputs = Lists.newArrayList(new ItemStack(ItemRegister.DUST_ASH, 1));
                     UpgradeUtil.transformOutput(this, outputs, upgrades);
                     inventory.extractItem(0, 1, false);
                     for (ItemStack remainder : outputs) {

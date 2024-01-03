@@ -12,7 +12,7 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.TileEntityInfernoForge;
 import teamroots.embers.tileentity.TileEntityInfernoForgeOpening;
 
@@ -109,30 +109,30 @@ public class BlockInfernoForge extends BlockTEBase {
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state){
 		if (!state.getValue(isTop)){
-			world.setBlockState(pos.up(), RegistryManager.inferno_forge.getStateFromMeta(1));
-			world.setBlockState(pos.north(), RegistryManager.inferno_forge_edge.getStateFromMeta(0));
-			world.setBlockState(pos.north().west(), RegistryManager.inferno_forge_edge.getStateFromMeta(1));
-			world.setBlockState(pos.west(), RegistryManager.inferno_forge_edge.getStateFromMeta(2));
-			world.setBlockState(pos.south().west(), RegistryManager.inferno_forge_edge.getStateFromMeta(3));
-			world.setBlockState(pos.south(), RegistryManager.inferno_forge_edge.getStateFromMeta(4));
-			world.setBlockState(pos.south().east(), RegistryManager.inferno_forge_edge.getStateFromMeta(5));
-			world.setBlockState(pos.east(), RegistryManager.inferno_forge_edge.getStateFromMeta(6));
-			world.setBlockState(pos.north().east(), RegistryManager.inferno_forge_edge.getStateFromMeta(7));
-			world.setBlockState(pos.north().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(8));
-			world.setBlockState(pos.north().west().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(9));
-			world.setBlockState(pos.west().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(10));
-			world.setBlockState(pos.south().west().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(11));
-			world.setBlockState(pos.south().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(12));
-			world.setBlockState(pos.south().east().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(13));
-			world.setBlockState(pos.east().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(14));
-			world.setBlockState(pos.north().east().up(), RegistryManager.inferno_forge_edge.getStateFromMeta(15));
+			world.setBlockState(pos.up(), BlockRegister.INFERNO_FORGE.getStateFromMeta(1));
+			world.setBlockState(pos.north(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(0));
+			world.setBlockState(pos.north().west(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(1));
+			world.setBlockState(pos.west(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(2));
+			world.setBlockState(pos.south().west(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(3));
+			world.setBlockState(pos.south(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(4));
+			world.setBlockState(pos.south().east(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(5));
+			world.setBlockState(pos.east(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(6));
+			world.setBlockState(pos.north().east(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(7));
+			world.setBlockState(pos.north().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(8));
+			world.setBlockState(pos.north().west().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(9));
+			world.setBlockState(pos.west().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(10));
+			world.setBlockState(pos.south().west().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(11));
+			world.setBlockState(pos.south().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(12));
+			world.setBlockState(pos.south().east().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(13));
+			world.setBlockState(pos.east().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(14));
+			world.setBlockState(pos.north().east().up(), BlockRegister.INFERNO_FORGE_EDGE.getStateFromMeta(15));
 		}
 	}
 	
 	public void removeEdge(World world, BlockPos pos){
-		if (world.getBlockState(pos).getBlock() == RegistryManager.inferno_forge_edge){
+		if (world.getBlockState(pos).getBlock() == BlockRegister.INFERNO_FORGE_EDGE){
 			world.setBlockToAir(pos);
-			world.notifyBlockUpdate(pos, RegistryManager.inferno_forge_edge.getDefaultState(), Blocks.AIR.getDefaultState(), 8);
+			world.notifyBlockUpdate(pos, BlockRegister.INFERNO_FORGE_EDGE.getDefaultState(), Blocks.AIR.getDefaultState(), 8);
 		}
 		if (world.getBlockState(pos).getBlock() == this){
 			world.setBlockToAir(pos);

@@ -16,9 +16,9 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.FluidUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.particle.ParticleUtil;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.util.FluidColorHelper;
 import teamroots.embers.util.Misc;
 
@@ -126,7 +126,7 @@ public class TileEntityTank extends TileEntityOpenTank implements ITileEntityBas
     public void breakBlock(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
         this.invalidate();
         if (!world.isRemote && (player == null || !player.capabilities.isCreativeMode)) {
-            ItemStack toDrop = new ItemStack(RegistryManager.block_tank, 1);
+            ItemStack toDrop = new ItemStack(BlockRegister.BLOCK_TANK, 1);
             if (getTank().getFluidAmount() > 0) {
                 NBTTagCompound tag = new NBTTagCompound();
                 getTank().writeToNBT(tag);

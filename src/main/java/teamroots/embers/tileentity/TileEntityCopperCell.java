@@ -13,11 +13,10 @@ import net.minecraft.util.EnumHand;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import teamroots.embers.EventManager;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.power.DefaultEmberCapability;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.util.Misc;
 
 import javax.annotation.Nullable;
@@ -76,7 +75,7 @@ public class TileEntityCopperCell extends TileEntity implements ITileEntityBase 
 	public void breakBlock(World world, BlockPos pos, IBlockState state, EntityPlayer player) {
 		this.invalidate();
 		if (!world.isRemote && (player == null || !player.capabilities.isCreativeMode)){
-			ItemStack toDrop = new ItemStack(RegistryManager.copper_cell,1);
+			ItemStack toDrop = new ItemStack(BlockRegister.COPPER_CELL,1);
 			if(toDrop.hasCapability(EmbersCapabilities.EMBER_CAPABILITY,null)) {
 				IEmberCapability capability = toDrop.getCapability(EmbersCapabilities.EMBER_CAPABILITY,null);
 				capability.setEmberCapacity(this.capability.getEmberCapacity());

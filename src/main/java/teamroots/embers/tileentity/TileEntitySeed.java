@@ -13,11 +13,10 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.tile.IEmberInjectable;
 import teamroots.embers.block.BlockSeed;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.util.Misc;
 import teamroots.embers.util.sound.ISoundController;
 
@@ -147,9 +146,9 @@ public class TileEntitySeed extends TileEntity implements ITileEntityBase, ITick
 		switch (material) {
 			case 0: return new ItemStack(Items.IRON_NUGGET,1);
 			case 1: return new ItemStack(Items.GOLD_NUGGET,1);
-			case 2: return new ItemStack(RegistryManager.nugget_copper,1);
-			case 3: return new ItemStack(RegistryManager.nugget_lead,1);
-			case 4: return new ItemStack(RegistryManager.nugget_silver,1);
+			case 2: return new ItemStack(ItemRegister.NUGGET_COPPER,1);
+			case 3: return new ItemStack(ItemRegister.NUGGET_LEAD,1);
+			case 4: return new ItemStack(ItemRegister.NUGGET_SILVER,1);
 			default: return ItemStack.EMPTY;
 		}
 	}

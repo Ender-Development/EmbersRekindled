@@ -89,14 +89,12 @@ minecraft {
 }
 
 repositories {
-    maven { url "https://maven.bluexin.be/repository/snapshots/" }
-    maven { url 'https://dvs1.progwml6.com/files/maven' }
+    maven { url "https://repo.spongepowered.org/maven" }
+    maven { url "https://repo.cleanroommc.com/releases" }
+    maven { url "https://dvs1.progwml6.com/files/maven" }
     maven { url "https://maven.blamejared.com/" }
     maven { url "https://www.ryanliptak.com/maven/" }
     maven { url "https://maven.thiakil.com/" }
-    maven {
-        url 'https://maven.cleanroommc.com'
-    }
     maven {
         name 'CurseMaven'
         url 'https://cursemaven.com'
@@ -108,22 +106,39 @@ repositories {
 }
 
 dependencies {
-    runtimeOnly rfg.deobf("curse.maven:mixin-booter-419286:4835295")
+    implementation("zone.rong:mixinbooter:8.9")
 
     implementation "CraftTweaker2:CraftTweaker2-API:4.1.8.476"
     implementation "CraftTweaker2:ZenScript:4.1.8.476"
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.8.476"
-    implementation "com.azanor.baubles:Baubles:1.12-1.5.2"
+
     implementation rfg.deobf("curse.maven:had-enough-items-557549:4810661")
+    implementation("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // so it doesn't installs JEI
 
-    // implementation rfg.deobf("curse.maven:baubles-lts-655747:3916343")
+    compileOnly rfg.deobf("curse.maven:mantle-74924:2713386")
+    if (project.debug_inspirations.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mantle-74924:2713386")
+    }
 
-    implementation rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
-    implementation rfg.deobf("curse.maven:groovyscript-687577:4691853")
+    if (project.debug_inspirations.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:inspirations-284007:2843007")
+    }
+
+    compileOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
+    if (project.debug_baubles.toBoolean()) {
+        runtimeOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
+    }
+
+    compileOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
+    if (project.debug_mysticalmechanics.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
+    }
 
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4746213")
-    runtimeOnly rfg.deobf("curse.maven:mantle-74924:2713386")
-    runtimeOnly rfg.deobf("curse.maven:inspirations-284007:2843007")
+    runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:4800687")
+    runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:4275356")
+    // runtimeOnly rfg.deobf("curse.maven:carbon-config-898104:4952983") // will be used later
+    // runtimeOnly rfg.deobf("curse.maven:lolasm-460609:4800875") // causes a mapping error, thus making baubles unusable
 }
 
 // Adds Access Transformer files to tasks

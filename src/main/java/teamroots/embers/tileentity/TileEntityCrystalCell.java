@@ -16,12 +16,9 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
@@ -31,6 +28,7 @@ import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.power.DefaultEmberCapability;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.util.Misc;
 import teamroots.embers.util.sound.ISoundController;
 
@@ -70,7 +68,7 @@ public class TileEntityCrystalCell extends TileEntity implements ITileEntityBase
 
         @Override
         public ItemStack insertItem(int slot, ItemStack stack, boolean simulate) {
-            if (stack.getItem() != RegistryManager.shard_ember && stack.getItem() != RegistryManager.crystal_ember) {
+            if (stack.getItem() != ItemRegister.SHARD_EMBER && stack.getItem() != ItemRegister.CRYSTAL_EMBER) {
                 return stack;
             }
             return super.insertItem(slot, stack, simulate);

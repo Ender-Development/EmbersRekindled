@@ -13,11 +13,11 @@ import net.minecraft.util.*;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.tile.IEmberInjectable;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.block.BlockSeedNew;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.util.Misc;
 import teamroots.embers.util.sound.ISoundController;
 
@@ -157,7 +157,7 @@ public class TileEntitySeedNew extends TileEntity implements ITileEntityBase, IT
 				type = (BlockSeedNew) block;
 		}
 
-		return type != null ? type : (BlockSeedNew)RegistryManager.seed_iron;
+		return type != null ? type : (BlockSeedNew) BlockRegister.SEED_IRON;
 	}
 
 	protected ItemStack[] getNuggetDrops(int n) {

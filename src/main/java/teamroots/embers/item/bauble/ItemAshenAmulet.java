@@ -14,10 +14,10 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.world.BlockEvent;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageAshenAmuletFX;
+import teamroots.embers.register.ItemRegister;
 
 public class ItemAshenAmulet extends ItemBaubleBase {
     public ItemAshenAmulet(String name, boolean addToTab) {
@@ -39,7 +39,7 @@ public class ItemAshenAmulet extends ItemBaubleBase {
         if (killer != null && !(entity instanceof EntityPlayer) && killer.hasCapability(BaublesCapabilities.CAPABILITY_BAUBLES, null)) {
             NonNullList<ItemStack> stacks = BaublesUtil.getBaubles(killer.getCapability(BaublesCapabilities.CAPABILITY_BAUBLES, null), BaubleType.AMULET);
             if (stacks.get(0).getItem() == this) {
-                event.getDrops().forEach(itemEntity -> itemEntity.setItem(new ItemStack(RegistryManager.dust_ash, itemEntity.getItem().getCount())));
+                event.getDrops().forEach(itemEntity -> itemEntity.setItem(new ItemStack(ItemRegister.DUST_ASH, itemEntity.getItem().getCount())));
                 PacketHandler.INSTANCE.sendToAll(new MessageAshenAmuletFX(entity));
                 entity.getEntityWorld().playSound(null, entity.posX, entity.posY, entity.posZ, SoundManager.ASHEN_AMULET_BURN, SoundCategory.PLAYERS, 1.0f, 1.0f);
             }
@@ -54,7 +54,7 @@ public class ItemAshenAmulet extends ItemBaubleBase {
         if (harvester != null && harvester.hasCapability(BaublesCapabilities.CAPABILITY_BAUBLES, null)) {
             NonNullList<ItemStack> stacks = BaublesUtil.getBaubles(harvester.getCapability(BaublesCapabilities.CAPABILITY_BAUBLES, null), BaubleType.AMULET);
             if (stacks.get(0).getItem() == this) {
-                event.getDrops().replaceAll(stack -> new ItemStack(RegistryManager.dust_ash, stack.getCount()));
+                event.getDrops().replaceAll(stack -> new ItemStack(ItemRegister.DUST_ASH, stack.getCount()));
                 PacketHandler.INSTANCE.sendToAll(new MessageAshenAmuletFX(pos));
                 event.getWorld().playSound(null, pos, SoundManager.ASHEN_AMULET_BURN, SoundCategory.PLAYERS, 1.0f, 1.0f);
             }

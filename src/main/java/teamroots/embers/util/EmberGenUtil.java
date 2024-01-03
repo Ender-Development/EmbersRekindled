@@ -6,8 +6,8 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.config.ConfigMaterial;
+import teamroots.embers.register.ItemRegister;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -112,9 +112,9 @@ public class EmberGenUtil {
 
 	@Deprecated
 	public static void init(){
-		registerEmberFuelItem(RegistryManager.shard_ember,400);
-		registerEmberFuelItem(RegistryManager.crystal_ember,2400);
-		registerEmberFuelItem(RegistryManager.ember_cluster,3600);
+		registerEmberFuelItem(ItemRegister.SHARD_EMBER,400);
+		registerEmberFuelItem(ItemRegister.CRYSTAL_EMBER,2400);
+		registerEmberFuelItem(ItemRegister.EMBER_CLUSTER,3600);
 		
 		registerMetalCoefficient("blockGold",1.0f);
 		registerMetalCoefficient("blockSilver",1.0f);

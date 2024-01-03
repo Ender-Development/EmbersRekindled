@@ -70,6 +70,7 @@ import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.api.tile.IMechanicallyPowered;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.gui.GuiCodex;
 import teamroots.embers.item.ItemEmberGauge;
 import teamroots.embers.item.ItemGrandhammer;
@@ -78,11 +79,13 @@ import teamroots.embers.network.message.MessageEmberBurstFX;
 import teamroots.embers.network.message.MessageEmberGenOffset;
 import teamroots.embers.network.message.MessageTyrfingBurstFX;
 import teamroots.embers.proxy.ClientProxy;
+import teamroots.embers.register.DamageSourceRegister;
+import teamroots.embers.register.FluidRegister;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.research.ResearchBase;
 import teamroots.embers.tileentity.ITileEntitySpecialRendererLater;
 import teamroots.embers.tileentity.TileEntityExplosionPedestal;
 import teamroots.embers.tileentity.TileEntityMechAccessor;
-import teamroots.embers.util.CompatUtil;
 import teamroots.embers.util.EmberGenUtil;
 import teamroots.embers.util.Misc;
 import teamroots.embers.util.RenderUtil;
@@ -242,22 +245,22 @@ public class EventManager {
         ResourceLocation particleSmoke = new ResourceLocation("embers:entity/particle_smoke");
         event.getMap().registerSprite(particleSmoke);
 
-        stitchFluid(event.getMap(), RegistryManager.fluid_alchemical_redstone);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_lead);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_tin);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_aluminum);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_bronze);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_copper);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_dawnstone);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_electrum);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_gold);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_iron);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_nickel);
-        stitchFluid(event.getMap(), RegistryManager.fluid_molten_silver);
-        stitchFluid(event.getMap(), RegistryManager.fluid_steam);
-        stitchFluid(event.getMap(), RegistryManager.fluid_crude_oil);
-        stitchFluid(event.getMap(), RegistryManager.fluid_oil);
-        stitchFluid(event.getMap(), RegistryManager.fluid_gas);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_ALCHEMICAL_REDSTONE);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_LEAD);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_TIN);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_ALUMINUM);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_BRONZE);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_COPPER);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_DAWNSTONE);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_ELECTRUM);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_GOLD);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_IRON);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_NICKEL);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_MOLTEN_SILVER);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_STEAM);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_CRUDE_OIL);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_OIL);
+        stitchFluid(event.getMap(), FluidRegister.FLUID_GAS);
     }
 
     @SideOnly(Side.CLIENT)
@@ -444,7 +447,7 @@ public class EventManager {
         addCapabilityItemDescription(text, tile, facing);
         addCapabilityFluidDescription(text, tile, facing);
         addCapabilityEmberDescription(text, tile, facing);
-        if (CompatUtil.isMysticalMechanicsIntegrationEnabled())
+        if (Util.isMysticalMechanicsIntegrationEnabled())
             MysticalMechanicsIntegration.addCapabilityInformation(text, tile, facing);
         if (tile.hasCapability(EmbersCapabilities.UPGRADE_PROVIDER_CAPABILITY, facing))
             text.add(I18n.format("embers.tooltip.goggles.upgrade"));
@@ -542,7 +545,7 @@ public class EventManager {
 
     @SubscribeEvent(priority = EventPriority.LOW)
     public void onEntityDamaged(LivingHurtEvent event) {
-        if (event.getSource().damageType.equals(RegistryManager.damage_ember.damageType)) {
+        if (event.getSource().damageType.equals(DamageSourceRegister.DAMAGE_EMBER.damageType)) {
             if (event.getEntityLiving().isPotionActive(Potion.getPotionFromResourceLocation("fire_resistance"))) {
                 event.setAmount(event.getAmount() * 0.5f);
             }
@@ -554,7 +557,7 @@ public class EventManager {
         final ItemStack heldStack = player.getHeldItemMainhand();
         if (heldStack.isEmpty())
             return;
-        if (heldStack.getItem() == RegistryManager.tyrfing) {
+        if (heldStack.getItem() == ItemRegister.TYRFING) {
             event.getEntity().playSound(SoundManager.TYRFING_HIT,1.0f,1.0f);
             if (!event.getEntity().world.isRemote)
                 PacketHandler.INSTANCE.sendToAll(new MessageTyrfingBurstFX(event.getEntity().posX, event.getEntity().posY + event.getEntity().height / 2.0f, event.getEntity().posZ));
