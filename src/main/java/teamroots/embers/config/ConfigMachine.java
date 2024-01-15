@@ -83,6 +83,11 @@ public class ConfigMachine {
     @Config.Comment("Options about the Ember Funnel")
     public static final EmberFunnelCategory EMBER_FUNNEL = new EmberFunnelCategory();
 
+    @Config.Name("Emitter")
+    @Config.LangKey("cfg.embers.machine.emitter")
+    @Config.Comment("Options about the Emitter")
+    public static final EmitterCategory EMITTER = new EmitterCategory();
+
     @Config.Name("Steam Engine [MM]")
     @Config.LangKey("cfg.embers.machine.steam_engine")
     @Config.Comment({
