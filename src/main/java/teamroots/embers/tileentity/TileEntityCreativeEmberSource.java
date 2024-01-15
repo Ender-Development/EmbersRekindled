@@ -41,7 +41,7 @@ public class TileEntityCreativeEmberSource extends TileEntity implements ITileEn
 	
 	public TileEntityCreativeEmberSource(){
 		super();
-		capability.setEmberCapacity(ConfigMachine.CREATIVE_EMBER_SOURCE_CATEGORY.capacity);
+		capability.setEmberCapacity(ConfigMachine.CREATIVE_EMBER_SOURCE.capacity);
 	}
 	
 	@Override

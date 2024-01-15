@@ -22,6 +22,7 @@ cfg.embers.machine.mini_boiler=Mini Boiler
 cfg.embers.machine.ember_bore=Ember Bore
 cfg.embers.machine.copper_cell=Copper Cell
 cfg.embers.machine.creative_ember_source=Creative Ember Source
+cfg.embers.machine.ember_funnel=Ember Funnel
 cfg.embers.machine.steam_engine=Steam Engine
 
 cfg.embers.material=Materials

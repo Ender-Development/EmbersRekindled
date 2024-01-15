@@ -76,7 +76,12 @@ public class ConfigMachine {
     @Config.Name("Copper Cell")
     @Config.LangKey("cfg.embers.machine.creative_ember_source")
     @Config.Comment("Options about the Copper Cell")
-    public static final CreativeEmberSourceCategory CREATIVE_EMBER_SOURCE_CATEGORY = new CreativeEmberSourceCategory();
+    public static final CreativeEmberSourceCategory CREATIVE_EMBER_SOURCE = new CreativeEmberSourceCategory();
+
+    @Config.Name("Ember Funnel")
+    @Config.LangKey("cfg.embers.machine.ember_funnel")
+    @Config.Comment("Options about the Ember Funnel")
+    public static final EmberFunnelCategory EMBER_FUNNEL = new EmberFunnelCategory();
 
     @Config.Name("Steam Engine [MM]")
     @Config.LangKey("cfg.embers.machine.steam_engine")
