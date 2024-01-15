@@ -67,6 +67,11 @@ public class ConfigMachine {
     @Config.Comment("Options about the Ember Bore")
     public static final EmberBoreCategory EMBER_BORE = new EmberBoreCategory();
 
+    @Config.Name("Copper Cell")
+    @Config.LangKey("cfg.embers.machine.copper_cell")
+    @Config.Comment("Options about the Copper Cell")
+    public static final CopperCellCategory COPPER_CELL = new CopperCellCategory();
+
     @Config.Name("Steam Engine [MM]")
     @Config.LangKey("cfg.embers.machine.steam_engine")
     @Config.Comment({
@@ -74,7 +79,6 @@ public class ConfigMachine {
             "Options about the Steam Engine"
     })
     public static final SteamEngineCategory STEAM_ENGINE = new SteamEngineCategory();
-
 
     @Config.RequiresMcRestart
     @Config.Name("Ingot to Fluid ratio")
@@ -294,5 +298,12 @@ public class ConfigMachine {
         @Config.Name("Capacity")
         @Config.Comment("How much fluid (in mb) fits into a Steam Engine.")
         public int capacity = 8000;
+    }
+
+    public static class CopperCellCategory {
+        @Config.RequiresMcRestart
+        @Config.Name("Ember Capacity")
+        @Config.Comment("The amount of embers that can be stored in a copper cell.")
+        public int capacity = 24000;
     }
 }

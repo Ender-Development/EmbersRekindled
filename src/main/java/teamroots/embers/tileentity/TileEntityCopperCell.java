@@ -15,6 +15,7 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.register.BlockRegister;
 import teamroots.embers.util.Misc;
@@ -26,7 +27,7 @@ public class TileEntityCopperCell extends TileEntity implements ITileEntityBase 
 	
 	public TileEntityCopperCell(){
 		super();
-		capability.setEmberCapacity(24000);
+		capability.setEmberCapacity(ConfigMachine.COPPER_CELL.capacity);
 		capability.setEmber(0);
 	}
 	
