@@ -2,6 +2,7 @@ package teamroots.embers.config;
 
 import net.minecraftforge.common.config.Config;
 import teamroots.embers.Embers;
+import teamroots.embers.config.machine.*;
 
 @Config(modid = Embers.MODID, category = "machine", name = Embers.CFG_FOLDER + "machine")
 @Config.LangKey("cfg.embers.machine")
@@ -72,6 +73,11 @@ public class ConfigMachine {
     @Config.Comment("Options about the Copper Cell")
     public static final CopperCellCategory COPPER_CELL = new CopperCellCategory();
 
+    @Config.Name("Copper Cell")
+    @Config.LangKey("cfg.embers.machine.creative_ember_source")
+    @Config.Comment("Options about the Copper Cell")
+    public static final CreativeEmberSourceCategory CREATIVE_EMBER_SOURCE_CATEGORY = new CreativeEmberSourceCategory();
+
     @Config.Name("Steam Engine [MM]")
     @Config.LangKey("cfg.embers.machine.steam_engine")
     @Config.Comment({
@@ -90,220 +96,4 @@ public class ConfigMachine {
     @Config.Comment("What is the liquid equivalent to a nugget in mb?")
     public static int nuggetFluidAmount = 16;
 
-    public static class EmberConduitCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("All machines connect to Ember Conduits")
-        @Config.Comment("Whether ember conduits can attach to any ember consumer/producer")
-        public boolean allAcceptVolatile = false;
-    }
-
-    public static class MelterCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Ore Melting Amount")
-        @Config.Comment({
-                "How many mb of fluid are obtained per ore output in the melter?",
-                "This is multiplied by the amount of output a melter would produce, so by default 288mb = 2 ingots."
-        })
-        public int melterOreAmount = 288;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Processing Time")
-        @Config.Comment("The time in ticks it takes to process one recipe.")
-        public int processTime = 200;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Ember Cost Multiplier")
-        @Config.Comment("The ember cost per tick.")
-        public double emberCost = 1.0;
-    }
-
-    public static class StamperCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Ingot to Plate ratio")
-        @Config.Comment("How many ingots are required to make one plate in the stamper?")
-        public int stampPlateAmount = 1;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Ingot to Aspectus ratio")
-        @Config.Comment("How many ingots are required to make one aspectus in the stamper?")
-        public int stampAspectusAmount = 1;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Ingot to Gear ratio")
-        @Config.Comment("How many ingots are required to make one gear in the stamper?")
-        public int stampGearAmount = 2;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Stamper Capacity")
-        @Config.Comment("How much fluid (in mb) fits into the Stamp Base?")
-        public int capacity = 1500;
-    }
-
-    public static class InfernoForgeCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Process Time")
-        @Config.Comment("The time in ticks it takes to process one item.")
-        public int processTime = 200;
-        @Config.RequiresMcRestart
-        @Config.Name("Ember Cost")
-        @Config.Comment("The ember cost per tick.")
-        public double emberCost = 16.0;
-        @Config.RequiresMcRestart
-        @Config.Name("Max Level")
-        @Config.Comment("The maximum augment level that can be reforged to.")
-        public int maxLevel = 5;
-        @Config.RequiresMcRestart
-        @Config.Name("Max Crystal Value")
-        @Config.Comment("The maximum amount of ember items that can be placed in the forge, in ember energy.")
-        public double maxCrystalValue = 115200.0;
-        @Config.RequiresMcRestart
-        @Config.Name("Chance Midpoint")
-        @Config.Comment("At exactly this amount of ember items, the chance to successfully reforge is exactly 50%.")
-        public double chanceMidpoint = 14400.0;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Forge Capacity")
-        @Config.Comment("How much ember fits into the Inferno Forge?")
-        public int capacity = 32000;
-    }
-
-    public static class GeoSeparatorCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Separator Capacity")
-        @Config.Comment("How much fluid (in mb) fits into a Geologic Separator?")
-        public int capacity = 1000;
-    }
-
-    public static class DawnStoneAnvilCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Hits per process")
-        @Config.Comment("Number of hammer hits it takes to finish one process")
-        public int maxHits = 40;
-    }
-
-    public static class ChargerCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Max Transfer Rate")
-        @Config.Comment("How much ember is transferred between item and charger per tick?")
-        public double maxTransfer = 10.0;
-    }
-
-    public static class CinderPlinthCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Process Time")
-        @Config.Comment("The time in ticks it takes to process one item")
-        public int processTime = 40;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Ember Cost")
-        @Config.Comment("The ember cost per tick")
-        public double emberCost = 0.5;
-    }
-
-    public static class TankCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Capacity")
-        @Config.Comment("How much fluid (in mb) fits into the Fluid Vessel?")
-        public int capacity = 16000;
-    }
-
-    public static class ReservoirCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Capacity")
-        @Config.Comment("How much fluid (in mb) fits into each Caminite Ring on a Reservoir?")
-        public int capacity = 40000;
-    }
-
-    public static class MiniBoilerCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Capacity")
-        @Config.Comment("How much fluid (in mb) fits into a mini boiler?")
-        public int capacity = 16000;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Heat Multiplier")
-        @Config.Comment("How efficient, heat-wise, the mini boiler is at making steam?")
-        public float heatMultiplier = 1.0f;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Can Explode?")
-        @Config.Comment("Whether or not the mini boiler should explode when at maximum steam pressure")
-        public boolean canExplode = true;
-    }
-
-    public static class EmberBoreCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Dimension Blacklist")
-        @Config.Comment("A list of all dimension IDs in which Embers Ember Bore will not mine.")
-        public int[] blacklist = new int[]{};
-
-        @Config.RequiresMcRestart
-        @Config.Name("Is Whitelist?")
-        @Config.Comment("Whether the Ember Bore blacklist is a whitelist.")
-        public boolean isWhiteList = false;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Max Y-Height")
-        @Config.Comment("The maximum y-level at which the Ember Bore can mine ember.")
-        public int yMax = 7;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Speed Modifier")
-        @Config.Comment("The speed modifier of the Ember Bore before upgrades.")
-        public float speedMod = 1.0f;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Process Time")
-        @Config.Comment("The time in ticks it takes to try one dig attempt.")
-        public int processTime = 200;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Fuel Cost")
-        @Config.Comment("The amount of fuel consumed each tick")
-        public double fuelCost = 3.0;
-    }
-
-    public static class SteamEngineCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Fluid Threshold")
-        @Config.Comment("How much water (in mb) is necessary to start burning solid fuel.")
-        public int fluidThreshold = 10;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Fluid Consumption")
-        @Config.Comment("How much water (in mb) is consumed every tick while burning solid fuel.")
-        public int fluidConsumption = 4;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Fuel Efficiency")
-        @Config.Comment("How efficient, time-wise, solid fuel is in the steam turbine. 1 = fuel lasts as long as it would in a furnace.")
-        public double fuelEfficiency = 2.0;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Fuel Power")
-        @Config.Comment("How much mechanical power is generated while burning solid fuel.")
-        public double fuelPower = 20.0;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Max Power")
-        @Config.Comment("How much mechanical power can be generated at max.")
-        public double maximumPower = 50.0;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Gas Consumption")
-        @Config.Comment("How much gas (in mb), such as steam, is consumed every tick.")
-        public int gasConsumption = 20;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Capacity")
-        @Config.Comment("How much fluid (in mb) fits into a Steam Engine.")
-        public int capacity = 8000;
-    }
-
-    public static class CopperCellCategory {
-        @Config.RequiresMcRestart
-        @Config.Name("Ember Capacity")
-        @Config.Comment("The amount of embers that can be stored in a copper cell.")
-        public int capacity = 24000;
-    }
 }
