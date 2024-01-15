@@ -88,6 +88,11 @@ public class ConfigMachine {
     @Config.Comment("Options about the Emitter")
     public static final EmitterCategory EMITTER = new EmitterCategory();
 
+    @Config.Name("Receiver")
+    @Config.LangKey("cfg.embers.machine.receiver")
+    @Config.Comment("Options about the Receiver")
+    public static final ReceiverCategory RECEIVER = new ReceiverCategory();
+
     @Config.Name("Steam Engine [MM]")
     @Config.LangKey("cfg.embers.machine.steam_engine")
     @Config.Comment({
