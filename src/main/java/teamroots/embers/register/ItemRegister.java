@@ -5,8 +5,8 @@ import net.minecraft.item.Item;
 import teamroots.embers.Embers;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.compat.Util;
-import teamroots.embers.config.ConfigMain;
 import teamroots.embers.config.ConfigMaterial;
+import teamroots.embers.config.ConfigMisc;
 import teamroots.embers.config.ConfigTool;
 import teamroots.embers.item.*;
 import teamroots.embers.item.block.ItemBlockSlab;
@@ -402,7 +402,7 @@ public class ItemRegister implements IRegistrable<Item> {
             REGISTRY.add(PLATE_TIN);
             REGISTRY.add(NUGGET_TIN);
         }
-        if (ConfigMain.enableWipStuff) {
+        if (ConfigMisc.enableWipStuff) {
             REGISTRY.add(ALCHEMIC_CHUNK);
             REGISTRY.add(ALCHEMIC_CLUSTER);
             REGISTRY.add(ALCHEMIC_MOTE);

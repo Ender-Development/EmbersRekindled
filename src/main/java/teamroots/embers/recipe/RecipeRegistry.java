@@ -48,6 +48,7 @@ import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.compat.Util;
 import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.config.ConfigMaterial;
+import teamroots.embers.config.ConfigMisc;
 import teamroots.embers.item.EnumStampType;
 import teamroots.embers.register.BlockRegister;
 import teamroots.embers.register.FluidRegister;
@@ -87,8 +88,8 @@ public class RecipeRegistry {
 
     public static ArrayList<BoreOutput> boreOutputSets = new ArrayList<>();
     public static BoreOutput defaultBoreOutput;
-    public static final int INGOT_AMOUNT = ConfigMachine.ingotFluidAmount;
-    public static final int NUGGET_AMOUNT = ConfigMachine.nuggetFluidAmount;
+    public static final int INGOT_AMOUNT = ConfigMisc.ingotFluidAmount;
+    public static final int NUGGET_AMOUNT = ConfigMisc.nuggetFluidAmount;
     public static final int plateAmount = ConfigMachine.STAMPER.stampPlateAmount * INGOT_AMOUNT;
     public static final int oreMeltAmount = ConfigMachine.MELTER.melterOreAmount * INGOT_AMOUNT;
 
@@ -257,33 +258,22 @@ public class RecipeRegistry {
         ));
         setDefaultBoreOutput(defaultOutput);
 
-        EmbersAPI.registerEmberFuel(Ingredient.fromItem(ItemRegister.DUST_EMBER), 0);
-        EmbersAPI.registerEmberFuel(Ingredient.fromItem(ItemRegister.SHARD_EMBER), 400);
-        EmbersAPI.registerEmberFuel(Ingredient.fromItem(ItemRegister.CRYSTAL_EMBER), 2400);
-        EmbersAPI.registerEmberFuel(Ingredient.fromItem(ItemRegister.EMBER_CLUSTER), 3600);
-
         Ingredient anyDawnstoneTool = Ingredient.fromItems(ItemRegister.AXE_DAWNSTONE, ItemRegister.HOE_DAWNSTONE, ItemRegister.SWORD_DAWNSTONE, ItemRegister.SHOVEL_DAWNSTONE, ItemRegister.PICKAXE_DAWNSTONE);
         EmbersAPI.registerEmberToolEffeciency(anyDawnstoneTool, 2.0);
-        // TODO -> These can all be made into config options
-        EmbersAPI.registerMetalCoefficient("blockGold", 1.0);
-        EmbersAPI.registerMetalCoefficient("blockSilver", 1.0);
-        EmbersAPI.registerMetalCoefficient("blockCopper", 1.0);
-        if (ConfigMaterial.ELECTRUM.isNotOff()) {
-            EmbersAPI.registerMetalCoefficient("blockElectrum", 1.0);
+
+        for (String s : ConfigMisc.ember_fuel) {
+            String[] tokens = s.split(";");
+            Item fuel = Item.getByNameOrId(tokens[0]);
+            if (tokens.length == 2 && fuel != null) {
+                EmbersAPI.registerEmberFuel(Ingredient.fromItem(fuel), Integer.parseInt(tokens[1]));
+            }
         }
-        if (ConfigMaterial.ALUMINUM.isNotOff()) {
-            EmbersAPI.registerMetalCoefficient("blockAluminum", 0.9);
-        }
-        if (ConfigMaterial.NICKEL.isNotOff()) {
-            EmbersAPI.registerMetalCoefficient("blockNickel", 0.9);
-        }
-        if (ConfigMaterial.TIN.isNotOff()) {
-            EmbersAPI.registerMetalCoefficient("blockTin", 0.9);
-        }
-        EmbersAPI.registerMetalCoefficient("blockIron", 0.75);
-        EmbersAPI.registerMetalCoefficient("blockLead", 0.75);
-        if (ConfigMaterial.BRONZE.isNotOff()) {
-            EmbersAPI.registerMetalCoefficient("blockBronze", 0.75);
+
+        for (String s : ConfigMisc.block_coefficient) {
+            String[] tokens = s.split(";");
+            if (tokens.length == 2 && !OreDictionary.getOres(tokens[0]).isEmpty()) {
+                EmbersAPI.registerMetalCoefficient(tokens[0], Double.parseDouble(tokens[1]));
+            }
         }
 
         for (String s: ConfigMachine.COMBUSTOR.fuel) {

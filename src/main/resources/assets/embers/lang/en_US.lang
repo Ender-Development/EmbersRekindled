@@ -1,10 +1,11 @@
 itemGroup.embers=Embers
 itemGroup.embers_resources=Embers (Metals)
 
-cfg.embers.main=Main
-cfg.embers.main.tooltip=(Client, Compatibility)
-cfg.embers.main.client=Client
-cfg.embers.main.compat=Compatibility
+cfg.embers.client=Client
+cfg.embers.client.tooltip=(Client-only settings)
+
+cfg.embers.compat=Compatibility
+cfg.embers.compat.tooltip=(Compatibility settings)
 
 cfg.embers.machine=Machines
 cfg.embers.machine.tooltip=(Tweak various Machine parameters)
@@ -16,7 +17,7 @@ cfg.embers.machine.geo_separator=Geo Separator
 cfg.embers.machine.dawnstone_anvil=Dawnstone Anvil
 cfg.embers.machine.charger=Charger
 cfg.embers.machine.cinder_plinth=Cinder Plinth
-cfg.embers.machine.tank=Tank
+cfg.embers.machine.tank=Fluid Vessel
 cfg.embers.machine.reservoir=Reservoir
 cfg.embers.machine.mini_boiler=Mini Boiler
 cfg.embers.machine.ember_bore=Ember Bore
@@ -46,6 +47,9 @@ cfg.embers.material.dawnstone=Dawnstone
 cfg.embers.material.mithril=Mithril
 cfg.embers.material.astralite=Astralite
 cfg.embers.material.umber_steel=Umber Steel
+
+cfg.embers.misc=Miscellaneous
+cfg.embers.misc.tooltip=(Tweak various miscellaneous parameters)
 
 cfg.embers.mob=Mobs
 cfg.embers.mob.tooltip=(Settings related to mobs)

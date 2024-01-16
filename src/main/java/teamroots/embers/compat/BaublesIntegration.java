@@ -22,7 +22,7 @@ import teamroots.embers.api.alchemy.AspectList.AspectRangeList;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.block.BlockExplosionPedestal;
-import teamroots.embers.config.ConfigMain;
+import teamroots.embers.config.ConfigMisc;
 import teamroots.embers.item.ItemEmberStorage;
 import teamroots.embers.item.bauble.*;
 import teamroots.embers.recipe.AlchemyRecipe;
@@ -128,7 +128,7 @@ public class BaublesIntegration {
 
     public static void registerAll() //éw
     {
-        if (ConfigMain.enableWipStuff) {
+        if (ConfigMisc.enableWipStuff) {
             ItemRegister.INSTANCE.add(BaublesIntegration.CLIMBERS_BELT);
             ItemRegister.INSTANCE.add(BaublesIntegration.CRYSTAL_LENSES);
             ItemRegister.INSTANCE.add(BaublesIntegration.GLIMMER_CHARM_BAUBLE);

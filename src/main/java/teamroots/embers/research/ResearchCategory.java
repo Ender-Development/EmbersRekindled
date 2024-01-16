@@ -6,7 +6,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import teamroots.embers.Embers;
-import teamroots.embers.config.ConfigMain;
+import teamroots.embers.config.ConfigMisc;
 import teamroots.embers.util.Vec2i;
 
 import java.util.*;
@@ -65,7 +65,7 @@ public class ResearchCategory {
     }
 
     public List<ResearchBase> getPrerequisites() {
-        if (ConfigMain.codexCategoryIsProgress)
+        if (ConfigMisc.codexCategoryIsProgress)
             return prerequisites;
         else
             return NO_PREREQUISITES;

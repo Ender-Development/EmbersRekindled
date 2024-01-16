@@ -4,7 +4,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.renderer.BufferBuilder;
 import net.minecraft.entity.Entity;
 import net.minecraft.world.World;
-import teamroots.embers.config.ConfigMain;
+import teamroots.embers.config.ConfigClient;
 import teamroots.embers.proxy.ClientProxy;
 
 public class ParticleAsh extends Particle implements IEmberParticle {
@@ -17,7 +17,7 @@ public class ParticleAsh extends Particle implements IEmberParticle {
         depth = z2 - z1;
         this.particleMaxAge = (int)(lifetime *0.5f);
 
-        this.canCollide = ConfigMain.CLIENT.enableParticleCollisions;
+        this.canCollide = ConfigClient.enableParticleCollisions;
     }
 
     @Override

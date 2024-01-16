@@ -7,7 +7,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.common.util.EnumHelper;
 import teamroots.embers.Embers;
 import teamroots.embers.block.BlockSeedNew;
-import teamroots.embers.config.ConfigTool;
+import teamroots.embers.config.tool.ToolCategory;
 import teamroots.embers.tileentity.TileEntitySeedNew;
 
 import java.util.function.BiFunction;
@@ -31,7 +31,7 @@ public final class Util {
         };
     }
 
-    static Item.ToolMaterial createToolMaterial(String name, ConfigTool.ToolCategory.Tool toolMaterial) {
+    static Item.ToolMaterial createToolMaterial(String name, ToolCategory.Tool toolMaterial) {
         return EnumHelper.addToolMaterial(
                 new ResourceLocation(Embers.MODID,name).toString(),
                 toolMaterial.harvestLevel,

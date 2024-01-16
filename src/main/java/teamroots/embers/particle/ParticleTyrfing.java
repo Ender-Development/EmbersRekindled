@@ -6,7 +6,7 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 import teamroots.embers.EventManager;
-import teamroots.embers.config.ConfigMain;
+import teamroots.embers.config.ConfigClient;
 import teamroots.embers.util.Misc;
 
 public class ParticleTyrfing extends Particle implements IEmberParticle{
@@ -34,7 +34,7 @@ public class ParticleTyrfing extends Particle implements IEmberParticle{
 	    TextureAtlasSprite sprite = Minecraft.getMinecraft().getTextureMapBlocks().getAtlasSprite(texture.toString());
 	    this.setParticleTexture(sprite);
 
-		this.canCollide = ConfigMain.CLIENT.enableParticleCollisions;
+		this.canCollide = ConfigClient.enableParticleCollisions;
 	}
 	/*
 	@Override

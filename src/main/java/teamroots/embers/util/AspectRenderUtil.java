@@ -6,7 +6,7 @@ import mezz.jei.api.gui.IGuiItemStackGroup;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 import teamroots.embers.api.alchemy.AspectList.AspectRangeList;
-import teamroots.embers.config.ConfigMain;
+import teamroots.embers.config.ConfigCompat;
 
 import java.util.ArrayList;
 
@@ -66,7 +66,7 @@ public class AspectRenderUtil {
             int min = aspectRange.getMin(aspect);
             int aspectTotal = aspectRange.getMaxAspects().getTotal();
             int exact = aspectRange.getExact(aspect, Minecraft.getMinecraft().world);
-            String cheatsheet = ConfigMain.COMPAT.enableJeiCheat ? String.format(" §e(%d)§r", exact) : "";
+            String cheatsheet = ConfigCompat.enableJeiCheat ? String.format(" §e(%d)§r", exact) : "";
             IDrawable ashBar = helper.createDrawable(resourceLocation, u, v, ((width * min)/aspectTotal), height);
             IDrawable ashPartialBar = helper.createDrawable(resourceLocation, u, v + height, ((width * max)/aspectTotal), height);
             ashPartialBar.draw(minecraft, x, y);

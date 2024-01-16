@@ -7,8 +7,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import teamroots.embers.Embers;
 import teamroots.embers.block.*;
-import teamroots.embers.config.ConfigMain;
 import teamroots.embers.config.ConfigMaterial;
+import teamroots.embers.config.ConfigMisc;
 import teamroots.embers.config.ConfigSeed;
 
 import java.util.ArrayList;
@@ -278,7 +278,7 @@ public class BlockRegister implements IRegistrable<Block> {
     ));
 
     static {
-        if (ConfigMain.enableWipStuff) {
+        if (ConfigMisc.enableWipStuff) {
             REGISTRY.add(ARCHAIC_GEYSIR);
             REGISTRY.add(KNOWLEDGE_TABLE);
             REGISTRY.add(SEED_ALCHEMIC);

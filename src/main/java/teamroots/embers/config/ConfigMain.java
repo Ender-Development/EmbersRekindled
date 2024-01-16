@@ -7,71 +7,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import teamroots.embers.Embers;
 
-@Config(modid = Embers.MODID, category = "main", name = Embers.CFG_FOLDER + "main")
-@Config.LangKey("cfg.embers.main")
 @Mod.EventBusSubscriber(modid = Embers.MODID)
 public class ConfigMain {
-
-    @Config.Name("Client")
-    @Config.LangKey("cfg.embers.main.client")
-    @Config.Comment("Rendering stuff")
-    public static final ClientCategory CLIENT = new ClientCategory();
-
-    @Config.Name("Compat")
-    @Config.LangKey("cfg.embers.main.compat")
-    @Config.Comment("Settings related to compatibility with other mods.")
-    public static final CompatCategory COMPAT = new CompatCategory();
-
-    @Config.Name("Everybody is considered an Enemy")
-    @Config.Comment("If true, Embers homing projectiles will go for neutral players.")
-    public static boolean pvpEverybodyIsEnemy = false;
-    @Config.RequiresMcRestart
-    @Config.Name("Should categories be locked by default?")
-    @Config.Comment("Codex category is shut. Progression is open.")
-    public static boolean codexCategoryIsProgress = true;
-    @Config.RequiresMcRestart
-    @Config.Name("Should entries be hidden by default?")
-    @Config.Comment("Codex entry is shut and hidden. Progression is open and shown.")
-    public static boolean codexEntryIsProgress = true;
-
-    @Config.RequiresMcRestart
-    @Config.Name("Enable WIP stuff.")
-    @Config.Comment("Enable and register a few WIP things that were never fully implemented.")
-    public static boolean enableWipStuff = false;
-
-    public static class ClientCategory {
-        @Config.Name("Enable Particle Collision")
-        @Config.Comment({
-                "Whether or not particles should collide with blocks.",
-                "Disabling this might significantly improve performance.",
-                "[default: true]"
-        })
-        public boolean enableParticleCollisions = true;
-
-        @Config.Name("Enable Particles")
-        @Config.Comment({
-                "Whether or not particles are enabled.",
-                "Disabling this will change the gameplay experience but significantly improve performance.",
-                "[default: true]"
-        })
-        public boolean enableParticles = true;
-    }
-
-    public static class CompatCategory {
-        @Config.Name("Enable JEI Cheats")
-        @Config.Comment("If true, JEI will show the exact amount of Ash needed in an Alchemy recipe.")
-        public boolean enableJeiCheat = false;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Enable Baubles Integration")
-        @Config.Comment("If true, Embers will register items, blocks and recipes providing Baubles integration.")
-        public boolean enableBaublesIntegration = true;
-
-        @Config.RequiresMcRestart
-        @Config.Name("Enable Mystical Mechanics Integration")
-        @Config.Comment("If true, Embers will register items, blocks and recipes providing Mystical Mechanics integration.")
-        public boolean enableMysticalMechanicsIntegration = true;
-    }
 
     @SubscribeEvent
     public static void onConfigChanged(ConfigChangedEvent.OnConfigChangedEvent event) {

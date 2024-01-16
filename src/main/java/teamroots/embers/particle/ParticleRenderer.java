@@ -10,7 +10,7 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.entity.player.EntityPlayer;
 import org.lwjgl.opengl.GL11;
-import teamroots.embers.config.ConfigMain;
+import teamroots.embers.config.ConfigClient;
 
 import java.util.ArrayDeque;
 import java.util.Collection;
@@ -45,7 +45,7 @@ public class ParticleRenderer {
         Iterator<Particle> iterator = particles.iterator();
         while (iterator.hasNext()) {
             Particle particle = iterator.next();
-            if (((IEmberParticle) particle).alive() && (ConfigMain.CLIENT.enableParticles || particle instanceof ParticleGlow))
+            if (((IEmberParticle) particle).alive() && (ConfigClient.enableParticles || particle instanceof ParticleGlow))
                 particle.onUpdate();
             else
                 iterator.remove();
@@ -114,7 +114,7 @@ public class ParticleRenderer {
     }
 
     public void addParticle(Particle particle) {
-        if (!ConfigMain.CLIENT.enableParticles && !(particle instanceof ParticleGlow))
+        if (!ConfigClient.enableParticles && !(particle instanceof ParticleGlow))
             return;
 
         if (particle instanceof IEmberParticle) {

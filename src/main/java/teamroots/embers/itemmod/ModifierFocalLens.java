@@ -18,7 +18,7 @@ import teamroots.embers.api.itemmod.ModifierProjectileBase;
 import teamroots.embers.api.projectile.IProjectilePreset;
 import teamroots.embers.api.projectile.ProjectileFireball;
 import teamroots.embers.api.projectile.ProjectileRay;
-import teamroots.embers.config.ConfigMain;
+import teamroots.embers.config.ConfigMisc;
 
 import java.util.ListIterator;
 
@@ -62,6 +62,6 @@ public class ModifierFocalLens extends ModifierProjectileBase {
 
 	public static boolean isPVPEnabled(World world) {
 		MinecraftServer server = world.getMinecraftServer();
-		return server != null && server.isPVPEnabled() && ConfigMain.pvpEverybodyIsEnemy;
+		return server != null && server.isPVPEnabled() && ConfigMisc.pvpEverybodyIsEnemy;
 	}
 }
