@@ -25,6 +25,9 @@ cfg.embers.machine.creative_ember_source=Creative Ember Source
 cfg.embers.machine.ember_funnel=Ember Funnel
 cfg.embers.machine.emitter=Emitter
 cfg.embers.machine.receiver=Receiver
+cfg.embers.machine.combustor=Combustion Chamber
+cfg.embers.machine.catalyzer=Catalysis Chamber
+cfg.embers.machine.reactor=Ignem Reactor
 cfg.embers.machine.steam_engine=Steam Engine
 
 cfg.embers.material=Materials

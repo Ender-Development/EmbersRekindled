@@ -6,10 +6,10 @@ public class MelterCategory {
     @Config.RequiresMcRestart
     @Config.Name("Ore Melting Amount")
     @Config.Comment({
-            "How many mb of fluid are obtained per ore output in the melter?",
-            "This is multiplied by the amount of output a melter would produce, so by default 288mb = 2 ingots."
+            "The fluid output for melting an ore. This is multiplied with the fluid to ingot ratio.",
+            "By default this melts a single ore into 2 ingots."
     })
-    public int melterOreAmount = 288;
+    public int melterOreAmount = 2;
 
     @Config.RequiresMcRestart
     @Config.Name("Processing Time")

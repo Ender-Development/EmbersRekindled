@@ -93,6 +93,21 @@ public class ConfigMachine {
     @Config.Comment("Options about the Receiver")
     public static final ReceiverCategory RECEIVER = new ReceiverCategory();
 
+    @Config.Name("Catalyzer")
+    @Config.LangKey("cfg.embers.machine.catalyzer")
+    @Config.Comment("Options about the Catalyzer")
+    public static final CatalyzerCategory CATALYZER = new CatalyzerCategory();
+
+    @Config.Name("Combustor")
+    @Config.LangKey("cfg.embers.machine.combustor")
+    @Config.Comment("Options about the Combustor")
+    public static final CombustorCategory COMBUSTOR = new CombustorCategory();
+
+    @Config.Name("Ignem Reactor")
+    @Config.LangKey("cfg.embers.machine.reactor")
+    @Config.Comment("Options about the Ignem Reactor")
+    public static final IgnemReactorCategory REACTOR = new IgnemReactorCategory();
+
     @Config.Name("Steam Engine [MM]")
     @Config.LangKey("cfg.embers.machine.steam_engine")
     @Config.Comment({
