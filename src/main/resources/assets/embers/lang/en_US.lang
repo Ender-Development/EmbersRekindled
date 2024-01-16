@@ -51,6 +51,20 @@ cfg.embers.mob=Mobs
 cfg.embers.mob.tooltip=(Settings related to mobs)
 cfg.embers.mob.ember_golem=Ember Golem
 
+cfg.embers.seed=Seeds
+cfg.embers.seed.tooltip=(Tweak Seed drops)
+cfg.embers.seed.alchemic=Alchemic Seed
+cfg.embers.seed.aluminum=Aluminum Seed
+cfg.embers.seed.copper=Copper Seed
+cfg.embers.seed.dawnstone=Dawnstone Seed
+cfg.embers.seed.gold=Gold Seed
+cfg.embers.seed.iron=Iron Seed
+cfg.embers.seed.lead=Lead Seed
+cfg.embers.seed.mithril=Mithril Seed
+cfg.embers.seed.nickel=Nickel Seed
+cfg.embers.seed.silver=Silver Seed
+cfg.embers.seed.tin=Tin Seed
+
 cfg.embers.tool=Tools
 cfg.embers.tool.tooltip=(Tweak various Tool parameters)
 cfg.embers.tool.blazing_ray=Blazing Ray
