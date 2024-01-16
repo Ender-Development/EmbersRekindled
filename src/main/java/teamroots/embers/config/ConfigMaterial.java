@@ -116,7 +116,7 @@ public class ConfigMaterial {
 
         /**
          * @return if the base items should be registered.
-         * It's used fot stuff like plates, ingots, nuggets, blocks
+         * It's used for stuff like plates, ingots, nuggets, blocks
          */
         public boolean mustLoad() {
             return this.registrationMode == RegistrationModes.FORCE || Arrays.stream(ConfigMaterial.smartMods).noneMatch(Loader::isModLoaded);
