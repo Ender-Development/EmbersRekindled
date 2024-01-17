@@ -19,6 +19,7 @@ import net.minecraftforge.fml.common.gameevent.TickEvent;
 import net.minecraftforge.fml.common.registry.ForgeRegistries;
 import net.minecraftforge.oredict.OreDictionary;
 import teamroots.embers.SoundManager;
+import teamroots.embers.config.ConfigWorld;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageMetallurgicDustFX;
 
@@ -26,8 +27,8 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 public class OreTransmutationUtil {
-    public static final int ITERATIONS_PER_TICK = 10;
-    public static final int MAX_BLOCKS = 16;
+    public static final int ITERATIONS_PER_TICK = ConfigWorld.TRANSMUTATION.iterations_per_tick;
+    public static final int MAX_BLOCKS = ConfigWorld.TRANSMUTATION.max_blocks;
 
     public static final String STONE = "stone";
     public static final String NETHER = "nether";
@@ -37,14 +38,14 @@ public class OreTransmutationUtil {
     public static final String BETWEEN_PIT = "betweenlands_pit";
     public static final String BETWEEN_GEM = "betweenlands_gem";
     public static final HashMap<String, String> ALTERNATE_ORES = new HashMap<>();
-    public static final double FAIL_CHANCE = 0.1;
+    public static final double FAIL_CHANCE = ConfigWorld.TRANSMUTATION.fail_chance;
 
     static LinkedHashMap<String, TransmutationSet> REGISTRY = new LinkedHashMap<>();
     static ArrayList<TransmutationIterator> iterators = new ArrayList<>();
     static int iteratorIndex;
     static Random random = new Random();
 
-
+    // TODO: Refactor this method to make it actually configurable
     public static void init() {
         registerTransmutationSet(STONE, Blocks.STONE.getDefaultState());
         registerTransmutationSet(NETHER, Blocks.NETHERRACK.getDefaultState());
@@ -93,7 +94,7 @@ public class OreTransmutationUtil {
         HashSet<String> existingTags = new HashSet<>();
 
         for (String orename : OreDictionary.getOreNames()) {
-            if (orename == null || !orename.startsWith("ore") || !isValidOre(orename))
+            if (orename == null || !orename.startsWith("ore"))
                 continue;
             for (ItemStack stack : OreDictionary.getOres(orename, false)) {
                 Item item = stack.getItem();
@@ -119,10 +120,6 @@ public class OreTransmutationUtil {
                 existingTags.add(tag);
             }
         }
-    }
-
-    private static boolean isValidOre(String orename) {
-        return true;
     }
 
     public static void registerTransmutationSet(String name, IBlockState failure) {

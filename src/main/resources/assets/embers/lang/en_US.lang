@@ -98,6 +98,7 @@ cfg.embers.world=World
 cfg.embers.world.tooltip=(Settings related to world generation)
 cfg.embers.world.small_ruin=Small Ruin
 cfg.embers.world.ore=Ore Generation
+cfg.embers.world.transmutation=Transmutation
 cfg.embers.world.ore_aluminum=Aluminum Ore
 cfg.embers.world.ore_copper=Copper Ore
 cfg.embers.world.ore_lead=Lead Ore
