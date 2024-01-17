@@ -6,7 +6,7 @@ plugins {
     id 'maven-publish'
     id 'org.jetbrains.gradle.plugin.idea-ext' version '1.1.7'
     id 'eclipse'
-    id 'com.gtnewhorizons.retrofuturagradle' version '1.3.16'
+    id 'com.gtnewhorizons.retrofuturagradle' version '1.3.28'
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
@@ -113,7 +113,7 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-4.1.8.476"
 
     implementation rfg.deobf("curse.maven:had-enough-items-557549:4810661")
-    implementation("com.cleanroommc:groovyscript:0.7.1") { transitive = false } // so it doesn't installs JEI
+    implementation("com.cleanroommc:groovyscript:0.7.3") { transitive = false } // so it doesn't installs JEI
 
     compileOnly rfg.deobf("curse.maven:mantle-74924:2713386")
     if (project.debug_inspirations.toBoolean()) {
@@ -134,9 +134,9 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
     }
 
-    runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4746213")
-    runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:4800687")
-    runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:4275356")
+    runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
+    runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
+    runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:5001902")
     // runtimeOnly rfg.deobf("curse.maven:carbon-config-898104:4952983") // will be used later
     // runtimeOnly rfg.deobf("curse.maven:lolasm-460609:4800875") // causes a mapping error, thus making baubles unusable
 }
