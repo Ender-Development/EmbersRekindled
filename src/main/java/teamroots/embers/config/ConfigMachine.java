@@ -7,6 +7,11 @@ import teamroots.embers.config.machine.*;
 @Config(modid = Embers.MODID, category = "machine", name = Embers.CFG_FOLDER + "machine")
 @Config.LangKey("cfg.embers.machine")
 public class ConfigMachine {
+    @Config.Name("Catalytic Plug")
+    @Config.LangKey("cfg.embers.machine.catalytic_plug")
+    @Config.Comment("Options about the Catalytic Plug")
+    public static final CatalyticPlugCategory CATALYTIC_PLUG = new CatalyticPlugCategory();
+
     @Config.Name("Catalyzer")
     @Config.LangKey("cfg.embers.machine.catalyzer")
     @Config.Comment("Options about the Catalyzer")
@@ -42,11 +47,6 @@ public class ConfigMachine {
     @Config.Comment("Options about the Dawnstone Anvil")
     public static final DawnStoneAnvilCategory DAWNSTONE_ANVIL = new DawnStoneAnvilCategory();
 
-    @Config.Name("Ember Funnel")
-    @Config.LangKey("cfg.embers.machine.ember_funnel")
-    @Config.Comment("Options about the Ember Funnel")
-    public static final EmberFunnelCategory EMBER_FUNNEL = new EmberFunnelCategory();
-
     @Config.Name("Ember Bore")
     @Config.LangKey("cfg.embers.machine.ember_bore")
     @Config.Comment("Options about the Ember Bore")
@@ -57,10 +57,25 @@ public class ConfigMachine {
     @Config.Comment("Options about the Ember Conduit")
     public static final EmberConduitCategory EMBER_CONDUIT = new EmberConduitCategory();
 
-    @Config.Name("Emitter")
+    @Config.Name("Ember Ejector")
+    @Config.LangKey("cfg.embers.machine.pulser")
+    @Config.Comment("Options about the Ember Ejector")
+    public static final EjectorCategory EJECTOR = new EjectorCategory();
+
+    @Config.Name("Ember Emitter")
     @Config.LangKey("cfg.embers.machine.emitter")
     @Config.Comment("Options about the Emitter")
     public static final EmitterCategory EMITTER = new EmitterCategory();
+
+    @Config.Name("Ember Funnel")
+    @Config.LangKey("cfg.embers.machine.ember_funnel")
+    @Config.Comment("Options about the Ember Funnel")
+    public static final EmberFunnelCategory EMBER_FUNNEL = new EmberFunnelCategory();
+
+    @Config.Name("Ember Receiver")
+    @Config.LangKey("cfg.embers.machine.receiver")
+    @Config.Comment("Options about the Receiver")
+    public static final ReceiverCategory RECEIVER = new ReceiverCategory();
 
     @Config.Name("Fluid Vessel")
     @Config.LangKey("cfg.embers.machine.tank")
@@ -96,11 +111,6 @@ public class ConfigMachine {
     @Config.LangKey("cfg.embers.machine.reservoir")
     @Config.Comment("Options about the Reservoir")
     public static final ReservoirCategory RESERVOIR = new ReservoirCategory();
-
-    @Config.Name("Receiver")
-    @Config.LangKey("cfg.embers.machine.receiver")
-    @Config.Comment("Options about the Receiver")
-    public static final ReceiverCategory RECEIVER = new ReceiverCategory();
 
     @Config.Name("Stamper")
     @Config.LangKey("cfg.embers.machine.stamper")

@@ -5,7 +5,7 @@ import teamroots.embers.Embers;
 import teamroots.embers.config.ConfigMachine;
 
 public class DefaultEmberCapability implements teamroots.embers.api.power.IEmberCapability {
-	public static boolean allAcceptVolatile = ConfigMachine.EMBER_CONDUIT.allAcceptVolatile;
+	public static boolean allAcceptVolatile = ConfigMachine.EMBER_CONDUIT.all_accept_volatile;
 
 	private double ember = 0;
 	private double capacity = 0;

@@ -14,6 +14,7 @@ import net.minecraft.world.World;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.item.ItemTinkerHammer;
 import teamroots.embers.util.EnumPipeConnection;
 import teamroots.embers.util.Misc;
@@ -25,8 +26,8 @@ public class TileEntityEmberPipe extends TileEntityEmberPipeBase {
 
 	double currentPush;
 
-	public static final double INIT_PUSH = 10;
-	public static final double INCREMENT_PUSH = 10;
+	public static final double INIT_PUSH = ConfigMachine.EMBER_CONDUIT.initial_push;
+	public static final double INCREMENT_PUSH = ConfigMachine.EMBER_CONDUIT.incremental_push;
 
 	public TileEntityEmberPipe() {
 		super();
