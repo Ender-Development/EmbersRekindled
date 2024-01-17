@@ -2,14 +2,17 @@
 
 A dwarven magic mod
 
-## v1.21.0
+## v1.21.0 - Config Rework
 ### Changes
 - reworked the whole config system
   - switched from a single file to a folder
   - added a bunch more config options for tools, world gen, ...
   - added a config to enable most of the WIP stuff that never made it into the mod
 - fixed a bunch of missing model issues with the WIP items and added the missing localization
-- Mithril is a "new" Metal, a Crystal Seeds exists, but it has no uses yet
+- updated dependencies
+
+### Bugfixes
+- fixed dupe bug with melter and acceleration mods
 
 ## v1.20.1
 ### Bugfixes

@@ -18,6 +18,40 @@ Embers is best described as a dwarven magic mod. It features a smattering of mag
 ## Builds
 You can download the latest files here on [curseforge](https://curseforge.com/minecraft/mc-mods/embers-extended-life).
 
+## Changes
+
+Current Changes to Embers Rekindled v1.19:
+- added a config option to display the exact amount of Ash needed in an Alchemy recipe
+- registered Heat Coil in HEI as a smelting catalyst
+- switched to [RetroFuturaGradle](https://github.com/GTNewHorizons/RetroFuturaGradle)
+- updated dependencies to maintained forks
+- fixed alchemy tablet breaking after 10 days of existing
+- fixed a dupe bug with the melter and acceleration mods
+- reworked config system, allow config changes in-game, a LOT more config options
+- added a config option to register all WIP items and blocks (useful for pack makers)
+
+Planned Changes:
+- native [GroovyScript](https://github.com/CleanroomMC/GroovyScript) support
+- allow addition of custom seeds
+- merging of various Embers addons, while:
+  - keeping the ability to disable them
+  - fixing various bugs, that were never fixed in the original addons
+  - remove the confusing dependency hell
+
+## [Ender-Development](https://github.com/Ender-Development)
+
+Our Team currently includes:
+- `_MasterEnderman_` - Project-Manager, Developer
+- `Klebestreifen` - Developer
+
+You can contact us on our [Discord](https://discord.gg/JF7x2vG).
+
+## Contributing
+Feel free to contribute to the project. We are always happy about pull requests.
+If you want to help us, you can find potential tasks in the [issue tracker](https://github.com/Ender-Development/Embers-Extended-Life/issues).
+Of course, you can also create new issues if you find a bug or have a suggestion for a new feature.
+Should you have any questions, feel free to ask us on [Discord](https://discord.gg/JF7x2vG).
+
 ## Maven Dependency
 We use GitHub packages. If you need our mod as a dependency:
 
@@ -35,24 +69,3 @@ dependencies {
 ```
 
 See https://github.com/Ender-Development/Embers-Extended-Life/packages/
-
-## Changes
-
-Current Changes to Embers Rekindled v1.19:
-- added a config option to display the exact amount of Ash needed in an Alcemy recipe
-- registered Heat Coil in HEI as a smelting catalyst
-- switched to [RetroFuturaGradle](https://github.com/GTNewHorizons/RetroFuturaGradle)
-- updated dependencies to maintained forks
-- fixed alchemy tablet breaking after 10 days of existing
-
-Planned Changes:
-- native [GroovyScript](https://github.com/CleanroomMC/GroovyScript) support
-- merging of various Embers addons
-
-## [Ender-Development](https://github.com/Ender-Development)
-
-Our Team currently includes:
-- `_MasterEnderman_` - Project-Manager, Lead-Artist, Developer
-- `Klebestreifen` - Lead-Developer, Artist
-
-You can contact us on our [Discord](https://discord.gg/JF7x2vG).
