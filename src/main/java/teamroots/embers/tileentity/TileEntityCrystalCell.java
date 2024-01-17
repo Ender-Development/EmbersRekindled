@@ -26,6 +26,7 @@ import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.register.ItemRegister;
@@ -38,7 +39,8 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityCrystalCell extends TileEntity implements ITileEntityBase, ITickable, IMultiblockMachine, ISoundController, IExtraCapabilityInformation {
-    public static final int MAX_CAPACITY = 1440000;
+    public static final int MAX_CAPACITY = ConfigMachine.CRYSTAL_CELL.max_capacity;
+    public static final int BASE_CAPACITY = ConfigMachine.CRYSTAL_CELL.base_capacity;
     Random random = new Random();
     public long ticksExisted = 0;
     public float angle = 0;
@@ -100,7 +102,7 @@ public class TileEntityCrystalCell extends TileEntity implements ITileEntityBase
 
     public TileEntityCrystalCell() {
         super();
-        capability.setEmberCapacity(64000);
+        capability.setEmberCapacity(BASE_CAPACITY);
         seed = random.nextLong();
     }
 

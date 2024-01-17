@@ -20,7 +20,6 @@ import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.event.EmberEvent;
 import teamroots.embers.api.event.MachineRecipeEvent;
@@ -30,6 +29,7 @@ import teamroots.embers.api.tile.IMechanicallyPowered;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.block.BlockFluidGauge;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.recipe.FluidMixingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
 import teamroots.embers.util.FluidUtil;
@@ -43,12 +43,13 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityMixerBottom extends TileEntity implements ITileEntityBase, ITickable, IMechanicallyPowered, ISoundController, IExtraDialInformation, IExtraCapabilityInformation {
-    public static final double EMBER_COST = 2.0;
+    public static final double EMBER_COST = ConfigMachine.MIXER.ember_cost;
+    public static final int CAPACITY = ConfigMachine.MIXER.input_capacity;
 
-    public FluidTank north = new FluidTank(8000);
-    public FluidTank south = new FluidTank(8000);
-    public FluidTank east = new FluidTank(8000);
-    public FluidTank west = new FluidTank(8000);
+    public FluidTank north = new FluidTank(CAPACITY);
+    public FluidTank south = new FluidTank(CAPACITY);
+    public FluidTank east = new FluidTank(CAPACITY);
+    public FluidTank west = new FluidTank(CAPACITY);
     public FluidTank[] tanks;
     Random random = new Random();
     int progress = -1;

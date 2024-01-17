@@ -31,6 +31,12 @@ cfg.embers.machine.catalyzer=Catalysis Chamber
 cfg.embers.machine.reactor=Ignem Reactor
 cfg.embers.machine.pulser=Ember Ejector
 cfg.embers.machine.catalytic_plug=Catalytic Plug
+cfg.embers.machine.beam_cannon=Beam Cannon
+cfg.embers.machine.crystal_cell=Crystal Cell
+cfg.embers.machine.activator=Ember Activator
+cfg.embers.machine.boiler=Pressure Refinery
+cfg.embers.machine.mixer=Mixer Centrifuge
+cfg.embers.machine.heat_coil=Hearth Coil
 cfg.embers.machine.steam_engine=Steam Engine
 
 cfg.embers.material=Materials

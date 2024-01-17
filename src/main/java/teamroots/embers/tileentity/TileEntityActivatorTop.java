@@ -1,7 +1,6 @@
 package teamroots.embers.tileentity;
 
 import net.minecraft.block.state.IBlockState;
-import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -14,13 +13,12 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.items.CapabilityItemHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.util.Misc;
@@ -32,6 +30,8 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityActivatorTop extends TileEntity implements ITileEntityBase, ITickable, ISoundController, IExtraCapabilityInformation {
+	public static final int EMBER_CAPACITY = ConfigMachine.ACTIVATOR.ember_capacity;
+
 	public IEmberCapability capability = new DefaultEmberCapability() {
 		@Override
 		public void onContentsChanged() {
@@ -48,7 +48,7 @@ public class TileEntityActivatorTop extends TileEntity implements ITileEntityBas
 	
 	public TileEntityActivatorTop(){
 		super();
-		capability.setEmberCapacity(16000);
+		capability.setEmberCapacity(EMBER_CAPACITY);
 	}
 	
 	@Override

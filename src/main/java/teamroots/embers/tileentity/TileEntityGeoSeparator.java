@@ -30,13 +30,15 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityGeoSeparator extends TileEntityOpenTank implements ITileEntityBase, ITickable, IExtraCapabilityInformation {
+	public static final int TANK_CAPACITY = ConfigMachine.GEO_SEPARATOR.capacity;
+
 	Random random = new Random();
 	protected UpgradeGeoSeparator upgrade;
 
 	public TileEntityGeoSeparator(){
 		super();
 
-		tank = new FluidTank(getCapacity()) {
+		tank = new FluidTank(TANK_CAPACITY) {
 			@Override
 			public void onContentsChanged(){
 				TileEntityGeoSeparator.this.markDirty();
@@ -109,7 +111,7 @@ public class TileEntityGeoSeparator extends TileEntityOpenTank implements ITileE
 	}
 
 	public int getCapacity(){
-		return ConfigMachine.GEO_SEPARATOR.capacity;
+		return TANK_CAPACITY;
 	}
 
 	@Override

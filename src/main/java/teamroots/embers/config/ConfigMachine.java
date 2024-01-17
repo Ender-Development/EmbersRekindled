@@ -7,6 +7,12 @@ import teamroots.embers.config.machine.*;
 @Config(modid = Embers.MODID, category = "machine", name = Embers.CFG_FOLDER + "machine")
 @Config.LangKey("cfg.embers.machine")
 public class ConfigMachine {
+
+    @Config.Name("Beam Cannon")
+    @Config.LangKey("cfg.embers.machine.beam_cannon")
+    @Config.Comment("Options about the Beam Cannon")
+    public static final BeamCanonCategory BEAM_CANNON = new BeamCanonCategory();
+
     @Config.Name("Catalytic Plug")
     @Config.LangKey("cfg.embers.machine.catalytic_plug")
     @Config.Comment("Options about the Catalytic Plug")
@@ -42,10 +48,20 @@ public class ConfigMachine {
     @Config.Comment("Options about the Copper Cell")
     public static final CreativeEmberSourceCategory CREATIVE_EMBER_SOURCE = new CreativeEmberSourceCategory();
 
+    @Config.Name("Crystal Cell")
+    @Config.LangKey("cfg.embers.machine.crystal_cell")
+    @Config.Comment("Options about the Crystal Cell")
+    public static final CrystalCellCategory CRYSTAL_CELL = new CrystalCellCategory();
+
     @Config.Name("Dawnstone Anvil")
     @Config.LangKey("cfg.embers.machine.dawnstone_anvil")
     @Config.Comment("Options about the Dawnstone Anvil")
     public static final DawnStoneAnvilCategory DAWNSTONE_ANVIL = new DawnStoneAnvilCategory();
+
+    @Config.Name("Ember Activator")
+    @Config.LangKey("cfg.embers.machine.activator")
+    @Config.Comment("Options about the Ember Activator")
+    public static final ActivatorCategory ACTIVATOR = new ActivatorCategory();
 
     @Config.Name("Ember Bore")
     @Config.LangKey("cfg.embers.machine.ember_bore")
@@ -87,6 +103,11 @@ public class ConfigMachine {
     @Config.Comment("Options about the Geo Separator")
     public static final GeoSeparatorCategory GEO_SEPARATOR = new GeoSeparatorCategory();
 
+    @Config.Name("Hearth Coil")
+    @Config.LangKey("cfg.embers.machine.heat_coil")
+    @Config.Comment("Options about the Hearth Coil")
+    public static final HeatCoilCategory HEAT_COIL = new HeatCoilCategory();
+
     @Config.Name("Ignem Reactor")
     @Config.LangKey("cfg.embers.machine.reactor")
     @Config.Comment("Options about the Ignem Reactor")
@@ -106,6 +127,16 @@ public class ConfigMachine {
     @Config.LangKey("cfg.embers.machine.mini_boiler")
     @Config.Comment("Options about the Mini Boiler")
     public static final MiniBoilerCategory MINI_BOILER = new MiniBoilerCategory();
+
+    @Config.Name("Mixer Centrifuge")
+    @Config.LangKey("cfg.embers.machine.mixer")
+    @Config.Comment("Options about the Mixer Centrifuge")
+    public static final MixerCategory MIXER = new MixerCategory();
+
+    @Config.Name("Pressure Refinery")
+    @Config.LangKey("cfg.embers.machine.boiler")
+    @Config.Comment("Options about the Pressure Refinery")
+    public static final BoilerCategory BOILER = new BoilerCategory();
 
     @Config.Name("Reservoir")
     @Config.LangKey("cfg.embers.machine.reservoir")

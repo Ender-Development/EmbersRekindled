@@ -34,6 +34,7 @@ import teamroots.embers.api.tile.IMechanicallyPowered;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.block.BlockStamper;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageStamperFX;
 import teamroots.embers.power.DefaultEmberCapability;
@@ -48,9 +49,9 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityStamper extends TileEntity implements ITileEntityBase, ITickable, IMechanicallyPowered, IExtraDialInformation, IExtraCapabilityInformation {
-    public static final double EMBER_COST = 80.0;
-    public static final int STAMP_TIME = 70;
-    public static final int RETRACT_TIME = 10;
+    public static final double EMBER_COST = ConfigMachine.STAMPER.ember_cost;
+    public static final int STAMP_TIME = ConfigMachine.STAMPER.stamp_time;
+    public static final int RETRACT_TIME = ConfigMachine.STAMPER.retract_time;
 
     public IEmberCapability capability = new DefaultEmberCapability();
     public boolean prevPowered = false;

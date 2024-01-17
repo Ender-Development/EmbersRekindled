@@ -22,4 +22,19 @@ public class StamperCategory {
     @Config.Name("Stamper Capacity")
     @Config.Comment("How much fluid (in mb) fits into the Stamp Base?")
     public int capacity = 1500;
+
+    @Config.RequiresMcRestart
+    @Config.Name("Ember Cost")
+    @Config.Comment("How much ember is required to stamp an item?")
+    public double ember_cost = 80.0;
+
+    @Config.RequiresMcRestart
+    @Config.Name("Stamp Time")
+    @Config.Comment("How many ticks does it take to stamp an item?")
+    public int stamp_time = 70;
+
+    @Config.RequiresMcRestart
+    @Config.Name("Retract Time")
+    @Config.Comment("How many ticks does it take to retract the stamp?")
+    public int retract_time = 10;
 }

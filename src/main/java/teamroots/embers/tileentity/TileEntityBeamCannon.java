@@ -26,6 +26,7 @@ import teamroots.embers.api.tile.ITargetable;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.block.BlockBeamCannon;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageBeamCannonFX;
 import teamroots.embers.power.DefaultEmberCapability;
@@ -38,10 +39,11 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityBeamCannon extends TileEntity implements ITileEntityBase, ITickable, ITargetable {
-	public static final double PULL_RATE = 2000.0;
-	public static final int FIRE_THRESHOLD = 400;
-	public static final float DAMAGE = 25.0f;
-	public static final int MAX_DISTANCE = 64;
+	public static final double PULL_RATE = ConfigMachine.BEAM_CANNON.pull_rate;
+	public static final int FIRE_THRESHOLD = ConfigMachine.BEAM_CANNON.fire_threshold;
+	public static final double DAMAGE = ConfigMachine.BEAM_CANNON.damage;
+	public static final int MAX_DISTANCE = ConfigMachine.BEAM_CANNON.max_distance;
+
 	public IEmberCapability capability = new DefaultEmberCapability() {
 		@Override
 		public boolean acceptsVolatile() {
