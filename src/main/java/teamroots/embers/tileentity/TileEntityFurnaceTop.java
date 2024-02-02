@@ -5,7 +5,6 @@ import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -18,13 +17,15 @@ import net.minecraft.util.math.AxisAlignedBB;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.fluids.capability.TileFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import teamroots.embers.EventManager;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.util.FluidColorHelper;
 import teamroots.embers.util.Misc;
@@ -35,7 +36,7 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityFurnaceTop extends TileEntityOpenTank implements ITileEntityBase, ITickable, IExtraCapabilityInformation {
-    public static int capacity = Fluid.BUCKET_VOLUME * 4;
+    public static int capacity = ConfigMachine.MELTER.tankSize;
     public double angle = 0;
     int ticksExisted = 0;
 
@@ -104,7 +105,7 @@ public class TileEntityFurnaceTop extends TileEntityOpenTank implements ITileEnt
     @Override
     public boolean activate(World world, BlockPos pos, IBlockState state, EntityPlayer player, EnumHand hand,
                             EnumFacing side, float hitX, float hitY, float hitZ) {
-        ItemStack heldItem = player.getHeldItem(hand);
+        ItemStack heldItem = player.getHeldItemMainhand();
         if (!heldItem.isEmpty()) {
             boolean didFill = FluidUtil.interactWithFluidHandler(player, hand, this.getCapability(CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY, side));
 
