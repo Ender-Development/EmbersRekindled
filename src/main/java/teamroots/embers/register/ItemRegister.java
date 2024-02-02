@@ -182,6 +182,10 @@ public class ItemRegister implements IRegistrable<Item> {
     public static final Item STAMP_GEAR_RAW = new ItemBase("stamp_gear_raw", true);
     public static final Item STAMP_PLATE = new ItemBase("stamp_plate", true);
     public static final Item STAMP_PLATE_RAW = new ItemBase("stamp_plate_raw", true);
+    public static final Item STAMP_ROD = new ItemBase("stamp_rod", true);
+    public static final Item STAMP_ROD_RAW = new ItemBase("stamp_rod_raw", true);
+    public static final Item STAMP_ROUND = new ItemBase("stamp_round", true);
+    public static final Item STAMP_ROUND_RAW = new ItemBase("stamp_round_raw", true);
     public static final Item SULFUR_DUST = new ItemBase("sulfur_dust", true);
     public static final Item SUPERHEATER = new ItemBase("superheater", true);
     public static final Item SWORD_ALUMINUM = new ItemSwordBase(ToolMaterialRegister.TOOL_MAT_ALUMINUM, "sword_aluminum", true).setCreativeTab(Embers.resource_tab);
@@ -261,6 +265,10 @@ public class ItemRegister implements IRegistrable<Item> {
             STAMP_GEAR_RAW,
             STAMP_PLATE,
             STAMP_PLATE_RAW,
+            STAMP_ROD,
+            STAMP_ROD_RAW,
+            STAMP_ROUND,
+            STAMP_ROUND_RAW,
             SUPERHEATER,
             TINKER_HAMMER,
             TINKER_LENS,
