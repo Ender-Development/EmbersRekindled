@@ -19,6 +19,16 @@ public class StamperCategory {
     public int stampGearAmount = 2;
 
     @Config.RequiresMcRestart
+    @Config.Name("Ingot to Rod ratio")
+    @Config.Comment("How many rods can be made from one ingot in the stamper?")
+    public int stampRodAmount = 2;
+
+    @Config.RequiresMcRestart
+    @Config.Name("Fluid amount per Grinding Ball (EnderIO)")
+    @Config.Comment("How much fluid (in mb) is required to make a grinding ball in the stamper?")
+    public int stampRoundAmount = 30;
+
+    @Config.RequiresMcRestart
     @Config.Name("Stamper Capacity")
     @Config.Comment("How much fluid (in mb) fits into the Stamp Base?")
     public int capacity = 1500;

@@ -16,7 +16,17 @@ public class ConfigCompat {
     public static boolean enableBaublesIntegration = true;
 
     @Config.RequiresMcRestart
+    @Config.Name("Enable EnderIO Integration")
+    @Config.Comment("If true, Embers will register items, blocks and recipes providing EnderIO integration.")
+    public static boolean enableEnderIOIntegration = true;
+
+    @Config.RequiresMcRestart
     @Config.Name("Enable Mystical Mechanics Integration")
     @Config.Comment("If true, Embers will register items, blocks and recipes providing Mystical Mechanics integration.")
     public static boolean enableMysticalMechanicsIntegration = true;
+
+    @Config.RequiresMcRestart
+    @Config.Name("Enable Tinkers' Construct Integration")
+    @Config.Comment("If true, Embers will register items, blocks and recipes providing Tinkers' Construct integration.")
+    public static boolean enableTinkersIntegration = true;
 }

@@ -13,4 +13,12 @@ public final class Util {
     public static boolean isMysticalMechanicsIntegrationEnabled() {
         return ConfigCompat.enableMysticalMechanicsIntegration && Loader.isModLoaded("mysticalmechanics");
     }
+
+    public static boolean isEnderIOIntegrationEnabled() {
+        return ConfigCompat.enableEnderIOIntegration && Loader.isModLoaded("enderio");
+    }
+
+    public static boolean isTinkersIntegrationEnabled() {
+        return ConfigCompat.enableTinkersIntegration && Loader.isModLoaded("tconstruct");
+    }
 }

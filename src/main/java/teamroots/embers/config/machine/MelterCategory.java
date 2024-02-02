@@ -17,6 +17,11 @@ public class MelterCategory {
     public int processTime = 200;
 
     @Config.RequiresMcRestart
+    @Config.Name("Tank Size")
+    @Config.Comment("The size of the internal tank.")
+    public int tankSize = 4000;
+
+    @Config.RequiresMcRestart
     @Config.Name("Ember Cost Multiplier")
     @Config.Comment("The ember cost per tick.")
     public double emberCost = 1.0;

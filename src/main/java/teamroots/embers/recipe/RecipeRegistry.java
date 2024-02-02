@@ -44,6 +44,7 @@ import teamroots.embers.api.itemmod.ItemModUtil;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.block.BlockSeedNew;
 import teamroots.embers.compat.BaublesIntegration;
+import teamroots.embers.compat.EnderioIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.compat.Util;
 import teamroots.embers.config.ConfigMachine;
@@ -91,6 +92,7 @@ public class RecipeRegistry {
     public static final int INGOT_AMOUNT = ConfigMisc.ingotFluidAmount;
     public static final int NUGGET_AMOUNT = ConfigMisc.nuggetFluidAmount;
     public static final int plateAmount = ConfigMachine.STAMPER.stampPlateAmount * INGOT_AMOUNT;
+    public static final int rodAmount = INGOT_AMOUNT / ConfigMachine.STAMPER.stampRodAmount;
     public static final int oreMeltAmount = ConfigMachine.MELTER.melterOreAmount * INGOT_AMOUNT;
 
     public static ResourceLocation getRL(String s) {
@@ -276,7 +278,7 @@ public class RecipeRegistry {
             }
         }
 
-        for (String s: ConfigMachine.COMBUSTOR.fuel) {
+        for (String s : ConfigMachine.COMBUSTOR.fuel) {
             Tuple<Ingredient, Double> result = registerCoefficient(s);
             EmbersAPI.registerCombustionFuel(result.getFirst(), result.getSecond());
         }
@@ -447,6 +449,16 @@ public class RecipeRegistry {
                 " X ",
                 "X X",
                 'X', ItemRegister.BLEND_CAMINITE}).setRegistryName(getRL("stamp_gear_raw")));
+        event.getRegistry().register(new ShapedOreRecipe(getRL("stamp_rod_raw"), new ItemStack(ItemRegister.STAMP_ROD_RAW, 1), true, new Object[]{
+                " XX",
+                "X X",
+                "XX ",
+                'X', ItemRegister.BLEND_CAMINITE}).setRegistryName(getRL("stamp_rod_raw")));
+        event.getRegistry().register(new ShapedOreRecipe(getRL("stamp_round_raw"), new ItemStack(ItemRegister.STAMP_ROUND_RAW, 1), true, new Object[]{
+                " X ",
+                "XXX",
+                " X ",
+                'X', ItemRegister.BLEND_CAMINITE}).setRegistryName(getRL("stamp_round_raw")));
         event.getRegistry().register(new ShapedOreRecipe(getRL("block_caminite_brick"), new ItemStack(BlockRegister.BLOCK_CAMINITE_BRICK, 1), true, new Object[]{
                 "XX",
                 "XX",
@@ -1146,10 +1158,15 @@ public class RecipeRegistry {
         event.getRegistry().register(new AshenCloakSocketRecipe().setRegistryName(getRL("cloak_socketing")));
         event.getRegistry().register(new AshenCloakUnsocketRecipe().setRegistryName(getRL("cloak_unsocketing")));
 
-        if (Util.isBaublesIntegrationEnabled())
+        if (Util.isBaublesIntegrationEnabled()) {
             BaublesIntegration.registerRecipes(event);
-        if (Util.isMysticalMechanicsIntegrationEnabled())
+        }
+        if (Util.isMysticalMechanicsIntegrationEnabled()) {
             MysticalMechanicsIntegration.registerRecipes(event);
+        }
+        if (Util.isTinkersIntegrationEnabled() && Util.isEnderIOIntegrationEnabled()) {
+            EnderioIntegration.registerRecipes(event);
+        }
 
         GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_COPPER), new ItemStack(ItemRegister.INGOT_COPPER), 0.65f);
         GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_SILVER), new ItemStack(ItemRegister.INGOT_SILVER), 0.35f);
@@ -1171,6 +1188,8 @@ public class RecipeRegistry {
         GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_PLATE_RAW), new ItemStack(ItemRegister.STAMP_PLATE), 0.35f);
         GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_FLAT_RAW), new ItemStack(ItemRegister.STAMP_FLAT), 0.35f);
         GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_GEAR_RAW), new ItemStack(ItemRegister.STAMP_GEAR), 0.35f);
+        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_ROD_RAW), new ItemStack(ItemRegister.STAMP_ROD), 0.35f);
+        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_ROUND_RAW), new ItemStack(ItemRegister.STAMP_ROUND), 0.35f);
 
 
         OreIngredient ingotIron = new OreIngredient("ingotIron");
@@ -1279,6 +1298,7 @@ public class RecipeRegistry {
 
         Ingredient stampBar = Ingredient.fromItem(ItemRegister.STAMP_BAR);
         Ingredient stampPlate = Ingredient.fromItem(ItemRegister.STAMP_PLATE);
+        Ingredient stampRod = Ingredient.fromItem(ItemRegister.STAMP_ROD);
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, INGOT_AMOUNT), stampBar, new ItemStack(Items.IRON_INGOT, 1)));
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, INGOT_AMOUNT), stampBar, new ItemStack(Items.GOLD_INGOT, 1)));
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_LEAD, 1)));
@@ -1321,6 +1341,55 @@ public class RecipeRegistry {
         }
         if (ConfigMaterial.TIN.mustLoad()) {
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_TIN, 1)));
+        }
+
+        if (OreDictionary.doesOreNameExist("stickIron")) {
+            ItemStack stickIron = OreDictionary.getOres("stickIron").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, rodAmount), stampRod, stickIron));
+        }
+        if (OreDictionary.doesOreNameExist("stickGold")) {
+            ItemStack stickGold = OreDictionary.getOres("stickGold").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, rodAmount), stampRod, stickGold));
+        }
+        if (OreDictionary.doesOreNameExist("stickLead")) {
+            ItemStack stickLead = OreDictionary.getOres("stickLead").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, rodAmount), stampRod, stickLead));
+        }
+        if (OreDictionary.doesOreNameExist("stickSilver")) {
+            ItemStack stickSilver = OreDictionary.getOres("stickSilver").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, rodAmount), stampRod, stickSilver));
+        }
+        if (OreDictionary.doesOreNameExist("stickCopper")) {
+            ItemStack stickCopper = OreDictionary.getOres("stickCopper").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, rodAmount), stampRod, stickCopper));
+        }
+        if (OreDictionary.doesOreNameExist("stickDawnstone")) {
+            ItemStack stickDawnstone = OreDictionary.getOres("stickDawnstone").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, rodAmount), stampRod, stickDawnstone));
+        }
+        if (ConfigMaterial.ALUMINUM.mustLoad() && OreDictionary.doesOreNameExist("stickAluminum")) {
+            ItemStack stickAluminum = OreDictionary.getOres("stickAluminum").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, rodAmount), stampRod, stickAluminum));
+        }
+        if (ConfigMaterial.BRONZE.mustLoad() && OreDictionary.doesOreNameExist("stickBronze")) {
+            ItemStack stickBronze = OreDictionary.getOres("stickBronze").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, rodAmount), stampRod, stickBronze));
+        }
+        if (ConfigMaterial.ELECTRUM.mustLoad() && OreDictionary.doesOreNameExist("stickElectrum")) {
+            ItemStack stickElectrum = OreDictionary.getOres("stickElectrum").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, rodAmount), stampRod, stickElectrum));
+        }
+        if (ConfigMaterial.NICKEL.mustLoad() && OreDictionary.doesOreNameExist("stickNickel")) {
+            ItemStack stickNickel = OreDictionary.getOres("stickNickel").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, rodAmount), stampRod, stickNickel));
+        }
+        if (ConfigMaterial.TIN.mustLoad() && OreDictionary.doesOreNameExist("stickTin")) {
+            ItemStack stickTin = OreDictionary.getOres("stickTin").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, rodAmount), stampRod, stickTin));
+        }
+        if (OreDictionary.doesOreNameExist("stickSteel") && FluidRegistry.isFluidRegistered("steel")) {
+            ItemStack stickSteel = OreDictionary.getOres("stickSteel").get(0);
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegistry.getFluid("steel"), rodAmount), stampRod, stickSteel));
         }
 
         stampingRecipes.add(new ItemWasteStampingRecipe());
