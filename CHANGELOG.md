@@ -10,6 +10,10 @@ A dwarven magic mod
   - added a config to enable most of the WIP stuff that never made it into the mod
 - fixed a bunch of missing model issues with the WIP items and added the missing localization
 - updated dependencies
+- added 2 new stamps (thanks to @InvaderMonky for the textures)
+- added stamping recipes for EnderIO & Endergy Grinding Balls
+- added stamping recipes for metal rods if they are registered by another mod
+- changed the Melter to ignore items in the OFFHAND slot
 
 ### Bugfixes
 - fixed dupe bug with melter and acceleration mods
