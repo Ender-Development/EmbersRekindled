@@ -28,7 +28,7 @@ public class BlockEmitter extends BlockTEBase {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
 	public BlockEmitter() {
-		super(Material.ROCK, "ember_emitter", true);
+		super(Material.ROCK, "ember_rf_emitter", true);
 	}
 
 	@Override

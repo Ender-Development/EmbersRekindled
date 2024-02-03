@@ -20,11 +20,11 @@ public class ModBlocks {
 			EMITTER, RECEPTOR
 	};
 
-	public static final Block[] getArray() {
+	public static Block[] getArray() {
 		return BLOCK_ARRAY;
 	}
 
-	public static final Item[] getItemBlockArray() {
+	public static Item[] getItemBlockArray() {
 		Item[] itemBlockArray = new Item[getArray().length];
 		for (int i = 0; i < itemBlockArray.length; i++) {
 			itemBlockArray[i] = ((IBlock) getArray()[i]).getItemBlock();
@@ -32,7 +32,7 @@ public class ModBlocks {
 		return itemBlockArray;
 	}
 
-	public static final void registerModels() {
+	public static void registerModels() {
 		for (Block block : getArray()) {
 			if (block instanceof IModeledBlock) {
 				((IModeledBlock) block).initModel();

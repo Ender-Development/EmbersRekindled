@@ -28,7 +28,7 @@ public class BlockReceptor extends BlockTEBase {
 	public static final PropertyDirection FACING = PropertyDirection.create("facing");
 
 	public BlockReceptor() {
-		super(Material.ROCK, "ember_receiver", true);
+		super(Material.ROCK, "ember_rf_receiver", true);
 	}
 
 	@Override

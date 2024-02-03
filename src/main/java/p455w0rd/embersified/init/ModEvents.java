@@ -16,7 +16,8 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import p455w0rd.embersified.blocks.tiles.TileEmitter;
 import p455w0rd.embersified.client.render.TESREmitter;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.BlockRegister;
+import teamroots.embers.register.ItemRegister;
 
 /**
  * @author p455w0rd
@@ -28,8 +29,8 @@ public class ModEvents {
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public static void onBlockRegistryReady(RegistryEvent.Register<Block> event) {
 		event.getRegistry().registerAll(ModBlocks.getArray());
-		RegistryManager.ember_emitter = ModBlocks.EMITTER;
-		RegistryManager.ember_receiver = ModBlocks.RECEPTOR;
+		BlockRegister.INSTANCE.add(ModBlocks.EMITTER);
+		BlockRegister.INSTANCE.add(ModBlocks.RECEPTOR);
 	}
 
 	@SubscribeEvent(priority = EventPriority.LOW)
@@ -47,13 +48,13 @@ public class ModEvents {
 	@SubscribeEvent(priority = EventPriority.LOW)
 	public void onRecipeRegistryReady(RegistryEvent.Register<IRecipe> event) {
 		//@formatter:off
-		event.getRegistry().register(new ShapedOreRecipe(new ResourceLocation("embers", "ember_receiver"), new ItemStack(ModBlocks.RECEPTOR, 4),
-				"I I", "CPC", 'I', "ingotIron", 'C', "ingotCopper", 'P', RegistryManager.plate_caminite
-				).setRegistryName(new ResourceLocation("embers", "ember_receiver")));
+		event.getRegistry().register(new ShapedOreRecipe(new ResourceLocation("embers", "ember_rf_receiver"), new ItemStack(ModBlocks.RECEPTOR, 4),
+				"I I", "CPC", 'I', "ingotIron", 'C', "ingotCopper", 'P', ItemRegister.PLATE_CAMINITE
+				).setRegistryName(new ResourceLocation("embers", "ember_rf_receiver")));
 
-		event.getRegistry().register(new ShapedOreRecipe(new ResourceLocation("embers", "ember_emitter"), new ItemStack(Item.getItemFromBlock(ModBlocks.EMITTER), 3),
-						" a ", " a ", "bcb", 'b', "ingotIron", 'a', "ingotCopper", 'c', RegistryManager.plate_caminite
-						).setRegistryName(new ResourceLocation("embers", "ember_emitter")));
+		event.getRegistry().register(new ShapedOreRecipe(new ResourceLocation("embers", "ember_rf_emitter"), new ItemStack(Item.getItemFromBlock(ModBlocks.EMITTER), 3),
+						" a ", " a ", "bcb", 'b', "ingotIron", 'a', "ingotCopper", 'c', ItemRegister.PLATE_CAMINITE
+						).setRegistryName(new ResourceLocation("embers", "ember_rf_emitter")));
 		//@formatter:on
 	}
 
