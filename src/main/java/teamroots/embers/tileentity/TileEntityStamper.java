@@ -21,8 +21,6 @@ import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import teamroots.embers.EventManager;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.event.DialInformationEvent;
@@ -36,11 +34,13 @@ import teamroots.embers.api.tile.IMechanicallyPowered;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.block.BlockStamper;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageStamperFX;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.recipe.ItemStampingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.util.Misc;
 
 import javax.annotation.Nullable;
@@ -49,9 +49,9 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityStamper extends TileEntity implements ITileEntityBase, ITickable, IMechanicallyPowered, IExtraDialInformation, IExtraCapabilityInformation {
-    public static final double EMBER_COST = 80.0;
-    public static final int STAMP_TIME = 70;
-    public static final int RETRACT_TIME = 10;
+    public static final double EMBER_COST = ConfigMachine.STAMPER.ember_cost;
+    public static final int STAMP_TIME = ConfigMachine.STAMPER.stamp_time;
+    public static final int RETRACT_TIME = ConfigMachine.STAMPER.retract_time;
 
     public IEmberCapability capability = new DefaultEmberCapability();
     public boolean prevPowered = false;
@@ -142,7 +142,7 @@ public class TileEntityStamper extends TileEntity implements ITileEntityBase, IT
         this.ticksExisted++;
         prevPowered = powered;
         EnumFacing face = getWorld().getBlockState(getPos()).getValue(BlockStamper.facing);
-        if (getWorld().getBlockState(getPos().offset(face, 2)).getBlock() == RegistryManager.stamp_base) {
+        if (getWorld().getBlockState(getPos().offset(face, 2)).getBlock() == BlockRegister.STAMP_BASE) {
             upgrades = UpgradeUtil.getUpgrades(world, pos, EnumFacing.HORIZONTALS);
             UpgradeUtil.verifyUpgrades(this, upgrades);
             if (UpgradeUtil.doTick(this, upgrades))

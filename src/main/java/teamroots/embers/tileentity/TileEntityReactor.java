@@ -16,11 +16,9 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
@@ -32,6 +30,7 @@ import teamroots.embers.api.tile.IExtraDialInformation;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.block.BlockEmberGauge;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageEmberActivationFX;
 import teamroots.embers.particle.ParticleUtil;
@@ -47,8 +46,9 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityReactor extends TileEntity implements ITileEntityBase, ITickable, ISoundController, IExtraDialInformation, IExtraCapabilityInformation {
-    public static final float BASE_MULTIPLIER = 1.0f;
-    public static final int PROCESS_TIME = 20;
+    public static final double BASE_MULTIPLIER = ConfigMachine.REACTOR.base_multiplier;
+    public static final int PROCESS_TIME = ConfigMachine.REACTOR.process_time;
+    public static final double EMBER_CAPACITY = ConfigMachine.REACTOR.capacity;
     public IEmberCapability capability = new DefaultEmberCapability() {
         @Override
         public void onContentsChanged() {
@@ -88,7 +88,7 @@ public class TileEntityReactor extends TileEntity implements ITileEntityBase, IT
 
     public TileEntityReactor() {
         super();
-        capability.setEmberCapacity(128000);
+        capability.setEmberCapacity(EMBER_CAPACITY);
     }
 
     @Override
@@ -169,9 +169,9 @@ public class TileEntityReactor extends TileEntity implements ITileEntityBase, IT
         if (!cancel && !inventory.getStackInSlot(0).isEmpty()) {
             progress++;
             if (progress > UpgradeUtil.getWorkTime(this, PROCESS_TIME, upgrades)) {
-                catalyzerMult = 0.0f;
-                combustorMult = 0.0f;
-                float multiplier = BASE_MULTIPLIER;
+                catalyzerMult = 0.0;
+                combustorMult = 0.0;
+                double multiplier = BASE_MULTIPLIER;
                 for (EnumFacing facing : EnumFacing.HORIZONTALS) {
                     TileEntity tile = world.getTileEntity(getPos().offset(facing).down());
                     if (tile instanceof TileEntityCatalyzer)

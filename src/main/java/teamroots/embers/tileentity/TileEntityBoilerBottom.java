@@ -4,7 +4,6 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.ItemBucket;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -17,13 +16,14 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.fluids.FluidTank;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.TileFluidHandler;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.event.DialInformationEvent;
@@ -34,6 +34,7 @@ import teamroots.embers.api.tile.IExtraDialInformation;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.block.BlockEmberGauge;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageEmberActivationFX;
 import teamroots.embers.util.Misc;
@@ -45,11 +46,11 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityBoilerBottom extends TileFluidHandler implements ITileEntityBase, ITickable, IExtraDialInformation, IExtraCapabilityInformation {
-    public static final float BASE_MULTIPLIER = 1.5f;
-    public static final int FLUID_CONSUMED = 25;
-    public static final float PER_BLOCK_MULTIPLIER = 0.375f;
-    public static final int PROCESS_TIME = 20;
-    public static int capacity = Fluid.BUCKET_VOLUME * 8;
+    public static final double BASE_MULTIPLIER = ConfigMachine.BOILER.base_multiplier;
+    public static final double PER_BLOCK_MULTIPLIER = ConfigMachine.BOILER.per_block_multiplier;
+    public static final int FLUID_CONSUMED = ConfigMachine.BOILER.fluid_consumed;
+    public static final int PROCESS_TIME = ConfigMachine.BOILER.process_time;
+    public static final int CAPACITY = ConfigMachine.BOILER.capacity;
     Random random = new Random();
     int progress = -1;
     public ItemStackHandler inventory = new ItemStackHandler(1) {
@@ -70,7 +71,7 @@ public class TileEntityBoilerBottom extends TileFluidHandler implements ITileEnt
 
     public TileEntityBoilerBottom() {
         super();
-        tank = new FluidTank(capacity);
+        tank = new FluidTank(CAPACITY);
         tank.setTileEntity(this);
         tank.setCanFill(true);
         tank.setCanDrain(true);

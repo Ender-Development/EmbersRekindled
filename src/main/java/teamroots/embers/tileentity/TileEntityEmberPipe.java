@@ -11,12 +11,11 @@ import net.minecraft.util.SoundCategory;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import teamroots.embers.Embers;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.item.ItemTinkerHammer;
-import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.util.EnumPipeConnection;
 import teamroots.embers.util.Misc;
 
@@ -27,8 +26,8 @@ public class TileEntityEmberPipe extends TileEntityEmberPipeBase {
 
 	double currentPush;
 
-	public static final double INIT_PUSH = 10;
-	public static final double INCREMENT_PUSH = 10;
+	public static final double INIT_PUSH = ConfigMachine.EMBER_CONDUIT.initial_push;
+	public static final double INCREMENT_PUSH = ConfigMachine.EMBER_CONDUIT.incremental_push;
 
 	public TileEntityEmberPipe() {
 		super();
@@ -60,8 +59,7 @@ public class TileEntityEmberPipe extends TileEntityEmberPipeBase {
 					if (active) {
 						IEmberCapability handler = tile.getCapability(EmbersCapabilities.EMBER_CAPABILITY, facing.getOpposite());
 						if (handler.getEmber() > 0 && packet == 0){
-							double removed = handler.removeAmount(Math.min(currentPush, handler.getEmberCapacity() / 10), true);
-							packet = removed;
+                            packet = handler.removeAmount(Math.min(currentPush, handler.getEmberCapacity() / 10), true);
 							syncPacket = true;
 						}
 						setFrom(facing, true);

@@ -15,13 +15,13 @@ import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.power.IEmberPacketProducer;
 import teamroots.embers.api.power.IEmberPacketReceiver;
 import teamroots.embers.block.BlockEmberPulser;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.entity.EntityEmberPacket;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.util.Misc;
@@ -30,8 +30,9 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 public class TileEntityPulser extends TileEntity implements ITileEntityBase, ITickable, IEmberPacketProducer {
-	public static final double PULL_RATE = 100.0;
-	public static final double TRANSFER_RATE = 400.0;
+	public static final double PULL_RATE = ConfigMachine.EJECTOR.pull_rate;
+	public static final double TRANSFER_RATE = ConfigMachine.EJECTOR.transfer_rate;
+	public static final double EMBER_CAPACITY = ConfigMachine.EJECTOR.capacity;
 
 	public IEmberCapability capability = new DefaultEmberCapability() {
 		@Override
@@ -67,7 +68,7 @@ public class TileEntityPulser extends TileEntity implements ITileEntityBase, ITi
 	
 	public TileEntityPulser(){
 		super();
-		capability.setEmberCapacity(2000);
+		capability.setEmberCapacity(EMBER_CAPACITY);
 	}
 	
 	public void updateNeighbors(IBlockAccess world){

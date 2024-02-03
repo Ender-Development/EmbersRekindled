@@ -20,15 +20,14 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
-import net.minecraftforge.items.CapabilityItemHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.api.tile.IExtraDialInformation;
 import teamroots.embers.block.BlockCatalyticPlug;
 import teamroots.embers.block.BlockFluidGauge;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.upgrade.UpgradeCatalyticPlug;
 import teamroots.embers.util.Misc;
@@ -43,10 +42,11 @@ public class TileEntityCatalyticPlug extends TileEntity implements ITickable, IT
     public static final int SOUND_OFF = 1;
     public static final int SOUND_ON = 2;
     public static final int[] SOUND_IDS = new int[]{SOUND_OFF,SOUND_ON};
+    public static final int CAPACITY = ConfigMachine.CATALYTIC_PLUG.capacity;
 
     public int activeTicks = 0;
     public UpgradeCatalyticPlug upgrade;
-    public FluidTank tank = new FluidTank(4000) {
+    public FluidTank tank = new FluidTank(CAPACITY) {
         @Override
         public boolean canFillFluidType(FluidStack fluid) {
             return fluid != null && fluid.getFluid() == FluidRegistry.getFluid("alchemical_redstone");

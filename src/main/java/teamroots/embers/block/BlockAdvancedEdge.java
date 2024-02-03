@@ -15,7 +15,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.ITileEntityBase;
 
 public class BlockAdvancedEdge extends BlockBase {
@@ -72,7 +72,7 @@ public class BlockAdvancedEdge extends BlockBase {
 
 	public void yeetBlocks(World world, BlockPos pos, EntityPlayer player, boolean drop) {
 		if (!world.isRemote && drop){
-			world.spawnEntity(new EntityItem(world,pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5,new ItemStack(RegistryManager.crystal_cell,1,0)));
+			world.spawnEntity(new EntityItem(world,pos.getX()+0.5,pos.getY()+0.5,pos.getZ()+0.5,new ItemStack(BlockRegister.CRYSTAL_CELL,1,0)));
 		}
 		IBlockState state = world.getBlockState(pos);
 		if (state.getValue(BlockAdvancedEdge.state) == 9){

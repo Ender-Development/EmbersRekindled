@@ -5,7 +5,7 @@ import net.minecraft.block.state.IBlockState;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.TileEntityCrystalCell;
 
 public class BlockCrystalCell extends BlockTEBase {
@@ -40,13 +40,13 @@ public class BlockCrystalCell extends BlockTEBase {
 
 	@Override
 	public void onBlockAdded(World world, BlockPos pos, IBlockState state){
-		world.setBlockState(pos.north(), RegistryManager.advanced_edge.getStateFromMeta(9));
-		world.setBlockState(pos.north().west(), RegistryManager.advanced_edge.getStateFromMeta(1));
-		world.setBlockState(pos.west(), RegistryManager.advanced_edge.getStateFromMeta(2));
-		world.setBlockState(pos.south().west(), RegistryManager.advanced_edge.getStateFromMeta(3));
-		world.setBlockState(pos.south(), RegistryManager.advanced_edge.getStateFromMeta(4));
-		world.setBlockState(pos.south().east(), RegistryManager.advanced_edge.getStateFromMeta(5));
-		world.setBlockState(pos.east(), RegistryManager.advanced_edge.getStateFromMeta(6));
-		world.setBlockState(pos.north().east(), RegistryManager.advanced_edge.getStateFromMeta(7));
+		world.setBlockState(pos.north(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(9));
+		world.setBlockState(pos.north().west(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(1));
+		world.setBlockState(pos.west(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(2));
+		world.setBlockState(pos.south().west(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(3));
+		world.setBlockState(pos.south(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(4));
+		world.setBlockState(pos.south().east(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(5));
+		world.setBlockState(pos.east(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(6));
+		world.setBlockState(pos.north().east(), BlockRegister.ADVANCED_EDGE.getStateFromMeta(7));
 	}
 }

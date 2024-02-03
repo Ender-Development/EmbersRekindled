@@ -22,7 +22,6 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
 import teamroots.embers.Embers;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.event.EmberEvent;
@@ -34,6 +33,7 @@ import teamroots.embers.api.tile.IExtraDialInformation;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
 import teamroots.embers.block.BlockEmberGauge;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageCookItemFX;
 import teamroots.embers.particle.ParticleUtil;
@@ -52,12 +52,12 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityHeatCoil extends TileEntity implements ITileEntityBase, ITickable, IMultiblockMachine, ISoundController, IExtraDialInformation, IExtraCapabilityInformation {
-	public static final double EMBER_COST = 1.0;
-	public static final double HEATING_SPEED = 1.0;
-	public static final double COOLING_SPEED = 1.0;
-	public static final double MAX_HEAT = 280;
-	public static final int MIN_COOK_TIME = 20;
-	public static final int MAX_COOK_TIME = 300;
+	public static final double EMBER_COST = ConfigMachine.HEAT_COIL.ember_cost;
+	public static final double HEATING_SPEED = ConfigMachine.HEAT_COIL.heating_speed;
+	public static final double COOLING_SPEED = ConfigMachine.HEAT_COIL.cooling_speed;
+	public static final double MAX_HEAT = ConfigMachine.HEAT_COIL.max_heat;
+	public static final int MIN_COOK_TIME = ConfigMachine.HEAT_COIL.min_cook_time;
+	public static final int MAX_COOK_TIME = ConfigMachine.HEAT_COIL.max_cook_time;
 	public static final Color DEFAULT_COLOR = new Color(255, 64, 16);
 
 	public IEmberCapability capability = new DefaultEmberCapability();

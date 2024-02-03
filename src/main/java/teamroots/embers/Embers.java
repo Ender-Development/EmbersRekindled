@@ -13,14 +13,16 @@ import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
 import teamroots.embers.proxy.CommonProxy;
 import teamroots.embers.recipe.RecipeRegistry;
+import teamroots.embers.register.ItemRegister;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchManager;
 
-@Mod(modid = Embers.MODID, name = Embers.MODNAME, dependencies = Embers.DEPENDENCIES,  guiFactory = Embers.GUI_FACTORY)
+@Mod(modid = Embers.MODID, name = Embers.MODNAME, dependencies = Embers.DEPENDENCIES)
 public class Embers {
 	public static final String MODID = "embers";
 	public static final String MODNAME = "Embers";
+	public static final String CFG_FOLDER = "Embers/";
 	public static final String DEPENDENCIES = "after:mysticalmechanics";
-	public static final String GUI_FACTORY = "teamroots.embers.gui.GuiFactory";
 
 	@SidedProxy(clientSide = "teamroots.embers.proxy.ClientProxy",serverSide = "teamroots.embers.proxy.ServerProxy")
     public static CommonProxy proxy;
@@ -33,7 +35,7 @@ public class Embers {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem(){
-			return new ItemStack(RegistryManager.crystal_ember,1);
+			return new ItemStack(ItemRegister.CRYSTAL_EMBER,1);
 		}
 	};
 	
@@ -45,7 +47,7 @@ public class Embers {
 		@Override
 		@SideOnly(Side.CLIENT)
 		public ItemStack getTabIconItem(){
-			return new ItemStack(RegistryManager.ingot_dawnstone,1);
+			return new ItemStack(ItemRegister.INGOT_DAWNSTONE,1);
 		}
 	};
 	
@@ -64,11 +66,9 @@ public class Embers {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event){
 		MinecraftForge.EVENT_BUS.register(new EventManager());
-		MinecraftForge.EVENT_BUS.register(new ConfigManager());
 		MinecraftForge.EVENT_BUS.register(new RegistryManager());
 		MinecraftForge.EVENT_BUS.register(new RecipeRegistry());
 		MinecraftForge.EVENT_BUS.register(new ResearchManager());
-        ConfigManager.init(event.getSuggestedConfigurationFile());
 		proxy.preInit(event);
 	}
 	

@@ -15,12 +15,12 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.SoundEvent;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
-import teamroots.embers.ConfigManager;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.projectile.EffectDamage;
+import teamroots.embers.config.ConfigMob;
 import teamroots.embers.damage.DamageEmber;
+import teamroots.embers.register.ItemRegister;
 
 public class EntityAncientGolem extends EntityMob {
     public long lastPickaxeHit;
@@ -51,16 +51,16 @@ public class EntityAncientGolem extends EntityMob {
 	protected void applyEntityAttributes()
     {
         super.applyEntityAttributes();
-        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(32.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(ConfigManager.ancientGolemKnockbackResistance);
-        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(0.5D);
-        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(6.0D);
-        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(40.0D);
+        this.getEntityAttribute(SharedMonsterAttributes.FOLLOW_RANGE).setBaseValue(ConfigMob.EMBER_GOLEM.followRange);
+        this.getEntityAttribute(SharedMonsterAttributes.KNOCKBACK_RESISTANCE).setBaseValue(ConfigMob.EMBER_GOLEM.knockbackResistance);
+        this.getEntityAttribute(SharedMonsterAttributes.MOVEMENT_SPEED).setBaseValue(ConfigMob.EMBER_GOLEM.movementSpeed);
+        this.getEntityAttribute(SharedMonsterAttributes.ATTACK_DAMAGE).setBaseValue(ConfigMob.EMBER_GOLEM.attackDamage);
+        this.getEntityAttribute(SharedMonsterAttributes.MAX_HEALTH).setBaseValue(ConfigMob.EMBER_GOLEM.maxHealth);
     }
 
     protected void applyEntityAI()
     {
-        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget(this, EntityPlayer.class, true));
+        this.targetTasks.addTask(2, new EntityAINearestAttackableTarget<>(this, EntityPlayer.class, true));
     }
 
     @Override
@@ -68,7 +68,7 @@ public class EntityAncientGolem extends EntityMob {
         super.dropLoot(wasRecentlyHit, lootingModifier, source);
 
         if(world.getTotalWorldTime() - lastPickaxeHit < 400 || isPickaxeHit(source)) {
-            dropItem(RegistryManager.golems_eye,1);
+            dropItem(ItemRegister.GOLEMS_EYE,1);
         }
     }
 
@@ -102,8 +102,7 @@ public class EntityAncientGolem extends EntityMob {
         boolean isNormalAttack = source.damageType.equals("player") || source.damageType.equals("mob");
         if (isNormalAttack && attacker instanceof EntityLivingBase) {
             ItemStack weapon = ((EntityLivingBase) attacker).getItemStackFromSlot(EntityEquipmentSlot.MAINHAND);
-            if (weapon.getItem().getToolClasses(weapon).contains("pickaxe"))
-                return true;
+            return weapon.getItem().getToolClasses(weapon).contains("pickaxe");
         }
         return false;
     }

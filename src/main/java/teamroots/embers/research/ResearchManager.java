@@ -11,28 +11,32 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import teamroots.embers.ConfigManager;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.item.ItemEmberStorage;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageResearchData;
 import teamroots.embers.network.message.MessageResearchTick;
+import teamroots.embers.register.BlockRegister;
+import teamroots.embers.register.FluidRegister;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.research.capability.DefaultResearchCapability;
 import teamroots.embers.research.capability.IResearchCapability;
 import teamroots.embers.research.capability.ResearchCapabilityProvider;
+import teamroots.embers.research.subtypes.ResearchFakePage;
 import teamroots.embers.research.subtypes.ResearchShowItem;
 import teamroots.embers.research.subtypes.ResearchSwitchCategory;
-import teamroots.embers.research.subtypes.ResearchFakePage;
 import teamroots.embers.util.Vec2i;
 
 import java.util.*;
 
-import static teamroots.embers.research.subtypes.ResearchShowItem.*;
+import static teamroots.embers.research.subtypes.ResearchShowItem.DisplayItem;
 
 public class ResearchManager {
     public static final ResourceLocation PLAYER_RESEARCH = new ResourceLocation(Embers.MODID, "research");
@@ -49,7 +53,8 @@ public class ResearchManager {
     public static ResearchBase pipes, tank, bin, dropper, reservoir, vacuum, transfer, golem_eye, requisition; //PIPES
     public static ResearchBase adhesive, hellish_synthesis, archaic_brick, motive_core, dwarven_oil; //SIMPLE ALCHEMY
     public static ResearchBase wildfire, combustor, catalyzer, reactor, injector, stirling, ember_pipe; //WILDFIRE
-    public static ResearchBase superheater, caster_orb, resonating_bell, blasting_core, /*core_stone,*/ winding_gears; //WEAPON AUGMENTS
+    public static ResearchBase superheater, caster_orb, resonating_bell, blasting_core, /*core_stone,*/
+            winding_gears; //WEAPON AUGMENTS
     public static ResearchBase cinder_jet, eldritch_insignia, intelligent_apparatus, flame_barrier, tinker_lens_augment, anti_tinker_lens, shifting_scales; //ARMOR_AUGMENTS
     public static ResearchBase diffraction_barrel, focal_lens; //PROJECTILE_AUGMENTS
     public static ResearchBase cost_reduction, mantle_bulb, explosion_charm, nonbeliever_amulet, ashen_amulet, dawnstone_mail, explosion_pedestal; //BAUBLE
@@ -72,9 +77,9 @@ public class ResearchManager {
     public static ResearchCategory subCategoryWildfire;
 
     public static boolean isPathToLock(ResearchBase entry) {
-        for(ResearchCategory category : researches) {
+        for (ResearchCategory category : researches) {
             for (ResearchBase target : category.prerequisites) {
-                if(isPathTowards(entry,target))
+                if (isPathTowards(entry, target))
                     return true;
             }
         }
@@ -82,10 +87,10 @@ public class ResearchManager {
     }
 
     public static boolean isPathTowards(ResearchBase entry, ResearchBase target) {
-        if(entry.isPathTowards(target))
+        if (entry.isPathTowards(target))
             return true;
         for (ResearchBase ancestor : target.ancestors) {
-            if(isPathTowards(entry,ancestor))
+            if (isPathTowards(entry, ancestor))
                 return true;
         }
         return false;
@@ -93,7 +98,7 @@ public class ResearchManager {
 
     @SubscribeEvent
     public void onJoin(EntityJoinWorldEvent event) {
-        if(event.getEntity() instanceof EntityPlayerMP && !event.getWorld().isRemote) {
+        if (event.getEntity() instanceof EntityPlayerMP && !event.getWorld().isRemote) {
             EntityPlayerMP player = (EntityPlayerMP) event.getEntity();
             sendResearchData(player);
         }
@@ -101,28 +106,27 @@ public class ResearchManager {
 
     public static void sendResearchData(EntityPlayerMP player) {
         IResearchCapability research = getPlayerResearch(player);
-        if(research != null) {
+        if (research != null) {
             PacketHandler.INSTANCE.sendTo(new MessageResearchData(research.getCheckmarks()), player);
         }
     }
 
-    public static void receiveResearchData(Map<String,Boolean> checkmarks) {
-        for(ResearchBase research : getAllResearch()) {
+    public static void receiveResearchData(Map<String, Boolean> checkmarks) {
+        for (ResearchBase research : getAllResearch()) {
             Boolean checked = checkmarks.get(research.name);
-            if(checked != null)
+            if (checked != null)
                 research.check(checked);
         }
     }
 
     public static void sendCheckmark(ResearchBase research, boolean checked) {
-        PacketHandler.INSTANCE.sendToServer(new MessageResearchTick(research.name,checked));
+        PacketHandler.INSTANCE.sendToServer(new MessageResearchTick(research.name, checked));
     }
 
     @SubscribeEvent
-    public void attachCapability(AttachCapabilitiesEvent<Entity> event)
-    {
+    public void attachCapability(AttachCapabilitiesEvent<Entity> event) {
         if (event.getObject() instanceof EntityPlayer && !event.getCapabilities().containsKey(PLAYER_RESEARCH)) {
-            event.addCapability(PLAYER_RESEARCH,new ResearchCapabilityProvider(new DefaultResearchCapability()));
+            event.addCapability(PLAYER_RESEARCH, new ResearchCapabilityProvider(new DefaultResearchCapability()));
         }
     }
 
@@ -138,15 +142,14 @@ public class ResearchManager {
     }
 
     public static IResearchCapability getPlayerResearch(EntityPlayer player) {
-        if(player.hasCapability(ResearchCapabilityProvider.researchCapability,null)) {
+        if (player.hasCapability(ResearchCapabilityProvider.researchCapability, null)) {
             //Object o = player.getCapability(ResearchCapabilityProvider.researchCapability,null);
-            return player.getCapability(ResearchCapabilityProvider.researchCapability,null);
+            return player.getCapability(ResearchCapabilityProvider.researchCapability, null);
         }
         return null;
     }
 
-    public static List<ResearchBase> getAllResearch()
-    {
+    public static List<ResearchBase> getAllResearch() {
         Set<ResearchBase> result = new HashSet<>();
         for (ResearchCategory category : researches) {
             category.getAllResearch(result);
@@ -154,14 +157,13 @@ public class ResearchManager {
         return new ArrayList<>(result);
     }
 
-    public static Map<ResearchBase,Integer> findByTag(String match)
-    {
-        HashMap<ResearchBase,Integer> result = new HashMap<>();
+    public static Map<ResearchBase, Integer> findByTag(String match) {
+        HashMap<ResearchBase, Integer> result = new HashMap<>();
         HashSet<ResearchCategory> categories = new HashSet<>();
-        if(!match.isEmpty())
-        for (ResearchCategory category : researches) {
-            category.findByTag(match,result,categories);
-        }
+        if (!match.isEmpty())
+            for (ResearchCategory category : researches) {
+                category.findByTag(match, result, categories);
+            }
         return result;
     }
 
@@ -171,7 +173,7 @@ public class ResearchManager {
         categoryMetallurgy = new ResearchCategory("metallurgy", 48);
         categoryAlchemy = new ResearchCategory("alchemy", 64);
         categorySmithing = new ResearchCategory("smithing", 80);
-        Vec2i[] ringPositions = {new Vec2i(1, 1), new Vec2i(0, 3), new Vec2i(0, 5), new Vec2i(1, 7), new Vec2i(11, 7), new Vec2i(12, 5), new Vec2i(12, 3), new Vec2i(11, 1), new Vec2i(4, 1), new Vec2i(2, 4), new Vec2i(4, 7), new Vec2i(8, 7), new Vec2i(10, 4),new Vec2i(8, 1)};
+        Vec2i[] ringPositions = {new Vec2i(1, 1), new Vec2i(0, 3), new Vec2i(0, 5), new Vec2i(1, 7), new Vec2i(11, 7), new Vec2i(12, 5), new Vec2i(12, 3), new Vec2i(11, 1), new Vec2i(4, 1), new Vec2i(2, 4), new Vec2i(4, 7), new Vec2i(8, 7), new Vec2i(10, 4), new Vec2i(8, 1)};
         subCategoryWeaponAugments = new ResearchCategory("weapon_augments", 0).pushGoodLocations(ringPositions);
         subCategoryArmorAugments = new ResearchCategory("armor_augments", 0).pushGoodLocations(ringPositions);
         subCategoryProjectileAugments = new ResearchCategory("projectile_augments", 0).pushGoodLocations(ringPositions);
@@ -183,138 +185,138 @@ public class ResearchManager {
         subCategoryWildfire = new ResearchCategory("wildfire", 0);
 
         //WORLD
-        ores = new ResearchBase("ores", new ItemStack(RegistryManager.ore_copper), 0, 7);
-        hammer = new ResearchBase("hammer", new ItemStack(RegistryManager.tinker_hammer), 0, 3).addAncestor(ores);
-        ancient_golem = new ResearchBase("ancient_golem", ItemStack.EMPTY, 0, 0).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE *1, PAGE_ICON_SIZE *0);
-        gauge = new ResearchBase("gauge", new ItemStack(RegistryManager.ember_detector), 4, 3).addAncestor(ores);
-        caminite = new ResearchBase("caminite", new ItemStack(RegistryManager.brick_caminite), 6, 7);
-        bore = new ResearchBase("bore", new ItemStack(RegistryManager.ember_bore), 9, 0).addAncestor(hammer).addAncestor(caminite);
-        crystals = new ResearchBase("crystals", new ItemStack(RegistryManager.crystal_ember), 12, 3).addAncestor(bore);
-        activator = new ResearchBase("activator", new ItemStack(RegistryManager.ember_activator), 9, 5).addAncestor(crystals);
-        boiler = new ResearchBase("boiler", new ItemStack(RegistryManager.boiler), 9, 7).addAncestor(activator);
-        mini_boiler = new ResearchBase("mini_boiler", new ItemStack(RegistryManager.mini_boiler), 11, 7).addAncestor(activator);
-        dials = new ResearchBase("dials", new ItemStack(RegistryManager.ember_gauge), 5, 5).addAncestor(hammer);
-        tinker_lens = new ResearchBase("tinker_lens", new ItemStack(RegistryManager.tinker_lens),4,7).addAncestor(hammer);
-        reaction_chamber = new ResearchBase("reaction_chamber", new ItemStack(RegistryManager.reaction_chamber), 12, 5).addAncestor(mini_boiler);
+        ores = new ResearchBase("ores", new ItemStack(BlockRegister.ORE_COPPER), 0, 7);
+        hammer = new ResearchBase("hammer", new ItemStack(ItemRegister.TINKER_HAMMER), 0, 3).addAncestor(ores);
+        ancient_golem = new ResearchBase("ancient_golem", ItemStack.EMPTY, 0, 0).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE * 1, PAGE_ICON_SIZE * 0);
+        gauge = new ResearchBase("gauge", new ItemStack(ItemRegister.EMBER_DETECTOR), 4, 3).addAncestor(ores);
+        caminite = new ResearchBase("caminite", new ItemStack(ItemRegister.BRICK_CAMINITE), 6, 7);
+        bore = new ResearchBase("bore", new ItemStack(BlockRegister.EMBER_BORE), 9, 0).addAncestor(hammer).addAncestor(caminite);
+        crystals = new ResearchBase("crystals", new ItemStack(ItemRegister.CRYSTAL_EMBER), 12, 3).addAncestor(bore);
+        activator = new ResearchBase("activator", new ItemStack(BlockRegister.EMBER_ACTIVATOR), 9, 5).addAncestor(crystals);
+        boiler = new ResearchBase("boiler", new ItemStack(BlockRegister.BOILER), 9, 7).addAncestor(activator);
+        mini_boiler = new ResearchBase("mini_boiler", new ItemStack(BlockRegister.MINI_BOILER), 11, 7).addAncestor(activator);
+        dials = new ResearchBase("dials", new ItemStack(BlockRegister.EMBER_GAUGE), 5, 5).addAncestor(hammer);
+        tinker_lens = new ResearchBase("tinker_lens", new ItemStack(ItemRegister.TINKER_LENS), 4, 7).addAncestor(hammer);
+        reaction_chamber = new ResearchBase("reaction_chamber", new ItemStack(BlockRegister.REACTION_CHAMBER), 12, 5).addAncestor(mini_boiler);
 
-        pipes = new ResearchBase("pipes", new ItemStack(RegistryManager.pump), 2, 4);
-        pipes.addPage(new ResearchShowItem("routing",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.item_pipe),new ItemStack(RegistryManager.pipe))));
-        pipes.addPage(new ResearchShowItem("valves",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.item_pump),new ItemStack(RegistryManager.pump))));
-        pipes.addPage(new ResearchShowItem("pipe_tools",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.tinker_hammer),new ItemStack(Items.STICK))));
-        golem_eye = new ResearchBase("golem_eye", new ItemStack(RegistryManager.golems_eye), 5, 7)
-                .addPage(new ResearchShowItem("filter_existing", new ItemStack(RegistryManager.item_request), 0, 0).addItem(new DisplayItem(new ItemStack(RegistryManager.item_request))))
-                .addPage(new ResearchShowItem("filter_not_existing", new ItemStack(RegistryManager.dawnstone_anvil), 0, 0).addItem(new DisplayItem(new ItemStack(RegistryManager.dawnstone_anvil))));
-        transfer = new ResearchBase("transfer", new ItemStack(RegistryManager.item_transfer), 5, 5).addAncestor(pipes).addAncestor(golem_eye);
-        transfer.addPage(new ResearchShowItem("fluid_transfer",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.fluid_transfer))));
-        vacuum = new ResearchBase("vacuum", new ItemStack(RegistryManager.vacuum), 8, 4).addPage(new ResearchBase("vacuum_transfer",ItemStack.EMPTY,0,0)).addAncestor(pipes);
-        dropper = new ResearchBase("dropper", new ItemStack(RegistryManager.item_dropper), 8, 6).addAncestor(pipes);
-        bin = new ResearchBase("bin", new ItemStack(RegistryManager.bin), 4, 3).addAncestor(pipes);
-        tank = new ResearchBase("tank", new ItemStack(RegistryManager.block_tank), 3, 1).addAncestor(pipes);
-        reservoir = new ResearchBase("reservoir", new ItemStack(RegistryManager.large_tank), 6, 0).addAncestor(tank)
-                .addPage(new ResearchShowItem("reservoir_valve", new ItemStack(RegistryManager.stone_valve), 0, 0).addItem(new DisplayItem(new ItemStack(RegistryManager.stone_valve))));
-        requisition = new ResearchBase("requisition", new ItemStack(RegistryManager.item_request), 3, 6).addAncestor(pipes).addAncestor(golem_eye);
+        pipes = new ResearchBase("pipes", new ItemStack(BlockRegister.PUMP), 2, 4);
+        pipes.addPage(new ResearchShowItem("routing", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.ITEM_PIPE), new ItemStack(BlockRegister.PIPE))));
+        pipes.addPage(new ResearchShowItem("valves", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.ITEM_PUMP), new ItemStack(BlockRegister.PUMP))));
+        pipes.addPage(new ResearchShowItem("pipe_tools", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(ItemRegister.TINKER_HAMMER), new ItemStack(Items.STICK))));
+        golem_eye = new ResearchBase("golem_eye", new ItemStack(ItemRegister.GOLEMS_EYE), 5, 7)
+                .addPage(new ResearchShowItem("filter_existing", new ItemStack(BlockRegister.ITEM_REQUEST), 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.ITEM_REQUEST))))
+                .addPage(new ResearchShowItem("filter_not_existing", new ItemStack(BlockRegister.DAWNSTONE_ANVIL), 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.DAWNSTONE_ANVIL))));
+        transfer = new ResearchBase("transfer", new ItemStack(BlockRegister.ITEM_TRANSFER), 5, 5).addAncestor(pipes).addAncestor(golem_eye);
+        transfer.addPage(new ResearchShowItem("fluid_transfer", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.FLUID_TRANSFER))));
+        vacuum = new ResearchBase("vacuum", new ItemStack(BlockRegister.VACUUM), 8, 4).addPage(new ResearchBase("vacuum_transfer", ItemStack.EMPTY, 0, 0)).addAncestor(pipes);
+        dropper = new ResearchBase("dropper", new ItemStack(BlockRegister.ITEM_DROPPER), 8, 6).addAncestor(pipes);
+        bin = new ResearchBase("bin", new ItemStack(BlockRegister.BIN), 4, 3).addAncestor(pipes);
+        tank = new ResearchBase("tank", new ItemStack(BlockRegister.BLOCK_TANK), 3, 1).addAncestor(pipes);
+        reservoir = new ResearchBase("reservoir", new ItemStack(BlockRegister.LARGE_TANK), 6, 0).addAncestor(tank)
+                .addPage(new ResearchShowItem("reservoir_valve", new ItemStack(BlockRegister.STONE_VALVE), 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.STONE_VALVE))));
+        requisition = new ResearchBase("requisition", new ItemStack(BlockRegister.ITEM_REQUEST), 3, 6).addAncestor(pipes).addAncestor(golem_eye);
 
         //MECHANISMS
-        emitters = new ResearchShowItem("emitters", new ItemStack(RegistryManager.ember_emitter), 0, 2).addItem(new DisplayItem(new ItemStack(RegistryManager.ember_emitter)))
-                .addPage(new ResearchShowItem("receivers", new ItemStack(RegistryManager.ember_receiver), 0, 0).addItem(new DisplayItem(new ItemStack(RegistryManager.ember_receiver))))
-                .addPage(new ResearchShowItem("linking", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(RegistryManager.ember_receiver),new ItemStack(RegistryManager.tinker_hammer),new ItemStack(RegistryManager.ember_emitter))));
-        melter = new ResearchBase("melter", new ItemStack(RegistryManager.block_furnace), 2, 0).addAncestor(emitters);
-        geo_separator = new ResearchBase("geo_separator", new ItemStack(RegistryManager.geo_separator), 0, 0).addAncestor(melter);
-        stamper = new ResearchBase("stamper", new ItemStack(RegistryManager.stamper), 2, 4).addAncestor(melter).addAncestor(emitters);
-        access = new ResearchBase("access", new ItemStack(RegistryManager.mech_core), 7, 5).addAncestor(stamper);
-        hearth_coil = new ResearchBase("hearth_coil", new ItemStack(RegistryManager.heat_coil), 10, 1).addAncestor(access);
-        mixer = new ResearchBase("mixer", new ItemStack(RegistryManager.mixer), 5, 2).addAncestor(stamper).addAncestor(melter);
-        pump = new ResearchBase("pump", new ItemStack(RegistryManager.mechanical_pump), 8, 0).addAncestor(mixer);
-        breaker = new ResearchBase("breaker", new ItemStack(RegistryManager.breaker), 4, 7).addAncestor(stamper);
-        dawnstone = new ResearchBase("dawnstone", new ItemStack(RegistryManager.ingot_dawnstone), 11, 4).addAncestor(mixer);
-        copper_cell = new ResearchBase("copper_cell", new ItemStack(RegistryManager.copper_cell), 0, 5).addAncestor(emitters);
-        clockwork_attenuator = new ResearchBase("clockwork_attenuator", new ItemStack(RegistryManager.clockwork_attenuator), 12, 7);
+        emitters = new ResearchShowItem("emitters", new ItemStack(BlockRegister.EMBER_EMITTER), 0, 2).addItem(new DisplayItem(new ItemStack(BlockRegister.EMBER_EMITTER)))
+                .addPage(new ResearchShowItem("receivers", new ItemStack(BlockRegister.EMBER_RECEIVER), 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.EMBER_RECEIVER))))
+                .addPage(new ResearchShowItem("linking", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.EMBER_RECEIVER), new ItemStack(ItemRegister.TINKER_HAMMER), new ItemStack(BlockRegister.EMBER_EMITTER))));
+        melter = new ResearchBase("melter", new ItemStack(BlockRegister.BLOCK_FURNACE), 2, 0).addAncestor(emitters);
+        geo_separator = new ResearchBase("geo_separator", new ItemStack(BlockRegister.GEO_SEPARATOR), 0, 0).addAncestor(melter);
+        stamper = new ResearchBase("stamper", new ItemStack(BlockRegister.STAMPER), 2, 4).addAncestor(melter).addAncestor(emitters);
+        access = new ResearchBase("access", new ItemStack(BlockRegister.MECH_CORE), 7, 5).addAncestor(stamper);
+        hearth_coil = new ResearchBase("hearth_coil", new ItemStack(BlockRegister.HEAT_COIL), 10, 1).addAncestor(access);
+        mixer = new ResearchBase("mixer", new ItemStack(BlockRegister.MIXER), 5, 2).addAncestor(stamper).addAncestor(melter);
+        pump = new ResearchBase("pump", new ItemStack(BlockRegister.MECHANICAL_PUMP), 8, 0).addAncestor(mixer);
+        breaker = new ResearchBase("breaker", new ItemStack(BlockRegister.BREAKER), 4, 7).addAncestor(stamper);
+        dawnstone = new ResearchBase("dawnstone", new ItemStack(ItemRegister.INGOT_DAWNSTONE), 11, 4).addAncestor(mixer);
+        copper_cell = new ResearchBase("copper_cell", new ItemStack(BlockRegister.COPPER_CELL), 0, 5).addAncestor(emitters);
+        clockwork_attenuator = new ResearchBase("clockwork_attenuator", new ItemStack(BlockRegister.CLOCKWORK_ATTENUATOR), 12, 7);
 
         //METALLURGY
-        crystal_cell = new ResearchBase("crystal_cell", new ItemStack(RegistryManager.crystal_cell), 0, 1);
-        pulser = new ResearchShowItem("pulser", new ItemStack(RegistryManager.ember_pulser), 0, 3.5).addItem(new DisplayItem(new ItemStack(RegistryManager.ember_pulser))).addAncestor(crystal_cell)
-                .addPage(new ResearchShowItem("ember_funnel",new ItemStack(RegistryManager.ember_funnel),0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.ember_funnel))));
-        charger = new ResearchBase("charger", new ItemStack(RegistryManager.charger), 4, 0);
-        ember_siphon = new ResearchBase("ember_siphon", new ItemStack(RegistryManager.ember_siphon), 2, 0).addAncestor(ResearchManager.charger);
-        ItemStack fullJar = ((ItemEmberStorage)RegistryManager.ember_jar).withFill(((ItemEmberStorage)RegistryManager.ember_jar).getCapacity());
+        crystal_cell = new ResearchBase("crystal_cell", new ItemStack(BlockRegister.CRYSTAL_CELL), 0, 1);
+        pulser = new ResearchShowItem("pulser", new ItemStack(BlockRegister.EMBER_PULSER), 0, 3.5).addItem(new DisplayItem(new ItemStack(BlockRegister.EMBER_PULSER))).addAncestor(crystal_cell)
+                .addPage(new ResearchShowItem("ember_funnel", new ItemStack(BlockRegister.EMBER_FUNNEL), 0, 0).addItem(new DisplayItem(new ItemStack(BlockRegister.EMBER_FUNNEL))));
+        charger = new ResearchBase("charger", new ItemStack(BlockRegister.CHARGER), 4, 0);
+        ember_siphon = new ResearchBase("ember_siphon", new ItemStack(BlockRegister.EMBER_SIPHON), 2, 0).addAncestor(ResearchManager.charger);
+        ItemStack fullJar = ((ItemEmberStorage) ItemRegister.EMBER_JAR).withFill(((ItemEmberStorage) ItemRegister.EMBER_JAR).getCapacity());
         jars = new ResearchBase("jars", fullJar, 7, 1).addAncestor(charger);
-        clockwork_tools = new ResearchBase("clockwork_tools", new ItemStack(RegistryManager.axe_clockwork), 2, 2).addAncestor(jars)
-                .addPage(new ResearchShowItem("clockwork_pickaxe",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.pickaxe_clockwork))))
-                .addPage(new ResearchShowItem("clockwork_hammer",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.grandhammer))))
-                .addPage(new ResearchShowItem("clockwork_axe",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(RegistryManager.axe_clockwork))));
+        clockwork_tools = new ResearchBase("clockwork_tools", new ItemStack(ItemRegister.AXE_CLOCKWORK), 2, 2).addAncestor(jars)
+                .addPage(new ResearchShowItem("clockwork_pickaxe", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(ItemRegister.PICKAXE_CLOCKWORK))))
+                .addPage(new ResearchShowItem("clockwork_hammer", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(ItemRegister.GRANDHAMMER))))
+                .addPage(new ResearchShowItem("clockwork_axe", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(ItemRegister.AXE_CLOCKWORK))));
         //pulser = new ResearchBase("pulser", new ItemStack(RegistryManager.ember_pulser), 2, 5);
-        splitter = new ResearchBase("splitter", new ItemStack(RegistryManager.beam_splitter), 0, 6).addAncestor(pulser);
-        cinder_staff = new ResearchBase("cinder_staff", new ItemStack(RegistryManager.staff_ember), 4, 4).addAncestor(jars);
-        blazing_ray = new ResearchBase("blazing_ray", new ItemStack(RegistryManager.ignition_cannon), 6, 5).addAncestor(jars);
-        aspecti = new ResearchBase("aspecti", new ItemStack(RegistryManager.aspectus_dawnstone), 12, 1);
-        cinder_plinth = new ResearchBase("cinder_plinth", new ItemStack(RegistryManager.cinder_plinth), 9, 0);
-        beam_cannon = new ResearchBase("beam_cannon", new ItemStack(RegistryManager.beam_cannon), 9, 7);
-        alchemy = new ResearchBase("alchemy", new ItemStack(RegistryManager.alchemy_tablet), 9, 4).addAncestor(cinder_plinth).addAncestor(aspecti).addAncestor(beam_cannon);
-        catalytic_plug = new ResearchBase("catalytic_plug", new ItemStack(RegistryManager.catalytic_plug), 12, 5).addAncestor(ResearchManager.alchemy);
+        splitter = new ResearchBase("splitter", new ItemStack(BlockRegister.BEAM_SPLITTER), 0, 6).addAncestor(pulser);
+        cinder_staff = new ResearchBase("cinder_staff", new ItemStack(ItemRegister.STAFF_EMBER), 4, 4).addAncestor(jars);
+        blazing_ray = new ResearchBase("blazing_ray", new ItemStack(ItemRegister.IGNITION_CANNON), 6, 5).addAncestor(jars);
+        aspecti = new ResearchBase("aspecti", new ItemStack(ItemRegister.ASPECTUS_DAWNSTONE), 12, 1);
+        cinder_plinth = new ResearchBase("cinder_plinth", new ItemStack(BlockRegister.CINDER_PLINTH), 9, 0);
+        beam_cannon = new ResearchBase("beam_cannon", new ItemStack(BlockRegister.BEAM_CANNON), 9, 7);
+        alchemy = new ResearchBase("alchemy", new ItemStack(BlockRegister.ALCHEMY_TABLET), 9, 4).addAncestor(cinder_plinth).addAncestor(aspecti).addAncestor(beam_cannon);
+        catalytic_plug = new ResearchBase("catalytic_plug", new ItemStack(BlockRegister.CATALYTIC_PLUG), 12, 5).addAncestor(ResearchManager.alchemy);
 
         //TRANSMUTATION
-        waste = new ResearchBase("waste", new ItemStack(RegistryManager.alchemic_waste), 6, 2);
-        materia = new ResearchBase("materia", new ItemStack(RegistryManager.isolated_materia), 6, 5).addAncestor(waste);
-        cluster = new ResearchBase("cluster", new ItemStack(RegistryManager.ember_cluster), 3, 4).addAncestor(waste);
-        ashen_cloak = new ResearchShowItem("ashen_cloak", new ItemStack(RegistryManager.ashen_cloak_chest), 9, 4).addItem(new DisplayItem(new ItemStack(RegistryManager.ashen_cloak_head),new ItemStack(RegistryManager.ashen_cloak_chest),new ItemStack(RegistryManager.ashen_cloak_legs),new ItemStack(RegistryManager.ashen_cloak_boots))).addAncestor(waste);
-        field_chart = new ResearchBase("field_chart", new ItemStack(RegistryManager.field_chart), 0, 5).addAncestor(cluster);
-        inflictor = new ResearchBase("inflictor", new ItemStack(RegistryManager.inflictor_gem), 11, 7).addAncestor(ashen_cloak);
-        tyrfing = new ResearchBase("tyrfing", new ItemStack(RegistryManager.tyrfing), 8, 6).addAncestor(waste);
-        glimmer = new ResearchBase("glimmer", new ItemStack(RegistryManager.glimmer_shard), 9, 0).addAncestor(waste);
-        metallurgic_dust = new ResearchBase("metallurgic_dust", new ItemStack(RegistryManager.dust_metallurgic), 0, 2).addAncestor(waste);
+        waste = new ResearchBase("waste", new ItemStack(ItemRegister.ALCHEMIC_WASTE), 6, 2);
+        materia = new ResearchBase("materia", new ItemStack(ItemRegister.ISOLATED_MATERIA), 6, 5).addAncestor(waste);
+        cluster = new ResearchBase("cluster", new ItemStack(ItemRegister.EMBER_CLUSTER), 3, 4).addAncestor(waste);
+        ashen_cloak = new ResearchShowItem("ashen_cloak", new ItemStack(ItemRegister.ASHEN_CLOAK_CHEST), 9, 4).addItem(new DisplayItem(new ItemStack(ItemRegister.ASHEN_CLOAK_HEAD), new ItemStack(ItemRegister.ASHEN_CLOAK_CHEST), new ItemStack(ItemRegister.ASHEN_CLOAK_LEGS), new ItemStack(ItemRegister.ASHEN_CLOAK_BOOTS))).addAncestor(waste);
+        field_chart = new ResearchBase("field_chart", new ItemStack(BlockRegister.FIELD_CHART), 0, 5).addAncestor(cluster);
+        inflictor = new ResearchBase("inflictor", new ItemStack(ItemRegister.INFLICTOR_GEM), 11, 7).addAncestor(ashen_cloak);
+        tyrfing = new ResearchBase("tyrfing", new ItemStack(ItemRegister.TYRFING), 8, 6).addAncestor(waste);
+        glimmer = new ResearchBase("glimmer", new ItemStack(ItemRegister.GLIMMER_SHARD), 9, 0).addAncestor(waste);
+        metallurgic_dust = new ResearchBase("metallurgic_dust", new ItemStack(ItemRegister.DUST_METALLURGIC), 0, 2).addAncestor(waste);
 
-        adhesive = new ResearchBase("adhesive", new ItemStack(RegistryManager.adhesive), 10, 1);
+        adhesive = new ResearchBase("adhesive", new ItemStack(ItemRegister.ADHESIVE), 10, 1);
         hellish_synthesis = new ResearchBase("hellish_synthesis", new ItemStack(Blocks.NETHERRACK), 2, 1);
-        archaic_brick = new ResearchBase("archaic_brick", new ItemStack(RegistryManager.archaic_brick), 5, 2).addAncestor(hellish_synthesis);
-        motive_core = new ResearchBase("motive_core", new ItemStack(RegistryManager.ancient_motive_core), 4, 4).addAncestor(archaic_brick);
-        dwarven_oil = new ResearchBase("dwarven_oil", FluidUtil.getFilledBucket(new FluidStack(RegistryManager.fluid_oil, Fluid.BUCKET_VOLUME)), 1, 4).addAncestor(hellish_synthesis);
+        archaic_brick = new ResearchBase("archaic_brick", new ItemStack(ItemRegister.ARCHAIC_BRICK), 5, 2).addAncestor(hellish_synthesis);
+        motive_core = new ResearchBase("motive_core", new ItemStack(ItemRegister.ANCIENT_MOTIVE_CORE), 4, 4).addAncestor(archaic_brick);
+        dwarven_oil = new ResearchBase("dwarven_oil", FluidUtil.getFilledBucket(new FluidStack(FluidRegister.FLUID_OIL, Fluid.BUCKET_VOLUME)), 1, 4).addAncestor(hellish_synthesis);
 
-        wildfire = new ResearchBase("wildfire", new ItemStack(RegistryManager.wildfire_core), 1, 5);
-        injector = new ResearchBase("injector", new ItemStack(RegistryManager.ember_injector), 0, 7).addAncestor(wildfire)
-                .addPage(new ResearchShowItem("crystal_level",ItemStack.EMPTY,0,0)
-                        .addItem(new DisplayItem(new ItemStack(RegistryManager.seed_iron), new ItemStack(RegistryManager.seed_gold), new ItemStack(RegistryManager.seed_copper), new ItemStack(RegistryManager.seed_tin)))
-                        .addItem(new DisplayItem(new ItemStack(RegistryManager.seed_silver), new ItemStack(RegistryManager.seed_lead), new ItemStack(RegistryManager.seed_nickel), new ItemStack(RegistryManager.seed_aluminum))));
-        combustor = new ResearchBase("combustor", new ItemStack(RegistryManager.combustor), 6, 5).addAncestor(wildfire);
+        wildfire = new ResearchBase("wildfire", new ItemStack(ItemRegister.WILDFIRE_CORE), 1, 5);
+        injector = new ResearchBase("injector", new ItemStack(BlockRegister.EMBER_INJECTOR), 0, 7).addAncestor(wildfire)
+                .addPage(new ResearchShowItem("crystal_level", ItemStack.EMPTY, 0, 0)
+                        .addItem(new DisplayItem(new ItemStack(BlockRegister.SEED_IRON), new ItemStack(BlockRegister.SEED_GOLD), new ItemStack(BlockRegister.SEED_COPPER), new ItemStack(BlockRegister.SEED_TIN)))
+                        .addItem(new DisplayItem(new ItemStack(BlockRegister.SEED_SILVER), new ItemStack(BlockRegister.SEED_LEAD), new ItemStack(BlockRegister.SEED_NICKEL), new ItemStack(BlockRegister.SEED_ALUMINUM))));
+        combustor = new ResearchBase("combustor", new ItemStack(BlockRegister.COMBUSTOR), 6, 5).addAncestor(wildfire);
         combustor.addPage(new ResearchShowItem("empty", ItemStack.EMPTY, 0, 0)
-                .addItem(new DisplayItem("combustor_coal",new ItemStack(Items.COAL)))
-                .addItem(new DisplayItem("combustor_nether_brick",new ItemStack(Items.NETHERBRICK)))
-                .addItem(new DisplayItem("combustor_blaze_powder",new ItemStack(Items.BLAZE_POWDER)))
+                .addItem(new DisplayItem("combustor_coal", new ItemStack(Items.COAL)))
+                .addItem(new DisplayItem("combustor_nether_brick", new ItemStack(Items.NETHERBRICK)))
+                .addItem(new DisplayItem("combustor_blaze_powder", new ItemStack(Items.BLAZE_POWDER)))
         );
-        catalyzer = new ResearchBase("catalyzer", new ItemStack(RegistryManager.catalyzer), 5, 7).addAncestor(wildfire);
+        catalyzer = new ResearchBase("catalyzer", new ItemStack(BlockRegister.CATALYZER), 5, 7).addAncestor(wildfire);
         catalyzer.addPage(new ResearchShowItem("empty", ItemStack.EMPTY, 0, 0)
-                .addItem(new DisplayItem("catalyzer_redstone",new ItemStack(Items.REDSTONE)))
-                .addItem(new DisplayItem("catalyzer_gunpowder",new ItemStack(Items.GUNPOWDER)))
-                .addItem(new DisplayItem("catalyzer_glowstone",new ItemStack(Items.GLOWSTONE_DUST)))
+                .addItem(new DisplayItem("catalyzer_redstone", new ItemStack(Items.REDSTONE)))
+                .addItem(new DisplayItem("catalyzer_gunpowder", new ItemStack(Items.GUNPOWDER)))
+                .addItem(new DisplayItem("catalyzer_glowstone", new ItemStack(Items.GLOWSTONE_DUST)))
         );
-        reactor = new ResearchBase("reactor", new ItemStack(RegistryManager.reactor), 9, 7).addAncestor(combustor).addAncestor(catalyzer);
-        stirling = new ResearchBase("stirling", new ItemStack(RegistryManager.stirling), 0, 2).addAncestor(ResearchManager.wildfire);
-        ember_pipe = new ResearchBase("ember_pipe", new ItemStack(RegistryManager.ember_pipe), 12, 6).addAncestor(ResearchManager.reactor);
+        reactor = new ResearchBase("reactor", new ItemStack(BlockRegister.REACTOR), 9, 7).addAncestor(combustor).addAncestor(catalyzer);
+        stirling = new ResearchBase("stirling", new ItemStack(BlockRegister.STIRLING), 0, 2).addAncestor(ResearchManager.wildfire);
+        ember_pipe = new ResearchBase("ember_pipe", new ItemStack(BlockRegister.EMBER_PIPE), 12, 6).addAncestor(ResearchManager.reactor);
 
         //SMITHING
-        dawnstone_anvil = new ResearchBase("dawnstone_anvil", new ItemStack(RegistryManager.dawnstone_anvil), 12, 7);
-        autohammer = new ResearchBase("autohammer", new ItemStack(RegistryManager.auto_hammer), 9, 5).addAncestor(dawnstone_anvil);
-        heat = new ResearchBase("heat", new ItemStack(RegistryManager.crystal_ember), 7, 7).addAncestor(dawnstone_anvil);
-        modifiers = new ResearchBase("modifiers", new ItemStack(RegistryManager.ancient_motive_core), 5, 7).addAncestor(heat);
+        dawnstone_anvil = new ResearchBase("dawnstone_anvil", new ItemStack(BlockRegister.DAWNSTONE_ANVIL), 12, 7);
+        autohammer = new ResearchBase("autohammer", new ItemStack(BlockRegister.AUTO_HAMMER), 9, 5).addAncestor(dawnstone_anvil);
+        heat = new ResearchBase("heat", new ItemStack(ItemRegister.CRYSTAL_EMBER), 7, 7).addAncestor(dawnstone_anvil);
+        modifiers = new ResearchBase("modifiers", new ItemStack(ItemRegister.ANCIENT_MOTIVE_CORE), 5, 7).addAncestor(heat);
         dismantling = new ResearchBase("dismantling", ItemStack.EMPTY, 3, 5).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE * 2, PAGE_ICON_SIZE * 0).addAncestor(modifiers);
-        inferno_forge = new ResearchBase("inferno_forge", new ItemStack(RegistryManager.inferno_forge), 6, 4).addAncestor(heat);
+        inferno_forge = new ResearchBase("inferno_forge", new ItemStack(BlockRegister.INFERNO_FORGE), 6, 4).addAncestor(heat);
 
-        superheater = new ResearchBase("superheater", new ItemStack(RegistryManager.superheater), subCategoryWeaponAugments.popGoodLocation());
-        blasting_core = new ResearchBase("blasting_core", new ItemStack(RegistryManager.blasting_core), subCategoryWeaponAugments.popGoodLocation());
-        caster_orb = new ResearchBase("caster_orb", new ItemStack(RegistryManager.caster_orb), subCategoryWeaponAugments.popGoodLocation()).addPage(new ResearchBase("caster_orb_addendum",ItemStack.EMPTY,0,0));
-        resonating_bell = new ResearchBase("resonating_bell", new ItemStack(RegistryManager.resonating_bell), subCategoryWeaponAugments.popGoodLocation());
+        superheater = new ResearchBase("superheater", new ItemStack(ItemRegister.SUPERHEATER), subCategoryWeaponAugments.popGoodLocation());
+        blasting_core = new ResearchBase("blasting_core", new ItemStack(ItemRegister.BLASTING_CORE), subCategoryWeaponAugments.popGoodLocation());
+        caster_orb = new ResearchBase("caster_orb", new ItemStack(ItemRegister.CASTER_ORB), subCategoryWeaponAugments.popGoodLocation()).addPage(new ResearchBase("caster_orb_addendum", ItemStack.EMPTY, 0, 0));
+        resonating_bell = new ResearchBase("resonating_bell", new ItemStack(ItemRegister.RESONATING_BELL), subCategoryWeaponAugments.popGoodLocation());
         //core_stone = new ResearchBase("core_stone", new ItemStack(RegistryManager.core_stone), subCategoryWeaponAugments.popGoodLocation());
-        winding_gears = new ResearchBase("winding_gears", new ItemStack(RegistryManager.winding_gears), subCategoryWeaponAugments.popGoodLocation()).addPage(new ResearchShowItem("winding_gears_boots",ItemStack.EMPTY,0,0).addItem(new DisplayItem(new ItemStack(Items.IRON_BOOTS))));
+        winding_gears = new ResearchBase("winding_gears", new ItemStack(ItemRegister.WINDING_GEARS), subCategoryWeaponAugments.popGoodLocation()).addPage(new ResearchShowItem("winding_gears_boots", ItemStack.EMPTY, 0, 0).addItem(new DisplayItem(new ItemStack(Items.IRON_BOOTS))));
 
-        eldritch_insignia = new ResearchBase("eldritch_insignia", new ItemStack(RegistryManager.eldritch_insignia), subCategoryArmorAugments.popGoodLocation());
-        intelligent_apparatus = new ResearchBase("intelligent_apparatus", new ItemStack(RegistryManager.intelligent_apparatus), subCategoryArmorAugments.popGoodLocation());
-        flame_barrier = new ResearchBase("flame_barrier", new ItemStack(RegistryManager.flame_barrier), subCategoryArmorAugments.popGoodLocation());
-        cinder_jet = new ResearchBase("cinder_jet", new ItemStack(RegistryManager.jet_augment), subCategoryArmorAugments.popGoodLocation());
-        tinker_lens_augment = new ResearchBase("tinker_lens_augment", new ItemStack(RegistryManager.tinker_lens), subCategoryArmorAugments.popGoodLocation());
-        anti_tinker_lens = new ResearchBase("anti_tinker_lens", new ItemStack(RegistryManager.anti_tinker_lens), subCategoryArmorAugments.popGoodLocation()).addAncestor(tinker_lens_augment);
-        shifting_scales = new ResearchBase("shifting_scales", new ItemStack(RegistryManager.shifting_scales), subCategoryArmorAugments.popGoodLocation());
+        eldritch_insignia = new ResearchBase("eldritch_insignia", new ItemStack(ItemRegister.ELDRITCH_INSIGNIA), subCategoryArmorAugments.popGoodLocation());
+        intelligent_apparatus = new ResearchBase("intelligent_apparatus", new ItemStack(ItemRegister.INTELLIGENT_APPARATUS), subCategoryArmorAugments.popGoodLocation());
+        flame_barrier = new ResearchBase("flame_barrier", new ItemStack(ItemRegister.FLAME_BARRIER), subCategoryArmorAugments.popGoodLocation());
+        cinder_jet = new ResearchBase("cinder_jet", new ItemStack(ItemRegister.JET_AUGMENT), subCategoryArmorAugments.popGoodLocation());
+        tinker_lens_augment = new ResearchBase("tinker_lens_augment", new ItemStack(ItemRegister.TINKER_LENS), subCategoryArmorAugments.popGoodLocation());
+        anti_tinker_lens = new ResearchBase("anti_tinker_lens", new ItemStack(ItemRegister.ANTI_TINKER_LENS), subCategoryArmorAugments.popGoodLocation()).addAncestor(tinker_lens_augment);
+        shifting_scales = new ResearchBase("shifting_scales", new ItemStack(ItemRegister.SHIFTING_SCALES), subCategoryArmorAugments.popGoodLocation());
 
-        diffraction_barrel = new ResearchBase("diffraction_barrel", new ItemStack(RegistryManager.diffraction_barrel), subCategoryProjectileAugments.popGoodLocation());
-        focal_lens = new ResearchBase("focal_lens", new ItemStack(RegistryManager.focal_lens), subCategoryProjectileAugments.popGoodLocation());
+        diffraction_barrel = new ResearchBase("diffraction_barrel", new ItemStack(ItemRegister.DIFFRACTION_BARREL), subCategoryProjectileAugments.popGoodLocation());
+        focal_lens = new ResearchBase("focal_lens", new ItemStack(ItemRegister.FOCAL_LENS), subCategoryProjectileAugments.popGoodLocation());
 
         tinker_lens.addPage(tinker_lens_augment);
 
@@ -333,11 +335,11 @@ public class ResearchManager {
         subCategoryArmorAugments.addResearch(eldritch_insignia.addAncestor(infernoForgeArmor));
         subCategoryArmorAugments.addResearch(intelligent_apparatus.addAncestor(infernoForgeArmor));
         subCategoryArmorAugments.addResearch(flame_barrier.addAncestor(infernoForgeArmor));
-        subCategoryArmorAugments.addResearch(new ResearchFakePage(blasting_core,subCategoryArmorAugments.popGoodLocation()).addAncestor(infernoForgeArmor));
+        subCategoryArmorAugments.addResearch(new ResearchFakePage(blasting_core, subCategoryArmorAugments.popGoodLocation()).addAncestor(infernoForgeArmor));
         subCategoryArmorAugments.addResearch(tinker_lens_augment.addAncestor(infernoForgeArmor));
         subCategoryArmorAugments.addResearch(anti_tinker_lens.addAncestor(infernoForgeArmor));
         subCategoryArmorAugments.addResearch(shifting_scales.addAncestor(infernoForgeArmor));
-        subCategoryArmorAugments.addResearch(new ResearchFakePage(winding_gears,subCategoryArmorAugments.popGoodLocation()).addAncestor(infernoForgeArmor));
+        subCategoryArmorAugments.addResearch(new ResearchFakePage(winding_gears, subCategoryArmorAugments.popGoodLocation()).addAncestor(infernoForgeArmor));
         //subCategoryArmorAugments.addResearch(new ResearchFakePage(core_stone,subCategoryArmorAugments.popGoodLocation()).addAncestor(infernoForgeArmor));
 
         ResearchBase infernoForgeProjectile = new ResearchFakePage(inferno_forge, 6, 4);
@@ -374,32 +376,30 @@ public class ResearchManager {
 
 
         ResearchBase mechanicalPowerSwitch;
-        if (ConfigManager.isMysticalMechanicsIntegrationEnabled()) {
+        if (Util.isMysticalMechanicsIntegrationEnabled()) {
             mechanicalPowerSwitch = makeCategorySwitch(subCategoryMechanicalPower, 8, 7, ItemStack.EMPTY, 4, 1);
 
             MysticalMechanicsIntegration.initMysticalMechanicsCategory();
-        }
-        else
+        } else
             mechanicalPowerSwitch = new ResearchBase("mystical_mechanics", ItemStack.EMPTY, 8, 7).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE * 0, PAGE_ICON_SIZE * 2);
         mechanicalPowerSwitch.addAncestor(access);
 
         ResearchBase baublesSwitch;
-        if (ConfigManager.isBaublesIntegrationEnabled()) {
+        if (Util.isBaublesIntegrationEnabled()) {
             baublesSwitch = makeCategorySwitch(subCategoryBaubles, 5, 7, ItemStack.EMPTY, 5, 1);
 
             BaublesIntegration.initBaublesCategory();
-        }
-        else
+        } else
             baublesSwitch = new ResearchBase("baubles", ItemStack.EMPTY, 5, 7).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE * 1, PAGE_ICON_SIZE * 2);
         baublesSwitch.addAncestor(cluster);
 
 
-        ResearchBase pipeSwitch = makeCategorySwitch(subCategoryPipes, 3, 0, new ItemStack(RegistryManager.pipe), 0, 1).addAncestor(hammer);
+        ResearchBase pipeSwitch = makeCategorySwitch(subCategoryPipes, 3, 0, new ItemStack(BlockRegister.PIPE), 0, 1).addAncestor(hammer);
         ResearchBase weaponAugmentSwitch = makeCategorySwitch(subCategoryWeaponAugments, 2, 1, ItemStack.EMPTY, 1, 1).setMinEntries(2).addAncestor(inferno_forge);
         ResearchBase armorAugmentSwitch = makeCategorySwitch(subCategoryArmorAugments, 1, 3, ItemStack.EMPTY, 2, 1).setMinEntries(2).addAncestor(inferno_forge);
         ResearchBase projectileAugmentSwitch = makeCategorySwitch(subCategoryProjectileAugments, 11, 3, ItemStack.EMPTY, 3, 1).setMinEntries(2).addAncestor(inferno_forge);
         ResearchBase miscAugmentSwitch = makeCategorySwitch(subCategoryMiscAugments, 10, 1, ItemStack.EMPTY, 0, 1).setMinEntries(2).addAncestor(inferno_forge);
-        ResearchBase wildfireSwitch = makeCategorySwitch(subCategoryWildfire, 1, 7, new ItemStack(RegistryManager.wildfire_core), 0, 1).addAncestor(cluster);
+        ResearchBase wildfireSwitch = makeCategorySwitch(subCategoryWildfire, 1, 7, new ItemStack(ItemRegister.WILDFIRE_CORE), 0, 1).addAncestor(cluster);
         ResearchBase simpleAlchemySwitch = makeCategorySwitch(subCategorySimpleAlchemy, 12, 1, new ItemStack(Blocks.SOUL_SAND), 0, 1).addAncestor(waste);
 
         categoryWorld
@@ -486,6 +486,6 @@ public class ResearchManager {
     }
 
     private static ResearchSwitchCategory makeCategorySwitch(ResearchCategory targetCategory, int x, int y, ItemStack icon, int u, int v) {
-        return (ResearchSwitchCategory) new ResearchSwitchCategory(targetCategory.name+"_category", icon, x, y).setTargetCategory(targetCategory).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE * u, PAGE_ICON_SIZE * v);
+        return (ResearchSwitchCategory) new ResearchSwitchCategory(targetCategory.name + "_category", icon, x, y).setTargetCategory(targetCategory).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE * u, PAGE_ICON_SIZE * v);
     }
 }

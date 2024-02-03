@@ -14,10 +14,10 @@ import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.fluids.FluidTank;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.TileFluidHandler;
-import teamroots.embers.EventManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.util.Misc;
 
@@ -26,14 +26,17 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityMixerTop extends TileFluidHandler implements ITileEntityBase, IExtraCapabilityInformation {
+	public static final int TANK_CAPACITY = ConfigMachine.MIXER.output_capacity;
+	public static final double EMBER_CAPACITY = ConfigMachine.MIXER.ember_capacity;
+
 	public IEmberCapability capability = new DefaultEmberCapability();
 	Random random = new Random();
 	int progress = -1;
 	
 	public TileEntityMixerTop(){
 		super();
-		tank = new FluidTank(8000);
-		capability.setEmberCapacity(8000);
+		tank = new FluidTank(TANK_CAPACITY);
+		capability.setEmberCapacity(EMBER_CAPACITY);
 	}
 	
 	@Override

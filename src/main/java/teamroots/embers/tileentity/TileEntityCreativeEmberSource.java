@@ -12,8 +12,8 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import teamroots.embers.EventManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.util.Misc;
 
@@ -41,7 +41,7 @@ public class TileEntityCreativeEmberSource extends TileEntity implements ITileEn
 	
 	public TileEntityCreativeEmberSource(){
 		super();
-		capability.setEmberCapacity(80000.0);
+		capability.setEmberCapacity(ConfigMachine.CREATIVE_EMBER_SOURCE.capacity);
 	}
 	
 	@Override

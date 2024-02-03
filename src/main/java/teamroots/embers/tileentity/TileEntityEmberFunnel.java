@@ -16,6 +16,7 @@ import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.power.IEmberPacketReceiver;
 import teamroots.embers.block.BlockEmberEmitter;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.entity.EntityEmberPacket;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.util.Misc;
@@ -23,7 +24,7 @@ import teamroots.embers.util.Misc;
 import javax.annotation.Nullable;
 
 public class TileEntityEmberFunnel extends TileEntity implements ITileEntityBase, ITickable, IEmberPacketReceiver {
-    public static final int TRANSFER_SPEED = 100; //It has 2000 capacity c'mon it needs to push super fast
+    public static final int TRANSFER_SPEED = ConfigMachine.EMBER_FUNNEL.transfer_speed;
     public IEmberCapability capability = new DefaultEmberCapability(){
         @Override
         public void onContentsChanged() {
@@ -39,7 +40,7 @@ public class TileEntityEmberFunnel extends TileEntity implements ITileEntityBase
 
     public TileEntityEmberFunnel()
     {
-        this.capability.setEmberCapacity(2000.0D);
+        this.capability.setEmberCapacity(ConfigMachine.EMBER_FUNNEL.capacity);
     }
 
     @Override

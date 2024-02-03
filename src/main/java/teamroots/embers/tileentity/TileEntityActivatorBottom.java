@@ -17,7 +17,6 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import teamroots.embers.EventManager;
 import teamroots.embers.SoundManager;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.event.DialInformationEvent;
@@ -26,6 +25,7 @@ import teamroots.embers.api.tile.IExtraCapabilityInformation;
 import teamroots.embers.api.tile.IExtraDialInformation;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
 import teamroots.embers.api.upgrades.UpgradeUtil;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.network.message.MessageEmberActivationFX;
 import teamroots.embers.util.Misc;
@@ -36,7 +36,7 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityActivatorBottom extends TileEntity implements ITileEntityBase, ITickable, IExtraCapabilityInformation, IExtraDialInformation {
-    public static final int PROCESS_TIME = 40;
+    public static final int PROCESS_TIME = ConfigMachine.ACTIVATOR.process_time;
     Random random = new Random();
     int progress = -1;
     public ItemStackHandler inventory = new ItemStackHandler(1) {

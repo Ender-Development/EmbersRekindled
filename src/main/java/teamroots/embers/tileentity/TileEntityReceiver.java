@@ -12,11 +12,11 @@ import net.minecraft.util.ITickable;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
-import teamroots.embers.EventManager;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.power.IEmberPacketReceiver;
 import teamroots.embers.block.BlockEmberEmitter;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.entity.EntityEmberPacket;
 import teamroots.embers.power.DefaultEmberCapability;
 import teamroots.embers.util.Misc;
@@ -25,7 +25,8 @@ import javax.annotation.Nullable;
 import java.util.Random;
 
 public class TileEntityReceiver extends TileEntity implements ITileEntityBase, ITickable, IEmberPacketReceiver {
-	public static final int TRANSFER_RATE = 10;
+	public static final double TRANSFER_RATE = ConfigMachine.RECEIVER.transfer_rate;
+	public static final double EMBER_CAPACITY = ConfigMachine.RECEIVER.capacity;
 
 	public IEmberCapability capability = new DefaultEmberCapability(){
 		@Override
@@ -43,7 +44,7 @@ public class TileEntityReceiver extends TileEntity implements ITileEntityBase, I
 
 	public TileEntityReceiver(){
 		super();
-		capability.setEmberCapacity(2000);
+		capability.setEmberCapacity(EMBER_CAPACITY);
 	}
 	
 	@Override

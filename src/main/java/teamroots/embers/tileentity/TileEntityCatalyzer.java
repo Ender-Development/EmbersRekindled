@@ -16,10 +16,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.capabilities.Capability;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.ItemStackHandler;
-import teamroots.embers.EventManager;
 import teamroots.embers.api.EmbersAPI;
 import teamroots.embers.api.misc.ICoefficientFuel;
 import teamroots.embers.api.tile.IExtraCapabilityInformation;
+import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.util.Misc;
 
 import javax.annotation.Nullable;
@@ -27,7 +27,7 @@ import java.util.List;
 import java.util.Random;
 
 public class TileEntityCatalyzer extends TileEntity implements ITileEntityBase, ITickable, IExtraCapabilityInformation {
-	public static final int PROCESS_TIME = 400;
+	public static final int PROCESS_TIME = ConfigMachine.CATALYZER.process_time;
 	Random random = new Random();
 	int progress = 0;
 	double multiplier = 0;

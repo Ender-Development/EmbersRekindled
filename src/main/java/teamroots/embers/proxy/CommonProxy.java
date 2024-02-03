@@ -16,17 +16,17 @@ import net.minecraftforge.fml.common.event.FMLInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
 import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
 import net.minecraftforge.fml.common.network.NetworkRegistry;
-import teamroots.embers.ConfigManager;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.apiimpl.EmbersAPIImpl;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.Util;
 import teamroots.embers.compat.thaumcraft.ThaumcraftIntegration;
 import teamroots.embers.gui.GuiHandler;
 import teamroots.embers.network.PacketHandler;
 import teamroots.embers.recipe.RecipeRegistry;
 import teamroots.embers.reflection.Fields;
+import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchManager;
 import teamroots.embers.tileentity.*;
 import teamroots.embers.util.OreTransmutationUtil;
@@ -48,9 +48,9 @@ public class CommonProxy {
 	}
 	
 	public void init(FMLInitializationEvent event){
-		if(ConfigManager.isBaublesIntegrationEnabled())
+		if(Util.isBaublesIntegrationEnabled())
 			BaublesIntegration.init();
-		if(ConfigManager.isMysticalMechanicsIntegrationEnabled())
+		if(Util.isMysticalMechanicsIntegrationEnabled())
 			MysticalMechanicsIntegration.init();
 	}
 	
@@ -79,9 +79,9 @@ public class CommonProxy {
 		return false;
 	}
 
-	public DecimalFormat getDecimalFormat(String key) { return null; };
+	public DecimalFormat getDecimalFormat(String key) { return null; }
 
-	public String formatLocalize(String translationKey, Object... parameters) {
+    public String formatLocalize(String translationKey, Object... parameters) {
 		return null;
 	}
 
