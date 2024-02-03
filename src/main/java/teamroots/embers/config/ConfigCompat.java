@@ -17,7 +17,10 @@ public class ConfigCompat {
 
     @Config.RequiresMcRestart
     @Config.Name("Enable EnderIO Integration")
-    @Config.Comment("If true, Embers will register items, blocks and recipes providing EnderIO integration.")
+    @Config.Comment({
+            "If true, Embers will register items, blocks and recipes providing EnderIO integration.",
+            "Right now this only adds grinding ball recipes if Tinkers' Construct is installed as well."
+    })
     public static boolean enableEnderIOIntegration = true;
 
     @Config.RequiresMcRestart
@@ -27,6 +30,9 @@ public class ConfigCompat {
 
     @Config.RequiresMcRestart
     @Config.Name("Enable Tinkers' Construct Integration")
-    @Config.Comment("If true, Embers will register items, blocks and recipes providing Tinkers' Construct integration.")
+    @Config.Comment({
+            "If true, Embers will register items, blocks and recipes providing Tinkers' Construct integration.",
+            "Right now this only adds grinding ball recipes if EnderIO is installed as well."
+    })
     public static boolean enableTinkersIntegration = true;
 }
