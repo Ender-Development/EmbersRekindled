@@ -16,6 +16,7 @@ import soot.network.PacketHandler;
 import soot.projectiles.ProjectileFireBlast;
 import soot.recipe.CraftingRegistry;
 import soot.util.Attributes;
+import teamroots.embers.config.ConfigAddon;
 import teamroots.embers.register.ItemRegister;
 
 @Mod(modid = Soot.MODID, acceptedMinecraftVersions = "[1.12, 1.13)", dependencies = "required-after:embers")
@@ -44,6 +45,7 @@ public class Soot
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
     {
+        if (!ConfigAddon.enableSoot) return;
         log = event.getModLog();
         Config.preInit(event);
         creativeTab = new CreativeTabs("soot") {
@@ -74,6 +76,7 @@ public class Soot
     @EventHandler
     public void init(FMLInitializationEvent event)
     {
+        if (!ConfigAddon.enableSoot) return;
         Registry.init();
         proxy.init();
     }
@@ -81,6 +84,7 @@ public class Soot
     @EventHandler
     public void postInit(FMLPostInitializationEvent event)
     {
+        if (!ConfigAddon.enableSoot) return;
         Registry.postInit();
         proxy.postInit();
     }

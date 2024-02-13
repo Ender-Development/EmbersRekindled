@@ -106,7 +106,7 @@ repositories {
 }
 
 dependencies {
-    implementation("zone.rong:mixinbooter:9.0")
+    implementation("zone.rong:mixinbooter:9.1")
 
     implementation "CraftTweaker2:CraftTweaker2-API:4.1.8.476"
     implementation "CraftTweaker2:ZenScript:4.1.8.476"
@@ -140,6 +140,13 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
     if (project.debug_mysticalmechanics.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
+    }
+
+    if (project.debug_enderio.toBoolean()) {
+        runtimeOnly 'com.enderio.core:EnderCore:1.12.2-+'
+        runtimeOnly('com.enderio:EnderIO:1.12.2-+') {
+            transitive = false
+        }
     }
 
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")

@@ -19,7 +19,7 @@ import teamroots.embers.util.StructUV;
  */
 public class TESREmitter extends TileEntitySpecialRenderer<TileEmitter> {
 
-	public ResourceLocation texture = new ResourceLocation(Mod.EMBERS.getId(), "textures/blocks/pipe_tex.png");
+	public ResourceLocation texture = new ResourceLocation(Mod.EMBERS.getId(), "textures/blocks/pipe_tex_redstone.png");
 	public int lightx = 0;
 	public int lighty = 0;
 
