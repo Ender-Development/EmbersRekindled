@@ -214,6 +214,7 @@ public class BlockRegister implements IRegistrable<Block> {
             CATALYZER,
             CHARGER,
             CINDER_PLINTH,
+            CLOCKWORK_ATTENUATOR,
             COMBUSTOR,
             COPPER_CELL,
             CREATIVE_EMBER_SOURCE,
@@ -283,85 +284,77 @@ public class BlockRegister implements IRegistrable<Block> {
             REGISTRY.add(KNOWLEDGE_TABLE);
             REGISTRY.add(SEED_ALCHEMIC);
         }
-        if (ConfigMaterial.ALUMINUM.isNotOff()) {
+        if (ConfigMaterial.ALUMINUM.registerSeed()) {
             REGISTRY.add(SEED_ALUMINUM);
-            if (ConfigMaterial.ALUMINUM.mustLoad()) {
-                REGISTRY.add(BLOCK_ALUMINUM);
-                REGISTRY.add(ORE_ALUMINUM);
-            }
         }
-        if (ConfigMaterial.ASTRALITE.isNotOff()) {
-            if (ConfigMaterial.ASTRALITE.mustLoad()) {
-                REGISTRY.add(BLOCK_ASTRALITE);
-            }
+        if (ConfigMaterial.ALUMINUM.mustLoad()) {
+            REGISTRY.add(BLOCK_ALUMINUM);
+            REGISTRY.add(ORE_ALUMINUM);
         }
-        if (ConfigMaterial.BRONZE.isNotOff()) {
-            if (ConfigMaterial.BRONZE.mustLoad()) {
-                REGISTRY.add(BLOCK_BRONZE);
-            }
+        if (ConfigMaterial.ASTRALITE.mustLoad()) {
+            REGISTRY.add(BLOCK_ASTRALITE);
         }
-        if (ConfigMaterial.COPPER.isNotOff()) {
+        if (ConfigMaterial.BRONZE.mustLoad()) {
+            REGISTRY.add(BLOCK_BRONZE);
+        }
+        if (ConfigMaterial.COPPER.registerSeed()) {
             REGISTRY.add(SEED_COPPER);
-            if (ConfigMaterial.COPPER.mustLoad()) {
-                REGISTRY.add(BLOCK_COPPER);
-                REGISTRY.add(ORE_COPPER);
-            }
         }
-        if (ConfigMaterial.DAWNSTONE.isNotOff()) {
+        if (ConfigMaterial.COPPER.mustLoad()) {
+            REGISTRY.add(BLOCK_COPPER);
+            REGISTRY.add(ORE_COPPER);
+        }
+        if (ConfigMaterial.DAWNSTONE.registerSeed()) {
             REGISTRY.add(SEED_DAWNSTONE);
-            if (ConfigMaterial.DAWNSTONE.mustLoad()) {
-                REGISTRY.add(BLOCK_DAWNSTONE);
-            }
         }
-        if (ConfigMaterial.ELECTRUM.isNotOff()) {
-            if (ConfigMaterial.ELECTRUM.mustLoad()) {
-                REGISTRY.add(BLOCK_ELECTRUM);
-            }
+        if (ConfigMaterial.DAWNSTONE.mustLoad()) {
+            REGISTRY.add(BLOCK_DAWNSTONE);
         }
-        if (ConfigMaterial.GOLD.isNotOff()) {
+        if (ConfigMaterial.ELECTRUM.mustLoad()) {
+            REGISTRY.add(BLOCK_ELECTRUM);
+        }
+        if (ConfigMaterial.GOLD.registerSeed()) {
             REGISTRY.add(SEED_GOLD);
         }
-        if (ConfigMaterial.IRON.isNotOff()) {
+        if (ConfigMaterial.IRON.registerSeed()) {
             REGISTRY.add(SEED_IRON);
         }
-        if (ConfigMaterial.LEAD.isNotOff()) {
+        if (ConfigMaterial.LEAD.registerSeed()) {
             REGISTRY.add(SEED_LEAD);
-            if (ConfigMaterial.LEAD.mustLoad()) {
-                REGISTRY.add(BLOCK_LEAD);
-                REGISTRY.add(ORE_LEAD);
-            }
         }
-        if (ConfigMaterial.MITHRIL.isNotOff()) {
+        if (ConfigMaterial.LEAD.mustLoad()) {
+            REGISTRY.add(BLOCK_LEAD);
+            REGISTRY.add(ORE_LEAD);
+        }
+        if (ConfigMaterial.MITHRIL.registerSeed()) {
             REGISTRY.add(SEED_MITHRIL);
-            if (ConfigMaterial.MITHRIL.mustLoad()) {
-                REGISTRY.add(BLOCK_MITHRIL);
-            }
         }
-        if (ConfigMaterial.NICKEL.isNotOff()) {
+        if (ConfigMaterial.MITHRIL.mustLoad()) {
+            REGISTRY.add(BLOCK_MITHRIL);
+        }
+        if (ConfigMaterial.NICKEL.registerSeed()) {
             REGISTRY.add(SEED_NICKEL);
-            if (ConfigMaterial.NICKEL.mustLoad()) {
-                REGISTRY.add(BLOCK_NICKEL);
-                REGISTRY.add(ORE_NICKEL);
-            }
         }
-        if (ConfigMaterial.SILVER.isNotOff()) {
+        if (ConfigMaterial.NICKEL.mustLoad()) {
+            REGISTRY.add(BLOCK_NICKEL);
+            REGISTRY.add(ORE_NICKEL);
+        }
+        if (ConfigMaterial.SILVER.registerSeed()) {
             REGISTRY.add(SEED_SILVER);
-            if (ConfigMaterial.SILVER.mustLoad()) {
-                REGISTRY.add(BLOCK_SILVER);
-                REGISTRY.add(ORE_SILVER);
-            }
         }
-        if (ConfigMaterial.TIN.isNotOff()) {
+        if (ConfigMaterial.SILVER.mustLoad()) {
+            REGISTRY.add(BLOCK_SILVER);
+            REGISTRY.add(ORE_SILVER);
+        }
+        if (ConfigMaterial.TIN.registerSeed()) {
             REGISTRY.add(SEED_TIN);
-            if (ConfigMaterial.TIN.mustLoad()) {
-                REGISTRY.add(BLOCK_TIN);
-                REGISTRY.add(ORE_TIN);
-            }
         }
-        if (ConfigMaterial.UMBERSTEEL.isNotOff()) {
-            if (ConfigMaterial.UMBERSTEEL.mustLoad()) {
-                REGISTRY.add(BLOCK_UMBER_STEEL);
-            }
+        if (ConfigMaterial.TIN.mustLoad()) {
+            REGISTRY.add(BLOCK_TIN);
+            REGISTRY.add(ORE_TIN);
+        }
+        if (ConfigMaterial.UMBERSTEEL.mustLoad()) {
+            REGISTRY.add(BLOCK_UMBER_STEEL);
         }
 
         ((BlockDoubleSlabBase) ASHEN_TILE_SLAB_DOUBLE).setSlab(ASHEN_TILE_SLAB);

@@ -29,6 +29,7 @@ import teamroots.embers.block.BlockMechActuator;
 import teamroots.embers.block.BlockMechActuatorSingle;
 import teamroots.embers.block.BlockSteamEngine;
 import teamroots.embers.config.ConfigMachine;
+import teamroots.embers.config.ConfigMaterial;
 import teamroots.embers.item.ItemBase;
 import teamroots.embers.particle.ParticleUtil;
 import teamroots.embers.recipe.ItemStampingRecipe;
@@ -112,7 +113,9 @@ public class MysticalMechanicsIntegration {
 
     public static void registerAll() //éw parté déux
     {
-        ItemRegister.INSTANCE.add(GEAR_DAWNSTONE);
+        if (ConfigMaterial.DAWNSTONE.isNotOff()) {
+            ItemRegister.INSTANCE.add(GEAR_DAWNSTONE);
+        }
 
         BlockRegister.INSTANCE.add(STEAM_ENGINE);
         BlockRegister.INSTANCE.add(MECH_ACTUATOR);
@@ -124,39 +127,43 @@ public class MysticalMechanicsIntegration {
     }
 
     public static void initOreDict() {
-        OreDictionary.registerOre("gearDawnstone", GEAR_DAWNSTONE);
+        if (ConfigMaterial.DAWNSTONE.isNotOff()) {
+            OreDictionary.registerOre("gearDawnstone", GEAR_DAWNSTONE);
+        }
     }
 
     public static void init() {
-        MysticalMechanicsAPI.IMPL.registerGear(DAWNSTONE_GEAR_BEHAVIOR, new OreIngredient("gearDawnstone"), new IGearBehavior() {
-            @Override
-            public double transformPower(TileEntity tile, @Nullable EnumFacing facing, ItemStack gear, IGearData data, double power) {
-                return power;
-            }
+        if (ConfigMaterial.DAWNSTONE.isNotOff()) {
+            MysticalMechanicsAPI.IMPL.registerGear(DAWNSTONE_GEAR_BEHAVIOR, new OreIngredient("gearDawnstone"), new IGearBehavior() {
+                @Override
+                public double transformPower(TileEntity tile, @Nullable EnumFacing facing, ItemStack gear, IGearData data, double power) {
+                    return power;
+                }
 
-            @Override
-            public void visualUpdate(TileEntity tile, @Nullable EnumFacing facing, ItemStack gear, IGearData data, double powerIn, double powerOut) {
-                int particles = Math.min((int) Math.ceil(powerIn / 40), 5);
-                if (powerIn >= IRON_GEAR_MAX_POWER)
-                    for (int i = 0; i < particles; i++) {
-                        float xOff = 0.1f + random.nextFloat() * 0.8f;
-                        float yOff = 0.1f + random.nextFloat() * 0.8f;
-                        float zOff = 0.1f + random.nextFloat() * 0.8f;
-                        switch (facing.getAxis()) {
-                            case X:
-                                xOff = 0.5f + facing.getFrontOffsetX() / 2.0f;
-                                break;
-                            case Y:
-                                yOff = 0.5f + facing.getFrontOffsetY() / 2.0f;
-                                break;
-                            case Z:
-                                zOff = 0.5f + facing.getFrontOffsetZ() / 2.0f;
-                                break;
+                @Override
+                public void visualUpdate(TileEntity tile, @Nullable EnumFacing facing, ItemStack gear, IGearData data, double powerIn, double powerOut) {
+                    int particles = Math.min((int) Math.ceil(powerIn / 40), 5);
+                    if (powerIn >= IRON_GEAR_MAX_POWER)
+                        for (int i = 0; i < particles; i++) {
+                            float xOff = 0.1f + random.nextFloat() * 0.8f;
+                            float yOff = 0.1f + random.nextFloat() * 0.8f;
+                            float zOff = 0.1f + random.nextFloat() * 0.8f;
+                            switch (facing.getAxis()) {
+                                case X:
+                                    xOff = 0.5f + facing.getFrontOffsetX() / 2.0f;
+                                    break;
+                                case Y:
+                                    yOff = 0.5f + facing.getFrontOffsetY() / 2.0f;
+                                    break;
+                                case Z:
+                                    zOff = 0.5f + facing.getFrontOffsetZ() / 2.0f;
+                                    break;
+                            }
+                            ParticleUtil.spawnParticleGlow(tile.getWorld(), tile.getPos().getX() + xOff, tile.getPos().getY() + yOff, tile.getPos().getZ() + zOff, 0, 0, 0, 255, 64, 16, 2.0f, 24);
                         }
-                        ParticleUtil.spawnParticleGlow(tile.getWorld(), tile.getPos().getX() + xOff, tile.getPos().getY() + yOff, tile.getPos().getZ() + zOff, 0, 0, 0, 255, 64, 16, 2.0f, 24);
-                    }
-            }
-        });
+                }
+            });
+        }
 
         replaceBehavior(IRON_GEAR_BEHAVIOR, new OreIngredient("gearIron"), behavior -> wrapPowerLevelBehavior(behavior, IRON_GEAR_MAX_POWER, 1));
         replaceBehavior(GOLD_GEAR_BEHAVIOR, new OreIngredient("gearGold"), behavior -> wrapPowerLevelBehavior(behavior, GOLD_GEAR_MAX_POWER, 1));

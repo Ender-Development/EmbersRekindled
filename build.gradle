@@ -10,9 +10,9 @@ plugins {
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
-version = "1.21.0"
-group = "teamroots.embers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "embers_extended_life"
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
 
 java {
     toolchain {
@@ -50,22 +50,21 @@ jar {
         attributes(attribute_map)
     }
     // Add all embedded dependencies into the jar
-    from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
+    from(provider { configurations.embed.collect { it.isDirectory() ? it : zipTree(it) } })
 }
 
 minecraft {
-    mcVersion = '1.12.2'
-
+    mcVersion = project.mc_version
     // MCP Mappings
     mcpMappingChannel = 'snapshot'
     mcpMappingVersion = '20171003'
-    
+
     // Set username here, the UUID will be looked up automatically
     username = '_MasterEnderman_'
-    
+
     // Add any additional tweaker classes here
     // extraTweakClasses.add('org.spongepowered.asm.launch.MixinTweaker')
-    
+
     // Add various JVM arguments here for runtime
     def args = ["-ea:${project.group}"]
     if (project.use_coremod.toBoolean()) {
@@ -80,7 +79,7 @@ minecraft {
 
     // Include and use dependencies' Access Transformer files
     useDependencyAccessTransformers = true
-    
+
     // Add any properties you want to swap out for a dynamic value at build time here
     // Any properties here will be added to a class at build time, the name can be configured below
     // Example:
@@ -106,7 +105,7 @@ repositories {
 }
 
 dependencies {
-    implementation("zone.rong:mixinbooter:9.0")
+    implementation("zone.rong:mixinbooter:9.1")
 
     implementation "CraftTweaker2:CraftTweaker2-API:4.1.8.476"
     implementation "CraftTweaker2:ZenScript:4.1.8.476"
@@ -142,6 +141,18 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
     }
 
+    if (project.debug_enderio.toBoolean()) {
+        runtimeOnly 'com.enderio.core:EnderCore:1.12.2-+'
+        runtimeOnly('com.enderio:EnderIO:1.12.2-+') {
+            transitive = false
+        }
+    }
+
+    if (project.debug_unidict.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:wanionlib-253043:4623135")
+        runtimeOnly rfg.deobf("curse.maven:unidict-244258:3553627")
+    }
+
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
     runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:5001902")
@@ -163,16 +174,16 @@ processResources {
     // This will ensure that this task is redone when the versions change
     inputs.property 'version', project.version
     inputs.property 'mcversion', project.minecraft.version
-    
+
     // Replace various properties in mcmod.info and pack.mcmeta if applicable
     filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
         // Replace version and mcversion
-        fcd.expand (
+        fcd.expand(
                 'version': project.version,
                 'mcversion': project.minecraft.version
         )
     }
-    
+
     if (project.use_access_transformer.toBoolean()) {
         rename '(.+_at.cfg)', 'META-INF/$1' // Make sure Access Transformer files are in META-INF folder
     }

@@ -29,6 +29,8 @@ Current Changes to Embers Rekindled v1.19:
 - fixed a dupe bug with the melter and acceleration mods
 - reworked config system, allow config changes in-game, a LOT more config options
 - added a config option to register all WIP items and blocks (useful for pack makers)
+- compatibility with Immersive Engineering's Metal Rods
+- compatibility with EnderIO & Endergy Grinding Balls
 
 Planned Changes:
 - native [GroovyScript](https://github.com/CleanroomMC/GroovyScript) support

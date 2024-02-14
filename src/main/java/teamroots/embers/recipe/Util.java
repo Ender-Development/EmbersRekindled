@@ -11,7 +11,7 @@ public final class Util {
     private Util() {
     }
 
-    static Tuple<Ingredient, Double> registerCoefficient(String config_entry) {
+    public static Tuple<Ingredient, Double> registerCoefficient(String config_entry) {
         String[] parts = config_entry.split(";");
         String registry = parts[0];
         Double coefficient = Double.valueOf(parts[1]);

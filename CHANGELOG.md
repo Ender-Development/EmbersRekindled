@@ -2,6 +2,17 @@
 
 A dwarven magic mod
 
+## v1.21.1 - Bugfixes
+### Changes
+- added a new material registration mode, to only register the metal seed
+- refactored the recipe registration to use the new material registration mode
+
+### Bugfixes
+- fixed missing registration of the clockwork attenuator
+- fixed crash with UniDict, when some metals are disabled
+- fixed registration of broken recipes, when some metals are disabled
+- fixed registration of OreDict entries for disabled metals
+
 ## v1.21.0 - Config Rework
 ### Changes
 - reworked the whole config system

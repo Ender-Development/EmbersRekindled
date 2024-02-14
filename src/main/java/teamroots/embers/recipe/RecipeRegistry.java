@@ -50,7 +50,9 @@ import teamroots.embers.compat.Util;
 import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.config.ConfigMaterial;
 import teamroots.embers.config.ConfigMisc;
+import teamroots.embers.config.ConfigTool;
 import teamroots.embers.item.EnumStampType;
+import teamroots.embers.recipe.register.*;
 import teamroots.embers.register.BlockRegister;
 import teamroots.embers.register.FluidRegister;
 import teamroots.embers.register.ItemRegister;
@@ -59,6 +61,7 @@ import teamroots.embers.util.FilterUtil;
 import teamroots.embers.util.IngredientSpecial;
 import teamroots.embers.util.WeightedItemStack;
 
+import javax.annotation.Nonnull;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -99,6 +102,7 @@ public class RecipeRegistry {
         return new ResourceLocation(Embers.MODID, s);
     }
 
+    @Deprecated
     public static void registerBoreOutput(BoreOutput output) {
         boreOutputSets.add(output);
     }
@@ -107,126 +111,62 @@ public class RecipeRegistry {
         defaultBoreOutput = output;
     }
 
-    public static void registerMaterialSet(RegistryEvent.Register<IRecipe> event, String ingotKey, String nuggetKey, String blockKey,
-                                           Item ingot, Item nugget, Item plate, Block block, Item pickaxe, Item axe, Item shovel, Item hoe, Item sword) {
-        event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_block"), new ItemStack(block), true, new Object[]{
-                "XXX",
-                "XXX",
-                "XXX",
-                'X', ingotKey}).setRegistryName(getRL(ingotKey + "_block")));
-        event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_ingot"), new ItemStack(ingot), true, new Object[]{
-                "XXX",
-                "XXX",
-                "XXX",
-                'X', nuggetKey}).setRegistryName(getRL(ingotKey + "_ingot")));
-        event.getRegistry().register(new ShapelessOreRecipe(getRL(ingotKey + "_block_decomp"), new ItemStack(ingot, 9), new Object[]{
-                blockKey}).setRegistryName(getRL(ingotKey + "_block_decomp")));
-        event.getRegistry().register(new ShapelessOreRecipe(getRL(ingotKey + "_ingot_decomp"), new ItemStack(nugget, 9), new Object[]{
-                ingotKey}).setRegistryName(getRL(ingotKey + "_ingot_decomp")));
-        event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_sword"), new ItemStack(sword, 1), true, new Object[]{
-                " C ",
-                " C ",
-                " S ",
-                'C', ingotKey,
-                'S', "stickWood"}).setRegistryName(getRL(ingotKey + "_sword")));
-        event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_pickaxe"), new ItemStack(pickaxe, 1), true, new Object[]{
-                "CCC",
-                " S ",
-                " S ",
-                'C', ingotKey,
-                'S', "stickWood"}).setRegistryName(getRL(ingotKey + "_pickaxe")));
-        event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_shovel"), new ItemStack(shovel, 1), true, new Object[]{
-                " C ",
-                " S ",
-                " S ",
-                'C', ingotKey,
-                'S', "stickWood"}).setRegistryName(getRL(ingotKey + "_shovel")));
-        event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_axe"), new ItemStack(axe, 1), true, new Object[]{
-                " CC",
-                " SC",
-                " S ",
-                'C', ingotKey,
-                'S', "stickWood"}).setMirrored(true).setRegistryName(getRL(ingotKey + "_axe")));
-        event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_hoe"), new ItemStack(hoe, 1), true, new Object[]{
-                " CC",
-                " S ",
-                " S ",
-                'C', ingotKey,
-                'S', "stickWood"}).setMirrored(true).setRegistryName(getRL(ingotKey + "_hoe")));
-        event.getRegistry().register(new ShapelessOreRecipe(getRL(ingotKey + "_plate"), new ItemStack(plate, 1), new Object[]{
-                ingotKey, ingotKey, ItemRegister.TINKER_HAMMER}).setRegistryName(getRL(ingotKey + "_plate")));
-    }
+    public static void registerMaterialSet(RegistryEvent.Register<IRecipe> event, String metal,
+                                           Item ingot, Item nugget, Item plate, Block block, Item pickaxe, Item axe, Item shovel, Item hoe, Item sword, boolean registerMetal, boolean registerTools) {
+        String ingotKey = "ingot" + metal;
+        String nuggetKey = "nugget" + metal;
+        String blockKey = "block" + metal;
 
-    public void initOreDict() {
-        OreDictionary.registerOre("dustAsh", ItemRegister.DUST_ASH);
-        OreDictionary.registerOre("dustAshes", ItemRegister.DUST_ASH);
-        //OreDictionary.registerOre("nuggetIron", RegistryManager.nugget_iron);
-        OreDictionary.registerOre("ingotCopper", ItemRegister.INGOT_COPPER);
-        OreDictionary.registerOre("ingotLead", ItemRegister.INGOT_LEAD);
-        OreDictionary.registerOre("ingotSilver", ItemRegister.INGOT_SILVER);
-        OreDictionary.registerOre("ingotDawnstone", ItemRegister.INGOT_DAWNSTONE);
-        OreDictionary.registerOre("nuggetCopper", ItemRegister.NUGGET_COPPER);
-        OreDictionary.registerOre("nuggetLead", ItemRegister.NUGGET_LEAD);
-        OreDictionary.registerOre("nuggetSilver", ItemRegister.NUGGET_SILVER);
-        OreDictionary.registerOre("nuggetDawnstone", ItemRegister.NUGGET_DAWNSTONE);
-        OreDictionary.registerOre("plateGold", ItemRegister.PLATE_GOLD);
-        OreDictionary.registerOre("plateIron", ItemRegister.PLATE_IRON);
-        OreDictionary.registerOre("plateCopper", ItemRegister.PLATE_COPPER);
-        OreDictionary.registerOre("plateLead", ItemRegister.PLATE_LEAD);
-        OreDictionary.registerOre("plateSilver", ItemRegister.PLATE_SILVER);
-        OreDictionary.registerOre("plateDawnstone", ItemRegister.PLATE_DAWNSTONE);
-        OreDictionary.registerOre("blockCopper", BlockRegister.BLOCK_COPPER);
-        OreDictionary.registerOre("blockLead", BlockRegister.BLOCK_LEAD);
-        OreDictionary.registerOre("blockSilver", BlockRegister.BLOCK_SILVER);
-        OreDictionary.registerOre("blockDawnstone", BlockRegister.BLOCK_DAWNSTONE);
-        OreDictionary.registerOre("oreCopper", BlockRegister.ORE_COPPER);
-        OreDictionary.registerOre("oreLead", BlockRegister.ORE_LEAD);
-        OreDictionary.registerOre("oreSilver", BlockRegister.ORE_SILVER);
-        OreDictionary.registerOre("oreQuartz", BlockRegister.ORE_QUARTZ);
-        OreDictionary.registerOre("slimeball", ItemRegister.ADHESIVE);
-
-        if (ConfigMaterial.ALUMINUM.mustLoad()) {
-            OreDictionary.registerOre("blockAluminum", BlockRegister.BLOCK_ALUMINUM);
-            OreDictionary.registerOre("ingotAluminum", ItemRegister.INGOT_ALUMINUM);
-            OreDictionary.registerOre("nuggetAluminum", ItemRegister.NUGGET_ALUMINUM);
-            OreDictionary.registerOre("plateAluminum", ItemRegister.PLATE_ALUMINUM);
-            OreDictionary.registerOre("oreAluminum", BlockRegister.ORE_ALUMINUM);
-
-            OreDictionary.registerOre("blockAluminium", BlockRegister.BLOCK_ALUMINUM);
-            OreDictionary.registerOre("ingotAluminium", ItemRegister.INGOT_ALUMINUM);
-            OreDictionary.registerOre("nuggetAluminium", ItemRegister.NUGGET_ALUMINUM);
-            OreDictionary.registerOre("plateAluminium", ItemRegister.PLATE_ALUMINUM);
-            OreDictionary.registerOre("oreAluminium", BlockRegister.ORE_ALUMINUM);
+        if (registerMetal) {
+            event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_block"), new ItemStack(block), true, new Object[]{
+                    "XXX",
+                    "XXX",
+                    "XXX",
+                    'X', ingotKey}).setRegistryName(getRL(ingotKey + "_block")));
+            event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_ingot"), new ItemStack(ingot), true, new Object[]{
+                    "XXX",
+                    "XXX",
+                    "XXX",
+                    'X', nuggetKey}).setRegistryName(getRL(ingotKey + "_ingot")));
+            event.getRegistry().register(new ShapelessOreRecipe(getRL(ingotKey + "_block_decomp"), new ItemStack(ingot, 9), new Object[]{
+                    blockKey}).setRegistryName(getRL(ingotKey + "_block_decomp")));
+            event.getRegistry().register(new ShapelessOreRecipe(getRL(ingotKey + "_ingot_decomp"), new ItemStack(nugget, 9), new Object[]{
+                    ingotKey}).setRegistryName(getRL(ingotKey + "_ingot_decomp")));
+            event.getRegistry().register(new ShapelessOreRecipe(getRL(ingotKey + "_plate"), new ItemStack(plate, 1), new Object[]{
+                    ingotKey, ingotKey, ItemRegister.TINKER_HAMMER}).setRegistryName(getRL(ingotKey + "_plate")));
         }
+        if (registerTools) {
+            event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_sword"), new ItemStack(sword, 1), true, new Object[]{
+                    " C ",
+                    " C ",
+                    " S ",
+                    'C', ingotKey,
+                    'S', "stickWood"}).setRegistryName(getRL(ingotKey + "_sword")));
+            event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_pickaxe"), new ItemStack(pickaxe, 1), true, new Object[]{
+                    "CCC",
+                    " S ",
+                    " S ",
+                    'C', ingotKey,
+                    'S', "stickWood"}).setRegistryName(getRL(ingotKey + "_pickaxe")));
+            event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_shovel"), new ItemStack(shovel, 1), true, new Object[]{
+                    " C ",
+                    " S ",
+                    " S ",
+                    'C', ingotKey,
+                    'S', "stickWood"}).setRegistryName(getRL(ingotKey + "_shovel")));
+            event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_axe"), new ItemStack(axe, 1), true, new Object[]{
+                    " CC",
+                    " SC",
+                    " S ",
+                    'C', ingotKey,
+                    'S', "stickWood"}).setMirrored(true).setRegistryName(getRL(ingotKey + "_axe")));
+            event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_hoe"), new ItemStack(hoe, 1), true, new Object[]{
+                    " CC",
+                    " S ",
+                    " S ",
+                    'C', ingotKey,
+                    'S', "stickWood"}).setMirrored(true).setRegistryName(getRL(ingotKey + "_hoe")));
 
-        if (ConfigMaterial.TIN.mustLoad()) {
-            OreDictionary.registerOre("blockTin", BlockRegister.BLOCK_TIN);
-            OreDictionary.registerOre("ingotTin", ItemRegister.INGOT_TIN);
-            OreDictionary.registerOre("nuggetTin", ItemRegister.NUGGET_TIN);
-            OreDictionary.registerOre("plateTin", ItemRegister.PLATE_TIN);
-            OreDictionary.registerOre("oreTin", BlockRegister.ORE_TIN);
-        }
-
-        if (ConfigMaterial.NICKEL.mustLoad()) {
-            OreDictionary.registerOre("blockNickel", BlockRegister.BLOCK_NICKEL);
-            OreDictionary.registerOre("ingotNickel", ItemRegister.INGOT_NICKEL);
-            OreDictionary.registerOre("nuggetNickel", ItemRegister.NUGGET_NICKEL);
-            OreDictionary.registerOre("plateNickel", ItemRegister.PLATE_NICKEL);
-            OreDictionary.registerOre("oreNickel", BlockRegister.ORE_NICKEL);
-        }
-
-        if (ConfigMaterial.BRONZE.mustLoad()) {
-            OreDictionary.registerOre("blockBronze", BlockRegister.BLOCK_BRONZE);
-            OreDictionary.registerOre("ingotBronze", ItemRegister.INGOT_BRONZE);
-            OreDictionary.registerOre("nuggetBronze", ItemRegister.NUGGET_BRONZE);
-            OreDictionary.registerOre("plateBronze", ItemRegister.PLATE_BRONZE);
-        }
-
-        if (ConfigMaterial.ELECTRUM.mustLoad()) {
-            OreDictionary.registerOre("blockElectrum", BlockRegister.BLOCK_ELECTRUM);
-            OreDictionary.registerOre("ingotElectrum", ItemRegister.INGOT_ELECTRUM);
-            OreDictionary.registerOre("nuggetElectrum", ItemRegister.NUGGET_ELECTRUM);
-            OreDictionary.registerOre("plateElectrum", ItemRegister.PLATE_ELECTRUM);
         }
     }
 
@@ -235,64 +175,17 @@ public class RecipeRegistry {
         meltingRecipes.addAll(meltingOreRecipes);
     }
 
+    @SubscribeEvent(priority = EventPriority.HIGHEST)
+    public void initEarly(RegistryEvent.Register<IRecipe> event) {
+        InitEarly.INSTANCE.execute();
+    }
+
     @SubscribeEvent(priority = EventPriority.LOW)
     public void initLater(RegistryEvent.Register<Item> event) {
-        initOreDict();
+        InitLater.INSTANCE.execute();
 
         if (Util.isMysticalMechanicsIntegrationEnabled())
             MysticalMechanicsIntegration.initOreDict();
-    }
-
-    @SubscribeEvent(priority = EventPriority.HIGHEST)
-    public void initEarly(RegistryEvent.Register<IRecipe> event) {
-        //initOreDict();
-
-        AlchemyUtil.registerAspect("iron", Ingredient.fromItem(ItemRegister.ASPECTUS_IRON));
-        AlchemyUtil.registerAspect("copper", Ingredient.fromItem(ItemRegister.ASPECTUS_COPPER));
-        AlchemyUtil.registerAspect("dawnstone", Ingredient.fromItem(ItemRegister.ASPECTUS_DAWNSTONE));
-        AlchemyUtil.registerAspect("lead", Ingredient.fromItem(ItemRegister.ASPECTUS_LEAD));
-        AlchemyUtil.registerAspect("silver", Ingredient.fromItem(ItemRegister.ASPECTUS_SILVER));
-
-        BoreOutput defaultOutput = new BoreOutput(Sets.newHashSet(), Sets.newHashSet(), Lists.newArrayList(
-                new WeightedItemStack(new ItemStack(ItemRegister.CRYSTAL_EMBER), 20),
-                new WeightedItemStack(new ItemStack(ItemRegister.SHARD_EMBER), 60),
-                new WeightedItemStack(new ItemStack(ItemRegister.DUST_EMBER), 20)
-        ));
-        setDefaultBoreOutput(defaultOutput);
-
-        Ingredient anyDawnstoneTool = Ingredient.fromItems(ItemRegister.AXE_DAWNSTONE, ItemRegister.HOE_DAWNSTONE, ItemRegister.SWORD_DAWNSTONE, ItemRegister.SHOVEL_DAWNSTONE, ItemRegister.PICKAXE_DAWNSTONE);
-        EmbersAPI.registerEmberToolEffeciency(anyDawnstoneTool, 2.0);
-
-        for (String s : ConfigMisc.ember_fuel) {
-            String[] tokens = s.split(";");
-            Item fuel = Item.getByNameOrId(tokens[0]);
-            if (tokens.length == 2 && fuel != null) {
-                EmbersAPI.registerEmberFuel(Ingredient.fromItem(fuel), Integer.parseInt(tokens[1]));
-            }
-        }
-
-        for (String s : ConfigMisc.block_coefficient) {
-            String[] tokens = s.split(";");
-            if (tokens.length == 2 && !OreDictionary.getOres(tokens[0]).isEmpty()) {
-                EmbersAPI.registerMetalCoefficient(tokens[0], Double.parseDouble(tokens[1]));
-            }
-        }
-
-        for (String s : ConfigMachine.COMBUSTOR.fuel) {
-            Tuple<Ingredient, Double> result = registerCoefficient(s);
-            EmbersAPI.registerCombustionFuel(result.getFirst(), result.getSecond());
-        }
-
-        for (String s : ConfigMachine.CATALYZER.fuel) {
-            Tuple<Ingredient, Double> result = registerCoefficient(s);
-            EmbersAPI.registerCatalysisFuel(result.getFirst(), result.getSecond());
-        }
-
-        EmbersAPI.registerBoilerFluid(FluidRegistry.WATER, FluidRegistry.getFluid("steam"), 5.0, new Color(255, 255, 255));
-        EmbersAPI.registerBoilerFluid(FluidRegistry.getFluid("oil_dwarf"), FluidRegistry.getFluid("gas_dwarf"), 1.0, new Color(192, 255, 128));
-
-        EmbersAPI.registerSteamEngineFuel(FluidRegistry.getFluid("steam"), 2.0, 1, new Color(255, 255, 255));
-        EmbersAPI.registerSteamEngineFuel(FluidRegistry.getFluid("gas_dwarf"), 2.5, 5, new Color(128, 192, 255));
     }
 
     @SubscribeEvent
@@ -309,12 +202,13 @@ public class RecipeRegistry {
         //event.getRegistry().register(new ShapelessOreRecipe(getRL("iron_nugget"),new ItemStack(RegistryManager.nugget_iron,9),new Object[]{"ingotIron"}).setRegistryName(getRL("iron_nugget")));
 
 
-        event.getRegistry().register(new ShapelessOreRecipe(getRL("plate_gold"), new ItemStack(ItemRegister.PLATE_GOLD, 1), new Object[]{
+        event.getRegistry().register(new ShapelessOreRecipe(getRL("plate_gold"), getItemStackFromOreDict("plateGold", 1), new Object[]{
                 "ingotGold", "ingotGold", ItemRegister.TINKER_HAMMER}).setRegistryName(getRL("plate_gold")));
-        event.getRegistry().register(new ShapelessOreRecipe(getRL("plate_iron"), new ItemStack(ItemRegister.PLATE_IRON, 1), new Object[]{
+        event.getRegistry().register(new ShapelessOreRecipe(getRL("plate_iron"), getItemStackFromOreDict("plateIron", 1), new Object[]{
                 "ingotIron", "ingotIron", ItemRegister.TINKER_HAMMER}).setRegistryName(getRL("plate_iron")));
 
-        RecipeRegistry.registerMaterialSet(event, "ingotLead", "nuggetLead", "blockLead",
+
+        RecipeRegistry.registerMaterialSet(event, "Lead",
                 ItemRegister.INGOT_LEAD,
                 ItemRegister.NUGGET_LEAD,
                 ItemRegister.PLATE_LEAD,
@@ -323,9 +217,11 @@ public class RecipeRegistry {
                 ItemRegister.AXE_LEAD,
                 ItemRegister.SHOVEL_LEAD,
                 ItemRegister.HOE_LEAD,
-                ItemRegister.SWORD_LEAD);
+                ItemRegister.SWORD_LEAD,
+                ConfigMaterial.LEAD.mustLoad(),
+                ConfigTool.METAL_TOOL.LEAD.register);
 
-        RecipeRegistry.registerMaterialSet(event, "ingotCopper", "nuggetCopper", "blockCopper",
+        RecipeRegistry.registerMaterialSet(event, "Copper",
                 ItemRegister.INGOT_COPPER,
                 ItemRegister.NUGGET_COPPER,
                 ItemRegister.PLATE_COPPER,
@@ -334,9 +230,11 @@ public class RecipeRegistry {
                 ItemRegister.AXE_COPPER,
                 ItemRegister.SHOVEL_COPPER,
                 ItemRegister.HOE_COPPER,
-                ItemRegister.SWORD_COPPER);
+                ItemRegister.SWORD_COPPER,
+                ConfigMaterial.COPPER.mustLoad(),
+                ConfigTool.METAL_TOOL.COPPER.register);
 
-        RecipeRegistry.registerMaterialSet(event, "ingotSilver", "nuggetSilver", "blockSilver",
+        RecipeRegistry.registerMaterialSet(event, "Silver",
                 ItemRegister.INGOT_SILVER,
                 ItemRegister.NUGGET_SILVER,
                 ItemRegister.PLATE_SILVER,
@@ -345,9 +243,11 @@ public class RecipeRegistry {
                 ItemRegister.AXE_SILVER,
                 ItemRegister.SHOVEL_SILVER,
                 ItemRegister.HOE_SILVER,
-                ItemRegister.SWORD_SILVER);
+                ItemRegister.SWORD_SILVER,
+                ConfigMaterial.SILVER.mustLoad(),
+                ConfigTool.METAL_TOOL.SILVER.register);
 
-        RecipeRegistry.registerMaterialSet(event, "ingotDawnstone", "nuggetDawnstone", "blockDawnstone",
+        RecipeRegistry.registerMaterialSet(event, "Dawnstone",
                 ItemRegister.INGOT_DAWNSTONE,
                 ItemRegister.NUGGET_DAWNSTONE,
                 ItemRegister.PLATE_DAWNSTONE,
@@ -356,72 +256,75 @@ public class RecipeRegistry {
                 ItemRegister.AXE_DAWNSTONE,
                 ItemRegister.SHOVEL_DAWNSTONE,
                 ItemRegister.HOE_DAWNSTONE,
-                ItemRegister.SWORD_DAWNSTONE);
+                ItemRegister.SWORD_DAWNSTONE,
+                ConfigMaterial.DAWNSTONE.mustLoad(),
+                ConfigTool.METAL_TOOL.DAWNSTONE.register);
 
-        if (ConfigMaterial.ALUMINUM.mustLoad()) {
-            RecipeRegistry.registerMaterialSet(event, "ingotAluminum", "nuggetAluminum", "blockAluminum",
-                    ItemRegister.INGOT_ALUMINUM,
-                    ItemRegister.NUGGET_ALUMINUM,
-                    ItemRegister.PLATE_ALUMINUM,
-                    BlockRegister.BLOCK_ALUMINUM,
-                    ItemRegister.PICKAXE_ALUMINUM,
-                    ItemRegister.AXE_ALUMINUM,
-                    ItemRegister.SHOVEL_ALUMINUM,
-                    ItemRegister.HOE_ALUMINUM,
-                    ItemRegister.SWORD_ALUMINUM);
-        }
+        RecipeRegistry.registerMaterialSet(event, "Aluminum",
+                ItemRegister.INGOT_ALUMINUM,
+                ItemRegister.NUGGET_ALUMINUM,
+                ItemRegister.PLATE_ALUMINUM,
+                BlockRegister.BLOCK_ALUMINUM,
+                ItemRegister.PICKAXE_ALUMINUM,
+                ItemRegister.AXE_ALUMINUM,
+                ItemRegister.SHOVEL_ALUMINUM,
+                ItemRegister.HOE_ALUMINUM,
+                ItemRegister.SWORD_ALUMINUM,
+                ConfigMaterial.ALUMINUM.mustLoad(),
+                ConfigTool.METAL_TOOL.ALUMINUM.register);
 
-        if (ConfigMaterial.BRONZE.mustLoad()) {
-            RecipeRegistry.registerMaterialSet(event, "ingotBronze", "nuggetBronze", "blockBronze",
-                    ItemRegister.INGOT_BRONZE,
-                    ItemRegister.NUGGET_BRONZE,
-                    ItemRegister.PLATE_BRONZE,
-                    BlockRegister.BLOCK_BRONZE,
-                    ItemRegister.PICKAXE_BRONZE,
-                    ItemRegister.AXE_BRONZE,
-                    ItemRegister.SHOVEL_BRONZE,
-                    ItemRegister.HOE_BRONZE,
-                    ItemRegister.SWORD_BRONZE);
-        }
+        RecipeRegistry.registerMaterialSet(event, "Bronze",
+                ItemRegister.INGOT_BRONZE,
+                ItemRegister.NUGGET_BRONZE,
+                ItemRegister.PLATE_BRONZE,
+                BlockRegister.BLOCK_BRONZE,
+                ItemRegister.PICKAXE_BRONZE,
+                ItemRegister.AXE_BRONZE,
+                ItemRegister.SHOVEL_BRONZE,
+                ItemRegister.HOE_BRONZE,
+                ItemRegister.SWORD_BRONZE,
+                ConfigMaterial.BRONZE.mustLoad(),
+                ConfigTool.METAL_TOOL.BRONZE.register);
 
-        if (ConfigMaterial.ELECTRUM.mustLoad()) {
-            RecipeRegistry.registerMaterialSet(event, "ingotElectrum", "nuggetElectrum", "blockElectrum",
-                    ItemRegister.INGOT_ELECTRUM,
-                    ItemRegister.NUGGET_ELECTRUM,
-                    ItemRegister.PLATE_ELECTRUM,
-                    BlockRegister.BLOCK_ELECTRUM,
-                    ItemRegister.PICKAXE_ELECTRUM,
-                    ItemRegister.AXE_ELECTRUM,
-                    ItemRegister.SHOVEL_ELECTRUM,
-                    ItemRegister.HOE_ELECTRUM,
-                    ItemRegister.SWORD_ELECTRUM);
-        }
+        RecipeRegistry.registerMaterialSet(event, "Electrum",
+                ItemRegister.INGOT_ELECTRUM,
+                ItemRegister.NUGGET_ELECTRUM,
+                ItemRegister.PLATE_ELECTRUM,
+                BlockRegister.BLOCK_ELECTRUM,
+                ItemRegister.PICKAXE_ELECTRUM,
+                ItemRegister.AXE_ELECTRUM,
+                ItemRegister.SHOVEL_ELECTRUM,
+                ItemRegister.HOE_ELECTRUM,
+                ItemRegister.SWORD_ELECTRUM,
+                ConfigMaterial.ELECTRUM.mustLoad(),
+                ConfigTool.METAL_TOOL.ELECTRUM.register);
 
-        if (ConfigMaterial.NICKEL.mustLoad()) {
-            RecipeRegistry.registerMaterialSet(event, "ingotNickel", "nuggetNickel", "blockNickel",
-                    ItemRegister.INGOT_NICKEL,
-                    ItemRegister.NUGGET_NICKEL,
-                    ItemRegister.PLATE_NICKEL,
-                    BlockRegister.BLOCK_NICKEL,
-                    ItemRegister.PICKAXE_NICKEL,
-                    ItemRegister.AXE_NICKEL,
-                    ItemRegister.SHOVEL_NICKEL,
-                    ItemRegister.HOE_NICKEL,
-                    ItemRegister.SWORD_NICKEL);
-        }
+        RecipeRegistry.registerMaterialSet(event, "Nickel",
+                ItemRegister.INGOT_NICKEL,
+                ItemRegister.NUGGET_NICKEL,
+                ItemRegister.PLATE_NICKEL,
+                BlockRegister.BLOCK_NICKEL,
+                ItemRegister.PICKAXE_NICKEL,
+                ItemRegister.AXE_NICKEL,
+                ItemRegister.SHOVEL_NICKEL,
+                ItemRegister.HOE_NICKEL,
+                ItemRegister.SWORD_NICKEL,
+                ConfigMaterial.NICKEL.mustLoad(),
+                ConfigTool.METAL_TOOL.NICKEL.register);
 
-        if (ConfigMaterial.TIN.mustLoad()) {
-            RecipeRegistry.registerMaterialSet(event, "ingotTin", "nuggetTin", "blockTin",
-                    ItemRegister.INGOT_TIN,
-                    ItemRegister.NUGGET_TIN,
-                    ItemRegister.PLATE_TIN,
-                    BlockRegister.BLOCK_TIN,
-                    ItemRegister.PICKAXE_TIN,
-                    ItemRegister.AXE_TIN,
-                    ItemRegister.SHOVEL_TIN,
-                    ItemRegister.HOE_TIN,
-                    ItemRegister.SWORD_TIN);
-        }
+        RecipeRegistry.registerMaterialSet(event, "Tin",
+                ItemRegister.INGOT_TIN,
+                ItemRegister.NUGGET_TIN,
+                ItemRegister.PLATE_TIN,
+                BlockRegister.BLOCK_TIN,
+                ItemRegister.PICKAXE_TIN,
+                ItemRegister.AXE_TIN,
+                ItemRegister.SHOVEL_TIN,
+                ItemRegister.HOE_TIN,
+                ItemRegister.SWORD_TIN,
+                ConfigMaterial.TIN.mustLoad(),
+                ConfigTool.METAL_TOOL.TIN.register);
+
 
         event.getRegistry().register(new ShapelessOreRecipe(getRL("blend_caminite"), new ItemStack(ItemRegister.BLEND_CAMINITE, 8), new Object[]{
                 Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL, Items.CLAY_BALL, "sand"}).setRegistryName(getRL("blend_caminite")));
@@ -1168,364 +1071,15 @@ public class RecipeRegistry {
             EnderioIntegration.registerRecipes(event);
         }
 
-        GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_COPPER), new ItemStack(ItemRegister.INGOT_COPPER), 0.65f);
-        GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_SILVER), new ItemStack(ItemRegister.INGOT_SILVER), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_LEAD), new ItemStack(ItemRegister.INGOT_LEAD), 0.35f);
-        if (ConfigMaterial.ALUMINUM.mustLoad()) {
-            GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_ALUMINUM), new ItemStack(ItemRegister.INGOT_ALUMINUM), 0.55f);
-        }
-        if (ConfigMaterial.TIN.mustLoad()) {
-            GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_TIN), new ItemStack(ItemRegister.INGOT_TIN), 0.55f);
-        }
-        if (ConfigMaterial.NICKEL.mustLoad()) {
-            GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_NICKEL), new ItemStack(ItemRegister.INGOT_NICKEL), 0.55f);
-        }
-        GameRegistry.addSmelting(new ItemStack(BlockRegister.ORE_QUARTZ), new ItemStack(Items.QUARTZ), 0.35f);
+        Alchemistry.INSTANCE.execute();
+        Melting.INSTANCE.execute();
+        Mixing.INSTANCE.execute();
+        Reacting.INSTANCE.execute();
+        Smelting.INSTANCE.execute();
+        Stamping.INSTANCE.execute();
 
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.BLEND_CAMINITE), new ItemStack(ItemRegister.BRICK_CAMINITE), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.PLATE_CAMINITE_RAW), new ItemStack(ItemRegister.PLATE_CAMINITE), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_BAR_RAW), new ItemStack(ItemRegister.STAMP_BAR), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_PLATE_RAW), new ItemStack(ItemRegister.STAMP_PLATE), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_FLAT_RAW), new ItemStack(ItemRegister.STAMP_FLAT), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_GEAR_RAW), new ItemStack(ItemRegister.STAMP_GEAR), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_ROD_RAW), new ItemStack(ItemRegister.STAMP_ROD), 0.35f);
-        GameRegistry.addSmelting(new ItemStack(ItemRegister.STAMP_ROUND_RAW), new ItemStack(ItemRegister.STAMP_ROUND), 0.35f);
-
-
-        OreIngredient ingotIron = new OreIngredient("ingotIron");
-        OreIngredient plateIron = new OreIngredient("plateIron");
-
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreIron"), new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, oreMeltAmount))
-                .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, NUGGET_AMOUNT))
-        );
-        meltingRecipes.add(new ItemMeltingRecipe(ingotIron, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, INGOT_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetIron"), new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, NUGGET_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(plateIron, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, plateAmount)));
-
-        OreIngredient ingotGold = new OreIngredient("ingotGold");
-        OreIngredient plateGold = new OreIngredient("plateGold");
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreGold"), new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, oreMeltAmount))
-                .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, NUGGET_AMOUNT))
-        );
-        meltingRecipes.add(new ItemMeltingRecipe(ingotGold, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, INGOT_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetGold"), new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, NUGGET_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(plateGold, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, plateAmount)));
-
-        OreIngredient ingotSilver = new OreIngredient("ingotSilver");
-        OreIngredient plateSilver = new OreIngredient("plateSilver");
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreSilver"), new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, oreMeltAmount))
-                .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, NUGGET_AMOUNT))
-        );
-        meltingRecipes.add(new ItemMeltingRecipe(ingotSilver, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, INGOT_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetSilver"), new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, NUGGET_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(plateSilver, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, plateAmount)));
-
-        OreIngredient ingotCopper = new OreIngredient("ingotCopper");
-        OreIngredient plateCopper = new OreIngredient("plateCopper");
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreCopper"), new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, oreMeltAmount))
-                .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, NUGGET_AMOUNT))
-        );
-        meltingRecipes.add(new ItemMeltingRecipe(ingotCopper, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, INGOT_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetCopper"), new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, NUGGET_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(plateCopper, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, plateAmount)));
-
-        OreIngredient ingotLead = new OreIngredient("ingotLead");
-        OreIngredient plateLead = new OreIngredient("plateLead");
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreLead"), new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, oreMeltAmount))
-                .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, NUGGET_AMOUNT))
-        );
-        meltingRecipes.add(new ItemMeltingRecipe(ingotLead, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, INGOT_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetLead"), new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, NUGGET_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(plateLead, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, plateAmount)));
-
-        OreIngredient ingotAluminum = new OreIngredient("ingotAluminum");
-        if (ConfigMaterial.ALUMINUM.mustLoad()) {
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreAluminum"), new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, oreMeltAmount))
-                    .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, NUGGET_AMOUNT))
-            );
-            meltingRecipes.add(new ItemMeltingRecipe(ingotAluminum, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, INGOT_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetAluminum"), new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, NUGGET_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("plateAluminum"), new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, plateAmount)));
-        }
-
-        OreIngredient ingotNickel = new OreIngredient("ingotNickel");
-        if (ConfigMaterial.NICKEL.mustLoad()) {
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreNickel"), new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, oreMeltAmount))
-                    .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, NUGGET_AMOUNT))
-            );
-            meltingRecipes.add(new ItemMeltingRecipe(ingotNickel, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, INGOT_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetNickel"), new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, NUGGET_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("plateNickel"), new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, plateAmount)));
-        }
-
-        OreIngredient ingotTin = new OreIngredient("ingotTin");
-        if (ConfigMaterial.TIN.mustLoad()) {
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreTin"), new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, oreMeltAmount))
-                    .addBonusOutput(new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, NUGGET_AMOUNT))
-            );
-            meltingRecipes.add(new ItemMeltingRecipe(ingotTin, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, INGOT_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetTin"), new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, NUGGET_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("plateTin"), new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, plateAmount)));
-        }
-
-        OreIngredient ingotDawnstone = new OreIngredient("ingotDawnstone");
-        OreIngredient plateDawnstone = new OreIngredient("plateDawnstone");
-        meltingRecipes.add(new ItemMeltingRecipe(ingotDawnstone, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, INGOT_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetDawnstone"), new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, NUGGET_AMOUNT)));
-        meltingRecipes.add(new ItemMeltingRecipe(plateDawnstone, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, plateAmount)));
-
-        OreIngredient ingotBronze = new OreIngredient("ingotBronze");
-        OreIngredient plateBronze = new OreIngredient("plateBronze");
-        if (ConfigMaterial.BRONZE.mustLoad()) {
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("ingotBronze"), new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, INGOT_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetBronze"), new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, NUGGET_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("plateBronze"), new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, plateAmount)));
-        }
-
-        if (ConfigMaterial.ELECTRUM.mustLoad()) {
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("ingotElectrum"), new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, INGOT_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("nuggetElectrum"), new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, NUGGET_AMOUNT)));
-            meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("plateElectrum"), new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, plateAmount)));
-        }
-
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("oreRedstone"), new FluidStack(FluidRegister.FLUID_ALCHEMICAL_REDSTONE, 1008))
-                .addBonusOutput(FluidRegistry.getFluidStack("mercury", NUGGET_AMOUNT))
-        );
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("dustRedstone"), new FluidStack(FluidRegister.FLUID_ALCHEMICAL_REDSTONE, 144)));
-        meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("blockRedstone"), new FluidStack(FluidRegister.FLUID_ALCHEMICAL_REDSTONE, 1296)));
-
-        meltingRecipes.add(new ItemMeltingRecipe(Ingredient.fromStacks(new ItemStack(Blocks.SOUL_SAND)), new FluidStack(FluidRegister.FLUID_CRUDE_OIL, 100)));
-
-        Ingredient stampBar = Ingredient.fromItem(ItemRegister.STAMP_BAR);
-        Ingredient stampPlate = Ingredient.fromItem(ItemRegister.STAMP_PLATE);
-        Ingredient stampRod = Ingredient.fromItem(ItemRegister.STAMP_ROD);
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, INGOT_AMOUNT), stampBar, new ItemStack(Items.IRON_INGOT, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, INGOT_AMOUNT), stampBar, new ItemStack(Items.GOLD_INGOT, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_LEAD, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_SILVER, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_COPPER, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_DAWNSTONE, 1)));
-        if (ConfigMaterial.ALUMINUM.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_ALUMINUM, 1)));
-        }
-        if (ConfigMaterial.BRONZE.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_BRONZE, 1)));
-        }
-        if (ConfigMaterial.ELECTRUM.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_ELECTRUM, 1)));
-        }
-        if (ConfigMaterial.NICKEL.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_NICKEL, 1)));
-        }
-        if (ConfigMaterial.TIN.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, INGOT_AMOUNT), stampBar, new ItemStack(ItemRegister.INGOT_TIN, 1)));
-        }
-
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_IRON, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_GOLD, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_LEAD, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_SILVER, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_COPPER, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_DAWNSTONE, 1)));
-        if (ConfigMaterial.ALUMINUM.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_ALUMINUM, 1)));
-        }
-        if (ConfigMaterial.BRONZE.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_BRONZE, 1)));
-        }
-        if (ConfigMaterial.ELECTRUM.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_ELECTRUM, 1)));
-        }
-        if (ConfigMaterial.NICKEL.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_NICKEL, 1)));
-        }
-        if (ConfigMaterial.TIN.mustLoad()) {
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, plateAmount), stampPlate, new ItemStack(ItemRegister.PLATE_TIN, 1)));
-        }
-
-        if (OreDictionary.doesOreNameExist("stickIron")) {
-            ItemStack stickIron = OreDictionary.getOres("stickIron").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, rodAmount), stampRod, stickIron));
-        }
-        if (OreDictionary.doesOreNameExist("stickGold")) {
-            ItemStack stickGold = OreDictionary.getOres("stickGold").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, rodAmount), stampRod, stickGold));
-        }
-        if (OreDictionary.doesOreNameExist("stickLead")) {
-            ItemStack stickLead = OreDictionary.getOres("stickLead").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, rodAmount), stampRod, stickLead));
-        }
-        if (OreDictionary.doesOreNameExist("stickSilver")) {
-            ItemStack stickSilver = OreDictionary.getOres("stickSilver").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, rodAmount), stampRod, stickSilver));
-        }
-        if (OreDictionary.doesOreNameExist("stickCopper")) {
-            ItemStack stickCopper = OreDictionary.getOres("stickCopper").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, rodAmount), stampRod, stickCopper));
-        }
-        if (OreDictionary.doesOreNameExist("stickDawnstone")) {
-            ItemStack stickDawnstone = OreDictionary.getOres("stickDawnstone").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, rodAmount), stampRod, stickDawnstone));
-        }
-        if (ConfigMaterial.ALUMINUM.mustLoad() && OreDictionary.doesOreNameExist("stickAluminum")) {
-            ItemStack stickAluminum = OreDictionary.getOres("stickAluminum").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, rodAmount), stampRod, stickAluminum));
-        }
-        if (ConfigMaterial.BRONZE.mustLoad() && OreDictionary.doesOreNameExist("stickBronze")) {
-            ItemStack stickBronze = OreDictionary.getOres("stickBronze").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, rodAmount), stampRod, stickBronze));
-        }
-        if (ConfigMaterial.ELECTRUM.mustLoad() && OreDictionary.doesOreNameExist("stickElectrum")) {
-            ItemStack stickElectrum = OreDictionary.getOres("stickElectrum").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, rodAmount), stampRod, stickElectrum));
-        }
-        if (ConfigMaterial.NICKEL.mustLoad() && OreDictionary.doesOreNameExist("stickNickel")) {
-            ItemStack stickNickel = OreDictionary.getOres("stickNickel").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, rodAmount), stampRod, stickNickel));
-        }
-        if (ConfigMaterial.TIN.mustLoad() && OreDictionary.doesOreNameExist("stickTin")) {
-            ItemStack stickTin = OreDictionary.getOres("stickTin").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, rodAmount), stampRod, stickTin));
-        }
-        if (OreDictionary.doesOreNameExist("stickSteel") && FluidRegistry.isFluidRegistered("steel")) {
-            ItemStack stickSteel = OreDictionary.getOres("stickSteel").get(0);
-            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegistry.getFluid("steel"), rodAmount), stampRod, stickSteel));
-        }
-
-        stampingRecipes.add(new ItemWasteStampingRecipe());
-
-        Ingredient emberShard = Ingredient.fromItem(ItemRegister.SHARD_EMBER);
-        Ingredient emberCrystal = Ingredient.fromItem(ItemRegister.CRYSTAL_EMBER);
-        Ingredient stampFlat = Ingredient.fromItem(ItemRegister.STAMP_FLAT);
-        Ingredient blazeRod = Ingredient.fromItem(Items.BLAZE_ROD);
-
-        //stampingRecipes.add(new ItemStampingRecipe(emberShard,null,stampFlat,new ItemStack(RegistryManager.dust_ember,1))); //Maybe one day
-        stampingRecipes.add(new ItemStampingRecipe(emberCrystal, null, stampFlat, new ItemStack(ItemRegister.SHARD_EMBER, 6)));
-        stampingRecipes.add(new ItemStampingRecipe(blazeRod, null, stampFlat, new ItemStack(Items.BLAZE_POWDER, 4)));
-
-        int aspectusAmount = ConfigMachine.STAMPER.stampAspectusAmount * INGOT_AMOUNT;
-        stampingRecipes.add(new ItemStampingRecipe(emberShard, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, aspectusAmount), stampPlate, new ItemStack(ItemRegister.ASPECTUS_IRON, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(emberShard, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, aspectusAmount), stampPlate, new ItemStack(ItemRegister.ASPECTUS_LEAD, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(emberShard, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, aspectusAmount), stampPlate, new ItemStack(ItemRegister.ASPECTUS_SILVER, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(emberShard, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, aspectusAmount), stampPlate, new ItemStack(ItemRegister.ASPECTUS_COPPER, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(emberShard, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, aspectusAmount), stampPlate, new ItemStack(ItemRegister.ASPECTUS_DAWNSTONE, 1)));
-
-        mixingRecipes.add(new FluidMixingRecipe(new FluidStack[]{new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, 4), new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, 4)}, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, 8)));
-        if (ConfigMaterial.ELECTRUM.mustLoad()) {
-            mixingRecipes.add(new FluidMixingRecipe(new FluidStack[]{new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, 4), new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, 4)}, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, 8)));
-        }
-        if (ConfigMaterial.TIN.mustLoad() && ConfigMaterial.BRONZE.mustLoad()) {
-            mixingRecipes.add(new FluidMixingRecipe(new FluidStack[]{new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, 6), new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, 2)}, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, 8)));
-        }
-        mixingRecipes.add(new FluidMixingRecipe(new FluidStack[]{new FluidStack(FluidRegister.FLUID_CRUDE_OIL, 5), new FluidStack(FluidRegister.FLUID_STEAM, 20)}, new FluidStack(FluidRegister.FLUID_OIL, 10), 0));
-        mixingRecipes.add(new FluidMixingRecipe(new FluidStack[]{new FluidStack(FluidRegister.FLUID_CRUDE_OIL, 10), new FluidStack(FluidRegister.FLUID_GAS, 5)}, new FluidStack(FluidRegister.FLUID_OIL, 30), 0));
-
-        fluidReactionRecipes.add(new FluidReactionRecipe(new FluidStack(FluidRegister.FLUID_STEAM, 5), new FluidStack(FluidRegistry.WATER, 1), new Color(255, 255, 255)));
-        fluidReactionRecipes.add(new FluidReactionRecipe(new FluidStack(FluidRegister.FLUID_GAS, 1), new FluidStack(FluidRegister.FLUID_STEAM, 5), new Color(128, 192, 255)));
-
-        OreIngredient quartz = new OreIngredient("gemQuartz");
-        OreIngredient ash = new OreIngredient("dustAsh");
-        OreIngredient string = new OreIngredient("string");
-        Ingredient wool = Ingredient.fromItem(Item.getItemFromBlock(Blocks.WOOL));
-        Ingredient coal = Ingredient.fromItem(Items.COAL);
-        Ingredient clay = Ingredient.fromItem(Items.CLAY_BALL);
-        OreIngredient diamond = new OreIngredient("gemDiamond");
-        OreIngredient gunpowder = new OreIngredient("gunpowder");
-        Ingredient bonemeal = Ingredient.fromStacks(new ItemStack(Items.DYE, 1, 15));
-        OreIngredient lapis = new OreIngredient("gemLapis");
-        OreIngredient redstone = new OreIngredient("dustRedstone");
-        OreIngredient cobblestone = new OreIngredient("cobblestone");
-        OreIngredient sand = new OreIngredient("sand");
-        Ingredient soulsand = Ingredient.fromItem(Item.getItemFromBlock(Blocks.SOUL_SAND));
-        OreIngredient obsidian = new OreIngredient("obsidian");
-        OreIngredient blockCoal = new OreIngredient("blockCoal");
-        Ingredient leadSword = new IngredientSpecial(stack -> {
-            Item item = stack.getItem();
-            return item instanceof ItemSword && ((ItemSword) item).getToolMaterialName().toLowerCase().contains("lead");
-        }); //Any lead sword.
-        Ingredient emberCluster = Ingredient.fromItem(ItemRegister.EMBER_CLUSTER);
-        Ingredient archaicBrick = Ingredient.fromItem(ItemRegister.ARCHAIC_BRICK);
-        Ingredient archaicCircuit = Ingredient.fromItem(ItemRegister.ARCHAIC_CIRCUIT);
-        OreIngredient redstoneBlock = new OreIngredient("blockRedstone");
-        OreIngredient glass = new OreIngredient("blockGlass");
-        Ingredient fluidPipe = Ingredient.fromStacks(new ItemStack(BlockRegister.PIPE));
-
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 48, 64).setRange("copper", 48, 64), quartz, Lists.newArrayList(ingotCopper, ingotCopper, emberShard, emberShard), new ItemStack(BlockRegister.SEED_COPPER)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 48, 64).setRange("silver", 48, 64), quartz, Lists.newArrayList(ingotSilver, ingotSilver, emberShard, emberShard), new ItemStack(BlockRegister.SEED_SILVER)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 48, 64).setRange("lead", 48, 64), quartz, Lists.newArrayList(ingotLead, ingotLead, emberShard, emberShard), new ItemStack(BlockRegister.SEED_LEAD)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 48, 64).setRange("dawnstone", 48, 64), quartz, Lists.newArrayList(ingotGold, ingotGold, emberShard, emberShard), new ItemStack(BlockRegister.SEED_GOLD)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 72, 96).setRange("silver", 24, 32), quartz, Lists.newArrayList(ingotTin, ingotTin, emberShard, emberShard), new ItemStack(BlockRegister.SEED_TIN)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 48, 64).setRange("copper", 24, 32).setRange("silver", 24, 32), quartz, Lists.newArrayList(ingotAluminum, ingotAluminum, emberShard, emberShard), new ItemStack(BlockRegister.SEED_ALUMINUM)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 72, 96).setRange("lead", 24, 32), quartz, Lists.newArrayList(ingotNickel, ingotNickel, emberShard, emberShard), new ItemStack(BlockRegister.SEED_NICKEL)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 96, 128), quartz, Lists.newArrayList(ingotIron, ingotIron, emberShard, emberShard), new ItemStack(BlockRegister.SEED_IRON)));
-
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 12, 24).setRange("lead", 12, 24), wool, Lists.newArrayList(ash, ash, string, string), new ItemStack(ItemRegister.ASHEN_CLOTH, 2)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 32, 48).setRange("lead", 24, 40), diamond, Lists.newArrayList(ingotDawnstone, coal, coal, coal), new ItemStack(ItemRegister.INFLICTOR_GEM, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 64, 80), quartz, Lists.newArrayList(gunpowder, gunpowder, emberShard, emberShard), new ItemStack(ItemRegister.GLIMMER_SHARD, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 24, 36), ingotIron, Lists.newArrayList(quartz, clay, lapis), new ItemStack(ItemRegister.ISOLATED_MATERIA, 4)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 12, 18), clay, Lists.newArrayList(bonemeal, bonemeal), new ItemStack(ItemRegister.ADHESIVE, 6)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("copper", 8, 16), redstone, Lists.newArrayList(ash, ash, cobblestone, cobblestone), new ItemStack(Blocks.NETHERRACK, 2)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("copper", 8, 16), ash, Lists.newArrayList(sand, sand, sand, sand), new ItemStack(Blocks.SOUL_SAND, 4)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("silver", 64, 96).setRange("lead", 64, 96), leadSword, Lists.newArrayList(blockCoal, obsidian, ingotLead, ingotLead), new ItemStack(ItemRegister.TYRFING, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 24, 48).setRange("copper", 24, 48), emberCrystal, Lists.newArrayList(gunpowder, emberShard, emberShard, emberShard), new ItemStack(ItemRegister.EMBER_CLUSTER, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 32, 48).setRange("silver", 24, 32), Ingredient.fromItem(ItemRegister.ANCIENT_MOTIVE_CORE), Lists.newArrayList(ingotDawnstone, emberCluster, ingotDawnstone, plateCopper), new ItemStack(ItemRegister.WILDFIRE_CORE, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 4, 8), archaicBrick, Lists.newArrayList(soulsand, soulsand, clay, clay), new ItemStack(ItemRegister.ARCHAIC_BRICK, 5)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 24, 32), emberShard, Lists.newArrayList(archaicBrick, archaicBrick, archaicBrick, archaicBrick), new ItemStack(ItemRegister.ANCIENT_MOTIVE_CORE, 1)));
-
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("copper", 16, 24),
-                gunpowder,
-                Lists.newArrayList(plateIron, plateIron, plateIron, ingotCopper),
-                new ItemStack(ItemRegister.BLASTING_CORE, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 16, 32).setRange("lead", 48, 72),
-                archaicCircuit,
-                Lists.newArrayList(archaicBrick, coal, archaicBrick, coal),
-                new ItemStack(ItemRegister.ELDRITCH_INSIGNIA, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("copper", 24, 48).setRange("lead", 40, 64),
-                plateCopper,
-                Lists.newArrayList(archaicCircuit, ingotCopper, archaicCircuit, ingotCopper),
-                new ItemStack(ItemRegister.INTELLIGENT_APPARATUS, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 16, 32).setRange("silver", 16, 32),
-                emberCrystal,
-                Lists.newArrayList(plateDawnstone, plateDawnstone, plateDawnstone, ingotSilver),
-                new ItemStack(ItemRegister.FLAME_BARRIER, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("copper", 8, 16).setRange("silver", 32, 64),
-                emberCrystal,
-                Lists.newArrayList(plateDawnstone, plateSilver, plateDawnstone, plateSilver),
-                new ItemStack(ItemRegister.FOCAL_LENS, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("lead", 32, 128),
-                Ingredient.fromItem(ItemRegister.ASHEN_CLOTH),
-                Lists.newArrayList(plateLead, plateLead, plateLead, plateLead),
-                new ItemStack(ItemRegister.SHIFTING_SCALES, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("copper", 32, 128),
-                ingotBronze,
-                Lists.newArrayList(plateBronze, plateBronze, plateBronze, plateBronze),
-                new ItemStack(ItemRegister.WINDING_GEARS, 1)));
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("iron", 8, 16).setRange("silver", 8, 16).setRange("dawnstone", 8, 16).setRange("lead", 8, 16).setRange("copper", 8, 16).fixMathematicalError(),
-                Ingredient.fromItem(ItemRegister.WILDFIRE_CORE),
-                Lists.newArrayList(ingotSilver, plateDawnstone, ingotSilver, plateDawnstone),
-                new ItemStack(BlockRegister.EMBER_PIPE, 8)));
-
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList().setRange("dawnstone", 20, 30).setRange("silver", 32, 64),
-                ingotSilver,
-                Lists.newArrayList(fluidPipe, glass, fluidPipe, redstoneBlock),
-                new ItemStack(BlockRegister.CATALYTIC_PLUG, 1)));
-
-        Ingredient anyMetalSeed = new IngredientSpecial(stack -> Block.getBlockFromItem(stack.getItem()) instanceof BlockSeedNew);
-
-        alchemyRecipes.add(new AlchemyRecipe(new AspectRangeList(AspectList.createStandard(1, 1, 1, 1, 1), AspectList.createStandard(16, 16, 16, 16, 16)).fixMathematicalError(),
-                anyMetalSeed,
-                Lists.newArrayList(Ingredient.fromItem(ItemRegister.DUST_EMBER), new OreIngredient("dustRedstone")),
-                new ItemStack(ItemRegister.DUST_METALLURGIC, 3)));
 
         heatCoilRecipes.add(new HeatCoilFurnaceRecipe());
-
-        dawnstoneAnvilRecipes.add(new AnvilAddCoreRecipe());
-        dawnstoneAnvilRecipes.add(new AnvilAddModifierRecipe());
-        dawnstoneAnvilRecipes.add(new AnvilRemoveModifierRecipe());
-        dawnstoneAnvilRecipes.add(new AnvilRepairRecipe()); //Repair with repair item
-        dawnstoneAnvilRecipes.add(new AnvilRepairMateriaRecipe()); //Repair with Isolated Materia
-        dawnstoneAnvilRecipes.add(new AnvilBreakdownRecipe()); //BREAKDOWN BREAKDOWN
-        dawnstoneAnvilRecipes.add(new CreativeHeatRecipe()); //Creative Heat
 
         FilterUtil.registerComparator(FilterUtil.ANY);
 		/*FilterUtil.registerComparator(new IFilterComparator() {
@@ -2042,7 +1596,7 @@ public class RecipeRegistry {
         return null;
     }
 
-    private static class CreativeHeatRecipe extends DawnstoneAnvilRecipe implements IWrappableRecipe {
+    public static class CreativeHeatRecipe extends DawnstoneAnvilRecipe implements IWrappableRecipe {
 
         @Override
         public boolean matches(ItemStack input1, ItemStack input2) {
@@ -2060,5 +1614,12 @@ public class RecipeRegistry {
         public List<DawnstoneAnvilRecipe> getWrappers() {
             return Lists.newArrayList();
         }
+    }
+
+    @Nonnull
+    public static ItemStack getItemStackFromOreDict(String name, int amount) {
+        ItemStack stack = OreDictionary.getOres(name).get(0).copy();
+        stack.setCount(amount);
+        return stack;
     }
 }
