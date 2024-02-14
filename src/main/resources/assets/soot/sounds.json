@@ -1,0 +1,78 @@
+{
+  "block.embers.alchemical_globe.loop": {
+    "category": "block",
+    "sounds": [
+      "soot:alch_globe_hum_loop"
+    ]
+  },
+  "block.embers.alchemical_mixer.success_loop": {
+    "category": "block",
+    "sounds": [
+      "soot:alch_mixer_success_loop"
+    ]
+  },
+  "block.embers.alchemical_mixer.fail_loop": {
+    "category": "block",
+    "sounds": [
+      "soot:alch_mixer_fail_loop"
+    ]
+  },
+  "block.embers.alchemical_mixer.waste": {
+    "category": "block",
+    "sounds": [
+      "soot:alch_mixer_waste"
+    ]
+  },
+  "block.embers.still.loop": {
+    "category": "block",
+    "sounds": [
+      "soot:still_heated_no_brew"
+    ]
+  },
+  "block.embers.still.slow": {
+    "category": "block",
+    "sounds": [
+      "soot:still_brewing_slow"
+    ]
+  },
+  "block.embers.still.fast": {
+    "category": "block",
+    "sounds": [
+      "soot:still_brewing_fast"
+    ]
+  },
+  "block.sulfur_ore.vent": {
+    "category": "block",
+    "sounds": [
+      "soot:sulfur_vent1",
+      "soot:sulfur_vent2"
+    ],
+    "subtitle": "subtitles.sulfur_ore.vent"
+  },
+  "inspiration.start": {
+    "sounds": [
+      "soot:inspiration_start"
+    ]
+  },
+  "inspiration.end": {
+    "sounds": [
+      "soot:inspiration_end"
+    ]
+  },
+  "inspiration.refresh": {
+    "sounds": [
+      "soot:inspiration_refresh"
+    ]
+  },
+  "inspiration.loop": {
+    "sounds": [
+      "soot:inspiration_loop"
+    ]
+  },
+  "inspiration.muse_appear": {
+    "sounds": [
+      "soot:inspiration_muse_appear1",
+      "soot:inspiration_muse_appear2"
+    ]
+  }
+}
