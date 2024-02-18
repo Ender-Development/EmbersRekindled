@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityEmberBoreImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockEmberBore;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +43,6 @@ public class BlockEmberBoreImproved extends BlockEmberBore implements IMigrateab
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.ember_bore.getDefaultState();
+        return BlockRegister.EMBER_BORE.getDefaultState();
     }
 }

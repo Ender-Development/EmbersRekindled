@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityBeamCannonImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockBeamCannon;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +43,6 @@ public class BlockBeamCannonImproved extends BlockBeamCannon implements IMigrate
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.beam_cannon.getDefaultState().withProperty(facing,state.getValue(facing));
+        return BlockRegister.BEAM_CANNON.getDefaultState().withProperty(facing,state.getValue(facing));
     }
 }

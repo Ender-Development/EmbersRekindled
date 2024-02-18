@@ -15,9 +15,9 @@ import soot.tile.overrides.TileEntityMechAccessorImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockMechAccessor;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -45,6 +45,6 @@ public class BlockMechAccessorImproved extends BlockMechAccessor implements IMig
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.mech_accessor.getDefaultState().withProperty(facing,state.getValue(facing));
+        return BlockRegister.MECH_ACCESSOR.getDefaultState().withProperty(facing,state.getValue(facing));
     }
 }

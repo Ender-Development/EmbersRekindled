@@ -50,7 +50,7 @@ public class ExpansionFluid {
 
         @Override
         public String describe() {
-            return null;
+            return "Registering mug model for " + fluid.getName() + " with color " + color.getRGB() + " and model " + model;
         }
     }
 

@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityStamperImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockStamper;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +43,6 @@ public class BlockStamperImproved extends BlockStamper implements IMigrateable {
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.stamper.getDefaultState().withProperty(facing,state.getValue(facing));
+        return BlockRegister.STAMPER.getDefaultState().withProperty(facing,state.getValue(facing));
     }
 }

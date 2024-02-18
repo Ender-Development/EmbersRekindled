@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityDawnstoneAnvilImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockDawnstoneAnvil;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +43,6 @@ public class BlockDawnstoneAnvilImproved extends BlockDawnstoneAnvil implements 
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.dawnstone_anvil.getDefaultState();
+        return BlockRegister.DAWNSTONE_ANVIL.getDefaultState();
     }
 }

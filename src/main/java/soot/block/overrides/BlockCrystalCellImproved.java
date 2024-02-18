@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityCrystalCellImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockCrystalCell;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +43,6 @@ public class BlockCrystalCellImproved extends BlockCrystalCell implements IMigra
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.crystal_cell.getDefaultState();
+        return BlockRegister.CRYSTAL_CELL.getDefaultState();
     }
 }

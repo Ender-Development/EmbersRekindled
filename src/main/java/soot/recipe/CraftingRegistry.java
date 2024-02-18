@@ -33,12 +33,13 @@ import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.registries.ForgeRegistry;
-import soot.Config;
+import soot.ConfigMain;
 import soot.Registry;
 import soot.Soot;
 import soot.brewing.*;
 import soot.brewing.deliverytypes.DeliveryBlast;
 import soot.compat.jei.ExtraRecipeInfo;
+import soot.config.ConfigSoot;
 import soot.item.ItemEssence;
 import soot.recipe.breweffects.*;
 import soot.tile.TileEntityStillBase;
@@ -46,18 +47,22 @@ import soot.brewing.FluidModifier.EffectType;
 import soot.brewing.FluidModifier.EnumType;
 import soot.util.FluidUtil;
 import soot.util.MiscUtil;
-import teamroots.embers.ConfigManager;
 import teamroots.embers.Embers;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.api.alchemy.AspectList;
+import teamroots.embers.config.ConfigMaterial;
+import teamroots.embers.config.ConfigMisc;
 import teamroots.embers.recipe.*;
+import teamroots.embers.register.BlockRegister;
+import teamroots.embers.register.FluidRegister;
+import teamroots.embers.register.ItemRegister;
 import teamroots.embers.util.IngredientSpecial;
 
 import java.text.DecimalFormat;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+
+import static teamroots.embers.recipe.RecipeRegistry.getItemStackFromOreDict;
 
 public class CraftingRegistry {
     public static HashSet<ResourceLocation> REMOVE_RECIPE_BY_RL = new HashSet<>();
@@ -87,20 +92,20 @@ public class CraftingRegistry {
         Ingredient ingotAntimony = new OreIngredient("ingotAntimony");
         Ingredient ingotLead = new OreIngredient("ingotLead");
         Ingredient ingotNickel = new OreIngredient("ingotNickel");
-        Ingredient aspectDawnstone = Ingredient.fromItem(RegistryManager.aspectus_dawnstone);
+        Ingredient aspectDawnstone = Ingredient.fromItem(ItemRegister.ASPECTUS_DAWNSTONE);
         Ingredient blankGlass = new OreIngredient("blockGlassColorless");
-        Ingredient fluidPipe = Ingredient.fromStacks(new ItemStack(RegistryManager.pipe));
-        Ingredient accessor = Ingredient.fromStacks(new ItemStack(RegistryManager.mech_accessor));
+        Ingredient fluidPipe = Ingredient.fromStacks(new ItemStack(BlockRegister.PIPE));
+        Ingredient accessor = Ingredient.fromStacks(new ItemStack(BlockRegister.MECH_ACCESSOR));
         Ingredient distillationPipe = Ingredient.fromStacks(new ItemStack(Registry.DISTILLATION_PIPE));
         Ingredient leadPickaxe = new IngredientSpecial(stack -> {
             Item item = stack.getItem();
             return item instanceof ItemTool && item.getToolClasses(stack).contains("pickaxe") && ((ItemTool) item).getToolMaterialName().toLowerCase().contains("lead");
         });
-        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("dawnstone",8,16),blankGlass, Lists.newArrayList(aspectDawnstone), Registry.ESSENCE.getStack(EssenceType.NULL,32)));
-        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("copper",16,32).setRange("lead",32,64),blankGlass, Lists.newArrayList(ingotLead, Ingredient.fromItem(RegistryManager.aspectus_lead), ingotLead, Ingredient.fromItem(RegistryManager.archaic_circuit)),new ItemStack(Registry.ALCHEMY_GLOBE)));
-        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("silver",24,56).setRange("iron",32,64),distillationPipe, Lists.newArrayList(fluidPipe, blankGlass, fluidPipe, accessor),new ItemStack(Registry.DECANTER)));
-        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("iron",64,96).setRange("lead",64,96),leadPickaxe, Lists.newArrayList(ingotAntimony, Ingredient.fromItem(Registry.SULFUR_CLUMP), ingotAntimony, Ingredient.fromItem(Registry.SIGNET_ANTIMONY)),new ItemStack(Registry.EITR)));
-        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("copper",16,32).setRange("iron",32,48).setRange("lead",32,48),Ingredient.fromItem(RegistryManager.jet_augment), Lists.newArrayList(ingotNickel, Ingredient.fromItem(Registry.SULFUR_CLUMP), ingotNickel, ingotNickel),new ItemStack(Registry.WITCH_FIRE)));
+        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("dawnstone", 8, 16), blankGlass, Lists.newArrayList(aspectDawnstone), Registry.ESSENCE.getStack(EssenceType.NULL, 32)));
+        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("copper", 16, 32).setRange("lead", 32, 64), blankGlass, Lists.newArrayList(ingotLead, Ingredient.fromItem(ItemRegister.ASPECTUS_LEAD), ingotLead, Ingredient.fromItem(ItemRegister.ARCHAIC_CIRCUIT)), new ItemStack(Registry.ALCHEMY_GLOBE)));
+        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("silver", 24, 56).setRange("iron", 32, 64), distillationPipe, Lists.newArrayList(fluidPipe, blankGlass, fluidPipe, accessor), new ItemStack(Registry.DECANTER)));
+        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("iron", 64, 96).setRange("lead", 64, 96), leadPickaxe, Lists.newArrayList(ingotAntimony, Ingredient.fromItem(Registry.SULFUR_CLUMP), ingotAntimony, Ingredient.fromItem(Registry.SIGNET_ANTIMONY)), new ItemStack(Registry.EITR)));
+        RecipeRegistry.alchemyRecipes.add(new AlchemyRecipe(new AspectList.AspectRangeList().setRange("copper", 16, 32).setRange("iron", 32, 48).setRange("lead", 32, 48), Ingredient.fromItem(ItemRegister.JET_AUGMENT), Lists.newArrayList(ingotNickel, Ingredient.fromItem(Registry.SULFUR_CLUMP), ingotNickel, ingotNickel), new ItemStack(Registry.WITCH_FIRE)));
 
         removeRecipe(new ResourceLocation(Embers.MODID, "archaic_bricks_2")); //Remove conflicting recipe
         removeRecipe(new ResourceLocation(Embers.MODID, "plate_caminite_raw"));
@@ -109,35 +114,30 @@ public class CraftingRegistry {
         FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(Registry.STAMP_TEXT_RAW), new ItemStack(Registry.STAMP_TEXT), 0.1f);
         FurnaceRecipes.instance().addSmeltingRecipe(new ItemStack(Registry.CAMINITE_CLAY), new ItemStack(Registry.CAMINITE_LARGE_TILE), 0.1f);
 
-        int nuggetSize = 16;
+        int nuggetSize = ConfigMisc.nuggetFluidAmount;
 
         RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("iron", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), new ItemStack(Items.IRON_NUGGET)));
         RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("gold", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), new ItemStack(Items.GOLD_NUGGET)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("copper", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), new ItemStack(RegistryManager.nugget_copper)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("dawnstone", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), new ItemStack(RegistryManager.nugget_dawnstone)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("lead", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET),new ItemStack(RegistryManager.nugget_lead)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("silver", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET),new ItemStack(RegistryManager.nugget_silver)));
-        if (ConfigManager.enableTin)
-            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("tin", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET),new ItemStack(RegistryManager.nugget_tin)));
-        if (ConfigManager.enableAluminum)
-            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("aluminum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), new ItemStack(RegistryManager.nugget_aluminum)));
-        if (ConfigManager.enableBronze)
-            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("bronze", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET),new ItemStack(RegistryManager.nugget_bronze)));
-        if (ConfigManager.enableNickel)
-            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("nickel", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET),new ItemStack(RegistryManager.nugget_nickel)));
-        if (ConfigManager.enableElectrum)
-            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("electrum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET),new ItemStack(RegistryManager.nugget_electrum)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("copper", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetCopper", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("dawnstone", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetDawnstone", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("lead", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetLead", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("silver", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetSilver", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("tin", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetTin", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("aluminum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetAluminum", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("bronze", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetBronze", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("nickel", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetNickel", 1)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("electrum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetElectrum", 1)));
 
         RecipeRegistry.stampingRecipes.add(new ItemLiverStampingRecipe());
-        
-        if(Config.RENAME_STAMP)
+
+        if (ConfigSoot.RENAME_STAMP)
             RecipeRegistry.stampingRecipes.add(new ItemRenameStampingRecipe());
 
-        RecipeRegistry.meltingRecipes.add(new ItemMeltingRecipe(Ingredient.fromItem(Items.SUGAR), FluidRegistry.getFluidStack("sugar", 16))); //Nugget size -> you can combine sugar and lead into antimony without remainder and 1000 sugar store nicely in a fluid vessel
+        RecipeRegistry.meltingRecipes.add(new ItemMeltingRecipe(Ingredient.fromItem(Items.SUGAR), FluidRegistry.getFluidStack("sugar", nuggetSize))); //Nugget size -> you can combine sugar and lead into antimony without remainder and 1000 sugar store nicely in a fluid vessel
 
         ArrayList<Fluid> leveledMetals = new ArrayList<>();
         leveledMetals.add(FluidRegistry.getFluid("lead"));
-        if (ConfigManager.enableTin) //Tin sometimes doesn't exist.
+        if (ConfigMaterial.TIN.mustLoad()) //Tin sometimes doesn't exist.
             leveledMetals.add(FluidRegistry.getFluid("tin"));
         leveledMetals.add(FluidRegistry.getFluid("iron"));
         leveledMetals.add(FluidRegistry.getFluid("copper"));
@@ -153,8 +153,8 @@ public class CraftingRegistry {
         }
 
         addAlchemicalMixingRecipe(FluidRegistry.getFluidStack("antimony", 12), new FluidStack[]{FluidRegistry.getFluidStack("lead", 8), FluidRegistry.getFluidStack("sugar", 4)}, new AspectList.AspectRangeList(AspectList.createStandard(0, 16, 0, 16, 0), AspectList.createStandard(0, 32, 0, 24, 0)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.fromItem(RegistryManager.shard_ember), FluidRegistry.getFluidStack("antimony", 144), Ingredient.fromItem(RegistryManager.stamp_bar),new ItemStack(Registry.SIGNET_ANTIMONY)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("antimony", 144), Ingredient.fromItem(RegistryManager.stamp_bar),new ItemStack(Registry.INGOT_ANTIMONY)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.fromItem(ItemRegister.SHARD_EMBER), FluidRegistry.getFluidStack("antimony", 144), Ingredient.fromItem(ItemRegister.STAMP_BAR), new ItemStack(Registry.SIGNET_ANTIMONY)));
+        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("antimony", 144), Ingredient.fromItem(ItemRegister.STAMP_BAR), new ItemStack(Registry.INGOT_ANTIMONY)));
 
         RecipeRegistry.meltingRecipes.add(new ItemMeltingRecipe(new OreIngredient("ingotAntimony"), FluidRegistry.getFluidStack("antimony", 144)));
 
@@ -170,8 +170,8 @@ public class CraftingRegistry {
         FluidUtil.registerModifier(new FluidPotionModifier("ale", 0, EnumType.PRIMARY, EffectType.POSITIVE, Registry.POTION_ALE, 4) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.GLASS, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.GLASS, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
@@ -209,32 +209,32 @@ public class CraftingRegistry {
         FluidUtil.registerModifier(new FluidPotionModifier("lifedrinker", 0, EnumType.SECONDARY, EffectType.POSITIVE, Registry.POTION_LIFEDRINKER, 0) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.LIFEDRINKER, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.LIFEDRINKER, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
         FluidUtil.registerModifier(new FluidPotionModifier("steadfast", 0, EnumType.SECONDARY, EffectType.POSITIVE, Registry.POTION_STEADFAST, 0) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.SPEED, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.SPEED, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
         FluidUtil.registerModifier(new FluidPotionModifier("experience_boost", 0, EnumType.SECONDARY, EffectType.POSITIVE, Registry.POTION_EXPERIENCE_BOOST, 0) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.EXPERIENCE, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.EXPERIENCE, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
         FluidUtil.registerModifier(new FluidPotionModifier("glass", 0, EnumType.SECONDARY, EffectType.NEGATIVE, Registry.POTION_GLASS, 9) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.GLASS, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.GLASS, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
@@ -247,24 +247,24 @@ public class CraftingRegistry {
         FluidUtil.registerModifier(new FluidPotionModifier("speed", 0, EnumType.SECONDARY, EffectType.POSITIVE, MobEffects.SPEED, 3) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.SPEED, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.SPEED, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
         FluidUtil.registerModifier(new FluidPotionModifier("slow", 0, EnumType.SECONDARY, EffectType.NEGATIVE, MobEffects.SLOWNESS, 3) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.SLOWNESS, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.SLOWNESS, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
         FluidUtil.registerModifier(new FluidPotionModifier("regeneration", 0, EnumType.SECONDARY, EffectType.POSITIVE, MobEffects.REGENERATION, 3) {
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.REGENERATION, (int)Math.ceil(amount / 400));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.REGENERATION, (int) Math.ceil(amount / 400));
                 return super.toEssence(amount);
             }
         }.setFormatType("name_only"));
@@ -281,8 +281,8 @@ public class CraftingRegistry {
 
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 1000)
-                    return new EssenceStack(EssenceType.SLOWNESS, (int)Math.ceil((amount - 1000) / 200));
+                if (amount > 1000)
+                    return new EssenceStack(EssenceType.SLOWNESS, (int) Math.ceil((amount - 1000) / 200));
                 return super.toEssence(amount);
             }
         });
@@ -306,10 +306,10 @@ public class CraftingRegistry {
 
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.REGENERATION, (int)Math.ceil(amount / 2));
-                if(amount < 0)
-                    return new EssenceStack(EssenceType.DEATH, (int)Math.ceil(amount / 10));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.REGENERATION, (int) Math.ceil(amount / 2));
+                if (amount < 0)
+                    return new EssenceStack(EssenceType.DEATH, (int) Math.ceil(amount / 10));
                 return super.toEssence(amount);
             }
         });
@@ -347,10 +347,10 @@ public class CraftingRegistry {
 
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 200)
-                    return new EssenceStack(EssenceType.WITHER, (int)Math.ceil((amount - 200) / 20));
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.POISON,(int)Math.ceil(amount / 20));
+                if (amount > 200)
+                    return new EssenceStack(EssenceType.WITHER, (int) Math.ceil((amount - 200) / 20));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.POISON, (int) Math.ceil(amount / 20));
                 return EssenceStack.EMPTY;
             }
         });
@@ -364,10 +364,10 @@ public class CraftingRegistry {
 
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount >= 50)
-                    return new EssenceStack(EssenceType.REGENERATION,(int)Math.ceil((amount - 50) / 10));
-                if(amount > 0)
-                    return new EssenceStack(EssenceType.SWEET,(int)Math.ceil(amount / 20));
+                if (amount >= 50)
+                    return new EssenceStack(EssenceType.REGENERATION, (int) Math.ceil((amount - 50) / 10));
+                if (amount > 0)
+                    return new EssenceStack(EssenceType.SWEET, (int) Math.ceil(amount / 20));
                 return EssenceStack.EMPTY;
             }
         });
@@ -377,9 +377,9 @@ public class CraftingRegistry {
                 float value = getOrDefault(compound, fluid);
                 if (value > 400) { //Scalding
                     MiscUtil.damageWithoutInvulnerability(target, new DamageSource("scalding"), 2.0f);
-                    target.playSound(SoundEvents.ENTITY_PLAYER_HURT_ON_FIRE,1.0f,1.0f);
-                    if(target instanceof EntityPlayer) {
-                        ((EntityPlayer) target).sendStatusMessage(new TextComponentTranslation("message.scalding"),true);
+                    target.playSound(SoundEvents.ENTITY_PLAYER_HURT_ON_FIRE, 1.0f, 1.0f);
+                    if (target instanceof EntityPlayer) {
+                        ((EntityPlayer) target).sendStatusMessage(new TextComponentTranslation("message.scalding"), true);
                     }
                 }
                 if (value > 500) //Burning hot
@@ -388,10 +388,10 @@ public class CraftingRegistry {
 
             @Override
             public EssenceStack toEssence(float amount) {
-                if(amount > 500)
-                    return new EssenceStack(EssenceType.FIRE,(int)Math.ceil((amount - 500) / 20));
-                if(amount < 250)
-                    return new EssenceStack(EssenceType.ICE,(int)Math.ceil((250 - amount) / 20));
+                if (amount > 500)
+                    return new EssenceStack(EssenceType.FIRE, (int) Math.ceil((amount - 500) / 20));
+                if (amount < 250)
+                    return new EssenceStack(EssenceType.ICE, (int) Math.ceil((250 - amount) / 20));
                 return EssenceStack.EMPTY;
             }
         });
@@ -419,8 +419,8 @@ public class CraftingRegistry {
         FluidUtil.registerModifier(new FluidModifier("alchemy_blast", 0, EnumType.TERTIARY, EffectType.POSITIVE).setFormatType("name_only"));
         FluidUtil.registerModifier(new FluidModifier("alchemy_blast_radius", 8, EnumType.TERTIARY, EffectType.POSITIVE));
         CaskManager.register("alchemy_blast", (gauntlet, elixir, user, fluid) -> {
-            float radius = FluidUtil.getModifier(fluid,"alchemy_blast_radius");
-            return new DeliveryBlast(user,fluid,8.0,radius);
+            float radius = FluidUtil.getModifier(fluid, "alchemy_blast_radius");
+            return new DeliveryBlast(user, fluid, 8.0, radius);
         });
 
         Fluid boiling_wort = FluidRegistry.getFluid("boiling_wort");
@@ -481,18 +481,18 @@ public class CraftingRegistry {
 
         stillRecipes.add(new RecipeStill(getRL("brew_ale"), new FluidStack(boiling_wort, 1), Ingredient.EMPTY, 0, new FluidStack(ale, 1))
                 .setEssence(Lists.newArrayList(new EssenceStack(EssenceType.GLASS, 1))));
-        stillRecipes.add(new RecipeStill(getRL("brew_vodka"),new FluidStack(boiling_potato_juice, 3), Ingredient.EMPTY, 0, new FluidStack(vodka, 2))
+        stillRecipes.add(new RecipeStill(getRL("brew_vodka"), new FluidStack(boiling_potato_juice, 3), Ingredient.EMPTY, 0, new FluidStack(vodka, 2))
                 .setEssence(Lists.newArrayList(new EssenceStack(EssenceType.VILE, 1))));
-        stillRecipes.add(new RecipeStill(getRL("brew_snowpoff"),new FluidStack(vodka, 1), Ingredient.fromItem(Items.SNOWBALL), 1, new FluidStack(snowpoff, 1))
+        stillRecipes.add(new RecipeStill(getRL("brew_snowpoff"), new FluidStack(vodka, 1), Ingredient.fromItem(Items.SNOWBALL), 1, new FluidStack(snowpoff, 1))
                 .setEssence(Lists.newArrayList(new EssenceStack(EssenceType.ICE, 5))));
-        stillRecipes.add(new RecipeStill(getRL("brew_absinthe"),new FluidStack(boiling_verdigris, 1), Ingredient.fromItem(Items.SUGAR), 0, new FluidStack(absinthe, 1))
+        stillRecipes.add(new RecipeStill(getRL("brew_absinthe"), new FluidStack(boiling_verdigris, 1), Ingredient.fromItem(Items.SUGAR), 0, new FluidStack(absinthe, 1))
                 .setEssence(Lists.newArrayList(new EssenceStack(EssenceType.POISON, 5), new EssenceStack(EssenceType.EXPERIENCE, 1))));
-        stillRecipes.add(new RecipeStill(getRL("brew_methanol"),null, new OreIngredient("logWood"), 1, new FluidStack(methanol, 1))
+        stillRecipes.add(new RecipeStill(getRL("brew_methanol"), null, new OreIngredient("logWood"), 1, new FluidStack(methanol, 1))
                 .setEssence(Lists.newArrayList(new EssenceStack(EssenceType.FIRE, 3), new EssenceStack(EssenceType.POISON, 1))));
 
-        stillRecipes.add(new RecipeStill(getRL("extract_lava"),new FluidStack(FluidRegistry.LAVA, 3), Ingredient.EMPTY, 1, new FluidStack(FluidRegistry.LAVA, 1))
+        stillRecipes.add(new RecipeStill(getRL("extract_lava"), new FluidStack(FluidRegistry.LAVA, 3), Ingredient.EMPTY, 1, new FluidStack(FluidRegistry.LAVA, 1))
                 .setEssence(Lists.newArrayList(new EssenceStack(EssenceType.FIRE, 10))));
-        stillRecipes.add(new RecipeStill(getRL("extract_iron"), new FluidStack(RegistryManager.fluid_molten_iron, 3), Ingredient.EMPTY, 1, new FluidStack(RegistryManager.fluid_molten_iron, 2))
+        stillRecipes.add(new RecipeStill(getRL("extract_iron"), new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, 3), Ingredient.EMPTY, 1, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, 2))
                 .setEssence(Lists.newArrayList(new EssenceStack(EssenceType.EXTRACT, 15))));
 
         ArrayList<Fluid> allSoups = new ArrayList<>();
@@ -519,15 +519,15 @@ public class CraftingRegistry {
         stillCatalysts.add(new CatalystInfoSulfur());
 
         stillRecipes.add(new RecipeStillDoubleDistillation(getRL("modify_double_distill"), allAlcohols, Ingredient.EMPTY, 0) {
-            @Override
-            public int getInputConsumed() {
-                return 3;
-            }
-        }
-            .addEffect(new EffectAdd("concentration", 10, 120, false))
-            .addEffect(new EffectMultiply("concentration", 1.8f, 0, 120, false))
-            .addEffect(new EffectMultiply("volume", 1.1f, false))
-            .addEffect(new EffectLoss(3, 2))
+                    @Override
+                    public int getInputConsumed() {
+                        return 3;
+                    }
+                }
+                        .addEffect(new EffectAdd("concentration", 10, 120, false))
+                        .addEffect(new EffectMultiply("concentration", 1.8f, 0, 120, false))
+                        .addEffect(new EffectMultiply("volume", 1.1f, false))
+                        .addEffect(new EffectLoss(3, 2))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("modify_lifedrinker"), allAlcohols, Ingredient.fromItem(Items.GHAST_TEAR), 1)
                 .addEffect(new EffectInfo("lifedrinker"))
@@ -551,19 +551,19 @@ public class CraftingRegistry {
                 .addEffect(new EffectAdd("toxicity", 5, false))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("modify_sweetness_bonus"), allDrinks, new OreIngredient("dustSugar"), 1)
-                .addEffect(new EffectAdd("sweetness",15,80,false))
+                .addEffect(new EffectAdd("sweetness", 15, 80, false))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("modify_purify"), allDrinks, new OreIngredient("dustPrismarine"), 1)
-                .addEffect(new EffectMultiply("toxicity",0.8f, 0, Float.POSITIVE_INFINITY,false))
-                .addEffect(new EffectAdd("toxicity",-20,0,false))
+                .addEffect(new EffectMultiply("toxicity", 0.8f, 0, Float.POSITIVE_INFINITY, false))
+                .addEffect(new EffectAdd("toxicity", -20, 0, false))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("modify_taint"), allDrinks, Ingredient.fromItem(Items.FERMENTED_SPIDER_EYE), 1) {
             @Override
             public void modifyOutput(TileEntityStillBase tile, FluidStack output) {
                 NBTTagCompound compound = FluidUtil.createModifiers(output);
-                for(String modifier : FluidUtil.SORTED_MODIFIER_KEYS) {
+                for (String modifier : FluidUtil.SORTED_MODIFIER_KEYS) {
                     EffectType effectType = FluidUtil.getEffectType(modifier);
-                    if(effectType == EffectType.NEUTRAL)
+                    if (effectType == EffectType.NEUTRAL)
                         continue;
                     float defaultValue = FluidUtil.getDefault(modifier);
                     float value = getModifierOrDefault(modifier, compound, output);
@@ -580,11 +580,11 @@ public class CraftingRegistry {
             }
         });
         stillRecipes.add(new RecipeStillModifier(getRL("modify_heal"), allDrinks, new OreIngredient("cropNetherWart"), 1)
-                .addEffect(new EffectAdd("health",4,false))
-                .addEffect(new EffectAdd("hunger",-3,false))
+                .addEffect(new EffectAdd("health", 4, false))
+                .addEffect(new EffectAdd("hunger", -3, false))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("modify_cool"), allDrinks, Ingredient.fromStacks(new ItemStack(Blocks.ICE)), 1)
-                .addEffect(new EffectMultiply("heat",0.5f, 200, Float.POSITIVE_INFINITY,false))
+                .addEffect(new EffectMultiply("heat", 0.5f, 200, Float.POSITIVE_INFINITY, false))
         );
         stillRecipes.add(new RecipeStillModifierFood(getRL("soup_potato"), allSoups, new OreIngredient("cropPotato"), 1, 2, 0.3f));
         stillRecipes.add(new RecipeStillModifierFood(getRL("soup_carrot"), allSoups, new OreIngredient("cropCarrot"), 1, 1, 0.2f));
@@ -593,20 +593,20 @@ public class CraftingRegistry {
                 .addEffect(new EffectAdd("viscosity", 1000, true))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("essence_sweet"), allDrinks, Ingredient.fromStacks(Registry.ESSENCE.getStack(EssenceType.SWEET)), 1)
-                .addEffect(new EffectAdd("sweetness",20,false))
+                .addEffect(new EffectAdd("sweetness", 20, false))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("essence_poison"), allDrinks, Ingredient.fromStacks(Registry.ESSENCE.getStack(EssenceType.POISON)), 1)
-                .addEffect(new EffectAdd("toxicity",20,false))
+                .addEffect(new EffectAdd("toxicity", 20, false))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("essence_wither"), allDrinks, Ingredient.fromStacks(Registry.ESSENCE.getStack(EssenceType.WITHER)), 1)
                 .addEffect(new EffectInfo("wither", TextFormatting.RED))
-                .addEffect(new EffectMax("toxicity",200,false))
-                .addEffect(new EffectAdd("toxicity",50,false))
+                .addEffect(new EffectMax("toxicity", 200, false))
+                .addEffect(new EffectAdd("toxicity", 50, false))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("essence_death"), allDrinks, Ingredient.fromStacks(Registry.ESSENCE.getStack(EssenceType.DEATH)), 1)
                 .addEffect(new EffectInfo("death", TextFormatting.RED))
-                .addEffect(new EffectAdd("health",-10,false))
-                .addEffect(new EffectMin("health",-20, true))
+                .addEffect(new EffectAdd("health", -10, false))
+                .addEffect(new EffectMin("health", -20, true))
         );
         stillRecipes.add(new RecipeStillModifier(getRL("essence_vile"), allDrinks, Ingredient.fromStacks(Registry.ESSENCE.getStack(EssenceType.VILE)), 1) {
             @Override
@@ -614,7 +614,7 @@ public class CraftingRegistry {
                 NBTTagCompound compound = FluidUtil.createModifiers(output);
                 float health = getModifierOrDefault("health", compound, output);
                 float toxicity = getModifierOrDefault("toxicity", compound, output);
-                float toConvert = Math.max(0,Math.min(toxicity,20));
+                float toConvert = Math.max(0, Math.min(toxicity, 20));
                 compound.setFloat("health", health - toConvert / 2);
                 compound.setFloat("toxicity", toxicity - toConvert);
             }
@@ -661,7 +661,7 @@ public class CraftingRegistry {
             public void modifyOutput(TileEntityStillBase tile, FluidStack output) {
                 NBTTagCompound compound = FluidUtil.createModifiers(output);
                 String minModifier = getSmallestModifier(output, compound);
-                if(minModifier != null)
+                if (minModifier != null)
                     compound.setFloat(minModifier, FluidUtil.getDefault(minModifier));
             }
 
@@ -669,7 +669,7 @@ public class CraftingRegistry {
             public List<EssenceStack> getEssenceOutput(TileEntityStillBase tile, FluidStack input, ItemStack catalyst) {
                 NBTTagCompound compound = FluidUtil.createModifiers(input);
                 String minModifier = getSmallestModifier(input, compound);
-                if(minModifier != null) {
+                if (minModifier != null) {
                     float value = getModifierOrDefault(minModifier, compound, input);
                     return Lists.newArrayList(FluidUtil.modifierToEssence(minModifier, value));
                 }
@@ -698,12 +698,12 @@ public class CraftingRegistry {
             private String getSmallestModifier(FluidStack output, NBTTagCompound compound) {
                 float minValue = Float.POSITIVE_INFINITY;
                 String minModifier = null;
-                for(String modifier : FluidUtil.SORTED_MODIFIER_KEYS) {
-                    if(FluidUtil.getType(modifier) == EnumType.PRIMARY)
+                for (String modifier : FluidUtil.SORTED_MODIFIER_KEYS) {
+                    if (FluidUtil.getType(modifier) == EnumType.PRIMARY)
                         continue;
                     float value = getModifierOrDefault(modifier, compound, output) - FluidUtil.getDefault(modifier);
                     EssenceStack essence = FluidUtil.modifierToEssence(modifier, value);
-                    if(!essence.isEmpty() && value != 0 && Math.abs(value) < minValue) {
+                    if (!essence.isEmpty() && value != 0 && Math.abs(value) < minValue) {
                         minModifier = modifier;
                         minValue = Math.abs(value);
                     }

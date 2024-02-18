@@ -6,19 +6,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
-import net.minecraft.init.MobEffects;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
-import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.TextureStitchEvent;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.capabilities.ICapabilityProvider;
 import net.minecraftforge.common.util.EnumHelper;
-import net.minecraftforge.event.AttachCapabilitiesEvent;
 import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
@@ -30,6 +26,7 @@ import net.minecraftforge.fml.relauncher.SideOnly;
 import soot.block.*;
 import soot.block.overrides.*;
 import soot.brewing.EssenceType;
+import soot.config.ConfigSoot;
 import soot.entity.EntityCustomCloud;
 import soot.entity.EntityFireCloud;
 import soot.entity.EntityMuse;
@@ -46,9 +43,8 @@ import soot.brewing.CaskManager;
 import soot.brewing.CaskManager.CaskLiquid;
 import soot.util.HeatManager;
 import soot.util.Nope;
-import teamroots.embers.RegistryManager;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.api.EmbersAPI;
-import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.itemmod.ModifierBase;
 import teamroots.embers.recipe.RecipeRegistry;
 import teamroots.embers.research.ResearchBase;
@@ -63,7 +59,8 @@ import teamroots.embers.util.WeightedItemStack;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
+
+import static teamroots.embers.recipe.RecipeRegistry.getItemStackFromOreDict;
 
 public class Registry {
     public static ArrayList<Block> MODELLED_BLOCKS = new ArrayList<>();
@@ -204,9 +201,9 @@ public class Registry {
         registerAccessorTiles();
         registerModifiers();
 
-        HeatManager.register(RegistryManager.archaic_light,150);
+        HeatManager.register(BlockRegister.ARCHAIC_LIGHT,150);
         HeatManager.register(Blocks.FIRE,50);
-        HeatManager.register(RegistryManager.heat_coil, (world, pos, state) -> {
+        HeatManager.register(BlockRegister.HEAT_COIL, (world, pos, state) -> {
             TileEntity tile = world.getTileEntity(pos);
             if(tile instanceof TileEntityHeatCoil) {
                 double heat = ((TileEntityHeatCoil) tile).heat;
@@ -258,13 +255,13 @@ public class Registry {
         subCategoryAlchemyMixing.addResearch(antimony);
         subCategoryAlchemyMixing.addResearch(new ResearchBase("eitr",new ItemStack(EITR), 8, 7).addAncestor(antimony));
         subCategoryAlchemyMixing.addResearch(new ResearchBase("antimony_signet",new ItemStack(SIGNET_ANTIMONY),2,6).addAncestor(antimony));
-        subCategoryAlchemyMixing.addResearch(new ResearchShowItem("metal_leveling",ItemStack.EMPTY,7,4).addItem(new ResearchShowItem.DisplayItem(new ItemStack(RegistryManager.ingot_lead),new ItemStack(RegistryManager.ingot_tin),new ItemStack(Items.IRON_INGOT),new ItemStack(RegistryManager.ingot_copper),new ItemStack(RegistryManager.ingot_silver),new ItemStack(Items.GOLD_INGOT))).setIconBackground(PAGE_ICONS,PAGE_ICON_SIZE*1,PAGE_ICON_SIZE*0).addAncestor(alchemy_globe));
+        subCategoryAlchemyMixing.addResearch(new ResearchShowItem("metal_leveling",ItemStack.EMPTY,7,4).addItem(new ResearchShowItem.DisplayItem(getItemStackFromOreDict("ingotLead",1),getItemStackFromOreDict("ingotTin",1),new ItemStack(Items.IRON_INGOT),getItemStackFromOreDict("ingotCopper",1),getItemStackFromOreDict("ingotSilver",1),new ItemStack(Items.GOLD_INGOT))).setIconBackground(PAGE_ICONS,PAGE_ICON_SIZE*1,PAGE_ICON_SIZE*0).addAncestor(alchemy_globe));
 
         ResearchBase still = new ResearchBase("still", new ItemStack(STILL), 6.0D, 4.0D);
         categoryBrewing.addResearch(still);
         categoryBrewing.addResearch(new ResearchBase("distillation_pipe",new ItemStack(DISTILLATION_PIPE), 8.0D, 7.0D).addAncestor(still));
         categoryBrewing.addResearch(new ResearchBase("decanter",new ItemStack(DECANTER), 10.0D, 7.0D).addAncestor(still));
-        categoryBrewing.addResearch(new ResearchBase("still_fuel",new ItemStack(RegistryManager.archaic_light), 6.0D, 7.0D).addAncestor(still));
+        categoryBrewing.addResearch(new ResearchBase("still_fuel",new ItemStack(BlockRegister.ARCHAIC_LIGHT), 6.0D, 7.0D).addAncestor(still));
         ResearchBase alchemy_dial = new ResearchBase("alchemy_dial", new ItemStack(ALCHEMY_GAUGE), 3.5D, 6.0D).addAncestor(still);
         categoryBrewing.addResearch(alchemy_dial);
         categoryBrewing.addResearch(new ResearchBase("rename",new ItemStack(Items.SIGN), 1.0D, 7.0D).addAncestor(alchemy_dial));
@@ -401,8 +398,8 @@ public class Registry {
         registerBlock("caminite_large_tile_stairs",caminiteLargeTileStairs,new ItemBlock(caminiteLargeTileStairs));
 
         Block archaicTileSlab = new BlockModSlab(Material.ROCK, MapColor.BROWN_STAINED_HARDENED_CLAY).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
-        Block archaicTileStairs = new BlockModStairs(RegistryManager.archaic_tile.getDefaultState()).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
-        registerBlock("archaic_tile_slab",archaicTileSlab,new ItemBlockSlab(archaicTileSlab, RegistryManager.archaic_tile));
+        Block archaicTileStairs = new BlockModStairs(BlockRegister.ARCHAIC_TILE.getDefaultState()).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
+        registerBlock("archaic_tile_slab",archaicTileSlab,new ItemBlockSlab(archaicTileSlab, BlockRegister.ARCHAIC_TILE));
         registerBlock("archaic_tile_stairs",archaicTileStairs,new ItemBlock(archaicTileStairs));
 
         Block archaicBigBrick = new Block(Material.ROCK, MapColor.BROWN_STAINED_HARDENED_CLAY).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
@@ -413,13 +410,13 @@ public class Registry {
         registerBlock("archaic_big_bricks_stairs",archaicBigBrickStairs,new ItemBlock(archaicBigBrickStairs));
 
         Block archaicBrickSlab = new BlockModSlab(Material.ROCK, MapColor.BROWN_STAINED_HARDENED_CLAY).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
-        Block archaicBrickStairs = new BlockModStairs(RegistryManager.archaic_bricks.getDefaultState()).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
-        registerBlock("archaic_bricks_slab",archaicBrickSlab,new ItemBlockSlab(archaicBrickSlab, RegistryManager.archaic_bricks));
+        Block archaicBrickStairs = new BlockModStairs(BlockRegister.ARCHAIC_BRICKS.getDefaultState()).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
+        registerBlock("archaic_bricks_slab",archaicBrickSlab,new ItemBlockSlab(archaicBrickSlab, BlockRegister.ARCHAIC_BRICKS));
         registerBlock("archaic_bricks_stairs",archaicBrickStairs,new ItemBlock(archaicBrickStairs));
 
         Block sealedPlanksSlab = new BlockModSlab(Material.WOOD, MapColor.BROWN_STAINED_HARDENED_CLAY).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
-        Block sealedPlanksStairs = new BlockModStairs(RegistryManager.sealed_planks.getDefaultState()).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
-        registerBlock("sealed_planks_slab",sealedPlanksSlab,new ItemBlockSlab(sealedPlanksSlab, RegistryManager.sealed_planks));
+        Block sealedPlanksStairs = new BlockModStairs(BlockRegister.SEALED_PLANKS.getDefaultState()).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
+        registerBlock("sealed_planks_slab",sealedPlanksSlab,new ItemBlockSlab(sealedPlanksSlab, BlockRegister.SEALED_PLANKS));
         registerBlock("sealed_planks_stairs",sealedPlanksStairs,new ItemBlock(sealedPlanksStairs));
 
         Block sealedTile = new Block(Material.WOOD, MapColor.BROWN_STAINED_HARDENED_CLAY).setHardness(1.6f).setCreativeTab(Soot.creativeTab);
@@ -443,43 +440,43 @@ public class Registry {
     }
 
     public static void registerOverrides() {
-        if (Config.OVERRIDE_BORE) {
+        if (ConfigSoot.OVERRIDES.bore) {
             BlockEmberBoreImproved boreImproved = (BlockEmberBoreImproved) new BlockEmberBoreImproved(Material.ROCK, "ember_bore", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0F);
             registerBlock(boreImproved, false);
         }
-        if (Config.OVERRIDE_STAMPER) {
+        if (ConfigSoot.OVERRIDES.stamper) {
             BlockStamperImproved stamperImproved = (BlockStamperImproved) new BlockStamperImproved(Material.ROCK, "stamper", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0F);
             registerBlock(stamperImproved, false);
         }
-        if (Config.OVERRIDE_MIXER) {
+        if (ConfigSoot.OVERRIDES.mixer) {
             BlockMixerImproved mixerImproved = (BlockMixerImproved) new BlockMixerImproved(Material.ROCK, "mixer", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0F);
             registerBlock(mixerImproved, false);
         }
-        if (Config.OVERRIDE_DAWNSTONE_ANVIL) {
+        if (ConfigSoot.OVERRIDES.dawnstoneAnvil) {
             BlockDawnstoneAnvilImproved dawnstoneAnvilImproved = (BlockDawnstoneAnvilImproved) new BlockDawnstoneAnvilImproved(Material.ROCK, "dawnstone_anvil", true).setHarvestProperties("pickaxe", 1).setIsFullCube(false).setIsOpaqueCube(false).setHardness(1.6f).setLightOpacity(0);
             registerBlock(dawnstoneAnvilImproved, false);
         }
-        if (Config.OVERRIDE_BEAM_CANNON) {
+        if (ConfigSoot.OVERRIDES.beamCannon) {
             BlockBeamCannonImproved beamCannonImproved = (BlockBeamCannonImproved) new BlockBeamCannonImproved(Material.ROCK, "beam_cannon", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6F);
             registerBlock(beamCannonImproved, false);
         }
-        if (Config.OVERRIDE_ALCHEMY_TABLET) {
+        if (ConfigSoot.OVERRIDES.alchemyTablet) {
             BlockAlchemyTabletImproved alchemyTabletImproved = (BlockAlchemyTabletImproved) new BlockAlchemyTabletImproved(Material.ROCK, "alchemy_tablet", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6F);
             registerBlock(alchemyTabletImproved, false);
         }
-        if (Config.OVERRIDE_ALCHEMY_PEDESTAL) {
+        if (ConfigSoot.OVERRIDES.alchemyPedestal) {
             BlockAlchemyPedestalImproved alchemyPedestalImproved = (BlockAlchemyPedestalImproved) new BlockAlchemyPedestalImproved(Material.ROCK, "alchemy_pedestal", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6F);
             registerBlock(alchemyPedestalImproved, false);
         }
-        if (Config.OVERRIDE_HEARTH_COIL) {
+        if (ConfigSoot.OVERRIDES.hearthCoil) {
             BlockHeatCoilImproved heatCoilImproved = (BlockHeatCoilImproved) new BlockHeatCoilImproved(Material.ROCK, "heat_coil", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0F);
             registerBlock(heatCoilImproved, false);
         }
-        if (Config.OVERRIDE_MECH_ACCESSOR) {
+        if (ConfigSoot.OVERRIDES.mechAccessor) {
             BlockMechAccessorImproved accessorImproved = (BlockMechAccessorImproved) new BlockMechAccessorImproved(Material.ROCK, "mech_accessor", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0F);
             registerBlock(accessorImproved, false);
         }
-        if (Config.OVERRIDE_CRYSTAL_CELL) {
+        if (ConfigSoot.OVERRIDES.crystalCell) {
             BlockCrystalCellImproved crystalCellImproved = (BlockCrystalCellImproved) new BlockCrystalCellImproved(Material.ROCK, "crystal_cell", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.0F);
             registerBlock(crystalCellImproved, false);
         }

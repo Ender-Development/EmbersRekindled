@@ -1691,3 +1691,10 @@ distilling.modifier.dial.faster_chugging=- Faster Chugging
 distilling.modifier.dial.fire_retardant=- Fire Retardant
 
 subtitles.sulfur_ore.vent=Sulfur Ore releases corrosive cloud
+
+cfg.soot.soot=Soot
+cfg.soot.soot.desc=Config Options for Soot
+cfg.soot.overrides=Overrides
+cfg.soot.overrides.desc=Overrides for Embers
+cfg.soot.sulfur_ore=Sulfur Ore
+cfg.soot.sulfur_ore.desc=Config Options for Sulfur Ore

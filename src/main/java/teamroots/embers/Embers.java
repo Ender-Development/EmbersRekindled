@@ -17,11 +17,14 @@ import teamroots.embers.register.ItemRegister;
 import teamroots.embers.register.RegistryManager;
 import teamroots.embers.research.ResearchManager;
 
-@Mod(modid = Embers.MODID, name = Embers.MODNAME, dependencies = Embers.DEPENDENCIES)
+@Mod(modid = Embers.MODID, name = Embers.MODNAME, dependencies = Embers.DEPENDENCIES, acceptedMinecraftVersions = Embers.VERSIONS)
 public class Embers {
+
 	public static final String MODID = "embers";
 	public static final String MODNAME = "Embers";
 	public static final String CFG_FOLDER = "Embers/";
+	public static final String CFG_ADDONS_FOLDER = "Embers/addons/";
+	public static final String VERSIONS = "[1.12.2]";
 	public static final String DEPENDENCIES = "after:mysticalmechanics";
 
 	@SidedProxy(clientSide = "teamroots.embers.proxy.ClientProxy",serverSide = "teamroots.embers.proxy.ServerProxy")
@@ -51,7 +54,7 @@ public class Embers {
 		}
 	};
 	
-    @Instance("embers")
+    @Instance(Embers.MODID)
     public static Embers instance;
 
 	static {

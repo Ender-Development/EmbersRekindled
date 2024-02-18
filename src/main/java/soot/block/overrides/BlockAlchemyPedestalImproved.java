@@ -13,7 +13,6 @@ import soot.tile.overrides.TileEntityAlchemyPedestalImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockAlchemyPedestal;
 import teamroots.embers.item.ItemTinkerHammer;
 import teamroots.embers.register.BlockRegister;

@@ -1,16 +1,40 @@
 [
-{
-  "modid": "embers",
-  "name": "Embers Unofficial Extended Life",
-  "description": "Dwarven-style Magitech Mod",
-  "version": "${version}",
-  "mcversion": "${mcversion}",
-  "url": "https://github.com/Ender-Development/Embers-Extended-Life",
-  "updateUrl": "",
-  "authorList": ["BordListian","Elucent","AlexisMachina","ShadowGamerXY","werty1124","Ender-Development"],
-  "credits": "",
-  "logoFile": "",
-  "screenshots": [],
-  "dependencies": []
-}
+  {
+    "modid": "embers",
+    "name": "Embers Unofficial Extended Life",
+    "description": "Dwarven-style Magitech Mod",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/Ender-Development/Embers-Extended-Life",
+    "updateUrl": "",
+    "authorList": [
+      "BordListian",
+      "Elucent",
+      "AlexisMachina",
+      "ShadowGamerXY",
+      "werty1124",
+      "Ender-Development"
+    ],
+    "credits": "",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  },
+  {
+    "modid": "soot",
+    "name": "Soot Unofficial Extended Life",
+    "description": "An Embers addon.",
+    "version": "${version}",
+    "mcversion": "${mcversion}",
+    "url": "https://github.com/Ender-Development/Embers-Extended-Life",
+    "updateUrl": "",
+    "authorList": [
+      "BordListian",
+      "Ender-Development"
+    ],
+    "credits": "Forge, Elucent",
+    "logoFile": "",
+    "screenshots": [],
+    "dependencies": []
+  }
 ]

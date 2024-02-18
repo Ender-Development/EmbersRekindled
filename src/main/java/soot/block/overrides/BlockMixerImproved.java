@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityMixerBottomImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockMixer;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 import teamroots.embers.tileentity.TileEntityMixerTop;
 
 import javax.annotation.Nullable;
@@ -47,6 +47,6 @@ public class BlockMixerImproved extends BlockMixer implements IMigrateable {
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.mixer.getDefaultState().withProperty(isTop,state.getValue(isTop));
+        return BlockRegister.MIXER.getDefaultState().withProperty(isTop,state.getValue(isTop));
     }
 }

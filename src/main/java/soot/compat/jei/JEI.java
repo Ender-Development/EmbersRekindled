@@ -8,8 +8,8 @@ import soot.compat.jei.category.AlchemicalMixerCategory;
 import soot.compat.jei.category.StillCategory;
 import soot.compat.jei.wrapper.*;
 import soot.recipe.*;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.compat.jei.EmbersJEIPlugin;
+import teamroots.embers.register.BlockRegister;
 
 @mezz.jei.api.JEIPlugin
 public class JEI implements IModPlugin {
@@ -35,7 +35,7 @@ public class JEI implements IModPlugin {
         registry.handleRecipes(RecipeAlchemicalMixer.class, AlchemicalMixerWrapper::new, AlchemicalMixerCategory.UID);
         registry.handleRecipes(RecipeStill.class, StillWrapper::new, StillCategory.UID);
 
-        registry.addRecipeCatalyst(new ItemStack(RegistryManager.mixer), AlchemicalMixerCategory.UID);
+        registry.addRecipeCatalyst(new ItemStack(BlockRegister.MIXER), AlchemicalMixerCategory.UID);
         registry.addRecipeCatalyst(new ItemStack(Registry.ALCHEMY_GLOBE), AlchemicalMixerCategory.UID);
         registry.addRecipeCatalyst(new ItemStack(Registry.STILL), StillCategory.UID);
     }

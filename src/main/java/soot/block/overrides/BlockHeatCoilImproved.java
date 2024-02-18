@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityHeatCoilImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockHeatCoil;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +43,6 @@ public class BlockHeatCoilImproved extends BlockHeatCoil implements IMigrateable
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.heat_coil.getDefaultState();
+        return BlockRegister.HEAT_COIL.getDefaultState();
     }
 }

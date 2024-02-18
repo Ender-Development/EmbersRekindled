@@ -13,9 +13,9 @@ import soot.tile.overrides.TileEntityAlchemyTabletImproved;
 import soot.util.EmberUtil;
 import soot.util.IMigrateable;
 import soot.util.MigrationUtil;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.block.BlockAlchemyTablet;
 import teamroots.embers.item.ItemTinkerHammer;
+import teamroots.embers.register.BlockRegister;
 
 import javax.annotation.Nullable;
 
@@ -43,6 +43,6 @@ public class BlockAlchemyTabletImproved extends BlockAlchemyTablet implements IM
 
     @Override
     public IBlockState getReplacementState(IBlockState state) {
-        return RegistryManager.alchemy_tablet.getDefaultState();
+        return BlockRegister.ALCHEMY_TABLET.getDefaultState();
     }
 }

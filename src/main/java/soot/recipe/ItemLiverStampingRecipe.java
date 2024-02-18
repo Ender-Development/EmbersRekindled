@@ -6,12 +6,12 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
 import soot.Registry;
 import soot.item.ItemSulfurClump;
-import teamroots.embers.RegistryManager;
 import teamroots.embers.recipe.ItemStampingRecipe;
+import teamroots.embers.register.ItemRegister;
 
 public class ItemLiverStampingRecipe extends ItemStampingRecipe {
     public ItemLiverStampingRecipe() {
-        super(Ingredient.fromItem(Registry.SULFUR_CLUMP), null, Ingredient.fromItem(RegistryManager.stamp_flat), new ItemStack(Registry.SULFUR));
+        super(Ingredient.fromItem(Registry.SULFUR_CLUMP), null, Ingredient.fromItem(ItemRegister.STAMP_FLAT), new ItemStack(Registry.SULFUR));
     }
 
     @Override
