@@ -6,11 +6,14 @@ A dwarven magic mod
 ### Changes
 - integrated Soot into Embers
   - this makes Embers Unofficial Extended Life incompatible with the Soot mod on CurseForge
+  - consider this as a beta release for now, as there might be some issues with the integration
 - refactored the Soot config system
   - this allows editing the Soot config in-game
   - moved the config to the Embers config folder
+- added a new config option to disable the Soot integration
+
+### Bugfixes
 - fixed a CraftTweaker issues that prevented the brewing recipes in Soot from working
-- consider this as a beta release for now, as there might be some issues with the integration
 
 ## v1.21.1 - Bugfixes
 ### Changes
