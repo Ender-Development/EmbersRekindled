@@ -18,35 +18,39 @@ import soot.projectiles.ProjectileFireBlast;
 import soot.recipe.CraftingRegistry;
 import soot.util.Attributes;
 import teamroots.embers.Embers;
+import teamroots.embers.config.ConfigAddon;
 import teamroots.embers.register.ItemRegister;
 
-@Mod(modid = Soot.MODID, name=Soot.NAME, acceptedMinecraftVersions = Embers.VERSIONS, dependencies = Soot.DEPENDENCIES)
+@Mod(modid = Soot.MODID, name = Soot.NAME, acceptedMinecraftVersions = Embers.VERSIONS, dependencies = Soot.DEPENDENCIES)
 @Mod.EventBusSubscriber
-public class Soot
-{
+public class Soot {
     @Mod.Instance(Soot.MODID)
     public static Soot instance;
 
     public static final String MODID = "soot";
     public static final String NAME = "Soot";
-	public static final String DEPENDENCIES = "required-after:embers";
+    public static final String DEPENDENCIES = "required-after:embers";
 
     public static Logger log;
 
-    @SidedProxy(clientSide = "soot.ClientProxy",serverSide = "soot.ServerProxy")
+    @SidedProxy(clientSide = "soot.ClientProxy", serverSide = "soot.ServerProxy")
     public static IProxy proxy;
 
     public static CreativeTabs creativeTab;
 
     @EventHandler
-    public void construct(FMLConstructionEvent event)
-    {
+    public void construct(FMLConstructionEvent event) {
+        if (!ConfigAddon.enableSoot) {
+            return;
+        }
         proxy.registerResourcePack();
     }
 
     @EventHandler
-    public void preInit(FMLPreInitializationEvent event)
-    {
+    public void preInit(FMLPreInitializationEvent event) {
+        if (!ConfigAddon.enableSoot) {
+            return;
+        }
         log = event.getModLog();
         creativeTab = new CreativeTabs("soot") {
             @Override
@@ -63,9 +67,9 @@ public class Soot
         MinecraftForge.EVENT_BUS.register(FuelHandler.class);
         MinecraftForge.EVENT_BUS.register(WitchburnHandler.class);
         MinecraftForge.EVENT_BUS.register(EitrHandler.class);
-        if(ConfigSoot.TRADING_ANTIMONY)
+        if (ConfigSoot.TRADING_ANTIMONY)
             MinecraftForge.EVENT_BUS.register(VillagerAntimonyHandler.class);
-        if(ConfigSoot.GOLEMS_POISON_IMMUNE || ConfigSoot.GOLEMS_TYRFING_WEAK)
+        if (ConfigSoot.GOLEMS_POISON_IMMUNE || ConfigSoot.GOLEMS_TYRFING_WEAK)
             MinecraftForge.EVENT_BUS.register(GolemHandler.class);
         MinecraftForge.ORE_GEN_BUS.register(GenerationHandler.class);
         MinecraftForge.EVENT_BUS.register(new MigrationHandler());
@@ -74,15 +78,19 @@ public class Soot
     }
 
     @EventHandler
-    public void init(FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
+        if (!ConfigAddon.enableSoot) {
+            return;
+        }
         Registry.init();
         proxy.init();
     }
 
     @EventHandler
-    public void postInit(FMLPostInitializationEvent event)
-    {
+    public void postInit(FMLPostInitializationEvent event) {
+        if (!ConfigAddon.enableSoot) {
+            return;
+        }
         Registry.postInit();
         proxy.postInit();
     }

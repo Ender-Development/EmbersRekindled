@@ -1,6 +1,9 @@
 itemGroup.embers=Embers
 itemGroup.embers_resources=Embers (Metals)
 
+cfg.embers.addon=Addons
+cfg.embers.addon.tooltip=(Settings to disable Addons)
+
 cfg.embers.client=Client
 cfg.embers.client.tooltip=(Client-only settings)
 
