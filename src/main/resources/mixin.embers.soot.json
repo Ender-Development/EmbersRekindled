@@ -1,0 +1,10 @@
+{
+  "package": "teamroots.embers.mixin.soot",
+  "refmap": "mixins.embers.refmap.json",
+  "minVersion": "0.8.5",
+  "target": "@env(PREINIT)",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "RegistryMixin"
+  ]
+}
