@@ -105,7 +105,20 @@ repositories {
 }
 
 dependencies {
-    implementation("zone.rong:mixinbooter:9.1")
+    // Common:
+    annotationProcessor 'org.ow2.asm:asm-debug-all:5.2'
+    annotationProcessor 'com.google.guava:guava:32.1.2-jre'
+    annotationProcessor 'com.google.code.gson:gson:2.8.9'
+
+     // RetroFuturaGradle:
+    String mixinBooter = modUtils.enableMixins('zone.rong:mixinbooter:9.1')
+    // modUtils.enableMixins('zone.rong:mixinbooter:9.1', 'mod_id.mixins.refmap.json') << add refmap name as 2nd arg (optional)
+    api (mixinBooter) {
+        transitive = false
+    }
+    annotationProcessor (mixinBooter) {
+        transitive = false
+    }
 
     implementation "CraftTweaker2:CraftTweaker2-API:4.1.8.476"
     implementation "CraftTweaker2:ZenScript:4.1.8.476"
