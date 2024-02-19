@@ -137,7 +137,7 @@ dependencies {
     }
 
     compileOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
-    if (project.debug_mysticalmechanics.toBoolean()) {
+    if (project.debug_mysticalmechanics.toBoolean() || project.debug_mysticalgears.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
     }
 
@@ -153,8 +153,8 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:unidict-244258:3553627")
     }
 
-    if (project.debug_soot.toBoolean()) {
-        implementation rfg.deobf("curse.maven:soot-281528:3056967")
+    if (project.debug_mysticalgears.toBoolean()) {
+        implementation rfg.deobf("curse.maven:mystical-gears-317915:3206298")
     }
 
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
