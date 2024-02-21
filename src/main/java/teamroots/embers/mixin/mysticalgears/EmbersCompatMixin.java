@@ -1,23 +1,32 @@
 package teamroots.embers.mixin.mysticalgears;
 
 import com.rcx.mystgears.compatibility.EmbersCompat;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyArg;
+import org.spongepowered.asm.mixin.injection.Redirect;
 import soot.Registry;
+import teamroots.embers.config.ConfigAddon;
 import teamroots.embers.register.ItemRegister;
 
 import java.util.Objects;
 
 @Mixin(value = EmbersCompat.class, remap = false)
 public class EmbersCompatMixin {
-
-    @ModifyArg(method = "init", at = @At(value = "INVOKE", target = "Lnet/minecraftforge/fml/common/registry/GameRegistry;addShapedRecipe(Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/util/ResourceLocation;Lnet/minecraft/item/ItemStack;[Ljava/lang/Object;)V"), index = 3)
-    private static Object[] modifyEmbersCompatRecipe(Object[] params) {
-        if (Objects.equals(params[0].toString(), "IDD")) {
-            return new Object[]{"IDD", "C I", "IDD", 'I', "plateIron", 'D', "plateDawnstone", 'C', new ItemStack(ItemRegister.SHARD_EMBER)};
-        }
-        return new Object[]{"LNN", "B L", "LNN", 'L', "plateLead", 'N', "plateNickel", 'B', new ItemStack(Registry.WITCH_FIRE)};
+    @Redirect(method = "init", at = @At(value = "FIELD", target = "Lteamroots/embers/RegistryManager;shard_ember:Lnet/minecraft/item/Item;"))
+    private static Item redirectShardEmber() {
+        return ItemRegister.SHARD_EMBER;
     }
+
+    @Redirect(method = "init", at = @At(value = "FIELD", target = "Lsoot/Registry;WITCH_FIRE:Lnet/minecraft/item/Item;"))
+    private static Item redirectWitchFire() {
+        if (ConfigAddon.enableSoot) {
+            return Registry.WITCH_FIRE;
+        }
+        return Items.FIRE_CHARGE;
+    }
+
 }

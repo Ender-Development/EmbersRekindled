@@ -1,9 +1,12 @@
 package teamroots.embers.mixin.mysticalgears;
 
 import com.rcx.mystgears.ConfigHandler;
+import net.minecraftforge.fml.common.Loader;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.ModifyVariable;
 import org.spongepowered.asm.mixin.injection.Redirect;
+import teamroots.embers.config.ConfigAddon;
 import teamroots.embers.config.ConfigMaterial;
 
 @Mixin(value = ConfigHandler.class, remap = false)
@@ -33,4 +36,17 @@ public class ConfigHandlerMixin {
     private static boolean tin() {
         return ConfigMaterial.TIN.isNotOff() && ConfigHandler.tin;
     }
+
+    @ModifyVariable(method = "syncConfig", at = @At(value = "INVOKE_ASSIGN", target = "Lnet/minecraftforge/fml/common/Loader;isModLoaded(Ljava/lang/String;)Z"))
+    private static boolean modifyModLoaded(String modid) {
+        switch (modid) {
+            case "soot":
+                return ConfigAddon.enableSoot;
+            case "embers":
+                return true;
+            default:
+                return Loader.isModLoaded(modid);
+        }
+    }
+
 }

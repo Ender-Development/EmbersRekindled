@@ -3,9 +3,8 @@
 A dwarven magic mod
 
 ## v1.22.1 - Mystical Gears
-### Changes
-- tried to add back comapatibility with Mystical Gears
-- still need to figure out why my implementation doesn't work (yet)
+### Bugfixes
+- fixed incompatibility with Mystical Gears
 
 ## v1.22.0 - Soot
 ### Changes
