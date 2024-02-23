@@ -50,51 +50,51 @@ public class Stamping implements IRegister {
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, plateAmount), stampPlate, getItemStackFromOreDict("plateNickel", 1)));
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, plateAmount), stampPlate, getItemStackFromOreDict("plateTin", 1)));
 
-        if (OreDictionary.doesOreNameExist("stickIron")) {
+        if (OreDictionary.doesOreNameExist("stickIron") && !OreDictionary.getOres("stickIron").isEmpty()) {
             ItemStack stickIron = OreDictionary.getOres("stickIron").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, rodAmount), stampRod, stickIron));
         }
-        if (OreDictionary.doesOreNameExist("stickGold")) {
+        if (OreDictionary.doesOreNameExist("stickGold") && !OreDictionary.getOres("stickGold").isEmpty()) {
             ItemStack stickGold = OreDictionary.getOres("stickGold").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, rodAmount), stampRod, stickGold));
         }
-        if (OreDictionary.doesOreNameExist("stickLead")) {
+        if (OreDictionary.doesOreNameExist("stickLead") && !OreDictionary.getOres("stickLead").isEmpty()) {
             ItemStack stickLead = OreDictionary.getOres("stickLead").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, rodAmount), stampRod, stickLead));
         }
-        if (OreDictionary.doesOreNameExist("stickSilver")) {
+        if (OreDictionary.doesOreNameExist("stickSilver") && !OreDictionary.getOres("stickSilver").isEmpty()) {
             ItemStack stickSilver = OreDictionary.getOres("stickSilver").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, rodAmount), stampRod, stickSilver));
         }
-        if (OreDictionary.doesOreNameExist("stickCopper")) {
+        if (OreDictionary.doesOreNameExist("stickCopper") && !OreDictionary.getOres("stickCopper").isEmpty()) {
             ItemStack stickCopper = OreDictionary.getOres("stickCopper").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, rodAmount), stampRod, stickCopper));
         }
-        if (OreDictionary.doesOreNameExist("stickDawnstone")) {
+        if (OreDictionary.doesOreNameExist("stickDawnstone") && !OreDictionary.getOres("stickDawnstone").isEmpty()) {
             ItemStack stickDawnstone = OreDictionary.getOres("stickDawnstone").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, rodAmount), stampRod, stickDawnstone));
         }
-        if (ConfigMaterial.ALUMINUM.mustLoad() && OreDictionary.doesOreNameExist("stickAluminum")) {
+        if (ConfigMaterial.ALUMINUM.mustLoad() && OreDictionary.doesOreNameExist("stickAluminum") && !OreDictionary.getOres("stickAluminum").isEmpty()) {
             ItemStack stickAluminum = OreDictionary.getOres("stickAluminum").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, rodAmount), stampRod, stickAluminum));
         }
-        if (ConfigMaterial.BRONZE.mustLoad() && OreDictionary.doesOreNameExist("stickBronze")) {
+        if (ConfigMaterial.BRONZE.mustLoad() && OreDictionary.doesOreNameExist("stickBronze") && !OreDictionary.getOres("stickBronze").isEmpty()) {
             ItemStack stickBronze = OreDictionary.getOres("stickBronze").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, rodAmount), stampRod, stickBronze));
         }
-        if (ConfigMaterial.ELECTRUM.mustLoad() && OreDictionary.doesOreNameExist("stickElectrum")) {
+        if (ConfigMaterial.ELECTRUM.mustLoad() && OreDictionary.doesOreNameExist("stickElectrum") && !OreDictionary.getOres("stickElectrum").isEmpty()) {
             ItemStack stickElectrum = OreDictionary.getOres("stickElectrum").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, rodAmount), stampRod, stickElectrum));
         }
-        if (ConfigMaterial.NICKEL.mustLoad() && OreDictionary.doesOreNameExist("stickNickel")) {
+        if (ConfigMaterial.NICKEL.mustLoad() && OreDictionary.doesOreNameExist("stickNickel") && !OreDictionary.getOres("stickNickel").isEmpty()) {
             ItemStack stickNickel = OreDictionary.getOres("stickNickel").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, rodAmount), stampRod, stickNickel));
         }
-        if (ConfigMaterial.TIN.mustLoad() && OreDictionary.doesOreNameExist("stickTin")) {
+        if (ConfigMaterial.TIN.mustLoad() && OreDictionary.doesOreNameExist("stickTin") && !OreDictionary.getOres("stickTin").isEmpty()) {
             ItemStack stickTin = OreDictionary.getOres("stickTin").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, rodAmount), stampRod, stickTin));
         }
-        if (OreDictionary.doesOreNameExist("stickSteel") && FluidRegistry.isFluidRegistered("steel")) {
+        if (OreDictionary.doesOreNameExist("stickSteel") && !OreDictionary.getOres("stickSteel").isEmpty() && FluidRegistry.isFluidRegistered("steel")) {
             ItemStack stickSteel = OreDictionary.getOres("stickSteel").get(0);
             stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegistry.getFluid("steel"), rodAmount), stampRod, stickSteel));
         }

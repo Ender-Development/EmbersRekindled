@@ -170,6 +170,11 @@ dependencies {
         implementation rfg.deobf("curse.maven:mystical-gears-317915:3206298")
     }
 
+    if (project.debug_jaopca.toBoolean()) {
+        implementation rfg.deobf("curse.maven:wrapup-275153:2486198")
+        implementation rfg.deobf("curse.maven:jaopca-266936:5126036")
+    }
+
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
     runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:5001902")

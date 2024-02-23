@@ -2,9 +2,11 @@
 
 A dwarven magic mod
 
-## v1.22.1 - Mystical Gears
+## v1.22.1 - Compatibility
 ### Bugfixes
+- fixed incompatibility with JAOPCA
 - fixed incompatibility with Mystical Gears
+- fixed possible IndexOutOfBoundsException in Stamping compatibility
 
 ## v1.22.0 - Soot
 ### Changes
