@@ -7,7 +7,7 @@ import teamroots.embers.config.ConfigMisc;
 import thelm.jaopca.compat.embers.EmbersModule;
 
 @Mixin(value = EmbersModule.class, remap = false)
-public class EmberModuleMixin {
+public class EmbersModuleMixin {
     @Redirect(method = "onInit", at = @At(value = "FIELD", target = "Lteamroots/embers/ConfigManager;melterOreAmount:I"))
     private int onInit() {
         return ConfigMisc.ingotFluidAmount;

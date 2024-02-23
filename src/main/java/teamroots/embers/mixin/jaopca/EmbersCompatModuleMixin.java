@@ -1,12 +1,13 @@
 package teamroots.embers.mixin.jaopca;
 
+import thelm.jaopca.compat.embers.EmbersCompatModule;
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
 import teamroots.embers.register.ItemRegister;
-import thelm.jaopca.compat.embers.EmbersCompatModule;
+
 
 @Mixin(value = EmbersCompatModule.class, remap = false)
 public class EmbersCompatModuleMixin {

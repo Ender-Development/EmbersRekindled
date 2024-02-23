@@ -166,13 +166,15 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:unidict-244258:3553627")
     }
 
+    compileOnly rfg.deobf("curse.maven:mystical-gears-317915:3206298")
     if (project.debug_mysticalgears.toBoolean()) {
-        implementation rfg.deobf("curse.maven:mystical-gears-317915:3206298")
+        runtimeOnly rfg.deobf("curse.maven:mystical-gears-317915:3206298")
     }
 
+    compileOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
     if (project.debug_jaopca.toBoolean()) {
-        implementation rfg.deobf("curse.maven:wrapup-275153:2486198")
-        implementation rfg.deobf("curse.maven:jaopca-266936:5126036")
+        runtimeOnly rfg.deobf("curse.maven:wrapup-275153:2486198")
+        runtimeOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
     }
 
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")

@@ -1,5 +1,6 @@
 package teamroots.embers.mixin;
 
+import net.minecraftforge.fml.common.Loader;
 import org.spongepowered.include.com.google.common.collect.ImmutableList;
 import teamroots.embers.Embers;
 import zone.rong.mixinbooter.ILateMixinLoader;
@@ -15,6 +16,6 @@ public class LateMixin implements ILateMixinLoader {
 
     @Override
     public List<String> getMixinConfigs() {
-        return modMixins.stream().map(mod -> "mixin."+ Embers.MODID +"." + mod + ".json").collect(Collectors.toList());
+        return modMixins.stream().filter(Loader::isModLoaded).map(mod -> "mixin."+ Embers.MODID +"." + mod + ".json").collect(Collectors.toList());
     }
 }
