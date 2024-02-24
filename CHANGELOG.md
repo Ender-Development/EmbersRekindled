@@ -2,6 +2,11 @@
 
 A dwarven magic mod
 
+## v1.22.2 - Compatibility
+### Bugfixes
+- fixed incompatibility with Aetherworks
+- fixed incompatibility with Aetherium Ashen Armor
+
 ## v1.22.1 - Compatibility
 ### Bugfixes
 - fixed incompatibility with JAOPCA
