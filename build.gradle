@@ -178,8 +178,12 @@ dependencies {
     }
 
     compileOnly rfg.deobf("curse.maven:aetherworks-293905:2565793")
-    if (project.debug_aetherworks.toBoolean()) {
+    if (project.debug_aetherworks.toBoolean() || project.debug_aetheriumashenarmor.toBoolean()) {
         implementation rfg.deobf("curse.maven:aetherworks-293905:2565793")
+    }
+
+    compileOnly rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
+    if (project.debug_aetheriumashenarmor.toBoolean()) {
         implementation rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
     }
 
