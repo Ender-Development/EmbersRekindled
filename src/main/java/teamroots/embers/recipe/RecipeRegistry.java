@@ -135,7 +135,7 @@ public class RecipeRegistry {
             event.getRegistry().register(new ShapelessOreRecipe(getRL(ingotKey + "_plate"), new ItemStack(plate, 1), new Object[]{
                     ingotKey, ingotKey, ItemRegister.TINKER_HAMMER}).setRegistryName(getRL(ingotKey + "_plate")));
         }
-        if (registerTools) {
+        if (registerTools && registerMetal) {
             event.getRegistry().register(new ShapedOreRecipe(getRL(ingotKey + "_sword"), new ItemStack(sword, 1), true, new Object[]{
                     " C ",
                     " C ",

@@ -6,6 +6,8 @@ A dwarven magic mod
 ### Bugfixes
 - fixed incompatibility with Aetherworks
 - fixed incompatibility with Aetherium Ashen Armor
+- fixed recipe registration of tools if the metal is disabled
+- fixed crash when placing blocks, while aetherworks is installed
 
 ## v1.22.1 - Compatibility
 ### Bugfixes
