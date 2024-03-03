@@ -2,6 +2,14 @@
 
 A dwarven magic mod
 
+## v1.22.4 - Compatibility
+### Bugfixes
+- fixed broken mixins for mystical gears
+- fixed incompatibility with Thaumic Periphery
+- fixed incompatibility between Mystical Mechanics and Thaumic Periphery
+- fixed incompatibility with Polymancy
+- fixed incompatibility with Embersified
+
 ## v1.22.3 - Compatibility
 ### Bugfixes
 - fixed incompatibility with Ore Stone Variants

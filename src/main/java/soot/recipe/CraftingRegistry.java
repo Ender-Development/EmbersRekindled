@@ -91,7 +91,7 @@ public class CraftingRegistry {
     public static void registerRecipes(RegistryEvent.Register<IRecipe> event) {
         Ingredient ingotAntimony = new OreIngredient("ingotAntimony");
         Ingredient ingotLead = new OreIngredient("ingotLead");
-        Ingredient ingotNickel = new OreIngredient("ingotNickel");
+        Ingredient ingotNickel = OreDictionary.getOres("ingotNickel").isEmpty() ? new OreIngredient("ingotIron") : new OreIngredient("ingotNickel");
         Ingredient aspectDawnstone = Ingredient.fromItem(ItemRegister.ASPECTUS_DAWNSTONE);
         Ingredient blankGlass = new OreIngredient("blockGlassColorless");
         Ingredient fluidPipe = Ingredient.fromStacks(new ItemStack(BlockRegister.PIPE));

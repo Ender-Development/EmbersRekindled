@@ -1,4 +1,4 @@
-package teamroots.embers.mixin.mysticalgears;
+package teamroots.embers.mixin.mystgears;
 
 import net.minecraft.item.Item;
 import org.spongepowered.asm.mixin.Mixin;

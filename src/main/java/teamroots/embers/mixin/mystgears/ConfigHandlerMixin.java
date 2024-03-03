@@ -1,4 +1,4 @@
-package teamroots.embers.mixin.mysticalgears;
+package teamroots.embers.mixin.mystgears;
 
 import com.rcx.mystgears.ConfigHandler;
 import net.minecraftforge.fml.common.Loader;
@@ -14,12 +14,12 @@ public class ConfigHandlerMixin {
 
     @Redirect(method = "syncConfig", at = @At(value = "FIELD", target = "Lteamroots/embers/ConfigManager;enableAluminum:Z"))
     private static boolean aluminium() {
-        return ConfigMaterial.ALUMINUM.isNotOff();
+        return ConfigMaterial.ALUMINUM.isNotOff() && ConfigHandler.aluminium;
     }
 
     @Redirect(method = "syncConfig", at = @At(value = "FIELD", target = "Lteamroots/embers/ConfigManager;enableBronze:Z"))
     private static boolean bronze() {
-        return ConfigMaterial.BRONZE.isNotOff();
+        return ConfigMaterial.BRONZE.isNotOff() && ConfigHandler.bronze;
     }
 
     @Redirect(method = "syncConfig", at = @At(value = "FIELD", target = "Lteamroots/embers/ConfigManager;enableElectrum:Z"))

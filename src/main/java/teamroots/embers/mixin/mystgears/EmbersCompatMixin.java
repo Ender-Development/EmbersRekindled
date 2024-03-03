@@ -1,18 +1,14 @@
-package teamroots.embers.mixin.mysticalgears;
+package teamroots.embers.mixin.mystgears;
 
 import com.rcx.mystgears.compatibility.EmbersCompat;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import soot.Registry;
 import teamroots.embers.config.ConfigAddon;
 import teamroots.embers.register.ItemRegister;
-
-import java.util.Objects;
 
 @Mixin(value = EmbersCompat.class, remap = false)
 public class EmbersCompatMixin {

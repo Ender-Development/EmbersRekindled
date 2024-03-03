@@ -12,9 +12,12 @@ public class LateMixin implements ILateMixinLoader {
     public static final List<String> modMixins = ImmutableList.of(
             "aetheriumashenarmor",
             "aetherworks",
+            "embersified",
             "jaopca",
-            "mysticalgears",
-            "osv"
+            "mystgears",
+            "osv",
+            "polymancy",
+            "thaumicperiphery"
     );
 
     @Override

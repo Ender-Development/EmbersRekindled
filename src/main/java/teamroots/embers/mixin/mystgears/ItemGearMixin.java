@@ -1,19 +1,12 @@
-package teamroots.embers.mixin.mysticalgears;
+package teamroots.embers.mixin.mystgears;
 
 import com.rcx.mystgears.item.ItemGear;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.Ingredient;
-import net.minecraftforge.fluids.FluidRegistry;
-import net.minecraftforge.fluids.FluidStack;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.Redirect;
 import teamroots.embers.config.ConfigMachine;
-import teamroots.embers.config.ConfigMisc;
-import teamroots.embers.recipe.ItemStampingRecipe;
 import teamroots.embers.register.ItemRegister;
 
 @Mixin(value = ItemGear.class, remap = false)
