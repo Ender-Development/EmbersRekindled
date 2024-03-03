@@ -13,7 +13,8 @@ public class LateMixin implements ILateMixinLoader {
             "aetheriumashenarmor",
             "aetherworks",
             "jaopca",
-            "mysticalgears"
+            "mysticalgears",
+            "osv"
     );
 
     @Override

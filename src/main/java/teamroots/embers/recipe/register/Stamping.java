@@ -18,8 +18,10 @@ import static teamroots.embers.recipe.RecipeRegistry.*;
 public class Stamping implements IRegister {
 
     public static final Stamping INSTANCE = new Stamping();
+
     private Stamping() {
     }
+
     @Override
     public void execute() {
         Ingredient stampBar = Ingredient.fromItem(ItemRegister.STAMP_BAR);
@@ -28,27 +30,64 @@ public class Stamping implements IRegister {
 
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, INGOT_AMOUNT), stampBar, new ItemStack(Items.IRON_INGOT, 1)));
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, INGOT_AMOUNT), stampBar, new ItemStack(Items.GOLD_INGOT, 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotLead", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotSilver", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotCopper", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotDawnstone", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotAluminum", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotBronze", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotElectrum", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotNickel", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotTin", 1)));
+
+        if (!OreDictionary.getOres("ingotLead").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotLead", 1)));
+        }
+        if (!OreDictionary.getOres("ingotSilver").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotSilver", 1)));
+        }
+        if (!OreDictionary.getOres("ingotCopper").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotCopper", 1)));
+        }
+        if (!OreDictionary.getOres("ingotDawnstone").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotDawnstone", 1)));
+        }
+        if (!OreDictionary.getOres("ingotAluminum").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotAluminum", 1)));
+        }
+        if (!OreDictionary.getOres("ingotBronze").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotBronze", 1)));
+        }
+        if (!OreDictionary.getOres("ingotElectrum").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotElectrum", 1)));
+        }
+        if (!OreDictionary.getOres("ingotNickel").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotNickel", 1)));
+        }
+        if (!OreDictionary.getOres("ingotTin").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, INGOT_AMOUNT), stampBar, getItemStackFromOreDict("ingotTin", 1)));
+        }
 
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_IRON, plateAmount), stampPlate, getItemStackFromOreDict("plateIron", 1)));
         stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_GOLD, plateAmount), stampPlate, getItemStackFromOreDict("plateGold", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, plateAmount), stampPlate, getItemStackFromOreDict("plateLead", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, plateAmount), stampPlate, getItemStackFromOreDict("plateSilver", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, plateAmount), stampPlate, getItemStackFromOreDict("plateCopper", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, plateAmount), stampPlate, getItemStackFromOreDict("plateDawnstone", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, plateAmount), stampPlate, getItemStackFromOreDict("plateAluminum", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, plateAmount), stampPlate, getItemStackFromOreDict("plateBronze", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, plateAmount), stampPlate, getItemStackFromOreDict("plateElectrum", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, plateAmount), stampPlate, getItemStackFromOreDict("plateNickel", 1)));
-        stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, plateAmount), stampPlate, getItemStackFromOreDict("plateTin", 1)));
+        if (!OreDictionary.getOres("ingotLead").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_LEAD, plateAmount), stampPlate, getItemStackFromOreDict("plateLead", 1)));
+        }
+        if (!OreDictionary.getOres("plateSilver").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_SILVER, plateAmount), stampPlate, getItemStackFromOreDict("plateSilver", 1)));
+        }
+        if (!OreDictionary.getOres("plateCopper").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_COPPER, plateAmount), stampPlate, getItemStackFromOreDict("plateCopper", 1)));
+        }
+        if (!OreDictionary.getOres("plateDawnstone").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_DAWNSTONE, plateAmount), stampPlate, getItemStackFromOreDict("plateDawnstone", 1)));
+        }
+        if (!OreDictionary.getOres("plateAluminum").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ALUMINUM, plateAmount), stampPlate, getItemStackFromOreDict("plateAluminum", 1)));
+        }
+        if (!OreDictionary.getOres("plateBronze").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_BRONZE, plateAmount), stampPlate, getItemStackFromOreDict("plateBronze", 1)));
+        }
+        if (!OreDictionary.getOres("plateElectrum").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_ELECTRUM, plateAmount), stampPlate, getItemStackFromOreDict("plateElectrum", 1)));
+        }
+        if (!OreDictionary.getOres("plateNickel").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_NICKEL, plateAmount), stampPlate, getItemStackFromOreDict("plateNickel", 1)));
+        }
+        if (!OreDictionary.getOres("plateTin").isEmpty()) {
+            stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, new FluidStack(FluidRegister.FLUID_MOLTEN_TIN, plateAmount), stampPlate, getItemStackFromOreDict("plateTin", 1)));
+        }
 
         if (OreDictionary.doesOreNameExist("stickIron") && !OreDictionary.getOres("stickIron").isEmpty()) {
             ItemStack stickIron = OreDictionary.getOres("stickIron").get(0);
@@ -106,7 +145,7 @@ public class Stamping implements IRegister {
         Ingredient stampFlat = Ingredient.fromItem(ItemRegister.STAMP_FLAT);
         Ingredient blazeRod = Ingredient.fromItem(Items.BLAZE_ROD);
 
-        stampingRecipes.add(new ItemStampingRecipe(emberShard,null,stampFlat,new ItemStack(ItemRegister.DUST_EMBER,1)));
+        stampingRecipes.add(new ItemStampingRecipe(emberShard, null, stampFlat, new ItemStack(ItemRegister.DUST_EMBER, 1)));
         stampingRecipes.add(new ItemStampingRecipe(emberCrystal, null, stampFlat, new ItemStack(ItemRegister.SHARD_EMBER, 6)));
         stampingRecipes.add(new ItemStampingRecipe(blazeRod, null, stampFlat, new ItemStack(Items.BLAZE_POWDER, 4)));
 

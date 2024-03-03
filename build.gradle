@@ -187,6 +187,11 @@ dependencies {
         implementation rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
     }
 
+    compileOnly rfg.deobf("curse.maven:ore-stone-variants-287538:3320887")
+    if (project.debug_orestonevariants.toBoolean()) {
+        implementation rfg.deobf("curse.maven:ore-stone-variants-287538:3320887")
+    }
+
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
     runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:5001902")

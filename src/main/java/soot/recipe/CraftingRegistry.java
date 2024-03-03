@@ -118,15 +118,33 @@ public class CraftingRegistry {
 
         RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("iron", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), new ItemStack(Items.IRON_NUGGET)));
         RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("gold", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), new ItemStack(Items.GOLD_NUGGET)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("copper", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetCopper", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("dawnstone", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetDawnstone", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("lead", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetLead", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("silver", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetSilver", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("tin", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetTin", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("aluminum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetAluminum", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("bronze", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetBronze", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("nickel", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetNickel", 1)));
-        RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("electrum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetElectrum", 1)));
+        if (!OreDictionary.getOres("nuggetCopper").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("copper", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetCopper", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetDawnstone").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("dawnstone", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetDawnstone", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetLead").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("lead", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetLead", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetSilver").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("silver", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetSilver", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetTin").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("tin", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetTin", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetAluminum").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("aluminum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetAluminum", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetBronze").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("bronze", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetBronze", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetNickel").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("nickel", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetNickel", 1)));
+        }
+        if (!OreDictionary.getOres("nuggetElectrum").isEmpty()) {
+            RecipeRegistry.stampingRecipes.add(new ItemStampingRecipe(Ingredient.EMPTY, FluidRegistry.getFluidStack("electrum", nuggetSize), Ingredient.fromItem(Registry.STAMP_NUGGET), getItemStackFromOreDict("nuggetElectrum", 1)));
+        }
 
         RecipeRegistry.stampingRecipes.add(new ItemLiverStampingRecipe());
 

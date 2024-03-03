@@ -2,6 +2,12 @@
 
 A dwarven magic mod
 
+## v1.22.3 - Compatibility
+### Bugfixes
+- fixed incompatibility with Ore Stone Variants
+  - instead of crashing it now just disables ores that are not registered
+- small tweak to the recipe registry to avoid registering recipes for disabled metals
+
 ## v1.22.2 - Compatibility
 ### Bugfixes
 - fixed incompatibility with Aetherworks
