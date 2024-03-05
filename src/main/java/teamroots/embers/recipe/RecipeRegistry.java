@@ -1,48 +1,39 @@
 package teamroots.embers.recipe;
 
 import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
 import net.minecraft.block.Block;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.ItemSword;
 import net.minecraft.item.crafting.IRecipe;
 import net.minecraft.item.crafting.Ingredient;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.ResourceLocation;
-import net.minecraft.util.Tuple;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.Biome;
 import net.minecraftforge.energy.CapabilityEnergy;
 import net.minecraftforge.energy.IEnergyStorage;
 import net.minecraftforge.event.RegistryEvent;
-import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidUtil;
 import net.minecraftforge.fluids.capability.CapabilityFluidHandler;
 import net.minecraftforge.fluids.capability.IFluidHandler;
 import net.minecraftforge.fml.common.eventhandler.EventPriority;
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import net.minecraftforge.items.ItemHandlerHelper;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.OreIngredient;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
 import teamroots.embers.Embers;
 import teamroots.embers.api.EmbersAPI;
-import teamroots.embers.api.alchemy.AspectList;
-import teamroots.embers.api.alchemy.AspectList.AspectRangeList;
 import teamroots.embers.api.capabilities.EmbersCapabilities;
 import teamroots.embers.api.filter.*;
 import teamroots.embers.api.itemmod.ItemModUtil;
 import teamroots.embers.api.power.IEmberCapability;
-import teamroots.embers.block.BlockSeedNew;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.EnderioIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
@@ -54,19 +45,12 @@ import teamroots.embers.config.ConfigTool;
 import teamroots.embers.item.EnumStampType;
 import teamroots.embers.recipe.register.*;
 import teamroots.embers.register.BlockRegister;
-import teamroots.embers.register.FluidRegister;
 import teamroots.embers.register.ItemRegister;
-import teamroots.embers.util.AlchemyUtil;
 import teamroots.embers.util.FilterUtil;
-import teamroots.embers.util.IngredientSpecial;
-import teamroots.embers.util.WeightedItemStack;
 
 import javax.annotation.Nonnull;
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
-
-import static teamroots.embers.recipe.Util.registerCoefficient;
 
 public class RecipeRegistry {
     public static ArrayList<ItemMeltingRecipe> meltingRecipes = new ArrayList<>();
@@ -1325,6 +1309,7 @@ public class RecipeRegistry {
             @Override
             public Comparable getCompare(ItemStack stack) {
                 IFluidHandler capability = FluidUtil.getFluidHandler(stack);
+                assert capability != null;
                 FluidStack fluid = capability.drain(Integer.MAX_VALUE, false);
                 return getAmount(fluid);
             }
@@ -1332,6 +1317,7 @@ public class RecipeRegistry {
             @Override
             public String format(ItemStack stack1, ItemStack stack2, EnumFilterSetting setting, boolean inverted) {
                 IFluidHandler capability = FluidUtil.getFluidHandler(stack1);
+                assert capability != null;
                 FluidStack fluid = capability.drain(Integer.MAX_VALUE, false);
                 Comparable a = getCompare(stack1);
                 Comparable b = getCompare(stack2);
@@ -1365,6 +1351,7 @@ public class RecipeRegistry {
             public Comparable getCompare(ItemStack stack) {
                 if (stack.hasCapability(EmbersCapabilities.EMBER_CAPABILITY, null)) {
                     IEmberCapability capability = stack.getCapability(EmbersCapabilities.EMBER_CAPABILITY, null);
+                    assert capability != null;
                     return capability.getEmber();
                 } else {
                     return 0;
@@ -1495,9 +1482,9 @@ public class RecipeRegistry {
 
     @Deprecated
     public static ItemStampingRecipe getStampingRecipe(ItemStack stack, FluidStack fluid, EnumStampType type) {
-        for (int i = 0; i < stampingRecipes.size(); i++) {
-            if (stampingRecipes.get(i).matches(stack, fluid, type)) {
-                return stampingRecipes.get(i);
+        for (ItemStampingRecipe stampingRecipe : stampingRecipes) {
+            if (stampingRecipe.matches(stack, fluid, type)) {
+                return stampingRecipe;
             }
         }
         return null;
@@ -1505,18 +1492,18 @@ public class RecipeRegistry {
 
     @Deprecated
     public static ItemStampingOreRecipe getStampingOreRecipe(ItemStack stack, FluidStack fluid, EnumStampType type) {
-        for (int i = 0; i < stampingOreRecipes.size(); i++) {
-            if (stampingOreRecipes.get(i).matches(stack, fluid, type)) {
-                return stampingOreRecipes.get(i);
+        for (ItemStampingOreRecipe stampingOreRecipe : stampingOreRecipes) {
+            if (stampingOreRecipe.matches(stack, fluid, type)) {
+                return stampingOreRecipe;
             }
         }
         return null;
     }
 
     public static ItemMeltingRecipe getMeltingRecipe(ItemStack stack) {
-        for (int i = 0; i < meltingRecipes.size(); i++) {
-            if (meltingRecipes.get(i).matches(stack)) {
-                return meltingRecipes.get(i);
+        for (ItemMeltingRecipe meltingRecipe : meltingRecipes) {
+            if (meltingRecipe.matches(stack)) {
+                return meltingRecipe;
             }
         }
         return null;
@@ -1524,27 +1511,27 @@ public class RecipeRegistry {
 
     @Deprecated
     public static ItemMeltingOreRecipe getMeltingOreRecipe(ItemStack stack) {
-        for (int i = 0; i < meltingOreRecipes.size(); i++) {
-            if (meltingOreRecipes.get(i).matches(stack)) {
-                return meltingOreRecipes.get(i);
+        for (ItemMeltingOreRecipe meltingOreRecipe : meltingOreRecipes) {
+            if (meltingOreRecipe.matches(stack)) {
+                return meltingOreRecipe;
             }
         }
         return null;
     }
 
     public static FluidMixingRecipe getMixingRecipe(ArrayList<FluidStack> fluids) {
-        for (int i = 0; i < mixingRecipes.size(); i++) {
-            if (mixingRecipes.get(i).matches(fluids)) {
-                return mixingRecipes.get(i);
+        for (FluidMixingRecipe mixingRecipe : mixingRecipes) {
+            if (mixingRecipe.matches(fluids)) {
+                return mixingRecipe;
             }
         }
         return null;
     }
 
     public static FluidReactionRecipe getFluidReactionRecipe(FluidStack fluid) {
-        for (int i = 0; i < fluidReactionRecipes.size(); i++) {
-            if (fluidReactionRecipes.get(i).matches(fluid)) {
-                return fluidReactionRecipes.get(i);
+        for (FluidReactionRecipe fluidReactionRecipe : fluidReactionRecipes) {
+            if (fluidReactionRecipe.matches(fluid)) {
+                return fluidReactionRecipe;
             }
         }
         return null;
