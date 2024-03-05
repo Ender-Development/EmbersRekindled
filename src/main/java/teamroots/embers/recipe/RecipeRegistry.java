@@ -350,6 +350,10 @@ public class RecipeRegistry {
                 "XX",
                 "XX",
                 'X', ItemRegister.BRICK_CAMINITE}).setRegistryName(getRL("block_caminite_brick")));
+        event.getRegistry().register(new ShapedOreRecipe(getRL("block_caminite_large_brick"), new ItemStack(BlockRegister.BLOCK_CAMINITE_LARGE_BRICK, 4), true, new Object[]{
+                "XX",
+                "XX",
+                'X', BlockRegister.BLOCK_CAMINITE_BRICK}).setRegistryName(getRL("block_caminite_large_brick")));
         event.getRegistry().register(new ShapedOreRecipe(getRL("block_caminite_brick_slab"), new ItemStack(BlockRegister.BLOCK_CAMINITE_BRICK_SLAB, 6), true, new Object[]{
                 "XXX",
                 'X', BlockRegister.BLOCK_CAMINITE_BRICK}).setRegistryName(getRL("block_caminite_brick_slab")));

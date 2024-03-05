@@ -5,9 +5,14 @@ A dwarven magic mod
 ## v1.23.0 - Finished Compatibility
 ### Changes
 - merged various test branches into the main branch
+- tweaked build scripts
+- updated README.md to explain all compatibility options
+
 ### Bugfixes
-- added missing Dawnstone Anvil recipes
 - added compatibility with Embers' Construct
+- added missing Dawnstone Anvil recipes
+- added missing localization for Caminite Large Bricks
+- added missing recipe for Caminite Large Bricks
 
 ## v1.22.5 - Soot
 ### Changes

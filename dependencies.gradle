@@ -1,0 +1,148 @@
+dependencies {
+    // Dependencies
+    implementation "CraftTweaker2:CraftTweaker2-API:" + project.version_crafttweaker
+    implementation "CraftTweaker2:ZenScript:" + project.version_crafttweaker
+    implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-" + project.version_crafttweaker
+
+    implementation rfg.deobf("curse.maven:had-enough-items-557549:5154770")
+    implementation("com.cleanroommc:groovyscript:0.8.0") { transitive = false } // so it doesn't installs JEI
+
+    // Debug dependencies
+    compileOnly rfg.deobf("curse.maven:mantle-74924:2713386")
+    if (project.debug_inspirations.toBoolean()
+            || project.debug_tconstruct.toBoolean()
+            || project.debug_embersconstruct.toBoolean()
+            || project.debug_tinkeringwithembers.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mantle-74924:2713386")
+    }
+
+    if (project.debug_tconstruct.toBoolean()
+            || project.debug_embersconstruct.toBoolean()
+            || project.debug_tinkeringwithembers.toBoolean()) {
+        runtimeOnly rfg.deobf("slimeknights:TConstruct:1.12.2-2.13.0.190")
+        runtimeOnly rfg.deobf("curse.maven:constructs-armory-287683:3174535")
+    }
+
+    if (project.debug_inspirations.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:inspirations-284007:2843007")
+    }
+
+    if (project.debug_immersiveengineering.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:immersive-engineering-231951:2974106")
+    }
+
+    compileOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
+    if (project.debug_baubles.toBoolean()
+            || project.debug_thaumcraft.toBoolean()
+            || project.debug_thaumicperiphery.toBoolean()
+            || project.debug_aetherworks.toBoolean()
+            || project.debug_polymancy.toBoolean()) {
+        runtimeOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
+    }
+
+    compileOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
+    if (project.debug_mysticalmechanics.toBoolean()
+            || project.debug_mysticalgears.toBoolean()
+            || project.debug_mechanicalcrafting.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
+    }
+
+    compileOnly rfg.deobf("curse.maven:mechanical-crafting-359671:3273914")
+    if (project.debug_mechanicalcrafting.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mechanical-crafting-359671:3273914")
+    }
+
+    compileOnly 'com.enderio:endercore:0.5.78'
+    compileOnly('crazypants:enderio:5.3.72') {
+        transitive = false
+    }
+    if (project.debug_enderio.toBoolean()) {
+        runtimeOnly "com.enderio:endercore:0.5.78"
+        runtimeOnly("crazypants:enderio:5.3.72") {
+            transitive = false
+        }
+    }
+
+    if (project.debug_unidict.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:wanionlib-253043:4623135")
+        runtimeOnly rfg.deobf("curse.maven:unidict-244258:3553627")
+    }
+
+    compileOnly rfg.deobf("curse.maven:mystical-gears-317915:3206298")
+    if (project.debug_mysticalgears.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mystical-gears-317915:3206298")
+    }
+
+    compileOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
+    if (project.debug_jaopca.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:wrapup-275153:2486198")
+        runtimeOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
+    }
+
+    compileOnly rfg.deobf("curse.maven:aetherworks-293905:2565793")
+    if (project.debug_aetherworks.toBoolean()
+            || project.debug_aetheriumashenarmor.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:aetherworks-293905:2565793")
+    }
+
+    compileOnly rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
+    if (project.debug_aetheriumashenarmor.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
+    }
+
+    compileOnly rfg.deobf("curse.maven:ore-stone-variants-287538:3320887")
+    if (project.debug_orestonevariants.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:ore-stone-variants-287538:3320887")
+    }
+
+    compileOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
+    if (project.debug_thaumcraft.toBoolean()
+            || project.debug_thaumicperiphery.toBoolean()
+            || project.debug_polymancy.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
+        runtimeOnly rfg.deobf("curse.maven:thaumic-jei-285492:2705304")
+    }
+
+    compileOnly rfg.deobf("curse.maven:thaumic-periphery-293505:2766866")
+    if (project.debug_thaumicperiphery.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:thaumic-periphery-293505:2766866")
+    }
+
+    compileOnly rfg.deobf("curse.maven:polymancy-394626:3065950")
+    if (project.debug_polymancy.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:thaumic-wands-393922:5053794")
+        runtimeOnly rfg.deobf("curse.maven:polymancy-394626:3065950")
+    }
+
+    compileOnly rfg.deobf("curse.maven:embersified-303584:2621911")
+    if (project.debug_embersified.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:embersified-303584:2621911")
+    }
+
+    compileOnly rfg.deobf("curse.maven:soot-extended-life-982730:5156451")
+    if (project.debug_soot.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:soot-extended-life-982730:5156451")
+    }
+
+    compileOnly rfg.deobf("curse.maven:embersconstruct-359414:3701868")
+    if (project.debug_embersconstruct.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:embersconstruct-359414:3701868")
+    }
+
+    compileOnly rfg.deobf("curse.maven:tinkering-with-embers-306685:2636808")
+    if (project.debug_tinkeringwithembers.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:tinkering-with-embers-306685:2636808")
+    }
+
+    // Runtime dependencies
+    runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
+    runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
+    runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:5001902")
+
+    runtimeOnly "com.cleanroommc:configanytime:2.0"
+    runtimeOnly rfg.deobf("curse.maven:red-core-873867:4883852")
+    runtimeOnly rfg.deobf("curse.maven:alfheim-lighting-engine-910715:4949716")
+    runtimeOnly rfg.deobf("curse.maven:valkyrie-874067:4591076")
+    // runtimeOnly rfg.deobf("curse.maven:carbon-config-898104:4952983") // will be used later
+    // runtimeOnly rfg.deobf("curse.maven:lolasm-460609:4800875") // causes a mapping error, thus making baubles unusable
+}
