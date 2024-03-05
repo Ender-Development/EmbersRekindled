@@ -2,6 +2,13 @@
 
 A dwarven magic mod
 
+## v1.22.5 - Soot
+### Changes
+- removed the integrated version of Soot
+  - it is now a separate mod again
+  - I now maintain a fork of Soot, which is compatible with Embers Unofficial Extended Life
+- the original Soot mod is now incompatible
+
 ## v1.22.4 - Compatibility
 ### Bugfixes
 - fixed broken mixins for mystical gears
