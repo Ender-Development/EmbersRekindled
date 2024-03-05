@@ -1076,6 +1076,7 @@ public class RecipeRegistry {
         Mixing.INSTANCE.execute();
         Reacting.INSTANCE.execute();
         Smelting.INSTANCE.execute();
+        Smithing.INSTANCE.execute();
         Stamping.INSTANCE.execute();
 
 
