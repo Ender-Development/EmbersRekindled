@@ -151,6 +151,7 @@ tile.crystal_cell.name=Crystal Cell
 tile.charger.name=Copper Charger
 tile.block_caminite_brick_slab.name=Caminite Brick Slab
 tile.block_caminite_brick_slab_double.name=Caminite Brick Double Slab
+tile.block_caminite_large_brick.name=Caminite Large Brick
 tile.ashen_stone.name=Ashen Stone
 tile.ashen_stone_slab.name=Ashen Stone Slab
 tile.ashen_stone_slab_double.name=Ashen Stone Double Slab
