@@ -2,6 +2,64 @@
 
 A dwarven magic mod
 
+## v1.22.5 - Soot
+### Changes
+- removed the integrated version of Soot
+  - it is now a separate mod again
+  - I now maintain a fork of Soot, which is compatible with Embers Unofficial Extended Life
+- the original Soot mod is now incompatible
+
+## v1.22.4 - Compatibility
+### Bugfixes
+- fixed broken mixins for mystical gears
+- fixed incompatibility with Thaumic Periphery
+- fixed incompatibility between Mystical Mechanics and Thaumic Periphery
+- fixed incompatibility with Polymancy
+- fixed incompatibility with Embersified
+
+## v1.22.3 - Compatibility
+### Bugfixes
+- fixed incompatibility with Ore Stone Variants
+  - instead of crashing it now just disables ores that are not registered
+- small tweak to the recipe registry to avoid registering recipes for disabled metals
+
+## v1.22.2 - Compatibility
+### Bugfixes
+- fixed incompatibility with Aetherworks
+- fixed incompatibility with Aetherium Ashen Armor
+- fixed recipe registration of tools if the metal is disabled
+- fixed crash when placing blocks, while aetherworks is installed
+
+## v1.22.1 - Compatibility
+### Bugfixes
+- fixed incompatibility with JAOPCA
+- fixed incompatibility with Mystical Gears
+- fixed possible IndexOutOfBoundsException in Stamping compatibility
+
+## v1.22.0 - Soot
+### Changes
+- integrated Soot into Embers
+  - this makes Embers Unofficial Extended Life incompatible with the Soot mod on CurseForge
+  - consider this as a beta release for now, as there might be some issues with the integration
+- refactored the Soot config system
+  - this allows editing the Soot config in-game
+  - moved the config to the Embers config folder
+- added a new config option to disable the Soot integration
+
+### Bugfixes
+- fixed a CraftTweaker issues that prevented the brewing recipes in Soot from working
+
+## v1.21.1 - Bugfixes
+### Changes
+- added a new material registration mode, to only register the metal seed
+- refactored the recipe registration to use the new material registration mode
+
+### Bugfixes
+- fixed missing registration of the clockwork attenuator
+- fixed crash with UniDict, when some metals are disabled
+- fixed registration of broken recipes, when some metals are disabled
+- fixed registration of OreDict entries for disabled metals
+
 ## v1.21.0 - Config Rework
 ### Changes
 - reworked the whole config system

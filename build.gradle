@@ -10,9 +10,9 @@ plugins {
     id 'com.matthewprenger.cursegradle' version '1.4.0'
 }
 
-version = "1.21.0"
-group = "teamroots.embers" // http://maven.apache.org/guides/mini/guide-naming-conventions.html
-archivesBaseName = "embers_extended_life"
+version = project.mod_version
+group = project.maven_group
+archivesBaseName = project.archives_base_name
 
 java {
     toolchain {
@@ -50,22 +50,21 @@ jar {
         attributes(attribute_map)
     }
     // Add all embedded dependencies into the jar
-    from(provider{ configurations.embed.collect {it.isDirectory() ? it : zipTree(it)} })
+    from(provider { configurations.embed.collect { it.isDirectory() ? it : zipTree(it) } })
 }
 
 minecraft {
-    mcVersion = '1.12.2'
-
+    mcVersion = project.mc_version
     // MCP Mappings
     mcpMappingChannel = 'snapshot'
     mcpMappingVersion = '20171003'
-    
+
     // Set username here, the UUID will be looked up automatically
     username = '_MasterEnderman_'
-    
+
     // Add any additional tweaker classes here
     // extraTweakClasses.add('org.spongepowered.asm.launch.MixinTweaker')
-    
+
     // Add various JVM arguments here for runtime
     def args = ["-ea:${project.group}"]
     if (project.use_coremod.toBoolean()) {
@@ -80,7 +79,7 @@ minecraft {
 
     // Include and use dependencies' Access Transformer files
     useDependencyAccessTransformers = true
-    
+
     // Add any properties you want to swap out for a dynamic value at build time here
     // Any properties here will be added to a class at build time, the name can be configured below
     // Example:
@@ -96,6 +95,14 @@ repositories {
     maven { url "https://www.ryanliptak.com/maven/" }
     maven { url "https://maven.thiakil.com/" }
     maven {
+        name 'GTNH Maven'
+        url 'https://nexus.gtnewhorizons.com/repository/public/'
+    }
+    maven {
+        name 'GTCEu Maven'
+        url 'https://maven.gtceu.com'
+    }
+    maven {
         name 'CurseMaven'
         url 'https://cursemaven.com'
         content {
@@ -106,7 +113,20 @@ repositories {
 }
 
 dependencies {
-    implementation("zone.rong:mixinbooter:9.1")
+    // Common:
+    annotationProcessor 'org.ow2.asm:asm-debug-all:5.2'
+    annotationProcessor 'com.google.guava:guava:32.1.2-jre'
+    annotationProcessor 'com.google.code.gson:gson:2.8.9'
+
+    // RetroFuturaGradle:
+    String mixinBooter = modUtils.enableMixins('zone.rong:mixinbooter:9.1')
+    // modUtils.enableMixins('zone.rong:mixinbooter:9.1', 'mod_id.mixins.refmap.json') << add refmap name as 2nd arg (optional)
+    api(mixinBooter) {
+        transitive = false
+    }
+    annotationProcessor(mixinBooter) {
+        transitive = false
+    }
 
     implementation "CraftTweaker2:CraftTweaker2-API:4.1.8.476"
     implementation "CraftTweaker2:ZenScript:4.1.8.476"
@@ -133,20 +153,91 @@ dependencies {
     }
 
     compileOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
-    if (project.debug_baubles.toBoolean()) {
+    if (project.debug_baubles.toBoolean()
+            || project.debug_thaumcraft.toBoolean()
+            || project.debug_thaumicperiphery.toBoolean()
+            || project.debug_aetherworks.toBoolean()
+            || project.debug_polymancy.toBoolean()) {
         runtimeOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
     }
 
     compileOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
-    if (project.debug_mysticalmechanics.toBoolean()) {
+    if (project.debug_mysticalmechanics.toBoolean() || project.debug_mysticalgears.toBoolean() || project.debug_mechanicalcrafting.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:mysticalmechanics-300742:3006392")
     }
 
+    compileOnly rfg.deobf("curse.maven:mechanical-crafting-359671:3273914")
+    if (project.debug_mechanicalcrafting.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mechanical-crafting-359671:3273914")
+    }
+
+    compileOnly 'com.enderio:endercore:0.5.78'
+    compileOnly('crazypants:enderio:5.3.72') {
+        transitive = false
+    }
     if (project.debug_enderio.toBoolean()) {
-        runtimeOnly 'com.enderio.core:EnderCore:1.12.2-+'
-        runtimeOnly('com.enderio:EnderIO:1.12.2-+') {
+        runtimeOnly "com.enderio:endercore:0.5.78"
+        runtimeOnly("crazypants:enderio:5.3.72") {
             transitive = false
         }
+    }
+
+    if (project.debug_unidict.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:wanionlib-253043:4623135")
+        runtimeOnly rfg.deobf("curse.maven:unidict-244258:3553627")
+    }
+
+    compileOnly rfg.deobf("curse.maven:mystical-gears-317915:3206298")
+    if (project.debug_mysticalgears.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:mystical-gears-317915:3206298")
+    }
+
+    compileOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
+    if (project.debug_jaopca.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:wrapup-275153:2486198")
+        runtimeOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
+    }
+
+    compileOnly rfg.deobf("curse.maven:aetherworks-293905:2565793")
+    if (project.debug_aetherworks.toBoolean() || project.debug_aetheriumashenarmor.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:aetherworks-293905:2565793")
+    }
+
+    compileOnly rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
+    if (project.debug_aetheriumashenarmor.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
+    }
+
+    compileOnly rfg.deobf("curse.maven:ore-stone-variants-287538:3320887")
+    if (project.debug_orestonevariants.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:ore-stone-variants-287538:3320887")
+    }
+
+    compileOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
+    if (project.debug_thaumcraft.toBoolean() || project.debug_thaumicperiphery.toBoolean() || project.debug_polymancy.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
+        runtimeOnly rfg.deobf("curse.maven:thaumic-jei-285492:2705304")
+    }
+
+    compileOnly rfg.deobf("curse.maven:thaumic-periphery-293505:2766866")
+    if (project.debug_thaumicperiphery.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:thaumic-periphery-293505:2766866")
+    }
+
+    compileOnly rfg.deobf("curse.maven:polymancy-394626:3065950")
+    if (project.debug_polymancy.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:thaumic-wands-393922:5053794")
+        runtimeOnly rfg.deobf("curse.maven:polymancy-394626:3065950")
+    }
+
+    compileOnly rfg.deobf("curse.maven:embersified-303584:2621911")
+    if (project.debug_embersified.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:embersified-303584:2621911")
+    }
+
+    compileOnly rfg.deobf("curse.maven:soot-extended-life-982730:5156451")
+    if (project.debug_soot.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:soot-extended-life-982730:5156451")
     }
 
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
@@ -170,16 +261,16 @@ processResources {
     // This will ensure that this task is redone when the versions change
     inputs.property 'version', project.version
     inputs.property 'mcversion', project.minecraft.version
-    
+
     // Replace various properties in mcmod.info and pack.mcmeta if applicable
     filesMatching(['mcmod.info', 'pack.mcmeta']) { fcd ->
         // Replace version and mcversion
-        fcd.expand (
+        fcd.expand(
                 'version': project.version,
                 'mcversion': project.minecraft.version
         )
     }
-    
+
     if (project.use_access_transformer.toBoolean()) {
         rename '(.+_at.cfg)', 'META-INF/$1' // Make sure Access Transformer files are in META-INF folder
     }

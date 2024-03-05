@@ -19,37 +19,5 @@
     "logoFile": "",
     "screenshots": [],
     "dependencies": []
-  },
-  {
-    "modid": "embersified",
-    "name": "Embersified",
-    "description": "Allows FE capable tileentities and items to also support Embers (the power system)",
-    "version": "${version}",
-    "mcversion": "${mcversion}",
-    "url": "",
-    "updateUrl": "",
-    "authorList": [
-      "p455w0rd aka TheRealp455w0rd"
-    ],
-    "credits": "p455w0rd",
-    "logoFile": "",
-    "screenshots": [],
-    "dependencies": []
-  },
-  {
-    "modid": "soot",
-    "name": "Soot",
-    "description": "An Embers addon.",
-    "version": "${version}",
-    "mcversion": "${mcversion}",
-    "url": "",
-    "updateUrl": "",
-    "authorList": [
-      "BordListian"
-    ],
-    "credits": "Forge, Elucent",
-    "logoFile": "",
-    "screenshots": [],
-    "dependencies": []
   }
 ]

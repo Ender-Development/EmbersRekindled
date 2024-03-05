@@ -32,6 +32,7 @@ import net.minecraftforge.registries.DataSerializerEntry;
 import teamroots.embers.Embers;
 import teamroots.embers.api.power.IEmberCapability;
 import teamroots.embers.api.upgrades.IUpgradeProvider;
+import teamroots.embers.block.BlockAlchemyPedestal;
 import teamroots.embers.block.IBlock;
 import teamroots.embers.block.IModeledBlock;
 import teamroots.embers.compat.BaublesIntegration;

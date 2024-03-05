@@ -272,14 +272,13 @@ public class ItemRegister implements IRegistrable<Item> {
             SUPERHEATER,
             TINKER_HAMMER,
             TINKER_LENS,
-            TYRFING,
             WILDFIRE_CORE,
             WINDING_GEARS
     ));
 
     static {
-        if (Util.isMysticalMechanicsIntegrationEnabled()) {
-            REGISTRY.add(MysticalMechanicsIntegration.GEAR_DAWNSTONE);
+        if (ConfigTool.METAL_TOOL.TYRFING.register) {
+            REGISTRY.add(TYRFING);
         }
         if (ConfigMaterial.ALUMINUM.mustLoad()) {
             if (ConfigTool.METAL_TOOL.ALUMINUM.register) {
