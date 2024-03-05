@@ -1419,6 +1419,7 @@ public class RecipeRegistry {
             public Comparable getCompare(ItemStack stack) {
                 if (stack.hasCapability(CapabilityEnergy.ENERGY, null)) {
                     IEnergyStorage capability = stack.getCapability(CapabilityEnergy.ENERGY, null);
+                    assert capability != null;
                     return capability.getEnergyStored();
                 } else {
                     return 0;
