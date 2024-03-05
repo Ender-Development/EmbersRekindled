@@ -2,6 +2,13 @@
 
 A dwarven magic mod
 
+## v1.23.0 - Finished Compatibility
+### Changes
+- merged various test branches into the main branch
+### Bugfixes
+- added missing Dawnstone Anvil recipes
+- added compatibility with Embers' Construct
+
 ## v1.22.5 - Soot
 ### Changes
 - removed the integrated version of Soot

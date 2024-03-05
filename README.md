@@ -20,24 +20,49 @@ You can download the latest files here on [curseforge](https://curseforge.com/mi
 
 ## Changes
 
-Current Changes to Embers Rekindled v1.19:
+**Current Changes to Embers Rekindled v1.19:**
 - added a config option to display the exact amount of Ash needed in an Alchemy recipe
 - registered Heat Coil in HEI as a smelting catalyst
 - switched to [RetroFuturaGradle](https://github.com/GTNewHorizons/RetroFuturaGradle)
 - updated dependencies to maintained forks
 - fixed alchemy tablet breaking after 10 days of existing
 - fixed a dupe bug with the melter and acceleration mods
+  - This breaks the Sledgehammer fix, so be sure to disable it in their config
 - reworked config system, allow config changes in-game, a LOT more config options
 - added a config option to register all WIP items and blocks (useful for pack makers)
 - compatibility with Immersive Engineering's Metal Rods
 - compatibility with EnderIO & Endergy Grinding Balls
 
-Planned Changes:
+**Planned Changes:**
 - native [GroovyScript](https://github.com/CleanroomMC/GroovyScript) support
 - allow addition of custom seeds
 - forking various Embers addons, while:
   - fixing various bugs, that were never fixed in the original addons
   - removing the confusing dependency hell
+
+## Compatibility
+Embers Unofficial Extended Life has been tested and is compatible with the following mods:
+
+### Forked Mods
+- [Soot Unofficial Extended Life](https://www.curseforge.com/minecraft/mc-mods/soot-extended-life)
+
+### Compatibility via [Mixins](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
+- [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
+- [Aetherworks](https://www.curseforge.com/minecraft/mc-mods/aetherworks)
+- [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct)
+- [Embersified](https://www.curseforge.com/minecraft/mc-mods/embersified)
+- [JAOPCA](https://www.curseforge.com/minecraft/mc-mods/jaopca)
+- [Mystical Gears](https://www.curseforge.com/minecraft/mc-mods/mystical-gears)
+- [Mystical Mechanics](https://www.curseforge.com/minecraft/mc-mods/mysticalmechanics)
+- [Ore Stone Variants](https://www.curseforge.com/minecraft/mc-mods/ore-stone-variants)
+- [Polymancy (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/polymancy)
+- [Thaumic Periphery (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/thaumic-periphery)
+- [Tinkering with Embers](https://www.curseforge.com/minecraft/mc-mods/tinkering-with-embers)
+
+### Incompatibilities
+- [Embers](https://www.curseforge.com/minecraft/mc-mods/embers)
+- [Embers Rekindled](https://www.curseforge.com/minecraft/mc-mods/embers-rekindled)
+- [Soot](https://www.curseforge.com/minecraft/mc-mods/soot)
 
 ## [Ender-Development](https://github.com/Ender-Development)
 
