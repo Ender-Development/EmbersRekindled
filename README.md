@@ -35,10 +35,9 @@ Current Changes to Embers Rekindled v1.19:
 Planned Changes:
 - native [GroovyScript](https://github.com/CleanroomMC/GroovyScript) support
 - allow addition of custom seeds
-- merging of various Embers addons, while:
-  - keeping the ability to disable them
+- forking various Embers addons, while:
   - fixing various bugs, that were never fixed in the original addons
-  - remove the confusing dependency hell
+  - removing the confusing dependency hell
 
 ## [Ender-Development](https://github.com/Ender-Development)
 
@@ -77,7 +76,7 @@ repositories {
 }
 
 dependencies {
-    implementation "teamroots.embers:embers_extended_life:1.20.0:dev"
+    implementation "teamroots.embers:embers_extended_life:1.x.x:dev"
 }
 ```
 

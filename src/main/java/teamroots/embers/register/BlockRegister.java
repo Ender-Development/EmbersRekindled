@@ -5,6 +5,7 @@ import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+import net.minecraftforge.fml.common.Loader;
 import teamroots.embers.Embers;
 import teamroots.embers.block.*;
 import teamroots.embers.config.ConfigMaterial;
@@ -222,13 +223,11 @@ public class BlockRegister implements IRegistrable<Block> {
             DAWNSTONE_ANVIL,
             EMBER_ACTIVATOR,
             EMBER_BORE,
-            EMBER_EMITTER,
             EMBER_FUNNEL,
             EMBER_GAUGE,
             EMBER_INJECTOR,
             EMBER_PIPE,
             EMBER_PULSER,
-            EMBER_RECEIVER,
             EMBER_RELAY,
             EMBER_SIPHON,
             FIELD_CHART,
@@ -355,6 +354,10 @@ public class BlockRegister implements IRegistrable<Block> {
         }
         if (ConfigMaterial.UMBERSTEEL.mustLoad()) {
             REGISTRY.add(BLOCK_UMBER_STEEL);
+        }
+        if (!Loader.isModLoaded("embersified")) {
+            REGISTRY.add(EMBER_EMITTER);
+            REGISTRY.add(EMBER_RECEIVER);
         }
 
         ((BlockDoubleSlabBase) ASHEN_TILE_SLAB_DOUBLE).setSlab(ASHEN_TILE_SLAB);
