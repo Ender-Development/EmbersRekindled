@@ -6,6 +6,7 @@
   "compatibilityLevel": "JAVA_8",
   "mixins": [
     "KilnRecipesMixin",
+    "OreDictValuesMixin",
     "RegistryCraftingMixin",
     "RegistryResearchMixin",
     "RegistryStampingMixin",

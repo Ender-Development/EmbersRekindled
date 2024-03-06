@@ -58,6 +58,11 @@ public class ConfigMisc {
     public static boolean enableWipStuff = false;
 
     @Config.RequiresMcRestart
+    @Config.Name("Block to Fluid ratio")
+    @Config.Comment("What is the liquid equivalent to a block in mb?")
+    public static int blockFluidAmount = 1296;
+
+    @Config.RequiresMcRestart
     @Config.Name("Ingot to Fluid ratio")
     @Config.Comment("What is the liquid equivalent to an ingot in mb?")
     public static int ingotFluidAmount = 144;

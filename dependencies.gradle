@@ -124,9 +124,9 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:soot-extended-life-982730:5156451")
     }
 
-    compileOnly rfg.deobf("curse.maven:embersconstruct-359414:3701868")
+    compileOnly rfg.deobf("curse.maven:embersconstruct-359414:" + project.version_embersconstruct)
     if (project.debug_embersconstruct.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:embersconstruct-359414:3701868")
+        runtimeOnly rfg.deobf("curse.maven:embersconstruct-359414:" + project.version_embersconstruct)
     }
 
     compileOnly rfg.deobf("curse.maven:tinkering-with-embers-306685:2636808")
