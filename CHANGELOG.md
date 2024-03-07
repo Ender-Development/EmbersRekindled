@@ -2,6 +2,11 @@
 
 A dwarven magic mod
 
+## v1.23.1 - More Compatibility
+### Bugfixes
+- fixed compatibility with beta versions of Embers' Construct
+- fixed compatibility with Planar Artifice
+
 ## v1.23.0 - Finished Compatibility
 ### Changes
 - merged various test branches into the main branch

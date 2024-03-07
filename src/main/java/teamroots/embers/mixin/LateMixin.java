@@ -17,6 +17,7 @@ public class LateMixin implements ILateMixinLoader {
             "jaopca",
             "mystgears",
             "osv",
+            "planarartifice",
             "polymancy",
             "thaumicperiphery"
     );

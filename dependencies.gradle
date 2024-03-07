@@ -36,7 +36,8 @@ dependencies {
             || project.debug_thaumcraft.toBoolean()
             || project.debug_thaumicperiphery.toBoolean()
             || project.debug_aetherworks.toBoolean()
-            || project.debug_polymancy.toBoolean()) {
+            || project.debug_polymancy.toBoolean()
+            || project.debug_planarartifice.toBoolean()) {
         runtimeOnly "com.azanor.baubles:Baubles:1.12-1.5.2"
     }
 
@@ -98,7 +99,8 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
     if (project.debug_thaumcraft.toBoolean()
             || project.debug_thaumicperiphery.toBoolean()
-            || project.debug_polymancy.toBoolean()) {
+            || project.debug_polymancy.toBoolean()
+            || project.debug_planarartifice.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:thaumcraft-223628:2629023")
         runtimeOnly rfg.deobf("curse.maven:thaumic-jei-285492:2705304")
     }
@@ -132,6 +134,11 @@ dependencies {
     compileOnly rfg.deobf("curse.maven:tinkering-with-embers-306685:2636808")
     if (project.debug_tinkeringwithembers.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:tinkering-with-embers-306685:2636808")
+    }
+
+    compileOnly rfg.deobf("curse.maven:planar-artifice-409849:3668551")
+    if (project.debug_planarartifice.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:planar-artifice-409849:3668551")
     }
 
     // Runtime dependencies

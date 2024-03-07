@@ -46,6 +46,9 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 ### Forked Mods
 - [Soot Unofficial Extended Life](https://www.curseforge.com/minecraft/mc-mods/soot-extended-life)
 
+### Compatibility via PRs
+- [Multiblocked](https://www.curseforge.com/minecraft/mc-mods/multiblocked) - v0.8.6+
+
 ### Compatibility via [Mixins](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 - [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
 - [Aetherworks](https://www.curseforge.com/minecraft/mc-mods/aetherworks)
@@ -55,6 +58,7 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 - [Mystical Gears](https://www.curseforge.com/minecraft/mc-mods/mystical-gears)
 - [Mystical Mechanics](https://www.curseforge.com/minecraft/mc-mods/mysticalmechanics)
 - [Ore Stone Variants](https://www.curseforge.com/minecraft/mc-mods/ore-stone-variants)
+- [Planar Artifice(TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/planar-artifice)
 - [Polymancy (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/polymancy)
 - [Thaumic Periphery (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/thaumic-periphery)
 - [Tinkering with Embers](https://www.curseforge.com/minecraft/mc-mods/tinkering-with-embers)
