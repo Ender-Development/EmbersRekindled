@@ -10,6 +10,7 @@
 • [CurseForge](https://curseforge.com/minecraft/mc-mods/embers-extended-life)
 • [Changelog](CHANGELOG.md)
 • [Bugtracker](https://github.com/Ender-Development/Embers-Extended-Life/issues)
+• [Troubleshooting](TROUBLESHOOTING.md)
 
 <br />
 
@@ -52,7 +53,7 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 ### Compatibility via [Mixins](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 - [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
 - [Aetherworks](https://www.curseforge.com/minecraft/mc-mods/aetherworks)
-- [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct)
+- [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct) (Please use the latest RELEASE instead of the latest BETA)
 - [Embersified](https://www.curseforge.com/minecraft/mc-mods/embersified)
 - [JAOPCA](https://www.curseforge.com/minecraft/mc-mods/jaopca)
 - [Mystical Gears](https://www.curseforge.com/minecraft/mc-mods/mystical-gears)
@@ -61,7 +62,9 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 - [Planar Artifice(TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/planar-artifice)
 - [Polymancy (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/polymancy)
 - [Thaumic Periphery (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/thaumic-periphery)
-- [Tinkering with Embers](https://www.curseforge.com/minecraft/mc-mods/tinkering-with-embers)
+- [Tinkering with Embers](https://www.curseforge.com/minecraft/mc-mods/tinkering-with-embers) (Please use Embers' Construct instead)
+
+[Here is a special changelog for the compatibility mixins](COMPATIBILITY.md).
 
 ### Incompatibilities
 - [Embers](https://www.curseforge.com/minecraft/mc-mods/embers)
