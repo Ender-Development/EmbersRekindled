@@ -2,6 +2,10 @@
 
 A dwarven magic mod
 
+## v1.23.2 - Embers' Construct
+### Bugfixes
+- fixed ghost item drops when breaking the 
+
 ## v1.23.1 - More Compatibility
 ### Bugfixes
 - fixed compatibility with beta versions of Embers' Construct

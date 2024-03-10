@@ -5,11 +5,13 @@
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "CreativeTabEmbersConstructMixin",
     "KilnRecipesMixin",
     "OreDictValuesMixin",
     "RegistryCraftingMixin",
     "RegistryResearchMixin",
     "RegistryStampingMixin",
-    "StampTableRecipesMixin"
+    "StampTableRecipesMixin",
+    "TileEntityBaseMixin"
   ]
 }

@@ -8,6 +8,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.InventoryHelper;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.World;
+import net.minecraftforge.items.CapabilityItemHandler;
+import net.minecraftforge.items.IItemHandler;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
@@ -29,7 +31,6 @@ public abstract class TileEntityBaseMixin {
         if (tile.getNameKey().equals("container.embersconstruct.bloomery.top")) {
             return;
         }
-        InventoryHelper.dropInventoryItems(world, pos, tile);
-        // Misc.spawnInventoryInWorld(world, pos.getX(), pos.getY(), pos.getZ(), (IInventory) tile);
+        Misc.spawnInventoryInWorld(world, pos.getX(), pos.getY(), pos.getZ(), tile.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY, null));
     }
 }
