@@ -141,6 +141,11 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:planar-artifice-409849:3668551")
     }
 
+    compileOnly rfg.deobf("curse.maven:embersified-extended-984998:5172512")
+    if (project.debug_embersifiedextended.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:embersified-extended-984998:5172512")
+    }
+
     // Runtime dependencies
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")

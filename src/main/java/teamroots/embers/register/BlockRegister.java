@@ -213,7 +213,6 @@ public class BlockRegister implements IRegistrable<Block> {
             CAMINITE_LEVER,
             CATALYTIC_PLUG,
             CATALYZER,
-            CHARGER,
             CINDER_PLINTH,
             CLOCKWORK_ATTENUATOR,
             COMBUSTOR,
@@ -223,11 +222,9 @@ public class BlockRegister implements IRegistrable<Block> {
             DAWNSTONE_ANVIL,
             EMBER_ACTIVATOR,
             EMBER_BORE,
-            EMBER_FUNNEL,
             EMBER_GAUGE,
             EMBER_INJECTOR,
             EMBER_PIPE,
-            EMBER_PULSER,
             EMBER_RELAY,
             EMBER_SIPHON,
             FIELD_CHART,
@@ -355,9 +352,14 @@ public class BlockRegister implements IRegistrable<Block> {
         if (ConfigMaterial.UMBERSTEEL.mustLoad()) {
             REGISTRY.add(BLOCK_UMBER_STEEL);
         }
-        if (!Loader.isModLoaded("embersified")) {
+        if (!Loader.isModLoaded("embersified") && !Loader.isModLoaded("embersifiedextended")) {
             REGISTRY.add(EMBER_EMITTER);
             REGISTRY.add(EMBER_RECEIVER);
+        }
+        if (!Loader.isModLoaded("embersifiedextended")) {
+            REGISTRY.add(EMBER_FUNNEL);
+            REGISTRY.add(EMBER_PULSER);
+            REGISTRY.add(CHARGER);
         }
 
         ((BlockDoubleSlabBase) ASHEN_TILE_SLAB_DOUBLE).setSlab(ASHEN_TILE_SLAB);

@@ -3,6 +3,11 @@
 A dwarven magic mod
 
 ## v1.23.2 - Embers' Construct
+### Changes
+- disable certain registry entries, when Embersified Extended is installed
+- this allows compatibility with Embersified Extended, if HelixPHD decides to adapt to Embers UEL
+- otherwise I will add some mixins to make it compatible in the future
+
 ### Bugfixes
 - fixed ghost item drops when breaking the Bloom from Embers' Construct
 
