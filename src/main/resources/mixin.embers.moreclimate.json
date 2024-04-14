@@ -1,12 +1,10 @@
 {
-  "package": "teamroots.embers.mixin.aetherworks",
+  "package": "teamroots.embers.mixin.moreclimate",
   "refmap": "mixins.embers.refmap.json",
   "minVersion": "0.8.5",
   "target": "@env(DEFAULT)",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
-    "AnvilWrapperMixin",
-    "AWRecipesMixin",
-    "CommonHandlerMixin"
+    "EmbersMixin"
   ]
 }

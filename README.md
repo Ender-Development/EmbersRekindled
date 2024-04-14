@@ -45,6 +45,7 @@ You can download the latest files here on [curseforge](https://curseforge.com/mi
 Embers Unofficial Extended Life has been tested and is compatible with the following mods:
 
 ### Forked Mods
+- [Aetherworks Unofficial Extended Life](https://github.com/Ender-Development/Aetherworks-Extended-Life)
 - [Soot Unofficial Extended Life](https://www.curseforge.com/minecraft/mc-mods/soot-extended-life)
 
 ### Compatibility via PRs
@@ -52,10 +53,12 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 
 ### Compatibility via [Mixins](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 - [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
-- [Aetherworks](https://www.curseforge.com/minecraft/mc-mods/aetherworks)
+- [Aetherworks](https://www.curseforge.com/minecraft/mc-mods/aetherworks) *removed in v1.23.3*
 - [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct) (Please use the latest RELEASE instead of the latest BETA)
 - [Embersified](https://www.curseforge.com/minecraft/mc-mods/embersified)
+- [Embersified Extended](https://www.curseforge.com/minecraft/mc-mods/embersified-extended)
 - [JAOPCA](https://www.curseforge.com/minecraft/mc-mods/jaopca)
+- [More Climate](https://www.curseforge.com/minecraft/mc-mods/more-climate)
 - [Mystical Gears](https://www.curseforge.com/minecraft/mc-mods/mystical-gears)
 - [Mystical Mechanics](https://www.curseforge.com/minecraft/mc-mods/mysticalmechanics)
 - [Ore Stone Variants](https://www.curseforge.com/minecraft/mc-mods/ore-stone-variants)

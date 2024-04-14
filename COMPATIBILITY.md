@@ -17,9 +17,16 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 - now respects my config options for the emitter and receiver
 
+## [Embersified Extended](https://www.curseforge.com/minecraft/mc-mods/embersified-extended)
+- redirect all calls from the old `RegistryManager` to `ItemRegiser`
+- now respects my config options for the emitter and receiver
+
 ## [JAOPCA](https://www.curseforge.com/minecraft/mc-mods/jaopca)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 - it now uses my config fluid ratios when creating its recipes
+
+## [More Climate](https://www.curseforge.com/minecraft/mc-mods/more-climate)
+- redirect all calls from the old `RegistryManager` to `BlockRegiser`
 
 ## [Mystical Gears](https://www.curseforge.com/minecraft/mc-mods/mystical-gears)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`

@@ -2,6 +2,16 @@
 
 A dwarven magic mod
 
+## v1.23.3 - More Compat / Aetherworks UEL
+### Changes
+- added a config option for the charger capacity
+- switched to our own fork of Aetherworks
+
+### Bugfixes
+- fixed broken fluid pump recipe
+- fixed compatibility with Embersified Extended (HelixPHD didn't want to adapt to Embers UEL)
+- fixed compatibility with More Climate
+
 ## v1.23.2 - Embers' Construct
 ### Changes
 - disable certain registry entries, when Embersified Extended is installed

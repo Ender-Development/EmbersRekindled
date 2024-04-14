@@ -1,0 +1,15 @@
+{
+  "package": "teamroots.embers.mixin.embersifiedextended",
+  "refmap": "mixins.embers.refmap.json",
+  "minVersion": "0.8.5",
+  "target": "@env(DEFAULT)",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "ModEventsMixin",
+    "TileChargerMixin",
+    "TileEjectorMixin",
+    "TileEmitterMixin",
+    "TileFunnelMixin",
+    "TileReceptorMixin"
+  ]
+}
