@@ -90,7 +90,7 @@ Should you have any questions, feel free to ask us on [Discord](https://discord.
 
 ## Partnership with Akliz
 
-> It's a pleasure to be partnered with Akliz. Besides being a fantastic server provider, which makes it incredibly easy to setup a server of your choice, they help me to push myself and the quality of my projects to the next level. Furthermore you can click on the banner below to get a discount. :')
+> It's a pleasure to be partnered with Akliz. Besides being a fantastic server provider, which makes it incredibly easy to set up a server of your choice, they help me to push myself and the quality of my projects to the next level. Furthermore, you can click on the banner below to get a discount. :')
 
 <a href="https://www.akliz.net/enderman"><img src="https://github.com/MasterEnderman/Zerblands-Remastered/raw/master/Akliz_Partner.png" align="center"/></a>
 

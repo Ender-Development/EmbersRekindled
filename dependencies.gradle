@@ -80,10 +80,10 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
     }
 
-    compileOnly rfg.deobf("curse.maven:aetherworks-293905:2565793")
+    compileOnly rfg.deobf("curse.maven:aetherworks-extended-life-1003576:5263747")
     if (project.debug_aetherworks.toBoolean()
             || project.debug_aetheriumashenarmor.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:aetherworks-293905:2565793")
+        runtimeOnly rfg.deobf("curse.maven:aetherworks-extended-life-1003576:5263747")
     }
 
     compileOnly rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
