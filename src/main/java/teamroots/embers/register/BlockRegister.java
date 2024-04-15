@@ -82,7 +82,7 @@ public class BlockRegister implements IRegistrable<Block> {
     public static final Block CAMINITE_LEVER = new BlockCaminiteLever("caminite_lever", true).setHardness(0.75f);
     public static final Block CATALYTIC_PLUG = new BlockCatalyticPlug(Material.ROCK, "catalytic_plug", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block CATALYZER = new BlockCatalyzer(Material.ROCK, "catalyzer", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
-    public static final Block CHARGER = new BlockCharger(Material.ROCK, "charger", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
+    public static Block CHARGER = new BlockCharger(Material.ROCK, "charger", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block CINDER_PLINTH = new BlockCinderPlinth(Material.ROCK, "cinder_plinth", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block CLOCKWORK_ATTENUATOR = new BlockClockworkAttenuator(Material.ROCK, "clockwork_attenuator", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block COMBUSTOR = new BlockCombustor(Material.ROCK, "combustor", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
@@ -93,11 +93,11 @@ public class BlockRegister implements IRegistrable<Block> {
     public static final Block EMBER_ACTIVATOR = new BlockActivator(Material.ROCK, "ember_activator", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block EMBER_BORE = new BlockEmberBore(Material.ROCK, "ember_bore", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static Block EMBER_EMITTER = new BlockEmberEmitter(Material.ROCK, "ember_emitter", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(0.6f);
-    public static final Block EMBER_FUNNEL = new BlockEmberFunnel(Material.IRON, "ember_funnel", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
+    public static Block EMBER_FUNNEL = new BlockEmberFunnel(Material.IRON, "ember_funnel", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block EMBER_GAUGE = new BlockEmberGauge(Material.ROCK, "ember_gauge", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block EMBER_INJECTOR = new BlockEmberInjector(Material.ROCK, "ember_injector", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
-    public static final Block EMBER_PIPE = new BlockEmberPipe(Material.IRON, "ember_pipe", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
-    public static final Block EMBER_PULSER = new BlockEmberPulser(Material.ROCK, "ember_pulser", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
+    public static Block EMBER_PIPE = new BlockEmberPipe(Material.IRON, "ember_pipe", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
+    public static Block EMBER_PULSER = new BlockEmberPulser(Material.ROCK, "ember_pulser", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static Block EMBER_RECEIVER = new BlockEmberReceiver(Material.ROCK, "ember_receiver", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(0.6f);
     public static final Block EMBER_RELAY = new BlockRelay(Material.ROCK, "ember_relay", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
     public static final Block EMBER_SIPHON = new BlockEmberSiphon(Material.ROCK, "ember_siphon", true).setIsFullCube(false).setIsOpaqueCube(false).setHarvestProperties("pickaxe", 0).setHardness(1.6f);
@@ -224,7 +224,6 @@ public class BlockRegister implements IRegistrable<Block> {
             EMBER_BORE,
             EMBER_GAUGE,
             EMBER_INJECTOR,
-            EMBER_PIPE,
             EMBER_RELAY,
             EMBER_SIPHON,
             FIELD_CHART,
@@ -360,6 +359,7 @@ public class BlockRegister implements IRegistrable<Block> {
             REGISTRY.add(EMBER_FUNNEL);
             REGISTRY.add(EMBER_PULSER);
             REGISTRY.add(CHARGER);
+            REGISTRY.add(EMBER_PIPE);
         }
 
         ((BlockDoubleSlabBase) ASHEN_TILE_SLAB_DOUBLE).setSlab(ASHEN_TILE_SLAB);

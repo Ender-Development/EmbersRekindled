@@ -10,6 +10,7 @@
     "TileEjectorMixin",
     "TileEmitterMixin",
     "TileFunnelMixin",
-    "TileReceptorMixin"
+    "TileReceptorMixin",
+    "TileVPipeMixin"
   ]
 }

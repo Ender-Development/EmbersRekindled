@@ -385,7 +385,7 @@ public class RecipeRegistry {
                 "XXX",
                 "XXX",
                 'X', BlockRegister.ASHEN_STONE}).setRegistryName(getRL("wall_ashen_stone")));
-        event.getRegistry().register(new ShapedOreRecipe(getRL("ashen_brick"), new ItemStack(BlockRegister.WALL_ASHEN_BRICK, 4), true, new Object[]{
+        event.getRegistry().register(new ShapedOreRecipe(getRL("ashen_brick"), new ItemStack(BlockRegister.ASHEN_BRICK, 4), true, new Object[]{
                 " S ",
                 "SAS",
                 " S ",
@@ -454,21 +454,20 @@ public class RecipeRegistry {
                 'F', Blocks.FURNACE,
                 'I', "ingotIron",
                 'C', "ingotCopper"}).setRegistryName(getRL("block_furnace")));
-        if (!Loader.isModLoaded("embersifiedextended") && !Loader.isModLoaded("embersified")) {
-            event.getRegistry().register(new ShapedOreRecipe(getRL("ember_receiver"), new ItemStack(BlockRegister.EMBER_RECEIVER, 4), true, new Object[]{
-                    "I I",
-                    "CPC",
-                    'I', "ingotIron",
-                    'C', "ingotCopper",
-                    'P', ItemRegister.PLATE_CAMINITE}).setRegistryName(getRL("ember_receiver")));
-            event.getRegistry().register(new ShapedOreRecipe(getRL("ember_emitter"), new ItemStack(BlockRegister.EMBER_EMITTER, 4), true, new Object[]{
-                    " C ",
-                    " C ",
-                    "IPI",
-                    'I', "ingotIron",
-                    'C', "ingotCopper",
-                    'P', ItemRegister.PLATE_CAMINITE}).setRegistryName(getRL("ember_emitter")));
-        }
+        event.getRegistry().register(new ShapedOreRecipe(getRL("ember_receiver"), new ItemStack(BlockRegister.EMBER_RECEIVER, 4), true, new Object[]{
+                "I I",
+                "CPC",
+                'I', "ingotIron",
+                'C', "ingotCopper",
+                'P', ItemRegister.PLATE_CAMINITE}).setRegistryName(getRL("ember_receiver")));
+        event.getRegistry().register(new ShapedOreRecipe(getRL("ember_emitter"), new ItemStack(BlockRegister.EMBER_EMITTER, 4), true, new Object[]{
+                " C ",
+                " C ",
+                "IPI",
+                'I', "ingotIron",
+                'C', "ingotCopper",
+                'P', ItemRegister.PLATE_CAMINITE}).setRegistryName(getRL("ember_emitter")));
+
         event.getRegistry().register(new ShapedOreRecipe(getRL("copper_cell"), new ItemStack(BlockRegister.COPPER_CELL, 1), true, new Object[]{
                 "BIB",
                 "ICI",
@@ -651,17 +650,17 @@ public class RecipeRegistry {
                 'S', ItemRegister.CRYSTAL_EMBER,
                 'C', "plateCopper",
                 'G', "blockGlass"}).setRegistryName(getRL("ember_cartridge")));
-        if (!Loader.isModLoaded("embersifiedextended")) {
-            event.getRegistry().register(new ShapedOreRecipe(getRL("charger"), new ItemStack(BlockRegister.CHARGER, 1), true, new Object[]{
-                    " X ",
-                    "DCD",
-                    "IPI",
-                    'D', "ingotDawnstone",
-                    'P', "plateCopper",
-                    'C', "ingotCopper",
-                    'I', "ingotIron",
-                    'X', "plateIron"}).setRegistryName(getRL("charger")));
-        }
+
+        event.getRegistry().register(new ShapedOreRecipe(getRL("charger"), new ItemStack(BlockRegister.CHARGER, 1), true, new Object[]{
+                " X ",
+                "DCD",
+                "IPI",
+                'D', "ingotDawnstone",
+                'P', "plateCopper",
+                'C', "ingotCopper",
+                'I', "ingotIron",
+                'X', "plateIron"}).setRegistryName(getRL("charger")));
+
         event.getRegistry().register(new ShapedOreRecipe(getRL("axe_clockwork"), new ItemStack(ItemRegister.AXE_CLOCKWORK, 1), true, new Object[]{
                 "PCP",
                 "ISI",
@@ -938,22 +937,22 @@ public class RecipeRegistry {
                 'C', ItemRegister.CRYSTAL_EMBER,
                 'P', "plateDawnstone",
                 'D', "ingotDawnstone"}).setRegistryName(getRL("caster_orb")));
-        if (!Loader.isModLoaded("embersifiedextended")) {
-            event.getRegistry().register(new ShapedOreRecipe(getRL("ember_pulser"), new ItemStack(BlockRegister.EMBER_PULSER, 1), true, new Object[]{
-                    "D",
-                    "E",
-                    "I",
-                    'E', BlockRegister.EMBER_EMITTER,
-                    'I', "ingotIron",
-                    'D', "plateDawnstone"}).setRegistryName(getRL("ember_pulser")));
-            event.getRegistry().register(new ShapedOreRecipe(getRL("ember_funnel"), new ItemStack(BlockRegister.EMBER_FUNNEL, 1), true, new Object[]{
-                    "D D",
-                    "CRC",
-                    " D ",
-                    'R', BlockRegister.EMBER_RECEIVER,
-                    'C', "ingotCopper",
-                    'D', "plateDawnstone"}).setRegistryName(getRL("ember_funnel")));
-        }
+
+        event.getRegistry().register(new ShapedOreRecipe(getRL("ember_pulser"), new ItemStack(BlockRegister.EMBER_PULSER, 1), true, new Object[]{
+                "D",
+                "E",
+                "I",
+                'E', BlockRegister.EMBER_EMITTER,
+                'I', "ingotIron",
+                'D', "plateDawnstone"}).setRegistryName(getRL("ember_pulser")));
+        event.getRegistry().register(new ShapedOreRecipe(getRL("ember_funnel"), new ItemStack(BlockRegister.EMBER_FUNNEL, 1), true, new Object[]{
+                "D D",
+                "CRC",
+                " D ",
+                'R', BlockRegister.EMBER_RECEIVER,
+                'C', "ingotCopper",
+                'D', "plateDawnstone"}).setRegistryName(getRL("ember_funnel")));
+
         event.getRegistry().register(new ShapedOreRecipe(getRL("caminite_lever"), new ItemStack(BlockRegister.CAMINITE_LEVER, 4), true, new Object[]{
                 "S",
                 "P",
