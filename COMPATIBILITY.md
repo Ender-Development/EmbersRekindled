@@ -4,22 +4,18 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 ## [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 
-## [Aetherworks](https://www.curseforge.com/minecraft/mc-mods/aetherworks)
-- redirect all calls from the old `RegistryManager` to `ItemRegiser` and `BlockRegiser`
-- use OreDicts instead of single items in some recipes
-
 ## [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser` and `BlockRegiser`
 - it now uses my config fluid ratios when creating its recipes
-- fixed a bug where the Bloom would drop ghost items when broken, after processing a recipe
+- fixed a bug where the Bloom would drop ghost items when broken after processing a recipe
 
 ## [Embersified](https://www.curseforge.com/minecraft/mc-mods/embersified)
-- redirect all calls from the old `RegistryManager` to `ItemRegiser`
+- simplified the override methods and unified the recipe registration
 - now respects my config options for the emitter and receiver
 
 ## [Embersified Extended](https://www.curseforge.com/minecraft/mc-mods/embersified-extended)
-- redirect all calls from the old `RegistryManager` to `ItemRegiser`
-- now respects my config options for the emitter and receiver
+- simplified the override methods and unified the recipe registration
+- now respects my config options for all blocks
 
 ## [JAOPCA](https://www.curseforge.com/minecraft/mc-mods/jaopca)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`

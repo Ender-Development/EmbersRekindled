@@ -2,6 +2,15 @@
 
 A dwarven magic mod
 
+## v1.23.4 - Embersified
+### Changes
+- updated dependencies
+
+### Bugfixes
+- fixed the Ashen Bricks recipe
+- fixed crash with Embersified Extended v1.2.1
+- fixed missing recipes when using Embersified or Embersified Extended
+
 ## v1.23.3 - More Compat / Aetherworks UEL
 ### Changes
 - added a config option for the charger capacity

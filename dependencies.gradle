@@ -5,7 +5,7 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-" + project.version_crafttweaker
 
     implementation rfg.deobf("curse.maven:had-enough-items-557549:5154770")
-    implementation("com.cleanroommc:groovyscript:0.8.0") { transitive = false } // so it doesn't installs JEI
+    implementation("com.cleanroommc:groovyscript:1.0.1") { transitive = false } // so it doesn't installs JEI
 
     // Debug dependencies
     compileOnly rfg.deobf("curse.maven:mantle-74924:2713386")
@@ -141,9 +141,9 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:planar-artifice-409849:3668551")
     }
 
-    compileOnly rfg.deobf("curse.maven:embersified-extended-984998:5172512")
+    compileOnly rfg.deobf("curse.maven:embersified-extended-984998:5184690")
     if (project.debug_embersifiedextended.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:embersified-extended-984998:5172512")
+        runtimeOnly rfg.deobf("curse.maven:embersified-extended-984998:5184690")
     }
 
     compileOnly rfg.deobf("curse.maven:more-climate-551276:4293417")
@@ -151,8 +151,17 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:more-climate-551276:4293417")
     }
 
+    compileOnly rfg.deobf("curse.maven:gedgetry-core-282775:2633658")
+    compileOnly rfg.deobf("curse.maven:gedgetry-machines-282776:2634495")
+    compileOnly rfg.deobf("curse.maven:gedgetry-transmission-282777:2633660")
+    if (project.debug_gadgetry.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:gedgetry-core-282775:2633658")
+        runtimeOnly rfg.deobf("curse.maven:gedgetry-machines-282776:2634495")
+        runtimeOnly rfg.deobf("curse.maven:gedgetry-transmission-282777:2633660")
+    }
+
     // Runtime dependencies
-    runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:4942348")
+    runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:5171095")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
     runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:5001902")
 
