@@ -20,6 +20,7 @@ public class LateMixin implements ILateMixinLoader {
             "osv",
             "planarartifice",
             "polymancy",
+            "spartanweaponryarcana",
             "thaumicperiphery"
     );
 
