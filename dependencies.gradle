@@ -4,7 +4,7 @@ dependencies {
     implementation "CraftTweaker2:ZenScript:" + project.version_crafttweaker
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-" + project.version_crafttweaker
 
-    implementation rfg.deobf("curse.maven:had-enough-items-557549:5154770")
+    implementation rfg.deobf("curse.maven:had-enough-items-557549:5229422")
     implementation("com.cleanroommc:groovyscript:1.0.1") { transitive = false } // so it doesn't installs JEI
 
     // Debug dependencies
@@ -158,6 +158,13 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:gedgetry-core-282775:2633658")
         runtimeOnly rfg.deobf("curse.maven:gedgetry-machines-282776:2634495")
         runtimeOnly rfg.deobf("curse.maven:gedgetry-transmission-282777:2633660")
+    }
+
+    compileOnly rfg.deobf("curse.maven:spartan-weaponry-278141:4467344")
+    compileOnly rfg.deobf("curse.maven:spartan-weaponry-arcana-unofficial-620760:3836926")
+    if (project.debug_spartanweaponry.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:spartan-weaponry-278141:4467344")
+        runtimeOnly rfg.deobf("curse.maven:spartan-weaponry-arcana-unofficial-620760:3836926")
     }
 
     // Runtime dependencies

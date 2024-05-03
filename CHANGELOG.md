@@ -2,6 +2,15 @@
 
 A dwarven magic mod
 
+## v1.23.5 - More Compat
+### Changes
+- updated dependencies
+
+### Bugfixes
+- fixed compatibility with Spartan Weaponry Arcana
+- fixed empty tabs in the ancient codex depending on config settings
+- removed weird test category in the ancient codex which was added by Embers Construct
+
 ## v1.23.4 - Embersified
 ### Changes
 - updated dependencies

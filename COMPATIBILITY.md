@@ -8,6 +8,7 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 - redirect all calls from the old `RegistryManager` to `ItemRegiser` and `BlockRegiser`
 - it now uses my config fluid ratios when creating its recipes
 - fixed a bug where the Bloom would drop ghost items when broken after processing a recipe
+- removed the empty "test" research category in the ancient codex
 
 ## [Embersified](https://www.curseforge.com/minecraft/mc-mods/embersified)
 - simplified the override methods and unified the recipe registration
@@ -39,6 +40,9 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 
 ## [Polymancy (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/polymancy)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser` and `BlockRegiser`
+
+## [Spartan Weaponry Arcana](https://www.curseforge.com/minecraft/mc-mods/spartan-weaponry-arcana-unofficial)
+- redirect all calls from the old `RegistryManager` to `ToolMaterialRegister`
 
 ## [Thaumic Periphery (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/thaumic-periphery)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`

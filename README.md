@@ -64,6 +64,7 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 - [Ore Stone Variants](https://www.curseforge.com/minecraft/mc-mods/ore-stone-variants)
 - [Planar Artifice(TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/planar-artifice)
 - [Polymancy (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/polymancy)
+- [Spartan Weaponry Arcana](https://www.curseforge.com/minecraft/mc-mods/spartan-weaponry-arcana-unofficial)
 - [Thaumic Periphery (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/thaumic-periphery)
 - [Tinkering with Embers](https://www.curseforge.com/minecraft/mc-mods/tinkering-with-embers) (Please use Embers' Construct instead)
 
