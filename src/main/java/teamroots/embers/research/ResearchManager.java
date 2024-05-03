@@ -185,7 +185,7 @@ public class ResearchManager {
         subCategoryWildfire = new ResearchCategory("wildfire", 0);
 
         //WORLD
-        ores = new ResearchBase("ores", new ItemStack(BlockRegister.ORE_COPPER), 0, 7);
+        ores = new ResearchBase("ores", new ItemStack(Blocks.IRON_ORE), 0, 7);
         hammer = new ResearchBase("hammer", new ItemStack(ItemRegister.TINKER_HAMMER), 0, 3).addAncestor(ores);
         ancient_golem = new ResearchBase("ancient_golem", ItemStack.EMPTY, 0, 0).setIconBackground(PAGE_ICONS, PAGE_ICON_SIZE * 1, PAGE_ICON_SIZE * 0);
         gauge = new ResearchBase("gauge", new ItemStack(ItemRegister.EMBER_DETECTOR), 4, 3).addAncestor(ores);
