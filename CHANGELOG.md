@@ -2,6 +2,10 @@
 
 A dwarven magic mod
 
+## v1.23.6 - Emberforged
+### Bugfixes
+- fixed compatibility with Emberforged
+
 ## v1.23.5 - More Compat
 ### Changes
 - updated dependencies

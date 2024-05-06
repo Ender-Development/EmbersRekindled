@@ -54,6 +54,7 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 ### Compatibility via [Mixins](https://www.curseforge.com/minecraft/mc-mods/mixin-booter)
 - [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
 - [Aetherworks](https://www.curseforge.com/minecraft/mc-mods/aetherworks) *removed in v1.23.3*
+- [Emberforged](https://www.curseforge.com/minecraft/mc-mods/emberforged)
 - [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct) (Please use the latest RELEASE instead of the latest BETA)
 - [Embersified](https://www.curseforge.com/minecraft/mc-mods/embersified)
 - [Embersified Extended](https://www.curseforge.com/minecraft/mc-mods/embersified-extended)

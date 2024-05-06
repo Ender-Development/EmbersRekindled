@@ -167,6 +167,15 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:spartan-weaponry-arcana-unofficial-620760:3836926")
     }
 
+    compileOnly rfg.deobf("curse.maven:emberforged-887375:4677874")
+    compileOnly rfg.deobf("curse.maven:minefantasy-reforged-431996:4666619")
+    compileOnly rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
+    if (project.debug_emberforged.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
+        runtimeOnly rfg.deobf("curse.maven:emberforged-887375:4677874")
+        runtimeOnly rfg.deobf("curse.maven:minefantasy-reforged-431996:4666619")
+    }
+
     // Runtime dependencies
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:5171095")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
