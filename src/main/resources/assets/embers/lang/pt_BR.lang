@@ -1,0 +1,1297 @@
+itemGroup.embers=Brasas
+itemGroup.embers_resources=Brasas (Metais)
+
+cfg.embers.client=Cliente
+cfg.embers.client.tooltip=(Configurações somente para o cliente)
+
+cfg.embers.compat=Compatibilidade
+cfg.embers.compat.tooltip=(Configurações de compatibilidade)
+
+cfg.embers.machine=Máquinas
+cfg.embers.machine.tooltip=(Ajuste vários parâmetros da máquina)
+cfg.embers.machine.ember_conduit=Conduíte de Brasa
+cfg.embers.machine.melter=Fundidor
+cfg.embers.machine.stamper=Estampadeira
+cfg.embers.machine.inferno_forge=Forja Infernal
+cfg.embers.machine.geo_separator=Separador Geológico
+cfg.embers.machine.dawnstone_anvil=Bigorna da Alvorada
+cfg.embers.machine.charger=Carregador
+cfg.embers.machine.cinder_plinth=Base Cinza
+cfg.embers.machine.tank=Tanque de Fluido
+cfg.embers.machine.reservoir=Reservatório
+cfg.embers.machine.mini_boiler=Mini Caldeira
+cfg.embers.machine.ember_bore=Broca de Brasa
+cfg.embers.machine.copper_cell=Célula de Cobre
+cfg.embers.machine.creative_ember_source=Fonte Criativa de Brasa
+cfg.embers.machine.ember_funnel=Funil de Brasa
+cfg.embers.machine.emitter=Emissor de Brasa
+cfg.embers.machine.receiver=Receptor de Brasa
+cfg.embers.machine.combustor=Câmara de Combustão
+cfg.embers.machine.catalyzer=Câmara de Catálise
+cfg.embers.machine.reactor=Reator Ignem
+cfg.embers.machine.pulser=Ejetor de Brasa
+cfg.embers.machine.catalytic_plug=Plugue Catalítico
+cfg.embers.machine.beam_cannon=Canhão de Raio
+cfg.embers.machine.crystal_cell=Célula Cristalina
+cfg.embers.machine.activator=Ativador de Brasa
+cfg.embers.machine.boiler=Refinaria de Pressão
+cfg.embers.machine.mixer=Centrífuga Misturadora
+cfg.embers.machine.heat_coil=Serpentina de Calor
+cfg.embers.machine.steam_engine=Motor a Vapor
+
+cfg.embers.material=Materiais
+cfg.embers.material.tooltip=(Ajuste metais e ferramentas)
+cfg.embers.material.copper=Cobre
+cfg.embers.material.silver=Prata
+cfg.embers.material.lead=Chumbo
+cfg.embers.material.aluminum=Alumínio
+cfg.embers.material.bronze=Bronze
+cfg.embers.material.electrum=Elétro
+cfg.embers.material.nickel=Níquel
+cfg.embers.material.tin=Estanho
+cfg.embers.material.iron=Ferro
+cfg.embers.material.gold=Ouro
+cfg.embers.material.dawnstone=Pedra da Alvorada
+cfg.embers.material.mithril=Mithril
+cfg.embers.material.astralite=Astralita
+cfg.embers.material.umber_steel=Aço Sombrio
+
+cfg.embers.misc=Diversos
+cfg.embers.misc.tooltip=(Ajuste vários parâmetros diversos)
+
+cfg.embers.mob=Mobs
+cfg.embers.mob.tooltip=(Configurações relacionadas a mobs)
+cfg.embers.mob.ember_golem=Golem de Brasa
+
+cfg.embers.seed=Sementes
+cfg.embers.seed.tooltip=(Ajuste o drop de Sementes)
+cfg.embers.seed.alchemic=Semente Alquímica
+cfg.embers.seed.aluminum=Semente de Alumínio
+cfg.embers.seed.copper=Semente de Cobre
+cfg.embers.seed.dawnstone=Semente de Pedra da Alvorada
+cfg.embers.seed.gold=Semente de Ouro
+cfg.embers.seed.iron=Semente de Ferro
+cfg.embers.seed.lead=Semente de Chumbo
+cfg.embers.seed.mithril=Semente de Mithril
+cfg.embers.seed.nickel=Semente de Níquel
+cfg.embers.seed.silver=Semente de Prata
+cfg.embers.seed.tin=Semente de Estanho
+
+cfg.embers.tool=Ferramentas
+cfg.embers.tool.tooltip=(Ajuste vários parâmetros de Ferramentas)
+cfg.embers.tool.blazing_ray=Raio Ardente
+cfg.embers.tool.cinder_staff=Cajado de Cinza
+cfg.embers.tool.shifting_scales=Escamas Mutáveis
+cfg.embers.tool.metal=Ferramentas de Metal
+cfg.embers.tool.metal.copper=Ferramentas de Cobre
+cfg.embers.tool.metal.silver=Ferramentas de Prata
+cfg.embers.tool.metal.lead=Ferramentas de Chumbo
+cfg.embers.tool.metal.aluminum=Ferramentas de Alumínio
+cfg.embers.tool.metal.bronze=Ferramentas de Bronze
+cfg.embers.tool.metal.electrum=Ferramentas de Elétro
+cfg.embers.tool.metal.nickel=Ferramentas de Níquel
+cfg.embers.tool.metal.tin=Ferramentas de Estanho
+cfg.embers.tool.metal.dawnstone=Ferramentas de Pedra da Alvorada
+cfg.embers.tool.metal.tyrfing=A Tyrfing
+
+cfg.embers.world=Mundo
+cfg.embers.world.tooltip=(Configurações relacionadas à geração do mundo)
+cfg.embers.world.small_ruin=Ruína Pequena
+cfg.embers.world.ore=Geração de Minério
+cfg.embers.world.transmutation=Transmutação
+cfg.embers.world.ore_aluminum=Alumínio em Pedra
+cfg.embers.world.ore_copper=Cobre em Pedra
+cfg.embers.world.ore_lead=Chumbo em Pedra
+cfg.embers.world.ore_nickel=Níquel em Pedra
+cfg.embers.world.ore_quartz=Quartzo em Pedra
+cfg.embers.world.ore_silver=Prata em Pedra
+cfg.embers.world.ore_tin=Estanho em Pedra
+
+tile.block_copper.name=Bloco de Cobre
+tile.block_lead.name=Bloco de Chumbo
+tile.block_dawnstone.name=Bloco de Pedra da Alvorada
+tile.block_silver.name=Bloco de Prata
+tile.block_mithril.name=Bloco de Mithril
+tile.ore_copper.name=Cobre em Pedra
+tile.ore_lead.name=Chumbo em Pedra
+tile.ore_silver.name=Prata em Pedra
+tile.block_tank.name=Tanque de Fluido
+tile.block_caminite_brick.name=Tijolos de Caminita
+tile.pipe.name=Tubo de Fluido
+tile.pump.name=Extrator de Fluido
+tile.block_furnace.name=Fundidor
+tile.ember_receiver.name=Receptor de Brasa
+tile.ember_emitter.name=Emissor de Brasa
+tile.deep_line.name=Poço Profundo
+tile.copper_cell.name=Célula de Cobre
+tile.item_pipe.name=Tubo de Item
+tile.item_pump.name=Extrator de Item
+tile.bin.name=Depósito
+tile.stamper.name=Estampadeira
+tile.stamper_base.name=Base da Estampadeira
+tile.ember_bore.name=Broca de Brasa
+tile.mech_accessor.name=Acessório de Máquina
+tile.mech_core.name=Núcleo Mecânico
+tile.stairs_caminite_brick.name=Escada de Tijolo Caminita
+tile.wall_caminite_brick.name=Parede de Tijolo Caminita
+tile.ember_activator.name=Ativador de Brasa
+tile.mixer.name=Centrífuga Misturadora
+tile.heat_coil.name=Serpentina de Calor
+tile.item_dropper.name=Dispensador de Item
+tile.fluid_dropper.name=Dispensador de Fluido
+tile.large_tank.name=Reservatório
+tile.fluid_gauge.name=Medidor de Fluido
+tile.ember_gauge.name=Medidor de Brasa
+tile.item_gauge.name=Medidor de Item
+tile.block_lantern.name=Lanterna de Brasa
+tile.stone_edge.name=Anel de Caminita
+tile.beam_splitter.name=Divisor de Raio
+tile.ember_relay.name=Rele de Brasa
+tile.crystal_cell.name=Célula Cristalina
+tile.charger.name=Carregador de Cobre
+tile.block_caminite_brick_slab.name=Laje de Tijolo Caminita
+tile.block_caminite_brick_slab_double.name=Laje Dupla de Tijolo Caminita
+tile.block_caminite_large_brick.name=Tijolo Grande Caminita
+tile.ashen_stone.name=Pedra Cinzenta
+tile.ashen_stone_slab.name=Laje de Pedra Cinzenta
+tile.ashen_stone_slab_double.name=Laje Dupla de Pedra Cinzenta
+tile.stairs_ashen_stone.name=Escada de Pedra Cinzenta
+tile.wall_ashen_stone.name=Parede de Pedra Cinzenta
+tile.ashen_brick.name=Tijolo Cinzento
+tile.ashen_brick_slab.name=Laje de Tijolo Cinzento
+tile.ashen_brick_slab_double.name=Laje Dupla de Tijolo Cinzento
+tile.stairs_ashen_brick.name=Escada de Tijolo Cinzento
+tile.wall_ashen_brick.name=Parede de Tijolo Cinzento
+tile.ashen_tile.name=Ladrilho Cinzento
+tile.ashen_tile_slab.name=Laje de Ladrilho Cinzento
+tile.ashen_tile_slab_double.name=Laje Dupla de Ladrilho Cinzento
+tile.stairs_ashen_tile.name=Escada de Ladrilho Cinzento
+tile.wall_ashen_tile.name=Parede de Ladrilho Cinzento
+tile.cinder_plinth.name=Base Cinza
+tile.knowledge_table.name=Mesa de Pesquisa
+tile.alchemy_pedestal.name=Pedestal de Alquimia
+tile.alchemy_tablet.name=Tábua de Troca
+tile.item_transfer.name=Transferência de Itens
+tile.fluid_transfer.name=Transferência de Fluidos
+tile.core_stone.name=Pedra Central
+tile.beam_cannon.name=Canhão de Raio
+tile.archaic_bricks.name=Tijolos Arcaicos
+tile.archaic_light.name=Luz Arcaica
+tile.dawnstone_anvil.name=Bigorna da Alvorada
+tile.auto_hammer.name=Martelo Automático
+tile.ore_quartz.name=Quartzo em Pedra
+tile.sealed_planks.name=Tábuas Lacradas
+tile.wrapped_sealed_planks.name=Tábuas Lacradas Reforçadas
+tile.vacuum.name=Vácuo de Itens
+tile.breaker.name=Quebrador Automático
+tile.ember_injector.name=Injetor de Brasa
+tile.seed_iron.name=Semente de Cristal de Ferro
+tile.seed_gold.name=Semente de Cristal de Ouro
+tile.seed_copper.name=Semente de Cristal de Cobre
+tile.seed_lead.name=Semente de Cristal de Chumbo
+tile.seed_silver.name=Semente de Cristal de Prata
+tile.seed_aluminum.name=Semente de Cristal de Alumínio
+tile.seed_nickel.name=Semente de Cristal de Níquel
+tile.seed_tin.name=Semente de Cristal de Estanho
+tile.seed_dawnstone.name=Semente de Cristal de Pedra da Alvorada
+tile.boiler.name=Refinaria de Pressão
+tile.archaic_edge.name=Borda Arcaica
+tile.archaic_tile.name=Ladrilho Arcaico
+tile.combustor.name=Câmara de Combustão
+tile.catalyzer.name=Câmara de Catálise
+tile.reactor.name=Reator Ignem
+tile.field_chart.name=Mapa de Campo
+tile.ember_pulser.name=Ejetor de Brasa
+tile.inferno_forge.name=Forja Infernal
+tile.axle_iron.name=Eixo de Ferro
+tile.creative_mech_source.name=Fonte Criativa de Energia Mecânica
+tile.creative_ember_source.name=Fonte Criativa de Brasa
+tile.gearbox_frame.name=Estrutura da Caixa de Engrenagens
+tile.steam_engine.name=Motor a Vapor
+tile.mechanical_pump.name=Bomba Mecânica
+tile.caminite_lever.name=Alavanca Caminita
+tile.catalytic_plug.name=Plugue Catalítico
+tile.ember_funnel.name=Funil de Brasa
+tile.mini_boiler.name=Mini Caldeira
+tile.mech_actuator_single.name=Atuador Mecânico
+tile.mech_actuator.name=Caixa de Engrenagens Mecânicas
+tile.ember_siphon.name=Sifão de Brasa
+tile.stirling.name=Motor Stirling Fogo Selvagem
+tile.clockwork_attenuator.name=Atenuador Relógio
+tile.explosion_pedestal.name=Pedestal de Encanto Explosivo
+tile.stone_valve.name=Válvula Caminita
+tile.geo_separator.name=Separador Geológico
+tile.item_request.name=Solicitação de Item
+tile.reaction_chamber.name=Câmara de Reação
+tile.ember_pipe.name=Conduíte de Brasa Volátil
+tile.advanced_edge.name=Borda Célula Cristal
+tile.inferno_forge_edge.name=Borda Forja Infernal
+tile.mech_edge.name=Borda Mecânica
+tile.turret.name=Torre
+
+fluid.iron=Ferro Fundido
+fluid.gold=Ouro Fundido
+fluid.copper=Cobre Fundido
+fluid.lead=Chumbo Fundido
+fluid.silver=Prata Fundida
+fluid.astralite=Astralita Fundida
+fluid.dawnstone=Pedra da Alvorada Fundida
+fluid.umber_steel=Aço Sombrio Fundido
+fluid.alchemical_redstone=Pasta Alquímica
+fluid.steam=Vapor
+fluid.oil_soul=Óleo da Alma
+fluid.oil_dwarf=Óleo Anão
+fluid.gas_dwarf=Gás Combustível Anão
+
+item.ingot_copper.name=Lingote de Cobre
+item.ingot_silver.name=Lingote de Prata
+item.ingot_lead.name=Lingote de Chumbo
+item.ingot_mithril.name=Lingote de Mithril
+item.nugget_copper.name=Pepita de Cobre
+item.nugget_silver.name=Pepita de Prata
+item.nugget_lead.name=Pepita de Chumbo
+item.nugget_dawnstone.name=Pepita de Pedra da Alvorada
+item.brick_caminite.name=Tijolo Caminita
+item.blend_caminite.name=Mistura Caminita
+item.plate_caminite.name=Placa de Caminita
+item.plate_caminite_raw.name=Placa Bruta de Caminita
+item.plate_gold.name=Placa de Ouro
+item.plate_iron.name=Placa de Ferro
+item.plate_dawnstone.name=Placa de Pedra da Alvorada
+item.plate_copper.name=Placa de Cobre
+item.plate_lead.name=Placa de Chumbo
+item.plate_silver.name=Placa de Prata
+item.plate_mithril.name=Placa de Mithril
+item.ember_detector.name=Medidor Atmosférico
+item.tinker_hammer.name=Martelo da Invenção
+item.stamp_bar.name=Molde de Barra
+item.stamp_flat.name=Molde Plano
+item.stamp_plate.name=Molde de Placa
+item.stamp_gear.name=Molde de Engrenagem
+item.stamp_bar_raw.name=Molde Bruto de Barra
+item.stamp_flat_raw.name=Molde Bruto Plano
+item.stamp_plate_raw.name=Molde Bruto de Placa
+item.stamp_gear_raw.name=Molde Bruto de Engrenagem
+item.stamp_rod_raw.name=Molde Bruto de Haste
+item.stamp_rod.name=Molde de Haste
+item.stamp_round_raw.name=Molde Bruto Redondo
+item.stamp_round.name=Molde Redondo
+item.dust_ember.name=Resíduo de Brasa
+item.shard_ember.name=Fragmento de Brasa
+item.crystal_ember.name=Cristal de Brasa
+item.ingot_dawnstone.name=Lingote de Pedra da Alvorada
+item.nugget_iron.name=Pepita de Ferro
+item.nugget_mithril.name=Pepita de Mithril
+item.pickaxe_clockwork.name=Picareta Relógio
+item.axe_clockwork.name=Machadinha de Guerra Relógio
+item.pickaxe_copper.name=Picareta de Cobre
+item.axe_copper.name=Machado de Cobre
+item.shovel_copper.name=Pá de Cobre
+item.hoe_copper.name=Enxada de Cobre
+item.sword_copper.name=Espada de Cobre
+item.pickaxe_dawnstone.name=Picareta de Pedra da Alvorada
+item.axe_dawnstone.name=Machado de Pedra da Alvorada
+item.shovel_dawnstone.name=Pá de Pedra da Alvorada
+item.hoe_dawnstone.name=Enxada de Pedra da Alvorada
+item.sword_dawnstone.name=Espada de Pedra da Alvorada
+item.pickaxe_lead.name=Picareta de Chumbo
+item.axe_lead.name=Machado de Chumbo
+item.shovel_lead.name=Pá de Chumbo
+item.hoe_lead.name=Enxada de Chumbo
+item.sword_lead.name=Espada de Chumbo
+item.pickaxe_silver.name=Picareta de Prata
+item.axe_silver.name=Machado de Prata
+item.shovel_silver.name=Pá de Prata
+item.hoe_silver.name=Enxada de Prata
+item.sword_silver.name=Espada de Prata
+item.ember_jar.name=Pote de Brasa
+item.ember_cartridge.name=Cápsula de Brasa
+item.ignition_cannon.name=Raio Ardente
+item.staff_ember.name=Cajado de Cinza
+item.grandhammer.name=Marreta Grandiosa
+item.dust_ash.name=Pilha de Cinzas
+item.golems_eye.name=Olho dos Antigos
+item.aspectus_iron.name=Aspecto de Ferro
+item.aspectus_dawnstone.name=Aspecto de Pedra da Alvorada
+item.aspectus_copper.name=Aspecto de Cobre
+item.aspectus_silver.name=Aspecto de Prata
+item.aspectus_lead.name=Aspecto de Chumbo
+item.alchemic_waste.name=Resíduo Alquímico
+item.inflictor_gem.name=Gema Infligidora
+item.ashen_cloak_head.name=Óculos Cinzentos
+item.ashen_cloak_chest.name=Manto Cinzento
+item.ashen_cloak_legs.name=Calça Justa Cinzenta
+item.ashen_cloak_boots.name=Botas Cinzentas
+item.glimmer_shard.name=Cristal Cintilante
+item.glimmer_lamp.name=Luminária Cintilante
+item.ashen_cloth.name=Tecido Cinzento
+item.archaic_brick.name=Tijolo Arcaico
+item.ancient_motive_core.name=Núcleo das Antigas Motivações
+item.isolated_materia.name=Matéria Isolada
+item.tyrfing.name=Tyrfing
+item.adhesive.name=Adesivo
+item.ember_cluster.name=Aglomerado de Cristais de Brasa
+item.wildfire_core.name=Núcleo do Fogo Selvagem
+item.codex.name=Códice Antigo
+item.superheater.name=Superaquecedor
+item.inferno_forge.name=Forja Infernal
+item.jet_augment.name=Jato de Cinza
+item.blasting_core.name=Núcleo da Detonação
+item.caster_orb.name=Orbe de Conjurador
+item.resonating_bell.name=Sino Ressonante
+item.flame_barrier.name=Barreira de Chamas
+item.eldritch_insignia.name=Insígnia Arcana
+item.intelligent_apparatus.name=Aparato Inteligente
+item.archaic_circuit.name=Circuito Arcaico
+item.ember_ring.name=Anel de Brasa
+item.ember_belt.name=Cinto de Brasa
+item.ember_amulet.name=Amuleto de Brasa
+item.ember_bulb.name=Bulbo de Brasa
+item.gear_iron.name=Engrenagem de Ferro
+item.gear_dawnstone.name=Engrenagem de Pedra da Alvorada
+item.dust_metallurgic.name=Poeira Metalúrgica
+item.diffraction_barrel.name=Barril de Difração
+item.focal_lens.name=Lente Focal
+item.explosion_charm.name=Símbolo de Explosão
+item.nonbeliever_amulet.name=Amuleto de Herege
+item.ashen_amulet.name=Amuleto Cinzento
+item.dawnstone_mail.name=Cota de Malha de Pedra da Alvorada
+item.rocket_booster.name=Impulsionador de Foguete
+item.climbers_belt.name=Cinto de Escalada
+item.crystal_lenses.name=Lentes de Cristal
+item.tinker_lens.name=Lente da Invenção
+item.anti_tinker_lens.name=Lente da Invenção Fumegante
+item.shifting_scales.name=Escamas Cintilantes
+item.winding_gears.name=Engrenagens de Corda
+item.core_stone.name=Pedra Central
+item.spark_plug.name=Vela de Ignição
+item.creative_heat.name=Modificador Criativo de Calor
+
+tile.block_aluminum.name=Bloco de Alumínio
+tile.ore_aluminum.name=Alumínio em Pedra
+item.ingot_aluminum.name=Lingote de Alumínio
+item.nugget_aluminum.name=Pepita de Alumínio
+item.plate_aluminum.name=Placa de Alumínio
+item.pickaxe_aluminum.name=Picareta de Alumínio
+item.axe_aluminum.name=Machado de Alumínio
+item.hoe_aluminum.name=Enxada de Alumínio
+item.shovel_aluminum.name=Pá de Alumínio
+item.sword_aluminum.name=Espada de Alumínio
+fluid.aluminum=Alumínio Fundido
+
+tile.block_bronze.name=Bloco de Bronze
+tile.ore_bronze.name=Bronze em Pedra
+item.ingot_bronze.name=Lingote de Bronze
+item.nugget_bronze.name=Pepita de Bronze
+item.plate_bronze.name=Placa de Bronze
+item.pickaxe_bronze.name=Picareta de Bronze
+item.axe_bronze.name=Machado de Bronze
+item.hoe_bronze.name=Enxada de Bronze
+item.shovel_bronze.name=Pá de Bronze
+item.sword_bronze.name=Espada de Bronze
+fluid.bronze=Bronze Fundido
+
+tile.block_electrum.name=Bloco de Electrum
+tile.ore_electrum.name=Electrum em Pedra
+item.ingot_electrum.name=Lingote de Electrum
+item.nugget_electrum.name=Pepita de Electrum
+item.plate_electrum.name=Placa de Electrum
+item.pickaxe_electrum.name=Picareta de Electrum
+item.axe_electrum.name=Machado de Electrum
+item.hoe_electrum.name=Enxada de Electrum
+item.shovel_electrum.name=Pá de Electrum
+item.sword_electrum.name=Espada de Electrum
+fluid.electrum=Electrum Fundido
+
+tile.block_nickel.name=Bloco de Níquel
+tile.ore_nickel.name=Níquel em Pedra
+item.ingot_nickel.name=Lingote de Níquel
+item.nugget_nickel.name=Pepita de Níquel
+item.plate_nickel.name=Placa de Níquel
+item.pickaxe_nickel.name=Picareta de Níquel
+item.axe_nickel.name=Machado de Níquel
+item.hoe_nickel.name=Enxada de Níquel
+item.shovel_nickel.name=Pá de Níquel
+item.sword_nickel.name=Espada de Níquel
+fluid.nickel=Níquel Fundido
+
+tile.block_tin.name=Bloco de Estanho
+tile.ore_tin.name=Estanho em Pedra
+item.ingot_tin.name=Lingote de Estanho
+item.nugget_tin.name=Pepita de Estanho
+item.plate_tin.name=Placa de Estanho
+item.pickaxe_tin.name=Picareta de Estanho
+item.axe_tin.name=Machado de Estanho
+item.hoe_tin.name=Enxada de Estanho
+item.shovel_tin.name=Pá de Estanho
+item.sword_tin.name=Espada de Estanho
+fluid.tin=Estanho Fundido
+
+embers.aspect.iron=Ferro
+embers.aspect.copper=Cobre
+embers.aspect.dawnstone=Pedra da Alvorada
+embers.aspect.lead=Chumbo
+embers.aspect.silver=Prata
+
+embers.decimal_format.ember=0.0
+embers.decimal_format.mechanical_multiplier=0.##x
+embers.decimal_format.speed_multiplier=0.##x
+embers.decimal_format.ember_multiplier=0.##x
+embers.decimal_format.inaccuracy=0
+embers.decimal_format.heat=0.00
+embers.decimal_format.item_amount=0x
+embers.decimal_format.attenuator_multiplier=0.##x
+
+embers.tooltip.goggles.input=§9⬊§r %s
+embers.tooltip.goggles.output=§6⬉§r %s
+embers.tooltip.goggles.storage=• %s
+
+embers.tooltip.goggles.item=Itens
+embers.tooltip.goggles.fluid=Fluidos
+embers.tooltip.goggles.ember=Brasa
+embers.tooltip.goggles.mechanical=Poder Mecânico
+embers.tooltip.goggles.filter=%s (%s)
+
+embers.tooltip.goggles.item.any=Qualquer
+embers.tooltip.goggles.item.fuel=Combustível
+embers.tooltip.goggles.item.ember=Brasa
+embers.tooltip.goggles.item.stamp=Molde
+embers.tooltip.goggles.item.ember_storage=Armazenamento de Brasa
+embers.tooltip.goggles.item.combustion=Combustíveis
+embers.tooltip.goggles.item.catalysis=Catalisadores
+embers.tooltip.goggles.item.ash=Cinza
+embers.tooltip.goggles.fluid.any=Qualquer
+embers.tooltip.goggles.fluid.metal=Metais Fundidos
+embers.tooltip.goggles.fluid.water=Água
+embers.tooltip.goggles.fluid.steam=Vapor
+embers.tooltip.goggles.fluid.water_or_steam=Água ou Vapor
+embers.tooltip.goggles.fluid.redstone=Pasta Alquímica
+
+embers.tooltip.goggles.upgrade_slot=• Slot para Upgrade de Máquina
+embers.tooltip.goggles.upgrade=• Upgrade de Máquina
+embers.tooltip.goggles.accessor_slot=• Slot para Acessório de Máquina
+embers.tooltip.goggles.actuator_slot=• Slot para Atuador
+
+embers.tooltip.crystal.level=Nível %s
+embers.tooltip.crystal.xp=Refinamento %s/%s
+
+embers.tooltip.atmosEmber=Brasa Atmosférica:
+embers.tooltip.targetingBlock=Alvo: %s
+embers.tooltip.itemdial.slot=Slot %s: %s
+embers.tooltip.itemdial.item=%s %s
+embers.tooltip.itemdial.noitem=NENHUM
+embers.tooltip.emberdial.ember=Brasa: %s/%s
+embers.tooltip.fluiddial.fluid=%s: %s/%s
+embers.tooltip.fluiddial.nofluid=0/%s
+embers.tooltip.side.center=Centro
+embers.tooltip.side.north=Norte
+embers.tooltip.side.east=Leste
+embers.tooltip.side.south=Sul
+embers.tooltip.side.west=Oeste
+embers.tooltip.side.up=Topo
+embers.tooltip.side.down=Fundo
+embers.tooltip.accuracy=%s Inacurácia: %s
+embers.tooltip.inflictor=Dano Afinado:
+embers.tooltip.tyrfing=Causa dano baseado na armadura do alvo.
+embers.tooltip.heat_amount=Calor:
+embers.tooltip.heat_level=Nível:
+embers.tooltip.modifiers=Modificadores:
+embers.tooltip.upgrade.actuator=Velocidade Mecânica: %s
+embers.tooltip.upgrade.actuator.other=Eficiência de Produção Mecânica de Brasa: %s
+embers.tooltip.upgrade.catalytic_plug=Velocidade do Plugue Catalítico: %s
+embers.tooltip.dial.ember_multiplier=Multiplicador de Produção: %s
+embers.tooltip.dial.heat=Calor: %s/%s
+embers.tooltip.item.ember=Brasa: %s/%s
+embers.tooltip.attenuator.on=Quando ativo: Velocidade %s
+embers.tooltip.attenuator.off=Quando inativo: Velocidade %s
+embers.tooltip.forge.cannot_start=Não há Brasa suficiente para acender a forja.
+embers.tooltip.broken=Quebrado
+embers.tooltip.item_request.linked=Ligado a %s (%s,%s,%s)
+embers.tooltip.item_request.filter=Requer %2$sx %1$s
+embers.tooltip.item_request.order=§aAguardando %s itens
+embers.tooltip.item_request.order.none=
+
+embers.filter.any=Qualquer
+embers.filter.existing=Existentes
+embers.filter.not_existing=Não Existentes
+embers.filter.and=%s e %s
+embers.filter.or=%s ou %s
+embers.filter.invert=não %s
+embers.filter.strict=%s
+embers.filter.normal=%s (Ignora NBT)
+embers.filter.item=%s (Ignora Metadados)
+embers.filter.metadata=Itens com Metadados %s
+embers.filter.nbt=Itens com NBT específico
+embers.filter.nbt.fuzzy=Itens com NBT
+embers.filter.name=Itens nomeados "%s"
+embers.filter.mod=Itens de %s
+embers.filter.durability=Itens com durabilidade de %s-%s
+embers.filter.durability.strict=Itens com durabilidade de %s
+embers.filter.durability.fuzzy=Itens Danificáveis
+embers.filter.fuel=Combustíveis com valor de %s-%s
+embers.filter.fuel.strict=Combustíveis com valor de %s
+embers.filter.fuel.fuzzy=Combustíveis
+embers.filter.has_fluid=Recipientes de Fluido
+embers.filter.has_ember=Recipientes de Brasa
+embers.filter.has_forge_energy=Baterias
+embers.filter.fluid=Itens com %s-%s mb de %3$s
+embers.filter.fluid.strict=Itens com %s mb de %3$s
+embers.filter.fluid.fuzzy=Itens com %3$s
+embers.filter.ember=Itens com %s-%s de Brasa
+embers.filter.ember.strict=Itens com %s de Brasa
+embers.filter.ember.fuzzy=Itens com Brasa
+embers.filter.ember_fuel=Combustíveis de Brasa com valor de %s-%s
+embers.filter.ember_fuel.strict=Combustíveis de Brasa com valor de %s
+embers.filter.ember_fuel.fuzzy=Combustíveis de Brasa
+embers.filter.forge_energy=Itens com %s-%s FE
+embers.filter.forge_energy.strict=Itens com %s FE
+embers.filter.forge_energy.fuzzy=Itens com FE
+
+embers.tooltip.liquid_fuel.power=Produz %s de poder
+embers.tooltip.liquid_fuel.time=por %s tiques
+
+embers.tooltip.modifier.superheater=Superaquecimento %s
+embers.tooltip.modifier.jet_augment=Jato de Cinza %s
+embers.tooltip.modifier.blasting_core=Explosão %s
+embers.tooltip.modifier.resonating_bell=Ressonância %s
+embers.tooltip.modifier.caster_orb=Lançamento de Brasa %s
+embers.tooltip.modifier.flame_barrier=Barreira de Chama %s
+embers.tooltip.modifier.eldritch_insignia=Etéreo %s
+embers.tooltip.modifier.intelligent_apparatus=Inteligente %s
+embers.tooltip.modifier.diffraction=Difração %s
+embers.tooltip.modifier.focal_lens=Focado %s
+embers.tooltip.modifier.tinker_lens=Visão do Artesão
+embers.tooltip.modifier.anti_tinker_lens=Cegueira do Artesão
+embers.tooltip.modifier.shifting_scales=Escamoso %s
+embers.tooltip.modifier.winding_gears=Corda %s
+embers.tooltip.modifier.core_stone=Sensível à Profundidade %s
+
+embers.tooltip.num1=I
+embers.tooltip.num2=II
+embers.tooltip.num3=III
+embers.tooltip.num4=IV
+embers.tooltip.num5=V
+embers.tooltip.num6=VI
+embers.tooltip.num7=VII
+embers.tooltip.numstop=Pare
+
+embers.jei.recipe.stamp=Receita de Molde
+embers.jei.recipe.melter=Receita de Fundição
+embers.jei.recipe.mixer=Receita de Mistura
+embers.jei.recipe.alchemy=Receita de Alquimia
+embers.jei.recipe.dawnstone_anvil=Receita da Bigorna da Alvorada
+embers.jei.recipe.geologic_separator=Bônus do Separador Geológico
+embers.jei.recipe.boiler=Caldeira
+embers.jei.recipe.steam_engine=Motor a Vapor
+embers.jei.recipe.reaction_chamber=Câmara de Reação
+
+entity.ancient_golem.name=Golem Ancião
+entity.magma_worm.name=Verme de Magma [WIP]
+
+death.attack.ember=%1$s foi incinerado(a)
+death.attack.ember.player=%1$s foi incinerado(a) por %2$s
+
+embers.research.controls=Clique com o botão direito nas entradas para marcá-las como §a✔§r concluídas.;As categorias serão abertas conforme você concluir as entradas.;;Digite o texto para pesquisar e destacar entradas.;Você pode pesquisar entradas que correspondam a várias palavras com §f|§r.;Ex: §fBrasa|Gerador§r
+embers.research.prerequisite=Necessário para %s
+embers.research.prerequisite.locked=§4✕§8 Requer %s
+embers.research.prerequisite.unlocked=§a✔§r Requer %s
+
+embers.research.null=
+embers.research.world=Energia Natural
+embers.research.mechanisms=Maquinações do Fogo
+embers.research.metallurgy=Construtos Metalúrgicos
+embers.research.alchemy=Transmutação
+embers.research.materia=Matéria Arcana
+embers.research.core=O Brilho do Núcleo
+embers.research.smithing=Aprimoramento da Ferraria
+
+embers.research.multipage=%s (%s/%s)
+
+embers.research.page.empty.desc=
+
+embers.research.page.ores=Minérios
+embers.research.page.ores.title=Minerais Brutos
+embers.research.page.ores.tags=Cobre;Chumbo;Prata;Níquel;Ferroso;Alumínio;Aluminio;Quartzo;Minério;
+embers.research.page.ores.desc=Nas profundezas das cavernas da terra sólida, o novato cavador pode encontrar muitos minerais úteis, como Cobre, Chumbo, Prata e Quartzo. O cobre tem muitas aplicações como condutor, o chumbo como um metal opaco e maleável e a prata como um canalizador de magia. O quartzo também se mostra uma boa fonte de matéria cristalina bruta.
+
+embers.research.page.hammer=Martelo Artesanal
+embers.research.page.hammer.title=Esmagando
+embers.research.page.hammer.tags=Martelo;Placa;Ferramenta;
+embers.research.page.hammer.desc=Com uma cabeça densa de chumbo e ferro, o Martelo Artesanal se mostra uma ferramenta manejável. Ele pode ser usado para prensar dois lingotes de metal em uma placa, e você pode imaginar que seja útil para fazer certas máquinas cooperarem.
+
+embers.research.page.ancient_golem=Construtos Antigos
+embers.research.page.ancient_golem.title=Adversários Antigos
+embers.research.page.ancient_golem.tags=Golem;Goblim da Rocha;Irritante;Ciclopes;Arcaico;
+embers.research.page.ancient_golem.desc=Raramente no mundo, foram encontradas estranhas construções que se assemelham a humanoides. Esses enigmáticos golems emitirão raios de puro calor e possuem força sobrenatural, mas parecem não necessitar de combustível ou sustento. Como tal autômato pode surgir está além de você, mas talvez os materiais e mecanismos desconhecidos dentro dele possam ser úteis.
+
+embers.research.page.gauge=Medidor Atmosférico
+embers.research.page.gauge.title=Prospecção
+embers.research.page.gauge.tags=Brasa;Medidor;Ferramenta;Informação;
+embers.research.page.gauge.desc=Evidenciado pela existência de rocha fundida quente nas profundezas da terra, ou pelo calor radiante que sustenta os estranhos golems que você combate, você passou a acreditar que no centro do seu mundo existe uma poderosa fonte de energia. Usando um pouco de cobre e ferro, você encontrou uma maneira de criar um dispositivo capaz de medir a densidade dessa energia, doravante chamada de "Brasa", em uma posição no mundo.
+
+embers.research.page.caminite=Caminita
+embers.research.page.caminite.title=Cerâmica Resistente
+embers.research.page.caminite.tags=Cerâmica;Caminita;Tijojo;Argila;Areia;
+embers.research.page.caminite.desc=A Caminita é uma cerâmica muito resistente, misturada com um pouco de argila e areia. A mistura, quando cozida, resulta em um material que você acredita ser resistente o suficiente para todos os seus projetos mecânicos.
+
+embers.research.page.activator=Ativador de Brasa
+embers.research.page.activator.title=Extração
+embers.research.page.activator.tags=Brasa;Ativador;Gerador;
+embers.research.page.activator.desc=O Ativador de Brasa é um dispositivo engenhoso, finalmente permitindo que você extraia energia utilizável de Cristais e Fragmentos de Brasa. Simplesmente insira os Cristais e Fragmentos na parte inferior do dispositivo usando um Funil ou outro método de transporte de itens, e logo, marcado por uma explosão de fogo, a Brasa ativada aparecerá dentro da gaiola de cobre no topo da máquina.
+
+embers.research.page.crystals=Brasa Cristalizada
+embers.research.page.crystals.title=Calor Sólido
+embers.research.page.crystals.tags=Brasa;Cristal;Fragmento;Minério;
+embers.research.page.crystals.desc=A escavação da Broca de Brasa rende vários cristais luminescentes curiosos. Esses cristais vêm em vários tamanhos, o Cristal de Brasa maior e o Fragmento de Brasa menor. Esses cristais são evidências claras de que o poder do Núcleo do mundo existe e pode ser explorado indiretamente: através da imolação desses cristais, você acredita que pode ativar o poder dentro deles para outro uso.
+
+embers.research.page.bore=Broca de Brasa
+embers.research.page.bore.title=Cavando Cavando Buraco
+embers.research.page.bore.tags=Brasa;Broca;Minério;
+embers.research.page.bore.desc=Embora o leito rochoso possa deter seus avanços descendentes, ele não deterá suas máquinas. A Broca de Brasa deve ser abastecida com itens de combustível do forno normal e deve ser colocada em uma posição onde as lâminas da Broca possam tocar o leito rochoso. Quando abastecida, a Broca irá cavar Cristais de Brasa das profundezas da terra, para seu uso futuro. Funis e outros transportadores de itens devem ser usados para extrair e inserir combustível e cristais da Broca.
+
+embers.research.page.pipes=Tubos
+embers.research.page.pipes.title=Transporte
+embers.research.page.pipes.tags=Tubo;Transporte;Item;Fluido;Líquido;
+embers.research.page.pipes.desc=Um dos mecanismos mais simples necessários para suas ambições é o tubo, um meio simples de mover materiais. Você desenvolveu tubos de ferro e chumbo: Tubos de Ferro podem ser usados para transportar fluidos, enquanto Tubos de Chumbo podem ser usados para transportar itens. Tubos só podem ser inseridos em tanques ou inventários, no entanto: para extrair, você deve fabricar uma Bomba correspondente, colocá-la adjacente ao contêiner e energizá-la com redstone.
+embers.research.page.routing.desc=Itens e Fluidos em tubos seguem regras simples para determinar para onde irão. Eles sempre irão para frente e nunca irão saltar para trás ou, Deus o livre, sair do tubo. Em um cruzamento, eles sempre priorizarão a saída oposta, desde que as outras saídas tenham o mesmo peso. Quando houver necessidade de desempate, os itens e fluidos serão distribuídos em turnos.
+embers.research.page.valves.desc=Extratores possuem várias propriedades especiais, listadas aqui: Eles nunca se conectam a outros Extratores. Quando desligados, eles podem receber itens em vez de apenas extrair de contêineres. Quando ligados por um sinal de redstone, eles nunca aceitarão itens de tubos. Isso torna os Extratores úteis como válvulas em sistemas de tubos, para controle de fluxo.
+embers.research.page.pipe_tools.desc=Tubos se conectarão automaticamente a outros tubos adjacentes. Quando isso não for desejado, seu Martelo Artesanal pode ser usado para desconectá-los. (Observe que ambos os lados podem ser desconectados individualmente) Às vezes, o roteamento em uma rede de tubos pode dar errado. Quando isso acontecer, os tubos expelirão fumaça para mostrar que estão entupidos. Para desentupir um tubo, basta clicar com o botão direito nele com um pedaço de pau.
+
+embers.research.page.requisition=Solicitação de Item
+embers.research.page.requisition.title=Sistema de Armazenamento?
+embers.research.page.requisition.tags=Tubo;Armazenamento;Puxar;Item;Filtro;
+embers.research.page.requisition.desc=Normalmente, um sistema de tubos de itens é apenas de push. Este intrincado nódulo permite que os inventários mantenham um estoque de itens em um inventário. Basta clicar com o botão direito do mouse em um item para definir um filtro. Você também pode vincular este nó a um Extrator de Item distante para extrair itens automaticamente do extrator para atender aos requisitos de estoque.
+
+embers.research.page.golem_eye=Olho dos Antigos
+embers.research.page.golem_eye.title=Filtros Avançados
+embers.research.page.golem_eye.tags=Filtro;Olho;Golem;
+embers.research.page.golem_eye.desc=Às vezes, filtrar por itens não é suficiente para sistemas avançados de transferência de itens. O olho de um golem pode ser obtido matando-o com uma picareta. Você pode então usar o olho na mão para fazê-lo lembrar de quaisquer 2 itens juntamente com uma característica de filtro com base no que os dois itens têm em comum.
+embers.research.page.filter_existing.desc=Clicando com o botão direito do mouse em uma Solicitação de Item, você pode sintonizar um olho de golem para filtrar itens existentes em um inventário conectado. Este filtro não funcionará em Transferências de Itens, pois elas não possuem inventário anexado.
+embers.research.page.filter_not_existing.desc=Clicando com o botão direito do mouse em uma Bigorna da Alvorada, você pode sintonizar um olho de golem para filtrar itens que não existem em um inventário conectado. Este filtro não funcionará em Transferências de Itens, pois elas não possuem inventário anexado.
+
+
+embers.research.page.tank=Tanque de Fluido
+embers.research.page.tank.title=Recipiente de Líquido
+embers.research.page.tank.tags=Tanque;Armazenamento;Líquido;Fluido;Portátil;Caminita;
+embers.research.page.tank.desc=Líquidos como água ou lava são ocorrências comuns em seu mundo. Este tanque, uma construção simples de metal e Caminita, deve ser capaz de conter uma quantidade substancial de qualquer fluido e retém seu conteúdo quando quebrado e substituído.
+
+embers.research.page.bin=Depósito
+embers.research.page.bin.title=Compartimento de Armazenamento
+embers.research.page.bin.tags=Depósito;Baú;Armazenamento;Item;Funil;
+embers.research.page.bin.desc=Um simples barril de ferro com a parte superior aberta, o Depósito pode conter até uma pilha de qualquer item. Ele também pode ser usado para coletar automaticamente a saída de algumas máquinas.
+
+embers.research.page.boiler=Refinaria de Pressão
+embers.research.peace.boiler.title=Câmara de Vapor
+embers.research.page.boiler.tags=Caldeira;Refinaria;Brasa;Pressão;Gerador;Água;Vapor;Calor;
+embers.research.page.boiler.desc=Enquanto o Ativador pode refinar Brasa cristalina, ele produz apenas uma quantidade modesta. A Refinaria de Pressão é um meio de obter rendimentos muito maiores por cristal. Requer que água e Brasa sejam bombeadas para dentro dela, resultando em um rendimento padrão de 1,5x do Ativador. No entanto, se for colocada em um bloco de metal com lava ou fogo ao redor, pode atingir rendimentos de até 3x, dependendo de quantos blocos quentes houver ao redor da base.
+
+embers.research.page.mini_boiler=Mini Caldeira
+embers.research.page.mini_boiler.title=Carregando nas Costas para Explosões
+embers.research.page.mini_boiler.tags=Caldeira;Pressão;Água;Vapor;Calor;Explosão;Óleo;Gás;
+embers.research.page.mini_boiler.desc=Brasa é uma substância altamente energética, que produz calor tanto quando consumida quanto quando produzida. Seria uma pena desperdiçar esse calor. Ao conectar este vaso de pressão na lateral de uma máquina consumidora ou produtora de Brasa, você pode transformar água em vapor para outros fins. Mas tome cuidado, pois em altas pressões, a caldeira pode facilmente se romper...
+
+embers.research.page.reaction_chamber=Câmara de Reação
+embers.research.page.reaction_chamber.title=É um condensador! É um combustor!
+embers.research.page.reaction_chamber.tags=Caldeira;Pressão;Reação;Água;Vapor;Gás;Condensação;
+embers.research.page.reaction_chamber.desc=Ao aplicar uma Vela de Ignição a um vaso de metal oco, você criou um dispositivo que pode transformar certos fluidos em outros fluidos. Seu principal objetivo é queimar gás combustível em grandes quantidades de vapor, mas também pode ser usado para condensar o excesso de vapor de volta em água. Você pode inserir fluido reativo de qualquer lado e extrair o resultado de qualquer outro lado. O excesso de fluido será liberado com segurança.
+
+
+embers.research.page.dials=Medidores
+embers.research.page.dials.title=Medições Cuidadosas
+embers.research.page.dials.tags=Info;Item;Fluido;Líquido;Brasa;Mostrador;Calibre;
+embers.research.page.dials.desc=Mostradores são uma maneira simples de obter informações de uma máquina. Existem dois tipos: Mostrador de Brasa e Mostrador de Fluido. Conectados a seus respectivos contêineres, cada mostrador exibirá graficamente o conteúdo desse contêiner quando visualizado.
+
+embers.research.page.tinker_lens=Lente do Inventor
+embers.research.page.tinker_lens.title=O Que É o Que?
+embers.research.page.tinker_lens.tags=Info;Modificador;Ampliação;Armadura;Ferramenta;
+embers.research.page.tinker_lens.desc=Apesar de você mesmo criar todo esse maquinário, algumas de suas funcionalidades podem ser um pouco confusas às vezes. Felizmente, você criou um dispositivo ocular que pode ser usada para examinar máquinas mais de perto. Quando segurada em qualquer mão, você sempre poderá identificar a finalidade de uma face em uma máquina. Observe que esta ferramenta não é um periscópio, então você pode ter alguns problemas com Núcleos Mecânicos...
+
+
+
+embers.research.page.melter=Fundidor
+embers.research.page.melter.title=Derretendo Coisas
+embers.research.page.melter.tags=Minério;Máquina;Fundir;Multiplicação;Processamento;Líquido;Fluido;Item;Bloco Multi;Multi Bloco;
+embers.research.page.melter.desc=Usando o poder da Brasa ativada, você criou uma maneira de derreter objetos. Quando o bloco inferior do Fundidor recebe Brasa, ele derreterá os itens derretíveis em seu bloco superior para o estado líquido, onde o fluido derretido pode ser canalizado para uso externo.
+
+embers.research.page.geo_separator=Separador Geológico
+embers.research.page.geo_separator.title=Minério de Electrum
+embers.research.page.geo_separator.tags=Extra;Líquido;Fluido;Melhoria;
+embers.research.page.geo_separator.desc=Muitos minérios e minerais encontrados na terra não são apenas metal puro. Eles estão amalgamados com impurezas como outros minerais. O Separador Geológico é uma atualização de máquina projetada para filtrar algumas dessas impurezas ao derreter minérios e, assim, fornecer um pouco de saída extra. Ele deve ser colocado ao lado de um Fundidor, com a torneira voltada para o bloco inferior do Fundidor para funcionar.
+
+embers.research.page.stamper=Estamparia
+embers.research.page.stamper.title=Achatando
+embers.research.page.stamper.tags=Minério;Máquina;Fundir;Aspecto;Placa;Multiplicação;Processamento;Lamina;Líquido;Fluido;Item;Bloco Multi;Multi Bloco;Depósito;
+embers.research.page.stamper.desc=Para moldar metal fundido em formas úteis, você projetou a Estamparia. Para estampar metal fundido, são necessárias duas partes: a própria Estamparia e a Base da Estamparia. Posicione a Estamparia um bloco acima da Base da Estamparia, forneça Brasa e uma Lamina específica. Passe o metal fundido para a Base da Estamparia e a Estamparia deve começar a processá-lo. Você pode colocar um Depósito embaixo da Base da Estamparia para coletar os produtos automaticamente.
+
+embers.research.page.hearth_coil=Bobina da Lareira
+embers.research.page.hearth_coil.title=Fogo Aberto
+embers.research.research.page.hearth_coil.tags=Fornalha;Bobina;Lareira;Máquina;Fundir;Processamento;Item;Bloco Multi;Multi Bloco;
+embers.research.page.hearth_coil.desc=Longe vão os dias de usar combustíveis sólidos em uma fornalha de pedra para cozinhar seus itens. Utilizando o poder da Brasa, você desenvolveu a Bobina da Lareira. Quando fornecida com Brasa, a bobina vai aquecer. Quanto mais quente ficar, mais rápido ela fundirá os itens em cima dela. Todos os itens fundidos serão armazenados no inventário da bobina e podem ser canalizados para fora pela parte inferior ou por algum Acessório.
+
+embers.research.page.mixer=Misturadora Centrifugadora
+embers.research.page.mixer.title=Misture Tudo
+embers.research.page.mixer.tags=Mistura;Misturadora;Fundir;Máquina;Processamento;Líquido;Fluido;Bloco Multi;Multi Bloco;
+embers.research.page.mixer.desc=Embora você tenha usado vários metais para controlar o fluxo de Brasa antes, através da Misturadora Centrifugadora, você acredita que pode criar novas ligas. Cada face da parte inferior da Centrifugadora é o seu próprio tanque. Quando o fluido é bombeado nesses tanques, em uma combinação específica, e o bloco superior da Centrifugadora recebe Brasa, uma liga fundida será criada, podendo ser bombeada para fora do bloco superior.
+
+embers.research.page.access=Acesso Mecânico
+embers.research.page.access.title=Interface
+embers.research.page.access.tags=Núcleo;Mecânico;Proxy;Capacidade;Lateral;Porta;Interface;Acesso;Melhoria;
+embers.research.page.access.desc=Máquinas como a Broca de Brasa ou Bobina da Lareira são um pouco grandes. Por isso, elas só possuem uma porta para interface. Usando o Núcleo Mecânico e o Acessório da Máquina, no entanto, você pode estender essa porta: o Núcleo Mecânico funcionará como um proxy para o inventário, armazenamento de fluidos ou armazenamento de Brasa de qualquer máquina grande que ele tocar, enquanto os Acessórios da Máquina podem ser conectados ao Núcleo Mecânico para fornecer uma interface mais estendida.
+
+embers.research.page.reservoir=Reservatório
+embers.research.page.reservoir.title=Tanques Maciços
+embers.research.page.reservoir.tags=Tanque;Armazenamento;Líquido;Fluido;Caminita;Bloco Multi;Multi Bloco;Válvula;
+embers.research.page.reservoir.desc=O Reservatório é um meio simples de armazenar grandes quantidades de fluidos. Embora armazene apenas cerca de 40 baldes de fluido por padrão, sua capacidade pode ser estendida colocando Anéis de Caminita sobre a base do Reservatório, em 40 baldes para cada anel. O reservatório só pode ser enchido ou drenado através da porta na parte inferior, ou através de um Núcleo Mecânico ou Acessório conectado a essa porta.
+embers.research.page.reservoir_valve.desc=Válvulas de Caminita também podem ser adicionadas para facilitar o acesso. Elas contêm exatamente a mesma quantidade de fluido por camada que um Anel de Caminita normal, mas possuem 4 lados extras para entrada e saída de fluido.
+
+embers.research.page.transfer=Transferência de Item
+embers.research.page.transfer.title=Filtragem
+embers.research.page.transfer.tags=Tubo;Transporte;Item;Fluido;Líquido;Filtro;Transferência;
+embers.research.page.transfer.desc=Tubos de Item podem ser uma maneira simples de levar itens de um lugar para outro, mas somente com o desenvolvimento da Transferência de Item você criou uma maneira de filtrar itens. A Transferência de Item funciona de maneira muito parecida com um tubo normal, com algumas regras. Ele só pode se conectar a tubos na frente e atrás, e terá prioridade sobre todos os outros tubos quando os itens forem enviados. Ele também pode receber um filtro de item clicando com o botão direito nele.
+embers.research.page.fluid_transfer.desc=Transferências de Fluido são o equivalente em fluido para Transferências de Item. Elas funcionam de maneira equivalente em quase todos os aspectos. Apenas para definir o filtro em uma Transferência de Fluido, é necessário, em vez disso, um balde ou outro recipiente contendo algum fluido. O fluido dentro do recipiente não é consumido ao definir um filtro.
+
+embers.research.page.breaker=Quebrador Automático
+embers.research.page.breaker.title=Quebrando Blocos
+embers.research.page.breaker.tags=Máquina;Quebrar;Bloco;Item;Depósito;
+embers.research.page.breaker.desc=O Quebrador Automático é uma engenhoca simples. Posicione-o voltado para uma direção específica, e a lâmina de moagem em sua frente quebrará o bloco à sua frente. Por padrão, esses blocos simplesmente cairão no mundo, mas eles podem ser coletados automaticamente colocando um Depósito atrás do Quebrador.
+
+embers.research.page.pump=Bomba Mecânica
+embers.research.page.pump.title=Bombeie para Cima
+embers.research.page.pump.tags=Máquina;Bomba;Fluido;Líquido;Mecânico;
+embers.research.page.pump.desc=Como a Refinaria de Pressão consome água para aumentar sua produção de Brasa, você precisa de uma maneira de coletá-la automaticamente. Uma bomba mecânica deve servir, mas a Brasa se converte mal em energia mecânica. Operar esta bomba apenas usando Brasa será muito lento e provavelmente seria bom construir várias delas.
+
+embers.research.page.vacuum=Aspirador de Itens
+embers.research.page.vacuum.title=Coleta Automatizada
+embers.research.page.vacuum.tags=Tubo;Transporte;Item;Filtro;Transferência;Coletar;Vácuo;Funil;
+embers.research.page.vacuum.desc=O Aspirador de Itens é um meio de sugar itens do mundo. Basta alimentá-lo com redstone e ele sugará todos os itens em uma grande área à sua frente. Ele empurrará automaticamente os itens através dos tubos conectados à sua face posterior.
+embers.research.page.vacuum_transfer.desc=Aspiradores de Itens não possuem um inventário interno, eles empurrarão itens diretamente para um tubo ou contêiner conectado. Usando esta propriedade, você pode filtrar quais itens serão aspirados conectando uma Transferência de Item à sua face posterior.
+
+embers.research.page.dropper=Dispensador de Itens
+embers.research.page.dropper.title=Despejado
+embers.research.page.dropper.tags=Tubo;Transporte;Item;Soltar;Funil;Lixo;Vazio;
+embers.research.page.dropper.desc=O Dispensador de Itens é muito simples. Quando os itens são canalizados para a porta na parte superior, ele os cuspirá rapidamente em uma linha vertical no mundo, diretamente abaixo dele.
+
+embers.research.page.dawnstone=Pedra da Alvorada
+embers.research.page.dawnstone.title=Liga Brilhante
+embers.research.page.dawnstone.tags=Pedra da Alvorada;Liga;Metal;Metalurgia;
+embers.research.page.dawnstone.desc=Pedra da Alvorada é uma liga resistente de ouro e cobre em partes iguais, criada usando a Misturadora Centrifugadora. Com Brasa imbuída em sua própria natureza durante a criação, você acredita que esta liga deve permitir a criação da estrutura material para muitos mecanismos de Brasa mais avançados.
+
+embers.research.page.emitters=Transferência de Brasa
+embers.research.page.emitters.title=Enviar e Receber
+embers.research.page.emitters.tags=Martelo;Transferência;Transporte;Brasa;Receptor;Emissor;Receber;Enviar;Redstone;Alavanca;Ligação;Conectar;
+embers.research.page.emitters.desc=A manipulação real da Brasa que você recebe do seu Ativador ou outras refinarias envolve dois blocos principais: Emissores de Brasa e Receptores de Brasa. Os emissores funcionam como a extremidade emissora. Simplesmente coloque-os em uma máquina e eles sugarão a Brasa da máquina para seu buffer interno. Então, enquanto estiverem energizados com redstone, eles expelirão Brasa periodicamente.
+
+embers.research.page.receivers.desc=Receptores funcionam como a extremidade receptora. Quando recebem uma explosão de Brasa de um Emissor, eles empurram a Brasa para a máquina conectada, sem necessidade de redstone. Observe que se a Brasa for recebida, mas o receptor não puder aceitar tudo, parte dela será perdida, o que é sinalizado por uma nuvem de fumaça e faíscas.
+
+embers.research.page.linking.desc=Para conectar Emissores e Receptores, basta pressionar Shift + clique com o botão direito do mouse no Receptor com seu Martelo da Invenção e clicar com o botão direito do mouse no Emissor com o martelo. Não há limite de distância para vinculação, mas depois que uma Explosão de Brasa estiver em trânsito por um tempo, ela pode desaparecer, perdendo toda a Brasa que carregava.
+
+embers.research.page.copper_cell=Célula de Cobre
+embers.research.page.copper_cell.title=Capacitor
+embers.research.page.copper_cell.tags=Célula;Cobre;Brasa;Armazenamento;Portátil;Capacitor;
+embers.research.page.copper_cell.desc=A Célula de Cobre cumpre um propósito muito simples: armazenamento de Brasa. Ela pode receber Brasa por meio de um Receptor de Brasa ou ter a Brasa removida por meio de um Emissor de Brasa. Observe que quando uma Célula de Cobre é quebrada, ela retém a Brasa armazenada.
+
+embers.research.page.clockwork_attenuator=Atenuador Mecânico
+embers.research.page.clockwork_attenuator.title=Controle de Aceleração
+embers.research.page.clockwork_attenuator.tags=Mostrador;Controle;Redstone;Velocidade;Melhoria;
+embers.research.page.clockwork_attenuator.desc=Ajustar com precisão suas configurações de máquinas é difícil quando todas elas funcionam até ficarem sem combustível, sem meio termo. Este mostrador pode controlar diretamente a velocidade de uma máquina. Possui duas configurações internas que ligam um sinal de redstone: ativo e inativo. As configurações podem ser modificadas clicando com o botão direito do mouse e clicando com o botão direito do mouse enquanto a configuração respectiva estiver em ação.
+
+embers.research.page.gearbox=Caixas de Engrenagens
+embers.research.page.gearbox.title=Junção Mecânica
+embers.research.page.gearbox.tags=Engrenagem;Caixa;Caixa de Engrenagens;Mecânico;Dividir;Separar;Junção;
+embers.research.page.gearbox.desc=Quadros de Caixa de Engrenagens são o cerne da transferência mecânica. Uma engrenagem pode ser acoplada em cada lado, mas somente lados com eixos ou outras máquinas acopladas precisarão de uma. Há um lado de entrada marcado por uma faixa, e todos os outros lados são saídas. A potência de entrada será dividida entre cada saída usada, então se dois eixos estiverem acoplados, cada um receberá metade da potência.
+
+embers.research.page.mergebox=Caixas de Fusão
+embers.research.page.mergebox.title=Fusão Mecânica
+embers.research.page.mergebox.tags=Engrenagem;Caixa;Caixa de Engrenagens;Caixa de Fusão;Mecânico;Fusões;Fusão;
+embers.research.page.mergebox.desc=Quadros de Caixas de Fusão são outra parte importante em sistemas mecânicos. Elas funcionam de forma oposta a uma caixa de engrenagens comum, ao invés de dividir potência, a potência é combinada. Note que todas as entradas devem ter a mesma velocidade para serem somadas. Adicionalmente, a qualquer momento que a potência muda, a caixa de fusão desengatará a engrenagem de saída por um curto período para que as relações internas se ajustem.
+
+embers.research.page.axle_iron=Eixo de Ferro
+embers.research.page.axle_iron.title=Rotação Axial
+embers.research.page.axle_iron.tags=Eixo;Mecânico;Eixo de Ferro;Transporte;Transferência;Conectar;
+embers.research.page.axle_iron.desc=Eixos são usados para transferir potência mecânica entre geradores, caixas de engrenagens e máquinas que a utilizam. Eixos não perdem potência ao longo da distância, logo seu alcance de transferência é virtualmente ilimitado.
+
+embers.research.page.gear_iron=Engrenagem de Ferro
+embers.research.page.gear_iron.title=Engrenagens da Máquina
+embers.research.page.gear_iron.tags=Engrenagem;Mecânico;Engrenagem de Ferro;Engrenagem de Ouro;Engrenagem de Pedra da Alvorada;Acoplar;Interface;Dente;
+embers.research.page.gear_iron.desc=Engrenagens são usadas como interfaces para conectar eixos à caixas de engrenagens ou máquinas. Engrenagens de Ferro são baratas e robustas, mas possuem um limite de potência. Potência acima do limite é perdida em sua maioria.
+embers.research.page.gear_gold.desc=Esta engrenagem é praticamente igual a uma engrenagem de ferro, mas possui um limite de potência maior.
+embers.research.page.gear_redstone.desc=Engrenagens incrustadas com redstone oferecem a possibilidade de controlar caixas de engrenagens externamente. Quando um sinal de redstone é aplicado a uma caixa de engrenagens, a Engrenagem de Redstone começa a girar, enquanto a Engrenagem de Redstone Invertida irá parar. Essas engrenagens possuem um limite de potência similar às engrenagens de ouro.
+embers.research.page.gear_dawnstone.desc=Engrenagens de Pedra da Alvorada são mais adequadas para rotações de alta velocidade, elas não possuem o mesmo limite que as Engrenagens de Ferro. Em rotações de alta velocidade, a engrenagem emitirá um brilho laranja intenso. Este efeito colateral é praticamente inofensivo.
+
+embers.research.page.actuator=Atuador Mecânico
+embers.research.page.actuator.title=Energia Alternativa
+embers.research.page.actuator.tags=Engrenagem;Mecânico;Máquina;Melhoria;Broca;Bomba;Moinho;Misturador;Martelo;
+embers.research.page.actuator.desc=Algumas máquinas que funcionam usando brasa poderiam potencialmente ser acionadas por energia mecânica. Para funcionar, ela deve ser acoplada a uma máquina que possa aceitar melhorias de máquina. Similar a uma caixa de engrenagens, uma engrenagem precisa ser acoplada no lado oposto para conectar um eixo a ela.
+embers.research.page.actuator_multi.desc=Esta versão modificada possui 4 lados de entrada para energia mecânica. A potência de cada lado é combinada internamente, mas a maioria das máquinas possui
+embers.research.page.actuator_bore.desc=A Broca de Brasa é quase puramente mecânica e se adapta bem a ser energizada por energia mecânica. Fornecê-la dessa forma é mais eficiente em carvão, mas inicialmente um pouco mais lento.
+embers.research.page.actuator_pump.desc=A Bomba é uma máquina que realmente sofre por ser alimentada por Brasa. Mesmo pequenas quantidades de energia mecânica a aceleram significativamente, podendo chegar a ser bem rápida.
+embers.research.page.actuator_stamper.desc=O Socador é outra máquina com peças móveis, mas o fato de a Brasa ser tão energética e o movimento do Socador ser tão simples faz com que aplicar energia mecânica diretamente só aumente um pouco a velocidade. No entanto, é bem mais eficiente em termos de custo de Brasa.
+embers.research.page.actuator_mixer.desc=As Centrífugas Misturadoras usam Brasa e peças móveis para unir metal líquido, e embora as peças móveis certamente possam ser alimentadas por energia mecânica, nem todos os processos de receita podem ser alimentados puramente por energia mecânica.
+embers.research.page.actuator_auto_hammer.desc=O Martelo Automático é bem similar ao Socador, e aumentos similares de velocidade e economia de Brasa podem ser alcançados conectando energia mecânica.
+
+embers.research.page.steam_engine=Motor a Vapor
+embers.research.page.steam_engine.title=Revolução Industrial
+embers.research.page.steam_engine.tags=Mecânico;Motor;Gerador;Vapor;Água;Carvão;Combustível;
+embers.research.page.steam_engine.desc=O Motor a Vapor é a maneira mais fácil de produzir energia mecânica. Tudo o que ele precisa é um pouco de combustível, como carvão, e um pouco de água, e produzirá uma quantidade moderada de rotação em sua face de saída. Embora os Motores a Vapor sejam mais eficientes em termos de combustível do que alimentar uma Broca de Brasa com a mesma quantidade de combustível, eles também podem ser desperdiçadores se manuseados incorretamente: se o motor ficar sem água enquanto queima um pedaço de combustível, o resto daquele pedaço será simplesmente perdido.
+embers.research.page.steam_engine_overclock.desc=Como você já se aventurou na produção de vapor a partir de máquinas movidas a Brasa, pode usar esse vapor para alimentar seus motores. Bombear vapor diretamente de fora aumenta significativamente a eficácia do motor, e ele produzirá muito mais potência, mas o vapor será consumido muito rapidamente, possivelmente exigindo várias caldeiras por motor ou conectando-as a máquinas que usam muita Brasa.
+
+
+embers.research.page.pulser=Ejetor de Brasa
+embers.research.page.pulser.title=Destruição com Potência Máxima
+embers.research.page.pulser.tags=Brasa;Funil;Ejetor;Transporte;Transferência;Receptor;Emissor;Receber;Enviar;Redstone;Alavanca;Ligação;Conectar;Perda;
+embers.research.page.pulser.desc=Emissores Simples de Brasa são úteis e tudo mais, mas às vezes você pode querer um pouco mais de capacidade bruta. O Ejetor de Brasa é um Emissor mais robusto - funcionalmente idêntico ao seu predecessor, mas capaz de drenar e emitir dez vezes mais Brasa em um determinado tempo. Observe que os Receptores são rapidamente sobrecarregados com essa quantidade massiva e qualquer Brasa excedente pode ser perdida na transferência.
+embers.research.page.ember_funnel.desc=Como perder Brasa na transferência não é bom, você criou o Funil de Brasa que captura Brasa de várias fontes e a transfere rapidamente para a máquina conectada.
+
+embers.research.page.splitter=Divisor de Raio
+embers.research.page.splitter.title=Divisão de Brasa
+embers.research.page.splitter.tags=Brasa;Dividir;Transporte;Transferência;Ligação;Conectar;
+embers.research.page.splitter.desc=Usando a nova liga Pedra da Alvorada, você descobriu uma maneira de dividir rajadas de Brasa. O Divisor de Raio tem quatro faces: duas com uma porta menor de cobre e duas com portas maiores de cobre e Pedra da Alvorada. Cada uma das portas maiores funcionará como seu próprio Emissor de Brasa. Quando a Brasa é alimentada no Divisor, ela dividirá a Brasa que recebe entre essas duas portas, que podem ser conectadas independentemente.
+
+embers.research.page.dawnstone_anvil=Bigorna da Alvorada
+embers.research.page.dawnstone_anvil.title=Reparos
+embers.research.page.dawnstone_anvil.tags=Pedra da Alvorada;Bigorna;Reparo;Quebra;Dano;Martelo;
+embers.research.page.dawnstone_anvil.desc=A resistência da Pedra da Alvorada se adapta bem ao uso em uma Bigorna. A Bigorna da Alvorada pode ser usada para consertar itens ou dividi-los em suas partes componentes. Coloque o item danificado na bigorna, depois o material de reparo e, em seguida, dê alguns golpes fortes com o Martelo da Invenção para repará-lo. Coloque o item danificado sozinho e dê alguns golpes fortes, e ele se separará em seus componentes.
+
+embers.research.page.autohammer=Martelo Automático
+embers.research.page.autohammer.title=Martelo Automático
+embers.research.page.autohammer.tags=Martelo;Bigorna;Máquina;Processamento;
+embers.research.page.autohammer.desc=Martelar pedaços de metal em suas ferramentas manualmente leva muito tempo. Com um pouco de energia de Brasa, você acredita ter uma solução. O Martelo Automático requer apenas energia de redstone e um pouco de energia de Brasa, e lidará com o martelamento da Bigorna da Alvorada com muito mais força e rapidez do que você manualmente.
+
+embers.research.page.crystal_cell=Célula de Cristal
+embers.research.page.crystal_cell.title=Armazenamento em Massa
+embers.research.page.crystal_cell.tags=Célula;Cristal;Brasa;Armazenamento;Capacitor;
+embers.research.page.crystal_cell.desc=Seus métodos anteriores de armazenamento de Brasa nunca tiveram muita capacidade, e a Célula de Cristal é a sua solução. A Célula de Cristal começará pequena e poderá ter Brasa inserida e extraída dela. Também pode ter itens de combustível de Brasa, como Cristais de Brasa, inseridos nela. Cada item de combustível aumentará a capacidade máxima da Célula, causando eventualmente um crescimento físico no cristal brilhante em cima dela.
+
+embers.research.page.charger=Carregador de Cobre
+embers.research.page.charger.title=Carregamento de Brasa
+embers.research.page.charger.tags=Carga;Brasa;Máquina;
+embers.research.page.charger.desc=O Carregador é um dispositivo muito simples. Forneça Brasa a ele, e ele carregará o item dentro dele, se o item puder ser carregado. O item dentro pode ser simplesmente clicado com o botão direito para entrar ou sair.
+
+embers.research.page.jars=Recipientes de Manto
+embers.research.page.jars.title=Brasa Portátil
+embers.research.page.jars.tags=Brasa;Portátil;Armazenamento;Manto;Cartucho;Jarro;Bateria;
+embers.research.page.jars.desc=Para fins de campo, carregar uma Célula de Cristal é simplesmente impraticável. Com um pouco de vidro e cristal de Brasa, você desenvolveu o Jarro de Manto e o Cartucho de Manto. Ambos podem conter Brasa e podem ser carregados no Carregador de Cobre. No entanto, enquanto os Jarros de Manto podem ser acessados por itens movidos a Brasa em qualquer lugar do inventário, os Cartuchos de Manto devem ser segurados em sua mão para serem usados.
+
+embers.research.page.clockwork_tools=Ferramentas de Relógio
+embers.research.page.clockwork_tools.title=Ferramentas Motorizadas
+embers.research.page.clockwork_tools.tags=Brasa;Arma;Ferramenta;Relógio;Picareta;Martelo;Machado;Espada;Pá;
+embers.research.page.clockwork_tools.desc=Utilizando seus recipientes de Brasa recém-descobertos, você moldou ferramentas de Pedra da Alvorada. Todas as três ferramentas compartilham algumas propriedades: elas requerem Brasa acessível em seu inventário para serem usadas e são indestrutíveis. Elas também possuem dano base alto, permitindo que todas funcionem como armas. Além disso, quando energizadas com Brasa, elas colocarão fogo em inimigos atingidos.
+embers.research.page.clockwork_pickaxe.desc=A Picareta Relógio funciona como uma poderosa picareta e pá ao mesmo tempo. Como as outras ferramentas, ela requer Brasa para quebrar blocos ou atacar inimigos. Como funciona como arma, ela pode receber encantamentos de arma e ferramenta.
+embers.research.page.clockwork_hammer.desc=O Martelo Grandioso é uma arma corpo a corpo poderosa. Como as outras ferramentas, ele requer Brasa para quebrar blocos ou atacar inimigos. Se for usado para quebrar um bloco, ele o obliterará completamente, sem deixar itens. Como a picareta, ele pode receber encantamentos de arma e ferramenta, mas devido à sua natureza, não pode ser encantado com Fortuna ou Toque Seda.
+embers.research.page.clockwork_axe.desc=O Machado Relógio funciona como um poderoso machado. Como as outras ferramentas, ele requer Brasa para quebrar blocos ou atacar inimigos. Ele pode receber encantamentos de arma e ferramenta, como as outras ferramentas.
+
+embers.research.page.cinder_staff=Cajado de Cinza
+embers.research.page.cinder_staff.title=Míssil Mágico
+embers.research.page.cinder_staff.tags=Brasa;Arma;Cajado;Projétil;Míssil;Cinza;
+embers.research.page.cinder_staff.desc=Estranho, não é? Como o metal prateado pode ter tanto controle sobre o fogo caótico da Brasa. À medida que o Cajado de Cinza canaliza a Brasa de recipientes acessíveis em seu inventário, ele carrega uma grande esfera de Brasa pura na sua frente. Quanto mais tempo for carregada, mais prejudicial a esfera será, culminando em dano quase suficiente para matar instantaneamente um monstro típico.
+
+embers.research.page.blazing_ray=Raio Ardente
+embers.research.page.blazing_ray.title=Canhão de Brasa
+embers.research.page.blazing_ray.tags=Brasa;Arma;Arma de Fogo;Raio;Canhão;Projétil;Míssil;Chama;Ardente;
+embers.research.page.blazing_ray.desc=Embora o Raio Ardente possa se parecer com uma arma de fogo comum na forma, ele se assemelha mais funcionalmente a uma peça de artilharia. Quando disparado, ele libera um raio direto de Brasa pura, disparando até atingir um bloco sólido ou uma criatura.
+
+embers.research.page.aspecti=Aspectos Metálicos
+embers.research.page.aspecti.title=Focos Alquímicos
+embers.research.page.aspecti.tags=Alquimia;Foco;Aspecto;Aspecto;Focos;Molde;Fragmento;Transmutação;
+embers.research.page.aspecti.desc=Envolvendo metal derretido em um Fragmento de Brasa, você criou o Aspecto. Esses itens podem focar as energias alquímicas produzidas pela queima de cinzas em um alinhamento elemental específico, quando colocados em Pedestais de Alquimia durante uma Transmutação.
+
+embers.research.page.cinder_plinth=Pedestal de Cinzas
+embers.research.page.cinder_plinth.title=Incineração
+embers.research.page.cinder_plinth.tags=Alquimia;Máquina;Cinza;Processamento;Vácuo;Lixo;Transmutação;Pedestal;Incineração;Incinerar;Cinza;
+embers.research.page.cinder_plinth.desc=O Pedestal de Cinzas é uma máquina simples: coloque qualquer item nele, forneça Brasa e ele irá queimar o item em Cinza Negra. Ele também pode automaticamente colocar a cinza em uma Lixeira posicionada abaixo dele. A Cinza tem vários usos: pode ser queimada como um combustível de baixa qualidade, pode ser aplicada em pedras para mudar sua cor e textura, e você acredita que as energias liberadas em sua combustão podem ter outras aplicações.
+
+embers.research.page.beam_cannon=Canhão de Raio
+embers.research.page.beam_cannon.title=Raio Térmico
+embers.research.page.beam_cannon.tags=Alquimia;Arma;Máquina;Canhão;Projétil;Raio;Feixe;Transmutação;
+embers.research.page.beam_cannon.desc=O Canhão de Raio é possivelmente o seu dispositivo mais perigoso até agora. Mire-o clicando com o botão direito enquanto segura a tecla Shift e o Martelo da Invenção em um bloco alvo, depois clique com o botão direito no Canhão com o martelo. Quando recebe Brasa suficiente, ele dispara um raio de calor radiante puro. Este raio pode matar quase qualquer criatura sem armadura e também iniciar a transmutação na Mesa de Transmutação.
+
+embers.research.page.alchemy=Alquimia Energética
+embers.research.page.alchemy.title=Transmutação
+embers.research.page.alchemy.tags=Alquimia;Transmutação;Mesa;Troca;Cinza;Pedestal;Aspecto;Aspectos;
+embers.research.page.alchemy.desc=A alquimia de Brasa é realmente uma descoberta maravilhosa. A primeira chave é a Mesa de Transmutação: clique com o botão direito em suas várias faces para inserir itens em seus respectivos slots. A próxima é o Pedestal de Alquimia: eles carregam Aspectos e podem conter Cinza. Para uma receita de alquimia, coloque um pedestal para cada Aspecto necessário ao redor da Mesa, preencha-o com Cinza dentro da faixa determinada e acerte a Mesa com o Canhão de Raio.
+
+embers.research.page.catalytic_plug=Plugue Catalítico
+embers.research.page.catalytic_plug.title=Injeção de Sobrecarga
+embers.research.page.catalytic_plug.tags=Velocidade;Melhoria;Redstone;Alquimia;Redstone Alquímico;
+embers.research.page.catalytic_plug.desc=Plugues Catalíticos são dispositivos fantásticos para os impacientes. Quando conectados a uma máquina, o plugue dobra a velocidade da máquina, mas somente se também for fornecido Lodos Alquímico pela parte traseira, o qual é consumido no processo. Até 2 Plugues Catalíticos podem ser conectados a uma única máquina, para quadruplicar sua velocidade.
+
+embers.research.page.ember_siphon=Sifão de Brasa
+embers.reseaarch.page.ember_siphon.title=Invertendo o Fluxo
+embers.research.page.ember_siphon.tags=Melhoria;Inverter;Sifão;Brasa;Carga;Descarga;
+embers.research.page.ember_siphon.desc=O Sifão de Brasa é uma melhoria de máquina que pode ser colocada embaixo de um Carregador para inverter sua função. Em vez de encher um recipiente de Brasa, ele irá esvaziá-lo e armazenar a Brasa drenada em seu buffer interno. A Brasa pode então ser extraída do carregador ou das laterais do Sifão usando os mecanismos de transferência usuais.
+
+
+
+embers.research.page.waste=Experimentação
+embers.research.page.waste.title=Processo Alquímico
+embers.research.page.waste.tags=Resíduo;Alquimia;Transmutação;Experimento;Cinza;Molde;
+embers.research.page.waste.desc=Você rapidamente descobriu que as transmutações alquímicas nem sempre funcionam. Para todas as combinações de valores de Cinza, exceto uma específica, sua alquimia falhará e resultará em Resíduo Alquímico. Este resíduo pode ser colocado no Moedor para recuperar parte da Cinza usada na alquimia, e pode ser analisado visualmente para determinar o quão longe você estava da verdadeira receita do produto desejado.
+
+embers.research.page.hellish_synthesis=Sínteses Diversas
+embers.research.page.hellish_synthesis.title=Materiais Estranhos
+embers.research.page.hellish_synthesis.tags=Alquimia;Transmutação;Nether;Netherrack; Areia das Almas; Alma; Areia;
+embers.research.page.hellish_synthesis.desc=Através de processos alquímicos, você descobriu uma maneira de criar várias substâncias novas. Isso inclui rochas e areia vermelhas estranhas, que você leu em documentos antigos que compõem a terra de um reino distante e misterioso.
+
+embers.research.page.dwarven_oil=Óleo Anão
+embers.research.page.dwarven_oil.title=Ouro Negro
+embers.research.page.dwarven_oil.tags=Alquimia;Nether; Areia das Almas; Alma; Areia; Óleo; Gás; Combustível;
+embers.research.page.dwarven_oil.desc=Derreter a areia marrom estranha que você sintetizou anteriormente produz um lodo preto espesso. Através de processamento adicional em uma centrífuga com vapor ou outro gás, você pode transformar esse lodo em óleo anão. O óleo não se expande tanto quando fervido e, portanto, pode ser usado para criar configurações de caldeira muito mais seguras.
+
+embers.research.page.archaic_brick=Tijolos Arcaicos
+embers.research.page.archaic_brick.title=Material de Construção Antigo
+embers.research.page.archaic_brick.tags=Alquimia;Transmutação; Arcaico; Tijolo;
+embers.research.page.archaic_brick.desc=Os sentinelas ancestrais que vagam pela terra muitas vezes se quebram em algo que parece tijolos. Através de uma alquimia peculiar, você descobriu que pode replicá-los, desde que tenha um para começar. Devem combinar bem com suas construções de Caminita.
+
+embers.research.page.motive_core=Núcleos dos Motores
+embers.research.page.motive_core.title=Tecnologia Precursora
+embers.research.page.motive_core.tags=Alquimia;Transmutação; Arcaico; Núcleo; Motor; Golem;
+embers.research.page.motive_core.desc=A alquimia não permite apenas replicar tijolos. Núcleos dos Motores parecem ser a força vital e a centelha dos Golems Antigos, e através da alquimia, esse poder agora está ao seu alcance.
+
+embers.research.page.adhesive=Adesivo
+embers.research.page.adhesive.title=Solução Pegajosa
+embers.research.page.adhesive.tags=Alquimia;Transmutação;Limo;Cola;Adesivo;
+embers.research.page.adhesive.desc=Os peculiares slimes animados que você encontra no subsolo são úteis, mas muito raros para serem práticos. O Adesivo sintetizado funcionará como um substituto para bolas de limo em receitas.
+
+embers.research.page.tyrfing=Tyrfing
+embers.research.page.tyrfing.title=Lâmina Maldita
+embers.research.page.tyrfing.tags=Alquimia;Transmutação;Cinza;Arma;Espada;Armadura;Chumbo;Dano;
+embers.research.page.tyrfing.desc=Uma construção estranha, sem dúvida, a Tyrfing é uma arma pulsante de chumbo com um design moldado pela alquimia. Embora seja um pouco menos afiada contra a maioria dos alvos em comparação com a Espada de Chumbo usada para criá-la, seu formato exclusivo permite causar alto dano a inimigos blindados. Quanto mais armadura seu oponente estiver usando, mais dano a lâmina irá infligir.
+
+embers.research.page.ashen_cloak=Armadura Ardente
+embers.research.page.ashen_cloak.title=Manto do Mago
+embers.research.page.ashen_cloak.tags=Alquimia;Transmutação;Cinza;Cinzenta;Manto;Impositor;Gema;Tecido;
+embers.research.page.ashen_cloak.desc=Ao imbuir tecido comum com cinzas alquímicas, você conseguiu sintetizar um tecido Cinzento flexível, porém resistente, com o qual projetou uma armadura. A armadura por si só é bastante forte, e você acredita que tem um visual elegante, mas tem a sensação de que pode ser aprimorada ainda mais...
+
+embers.research.page.inflictor=Gemas Impositoras
+embers.research.page.inflictor.title= Absorvedor de Dor
+embers.research.page.inflictor.tags=Alquimia;Transmutação;Cinza;Cinzenta;Manto;Impositor;Gema;Tecido;
+embers.research.page.inflictor.desc=A Gema Impositora é realmente um cristal estranho. Ao segurá-la na mão, ao sofrer dano, ela absorverá o tipo de dano recebido. Ao costurar uma em seu Manto Cinzento em uma mesa de trabalho com um pedaço de barbante, ela reduzirá o dano que você recebe daquele tipo de dano em aproximadamente um terço. Elas podem ser removidas colocando um Manto Cinzento em uma mesa de trabalho sozinho, e até sete podem ser colocadas em um Manto por vez.
+
+embers.research.page.glimmer=Cristal Luzificado
+embers.research.page.glimmer.title=Luz acesa, luz apagada
+embers.research.page.glimmer.tags=Alquimia;Transmutação;Luz;Brilho;Cristal;Ferramenta;Quartzo;
+embers.research.page.glimmer.desc=Ao infundir quartzo com calor e brasa, você criou um material luminescente que parece ansioso para liberar sua própria luminosidade. Isso permite que você coloque fontes de luz à vontade, embora isso vá esgotar o cristal. No entanto, enquanto você estiver exposto à luz solar, o cristal se regenerará lentamente.
+
+embers.research.page.metallurgic_dust.name=Poeira Metalúrgica
+embers.research.page.metallurgic_dust.title=Troca Equivalente
+embers.research.page.metallurgic_dust.tags=Alquimia;Transmutação;Minério;Poeira;Metal;Metalurgia;
+embers.research.page.metallurgic_dust.desc=Às vezes, o que você encontra nas entranhas da terra não é o que procurava. E, de fato, o que aprendemos sobre alquimia pode resolver isso facilmente. Ao combinar as propriedades transmutativas das sementes de metal com o redstone e a brasa moída, cria-se um fino pó branco. Quando entra em contato com o minério, ele rapidamente transmuta toda a veia em um tipo diferente. Porém, parte do minério pode ser transmutado em pedra sem valor...
+
+embers.research.page.cluster.name=Aglomerado de Brasa
+embers.research.page.cluster.title=Cristais Purificados
+embers.research.page.cluster.tags=Alquimia;Transmutação;Brasa;Fragmento;Cristal;Aglomerado;
+embers.research.page.cluster.desc=Os itens de Brasa cristalina menores que você usou no passado são úteis, mas você acredita que em breve precisará de mais poder. Ao fundir alquimicamente vários Cristais de Brasa e Fragmentos de Brasa juntos, você criou o Aglomerado de Brasa, um grupo maior de cristais que acredita que o ajudará a energizar máquinas futuras.
+
+embers.research.page.field_chart.name=Mapa de Campo
+embers.research.page.field_chart.title=Visão Tática
+embers.research.page.field_chart.tags=Campo;Mapa;Brasa;Medidor;Informação;
+embers.research.page.field_chart.desc=Encontrar locais com alta concentração de Brasa pode ser tedioso quando seu único dispositivo de medição é um Medidor Atmosférico. No entanto, parece que a Brasa ressoa consigo mesma, e através de fabricação adequada, você projetou o Mapa de Campo, um mapa das concentrações de Brasa para uma área maior do que a que pode ser percorrida a pé.
+
+embers.research.page.wildfire.name=Núcleo do Fogo Selvagem
+embers.research.page.wildfire.title=Controlando a Chama
+embers.research.page.wildfire.tags=Alquimia;Transmutação;Fogo Selvagem;Núcleo;
+embers.research.page.wildfire.desc=O Aglomerado de Brasa, no entanto, é um pouco descontrolado para todos os fins. Embora seja adequado para a imolação de itens no Combustor ou Catalisador, um Núcleo do Fogo Selvagem deve ser criado a partir dele para fins refinados.
+
+embers.research.page.injector.name=Injetor de Brasa
+embers.research.page.injector.title=Sementes do Mundo
+embers.research.page.injector.tags=Alquimia;Transmutação;Cristal;Semente;Metal;Brasa;Injetor;Máquina;Cultivo;Processamento;
+embers.research.page.injector.desc=Você descobriu um meio de sintetizar Sementes de Cristal de metal para vários tipos de metal através da alquimia, bem como o Injetor de Brasa, uma máquina projetada para controlá-las. Ao colocar uma Semente de Cristal no mundo, em seguida, colocar Injetores de Brasa voltados para ela e energizá-los com Brasa, a Semente começará a ser alimentada e crescerá lentamente. Atingindo um certo limite, a Semente liberará várias pepitas de metal que podem ser coletadas.
+embers.research.page.crystal_level.desc=Ao injetar Brasa em uma semente, ela não apenas cresce e produz metal, mas também se tornará mais pura com o tempo. Quanto mais puro for um cristal, mais metal ele produz quando totalmente crescido. Você pode ver o nível de pureza atual de um cristal examinando-o com uma Lente de Artesão. Observe que toda a pureza é perdida quando a semente é quebrada e movida para outro lugar.
+
+embers.research.page.combustor.name=Câmara de Combustão
+embers.research.page.combustor.title=Imolação
+embers.research.page.combustor.tags=Combustão;Queima;Máquina;Reator;Câmara;Melhoria;Bloco Múltiplo
+embers.research.page.combustor.desc=A Câmara de Combustão é uma máquina simples que por si só faz pouco. Ela pode, simplesmente, queimar combustíveis. Cada combustível utilizado possui um determinado nível de poder: Carvão possui nível de poder dois, Tijolos Nether possuem nível de poder três e Pó de Blaze possui nível de poder quatro.
+
+embers.research.image.combustor_coal=Coeficiente: 2x
+embers.research.image.combustor_nether_brick=Coeficiente: 3x
+embers.research.image.combustor_blaze_powder=Coeficiente: 4x
+
+embers.research.page.catalyzer.name=Câmara de Catálise
+embers.research.page.catalyzer.title=Poder Químico
+embers.research.page.catalyzer.tags=Catálise;Catalisador;Máquina;Reator;Câmara;Melhoria;Bloco Múltiplo
+embers.research.page.catalyzer.desc=A Câmara de Catálise é uma máquina simples que por si só faz pouco, apenas consumindo itens catalisadores. Cada item catalisador possui um nível de catalização específico: Redstone possui nível dois, Pólvora possui nível três e Pó de Glowstone possui nível quatro.
+
+embers.research.image.catalyzer_redstone=Coeficiente: 2x
+embers.research.image.catalyzer_gunpowder=Coeficiente: 3x
+embers.research.image.catalyzer_glowstone=Coeficiente: 4x
+
+embers.research.page.reactor.name=Reator Ignem
+embers.research.page.reactor.title=Química da Brasa
+embers.research.page.reactor.tags=Fogo Selvagem;Núcleo;Catálise;Catalisador;Combustão;Queima;Gerador;Reator;Câmara;Bloco Múltiplo
+embers.research.page.reactor.desc=O Reator Ignem é um meio muito poderoso de refinar Cristais de Brasa. Ele deve ser posicionado adjacente às partes superiores de uma Câmara de Combustão e uma Câmara de Catálise. Quando ambas as câmaras estiverem ativas, o Reator refinará a Brasa cristalina com um multiplicador igual ao nível do combustível e o nível do catalisador das câmaras anexadas somados, mais um. O nível do catalisador e o nível de combustão também devem ser próximos.
+
+embers.research.page.ember_pipe.name=Conduíte de Brasa Volátil
+embers.research.page.ember_pipe.title=Improvisado Desde o Início
+embers.research.page.ember_pipe.tags=Brasa;Conduíte;Fogo Selvagem;Volátil;Ducto;
+embers.research.page.ember_pipe.desc=Você atingiu o ponto em que o Reator Ignem produz tanta Brasa que ela não pode mais ser extraída de maneira oportuna. Este conduíte absurdamente caro pode ser energizado diretamente com um sinal de redstone para extrair pacotes cada vez maiores de Brasa. Isso tem o custo de ser completamente incontrolável, e quando dois pacotes de brasa colidem, o segmento do conduíte detonará!
+
+embers.research.page.materia.name=Matéria Isolada
+embers.research.page.materia.title=Reparo Universal
+embers.research.page.materia.tags=Alquimia;Transmutação;Reparo;Metal;Matéria;Isolada;Matéria-Prima;Bigorna;
+embers.research.page.materia.desc=A Matéria Isolada é um material peculiar. Tem a propriedade de se transformar em materiais de outros itens em certas circunstâncias. No momento, permitirá que você repare itens na Bigorna da Alvorada, substituindo seu material de reparo pela Matéria. Você pode prever que terá usos no futuro também...
+
+embers.research.page.stirling.name=Motor Stirling de Fogo Selvagem
+embers.research.page.stirling.title=Reductio Ad Absurdum
+embers.research.page.stirling.tags=Fogo Selvagem;Motor Stirling;Brasa;Melhoria;Vapor;
+embers.research.page.stirling.desc=Esta máquina é a contraparte do Plugue Catalítico. Quando conectado a uma máquina e fornecido com vapor, o Motor Stirling de Fogo Selvagem reduzirá o custo de Brasa de todas as operações da máquina pela metade. Um segundo Motor Stirling pode ser acoplado para reduzir o custo a um quarto.
+
+
+
+embers.research.page.cost_reduction.name=Joias de Brasa
+embers.research.page.cost_reduction.title=Redução de Custo
+embers.research.page.cost_reduction.tags=Brasa;Anel;Amuleto;Cinto;Bijuteria;
+embers.research.page.cost_reduction.desc=Usar ferramentas mecânicas ou armamento movido a Brasa pode ser bastante complicado, pois Frascos de Manto ou Cartuchos precisam ser recarregados periodicamente. Essas peças de joalheria reduzem esse inconveniente diminuindo a quantidade de Brasa consumida. O anel, o amuleto e o cinto possuem taxas de redução diferentes, mas todos se acumulam de forma aditiva.
+
+embers.research.page.mantle_bulb.name=Ampola de Manto
+embers.research.page.mantle_bulb.title=Armazenamento Portátil
+embers.research.page.mantle_bulb.tags=Brasa;Armazenamento;Ampola;Manto;Bijuteria;Portátil;
+embers.research.page.mantle_bulb.desc=Se segurar um Cartucho de Manto em sua mão secundária ou mesmo apenas segurar um Frasco de Manto em sua mochila for muito complicado para você, esta bijuteria pode ajudar. Em vez de segurá-lo em seu inventário, este contêiner de Brasa pode ser usado em qualquer slot de bijuteria. No entanto, ele possui uma capacidade bem menor.
+
+embers.research.page.explosion_charm.name=Talismã de Explosão
+embers.research.page.explosion_charm.title=Nethericita Fabricada
+embers.research.page.explosion_charm.tags=Explosão;Talismã;Bijuteria;
+embers.research.page.explosion_charm.desc=Ao usar este talismã, explosões próximas serão dissipadas, e sua força destrutiva será absorvida pelo talismã. Infelizmente, não há nenhum outro efeito especial.
+
+embers.research.page.explosion_pedestal.name=Pedestal para Talismã de Explosão
+embers.research.page.explosion_pedestal.title=Esfera de Vyldon
+embers.research.page.explosion_pedestal.tags=Explosão;Talismã;Pedestal;Bijuteria;
+embers.research.page.explosion_pedestal.desc=Talismãs de Explosão são úteis, mas normalmente só funcionam quando usados por você. Através de modificações simples no pedestal utilizado em alquimia, você conseguiu suspender um talismã nele para que atue como um absorvente passivo de explosões.
+
+embers.research.page.nonbeliever_amulet.name=Amuleto do Herege
+embers.research.page.nonbeliever_amulet.title=E Tudo Desaparece
+embers.research.page.nonbeliever_amulet.tags=Amuleto;Herege;Magia;Bruxa;Bijuteria;
+embers.research.page.nonbeliever_amulet.desc=Malditas bruxas e sua resistência ao sobrenatural... Este amuleto será a porta de entrada para se tornar como elas. Ao ser atingido por qualquer ataque mágico enquanto estiver usando o amuleto, 90% do dano será anulado. Observe, no entanto, que você sempre sofrerá pelo menos meio ponto de dano de ataques mágicos.
+
+embers.research.page.ashen_amulet.name=Amuleto Cinzento
+embers.research.page.ashen_amulet.title=Cinzas às Cinzas
+embers.research.page.ashen_amulet.tags=Amuleto;Cinza;Cinzento;Bijuteria;
+embers.research.page.ashen_amulet.desc=Transformar tudo em cinzas é... certamente uma demonstração de poder. Não é um poder muito bem pensado, mas é um poder que reside neste amuleto. Quando uma criatura é morta ou um bloco é quebrado enquanto estiver usando este amuleto, ele será instantaneamente transformado em cinzas e não deixará cair nada além de cinzas.
+
+embers.research.page.dawnstone_mail.name=Cota de Pedra da Alvorada
+embers.research.page.dawnstone_mail.title=Posição Defensiva
+embers.research.page.dawnstone_mail.tags=Cota;Pedra da Alvorada;Repulsão;Armadura;Bijuteria;
+embers.research.page.dawnstone_mail.desc=A Pedra da Alvorada é um material com muitas propriedades que a tornam adequada para roupas e armaduras. Esta Cota de Pedra da Alvorada protegerá o usuário de todo tipo de repulsão. Apenas não questione porque a cota é feita de placas.
+
+
+
+embers.research.page.modifiers.name=Modificadores Adicionais
+embers.research.page.modifiers.title=Melhorias
+embers.research.reseaarch.page.modifiers.tags=Modificador;Aprimoramento;Bigorna;Martelo;Nível;Ferramenta;Arma;Armadura;
+embers.research.page.modifiers.desc=Você acredita que, com mecanismos suficientemente avançados, poderá criar dispositivos que concedem habilidades adicionais ao seu equipamento. Esses itens podem ser aplicados a armaduras, ferramentas ou armas, e devem ser martelados em uma Bigorna da Alvorada. Coloque o item original primeiro, depois o modificador e, por fim, martele. Os modificadores possuem níveis que aumentam seu poder.
+
+embers.research.page.heat.name=Calor
+embers.research.page.heat.title=Bem Usado
+embers.research.page.heat.tags=Modificador;Aprimoramento;Bigorna;Martelo;Nível;Ferramenta;Arma;Armadura;Calor;Núcleo;Arcano;Antigo;Motivações;
+embers.research.page.heat.desc=Assim como você usa a Bigorna da Alvorada para quebrar ou reparar itens, também pode usá-la para anexar modificadores ao equipamento. Coloque uma ferramenta, espada ou peça de armadura na bigorna e, em seguida, coloque um Núcleo das Antigas Motivações Antigo na bigorna. Quando o martelo descer, a ferramenta ganhará a capacidade de absorver calor. Esse calor é acumulado através do uso normal da ferramenta.
+
+embers.research.page.dismantling.name=Removendo Modificadores
+embers.research.page.dismantling.title=Precisamos Voltar
+embers.research.page.dismantling.tags=Modificador;Aprimoramento;Bigorna;Martelo;Nível;Ferramenta;Arma;Armadura;Remover;Desanexar;Quebrar;
+embers.research.page.dismantling.desc=Às vezes, você pode adicionar um aprimoramento a uma ferramenta ou armadura e, eventualmente, perceber que ele não é mais útil. No entanto, aprimoramentos não são adições permanentes, e a Bigorna da Alvorada pode te ajudar com isso. Ao colocar a ferramenta ou armadura na bigorna sem nenhum item em cima e martelando-a, você pode remover todos os modificadores sem custo. No entanto, o núcleo em si e seu calor acumulado sempre permanecerão na ferramenta, e tais ferramentas não podem ser completamente destruídas.
+
+embers.research.page.inferno_forge.name=Forja do Inferno
+embers.research.page.inferno_forge.title=Subindo de Nível
+embers.research.page.inferno_forge.tags=Modificador;Aprimoramento;Bigorna;Martelo;Nível;Ferramenta;Arma;Armadura;Calor;Inferno;Forja;Máquina;Multibloco;Bloco Múltiplo;
+embers.research.page.inferno_forge.desc=Quando a barra de Calor de um item estiver cheia, ela precisa ser temperada. A Forja do Inferno pode fazer exatamente isso, desde que alimentada com Brasa. Abra a escotilha superior, jogue seu item cheio de Calor e um pouco de Cristal de Brasa dentro. Quanto mais Cristal de Brasa você colocar, maior a chance de sucesso. Ao subir de nível o item, você concede a ele um slot de modificador. Esses modificadores podem então ser anexados ao item na Bigorna da Alvorada, até o nível do item.
+
+embers.research.page.superheater.name=Superaquecedor
+embers.research.page.superheater.title=Esquentando
+embers.research.page.superheater.tags=Modificador;Aprimoramento;Ferramenta;Arma;Armadura;Fundir;Cozinhar;
+embers.research.page.superheater.desc=O Superaquecedor é um aprimoramento simples que pode ser aplicado a itens que acumularam Calor. Quando aplicado, todos os blocos quebrados e itens derrubados de criaturas serão cozidos automaticamente, e dano adicional será adicionado ao item conforme ele queima alvos. Quanto maior o nível do modificador, maior o dano de queima. Ele exigirá Brasa acessível em seu inventário para funcionar.
+
+embers.research.page.cinder_jet.name=Jato de Cinza
+embers.research.page.cinder_jet.title=Investida Veloz
+embers.research.page.cinder_jet.tags=Modificador;Aprimoramento;Armadura;Investida;Jato;Cinza;
+embers.research.page.cinder_jet.desc=O Jato de Cinza é um aprimoramento de armadura que permite realizar uma investida. Quando aplicado, sempre que você começar a correr e houver Brasa suficiente acessível no inventário, ele impulsionará seu usuário para frente com velocidade crescente, dependendo do nível do modificador.
+
+embers.research.page.blasting_core.name=Núcleo da Explosão
+embers.research.page.blasting_core.title=Volátil
+embers.research.page.blasting_core.tags=Modificador;Aprimoramento;Ferramenta;Arma;Armadura;Explosão;
+embers.research.page.blasting_core.desc=O Núcleo da Explosão é um aprimoramento que cria explosões. Quando aplicado a ferramentas, ele quebrará blocos próximos sempre que um bloco for quebrado com a ferramenta. Quando aplicado a armas, ocorrerá uma explosão que danificará criaturas próximas. Quando aplicado a armaduras, ocorrerá uma explosão quando a armadura sofrer dano e repelirá criaturas próximas. Todos os três efeitos aumentam de poder com o nível do modificador.
+
+embers.research.page.caster_orb.name=Orbe do Lançador
+embers.research.page.caster_orb.title=Lançador de Brasa
+embers.research.page.caster_orb.tags=Modificador;Aprimoramento;Ferramenta;Arma;Projétil;Míssil;
+embers.research.page.caster_Orb.desc=O Orbe do Lançador é um aprimoramento para ferramentas e armas que cria projéteis de Brasa ativada. Sempre que um item com este aprimoramento for usado e Brasa suficiente estiver acessível no inventário, um pequeno projétil de Brasa será disparado. O tamanho e o dano deste projétil aumentam com o nível do modificador.
+embers.research.page.caster_orb_addendum.desc=Como o Orbe do Lançador permite que ferramentas e armas disparem projéteis feitos de Brasa, uma ferramenta ou arma aprimorada com ele também pode aceitar aprimoramentos que modificam projéteis.
+
+embers.research.page.flame_barrier.name=Barreira de Chamas
+embers.research.page.flame_barrier.title=Defesas Incendiárias
+embers.research.page.flame_barrier.tags=Modificador;Aprimoramento;Armadura;Fogo;Escudo;Barreira;Defesa;
+embers.research.page.flame_barrier.desc=A Barreira de Chamas é um aprimoramento de armadura que cria um escudo de chamas ao redor do usuário quando ele é atingido. Ao ser acertado, e se esse aprimoramento estiver presente na armadura do jogador, o atacante será incendiado e sofrerá algum dano. Cada explosão de chama requer um pouco de Brasa. Esse dano aumenta com o nível do modificador.
+
+embers.research.page.eldritch_insignia.name=Insígnia Macabra
+embers.research.page.eldritch_insignia.title=Marca Etérea
+embers.research.page.eldritch_insignia.tags=Modificador;Aprimoramento;Armadura;Medo;Etéreo;
+embers.research.page.eldritch_insignia.desc=Enquanto a Insígnia Macabra estiver colocada em sua armadura, certos mobs terão medo de você. Você ganhará a habilidade de intimidar criaturas que de outra forma te atacariam, fazendo-as se submeterem, mas elas voltarão a atacar se forem provocadas. A proporção de criaturas que temerão o portador desses símbolos aumenta com o nível do modificador.
+
+embers.research.page.intelligent_apparatus.name=Aparelho Inteligente
+embers.research.page.intelligent_apparatus.title=Sabedoria Decadente
+embers.research.page.intelligent_apparatus.tags=Modificador;Aprimoramento;Armadura;Experiência;Sabedoria;
+embers.research.page.intelligent_apparatus.desc=O Aparelho Inteligente é um simples aprimoramento de armadura que aumenta a experiência obtida de criaturas mortas pelo usuário da armadura. A quantidade de experiência adicional obtida aumenta com o nível do modificador.
+
+embers.research.page.resonating_bell.name=Sino Ressonante
+embers.research.page.resonating_bell.title=Vibrações
+embers.research.page.resonating_bell.tags=Modificador;Aprimoramento;Ferramenta;Arma;Luz;Sino;
+embers.research.page.resonating_bell.desc=O Sino Ressonante permite que uma ferramenta ou arma emita vibrações através de blocos e localize objetos específicos. Ao clicar com o botão direito do mouse em um bloco, blocos próximos do mesmo tipo serão iluminados com luz brilhante, a menos que o bloco já faça parte significativa do material próximo. A área afetada pela ressonância aumenta com o nível do modificador.
+
+embers.research.page.tinker_lens_augment.name=Lente do Inventor Aprimorada
+embers.research.page.tinker_lens_augment.title=O Que É O Que
+embers.research.page.tinker_lens_augment.tags=Modificador;Aprimoramento;Armadura;Informação;
+embers.research.page.tinker_lens_augment.desc=É inconveniente ficar segurando essa coisa o tempo todo. Felizmente, você pode aplicá-la em um capacete para receber o benefício de segurá-la o tempo todo enquanto usa o capacete. Este aprimoramento não ocupa nenhum slot, mas requer um Núcleo das Antigas Motivações aplicado primeiro.
+
+embers.research.page.anti_tinker_lens.name=Lente do Inventor Fumegante
+embers.research.page.anti_tinker_lens.title=Cego à Verdade
+embers.research.page.anti_tinker_lens.tags=Modificador;Aprimoramento;Armadura;Informação;
+embers.research.page.anti_tinker_lens.desc=Às vezes, muita informação pode ser uma maldição. Alguns capacetes, como os Óculos Cinzentos, podem fornecer informações sobre blocos como a Lente do Inventor, mas isso nem sempre é desejável. Este aprimoramento, quando colocado em tal capacete, desativa a exibição dessas informações. Este aprimoramento não ocupa nenhum slot, mas requer um Núcleo das Antigas Motivações aplicado primeiro.
+
+embers.research.page.mystical_mechanics.name=Mecânica Mística
+embers.research.page.mystical_mechanics.title=Não é o mod que você procura
+embers.research.page.mystical_mechanics.tags=Mecânico;Engrenagem;Eixo;Motor;
+embers.research.page.mystical_mechanics.desc=Embers possui compatibilidade com Mecânica Mística, mas é uma dependência opcional. Atualmente, a opção está desativada na configuração ou o Mecânica Mística não está instalado.
+
+embers.research.page.baubles.name=Baubles
+embers.research.page.baubles.title=Não é o mod que você procura
+embers.research.page.baubles.tags=Bijuteria;Amuleto;Anel;Cinto;Talismã;
+embers.research.page.baubles.desc=Embers possui compatibilidade com Baubles, mas é uma dependência opcional. Atualmente, a opção está desativada na configuração ou o Baubles não está instalado.
+
+embers.research.page.diffraction_barrel.name=Tubo Difratório
+embers.research.page.diffraction_barrel.title=Isto... é meu Espingardão!
+embers.research.page.diffraction_barrel.tags=Modificador;Aprimoramento;Arma;Projétil;Arma de Fogo;Espingarda;Dispersão;
+embers.research.page.diffraction_barrel.desc=O Raio Ardente pode ser uma arma imprecisa quando disparado rapidamente. Este Tubo modificador pode ser colocado não apenas no Raio Ardente, mas em qualquer arma de projétil de Brasa, transformando efetivamente a arma em uma espécie de espingarda. Observe que, em vez de um raio, o Raio Ardente disparará um conjunto de projéteis.
+
+embers.research.page.focal_lens.name=Lente Focal
+embers.research.page.focal_lens.title=Chama Penetrante
+embers.research.page.focal_lens.tags=Modificador;Aprimoramento;Arma;Projétil;Rastreamento;Perfurante;
+embers.research.page.focal_lens.desc=A Lente Focal pode ajudar a melhorar a precisão ao usar armas de Brasa. Dependendo se você a coloca em uma arma que dispara bolas de fogo ou raios, ela produzirá projéteis teleguiados ou um raio perfurante.
+
+embers.research.page.winding_gears.name=Engrenagens de Corda
+embers.research.page.winding_gears.title=Brinquedo de Corda
+embers.research.page.winding_gears.tags=Modificador;Aprimoramento;Armadura;Ferramenta;Arma;Engrenagem;Corda;Carretel;Salto;Amortecimento;
+embers.research.page.winding_gears.desc=Quando Engrenagens de Corda são aplicadas a uma ferramenta, um carretel aparecerá em seu HUD no lugar da barra de experiência para mostrar o quanto ela está carregada. Carregar a ferramenta clicando com o botão direito concederá ataque automático (segure o clique esquerdo para atacar repetidamente). No entanto, a ferramenta descarregará lentamente com o tempo. O carregamento também possui alguns outros efeitos, detalhados nas páginas seguintes.
+embers.research.page.winding_gears_boots.desc=Engrenagens de Corda também podem ser aplicadas às suas botas. Você pulará muito mais alto com base na carga restante na mola. Você também saltará sem sofrer dano de queda ao impactar o solo. Além disso, se você correr antes de pular, também atravessará uma distância muito maior. Você também deve segurar uma ferramenta carregada na mão para usar esses efeitos.
+
+embers.research.page.shifting_scales.name=Escamas Mutantes
+embers.research.page.shifting_scales.title=Armadura Extraordinária
+embers.research.page.shifting_gears.tags=Modificador;Aprimoramento;Armadura;Escama;Coração;Saúde;Defesa;
+embers.research.page.shifting_scales.desc=Escamas Mutantes podem ser aplicadas a qualquer peça de armadura. Enquanto estiver usando a armadura e parado (sem se mover e sem ser atacado recentemente), você desenvolverá uma camada protetora equivalente a um terço de uma escama. A cada golpe recebido, algumas das escamas se quebrarão, protegendo você da maioria dos danos externos, mas não de danos causados por fome ou afogamento.
+
+embers.research.page.pipes_category=Tubos
+embers.research.page.mystical_mechanics_category=Mecânica Mística
+embers.research.page.simple_alchemy_category=Alquimia Simples
+embers.research.page.wildfire_category=Núcleo do Fogo Selvagem
+embers.research.page.baubles_category=Bijuterias
+embers.research.page.weapon_augments_category=Aprimoramentos de Arma
+embers.research.page.armor_augments_category=Aprimoramentos de Armadura
+embers.research.page.projectile_augments_category=Aprimoramentos de Projétil
+embers.research.page.misc_augments_category=Outros Aprimoramentos
+
+embers.commands.fill.usage=/ember-fill <x> <z> <definir|adicionar|verificar> ...
+embers.commands.fill.usage.add=/ember-fill <x> <z> adicionar <valor>
+embers.commands.fill.usage.set=/ember-fill <x> <z> definir <valor>
+embers.commands.fill.failed=Falha: Dados de Brasa ausentes no bloco [%s, %s] (em x %s, z %s)
+embers.commands.fill.added=Adicionado %s ao nível de Brasa (agora %s) no bloco [%s, %s] (em x %s, z %s)
+embers.commands.fill.set=Definido o nível de Brasa para %s no bloco [%s, %s] (em x %s, z %s)
+embers.commands.fill.query=O nível de Brasa é %s no bloco [%s, %s] (em x %s, z %s)
+
+subtitles.block.alchemy.fail=Alquimia Energética falha...
+subtitles.block.alchemy.success=Alquimia Energética bem-sucedida!
+subtitles.block.alchemy.start=Alquimia Energética começa
+subtitles.block.beam_cannon.fire=Canhão de Raio dispara
+subtitles.block.beam_cannon.hit=Raio atinge
+subtitles.block.activator.plume=Ativador de Brasa libera Brasa
+subtitles.block.boiler.plume=Refinaria de Pressão libera Brasa
+subtitles.block.ignem_reactor.plume=Reator Ignem libera Brasa
+subtitles.block.stamp.down=Martelo Bate Forte
+subtitles.block.stamp.up=Martelo Retrai
+subtitles.block.bore.start=Broca de Brasa desperta
+subtitles.block.bore.stop=Broca de Brasa suspira e para
+subtitles.block.catalytic_plug.start=Plugue Catalítico começa a injetar catalisador
+subtitles.block.catalytic_plug.stop=Plugue Catalítico está vazio
+subtitles.block.metal_seed.ping=Semente de Metal se fragmenta
+subtitles.block.inferno_forge.fail=Reforja falha...
+subtitles.block.inferno_forge.success=Reforja bem-sucedida!
+subtitles.block.inferno_forge.start=Forja Infernal começa a forjar
+subtitles.block.inferno_forge.open=Forja Infernal abre
+subtitles.block.inferno_forge.close=Forja Infernal fecha
+subtitles.block.steam_engine.start_steam=Motor a Vapor gira
+subtitles.block.steam_engine.start_burn=Motor a Vapor começa a queimar combustível
+subtitles.block.steam_engine.stop=Motor a Vapor treme e para
+subtitles.block.mini_boiler.rupture=Mini Caldeira se rompe violentamente
+subtitles.block.pump.slow=Bomba Mecânica range com força
+subtitles.block.pump.mid=Bomba Mecânica bombeia
+subtitles.block.pump.fast=Bomba Mecânica bombeia em velocidades incrivelmente rápidas
+subtitles.block.pipe.connect=Tubo conectado
+subtitles.block.pipe.disconnect=Tubo desconectado
+subtitles.ember_transfer.emit.small=Pacote de Brasa emitido
+subtitles.ember_transfer.emit.big=Grande Pacote de Brasa emitido
+subtitles.ember_transfer.receive.small=Pacote de Brasa recebido
+subtitles.ember_transfer.receive.big=Grande Pacote de Brasa recebido
+subtitles.ember_transfer.relay=Pacote de Brasa retransmitido
+subtitles.fireball.small.fire=Bola de Fogo é lançada
+subtitles.fireball.small.hit=Bola de Fogo impacta
+subtitles.fireball.big.fire=Grande Bola de Fogo é liberada
+subtitles.fireball.big.hit=Grande Bola de Fogo impacta
+subtitles.blazing_ray.fire=Raio Ardente dispara
+subtitles.blazing_ray.empty=Raio Ardente estala
+subtitles.heated.level_up=Item sobe de nível
+subtitles.cinder_staff.charge=Cajado de Cinza carrega
+subtitles.cinder_staff.fail=Cajado de Cinza falha
+subtitles.cinder_jet.boost=Jato de Cinza impulsiona
+subtitles.resonating_bell.ring=Sino Ressonante toca
+subtitles.inflictor_gem.absorb=Gema Infligidora absorve dano
+subtitles.metallurgic_dust.convert=Poeira Metalúrgica transmuta minério
+subtitles.metallurgic_dust.fail=Poeira Metalúrgica transmuta minério em material inútil
+subtitles.ash_amulet.burn=Item queima até virar cinzas
+subtitles.explosion_charm.absorb=Explosão é absorvida
+subtitles.ancient_golem.death=Golem Antigo é destruído
+subtitles.ancient_golem.hurt=Golem Antigo é atingido
+subtitles.ancient_golem.punch=Golem Antigo soca
+subtitles.ancient_golem.step=Golem Antigo caminha
+
+# WIP - Coisas
+tile.seed_mithril.name=Semente de Cristal de Mithril
+tile.seed_alchemic.name=Semente de Cristal Alquímico
+tile.caminite_large_brick.name=Tijolos Grandes de Caminita
+tile.block_astralite.name=Bloco Astralita
+tile.block_umber_steel.name=Bloco de Aço Sombrio
+tile.archaic_geysir.name=Gêiser Arcaico
+tile.archaic_mech_edge.name=Borda Mecânica Arcaica
+
+item.ingot_astralite.name=Lingote de Astralita
+item.plate_astralite.name=Placa de Astralita
+item.nugget_astralite.name=Pepita de Astralita
+item.ingot_umber_steel.name=Lingote de Aço Sombrio
+item.plate_umber_steel.name=Placa de Aço Sombrio
+item.nugget_umber_steel.name=Pepita de Aço Sombrio
+item.fulgurite.name=Fulgurita
+item.aster.name=Aster
+item.shard_aster.name=Fragmento de Aster
+item.alchemic_chunk.name=Fragmento Alquímico
+item.alchemic_cluster.name=Aglomerado Alquímico
+item.alchemic_mote.name=Partícula Alquímica
+item.alchemic_piece.name=Peça Alquímica
+item.alchemic_seed.name=Semente Alquímica
+item.alchemic_shard.name=Fragmento Alquímico
+item.burst_emitter.name=Emissor de Explosão
+item.crystal_lens.name=Lente de Cristal
+item.eyepiece.name=Dispositivo Ocular
+item.glimmer_charm.name=Talismã Cintilante
+item.intelligent_eye.name=Olho Inteligente
+item.karma_charm.name=Talismã de Karma
+item.mass_caldera.name=Caldeira Massiva
+item.radiant_crown.nameCoroa Radiante
+item.sigil_cross.name=Sigilo Cruzado
+item.sigil_empty.name=Sigilo Vazio
+item.sigil_explosion.name=Sigilo de Explosão
+item.sigil_eye.name=Sigilo de Olho
+item.sigil_fork.name=Sigilo de Bifurcação
+item.sigil_home.name=Sigilo de Lar
+item.sigil_ring.name=Sigilo de Anel
+item.sigil_skull.name=Sigilo de Caveira
+item.sigil_sun.name=Sigilo de Sol
+item.silver_eye_closed.name=Olho de Prata Fechado
+item.silver_eye_open.name=Olho de Prata Aberto
+item.truemetal_clump.name=Fragmento Isolado de Material Verdadeiro
+item.sulfur_dust.name=Poeira de Enxofre
