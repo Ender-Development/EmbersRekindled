@@ -1250,6 +1250,10 @@ subtitles.ancient_golem.hurt=Ancient Golem is hit
 subtitles.ancient_golem.punch=Ancient Golem punches
 subtitles.ancient_golem.step=Ancient Golem walks
 
+# GroovyScript Wiki
+groovyscript.wiki.embers.melter.title=Melter
+groovyscript.wiki.embers.melter.description=Converts an input item into an output fluidstack in a Melter with the ability to have a secondary output fluidstack by adding a Geologic Separator.
+
 # WIP - Stuff
 tile.seed_mithril.name=Mithril Crystal Seed
 tile.seed_alchemic.name=Alchemic Crystal Seed
