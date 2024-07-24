@@ -4,8 +4,8 @@ dependencies {
     implementation "CraftTweaker2:ZenScript:" + project.version_crafttweaker
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-" + project.version_crafttweaker
 
-    implementation rfg.deobf("curse.maven:had-enough-items-557549:5229422")
-    implementation("com.cleanroommc:groovyscript:1.0.1") { transitive = false } // so it doesn't installs JEI
+    implementation rfg.deobf("curse.maven:had-enough-items-557549:5471944")
+    implementation("com.cleanroommc:groovyscript:1.1.1") { transitive = false } // so it doesn't installs JEI
 
     // Debug dependencies
     compileOnly rfg.deobf("curse.maven:mantle-74924:2713386")
@@ -74,10 +74,10 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:mystical-gears-317915:3206298")
     }
 
-    compileOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
+    compileOnly rfg.deobf("curse.maven:jaopca-266936:" + project.version_jaopca)
     if (project.debug_jaopca.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:wrapup-275153:2486198")
-        runtimeOnly rfg.deobf("curse.maven:jaopca-266936:5126036")
+        runtimeOnly rfg.deobf("curse.maven:jaopca-266936:" + project.version_jaopca)
     }
 
     compileOnly rfg.deobf("curse.maven:aetherworks-extended-life-1003576:5263747")
