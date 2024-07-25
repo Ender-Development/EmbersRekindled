@@ -100,6 +100,7 @@ public class Melter extends VirtualizedRegistry<ItemMeltingRecipe> {
             if (!validate()) return null;
             ItemMeltingRecipe recipe = new ItemMeltingRecipe(input.get(0).toMcIngredient(), fluidOutput.get(0));
             if (fluidOutput.size() == 2) recipe.addBonusOutput(fluidOutput.get(1));
+            GSPlugin.instance.melter.add(recipe);
             return recipe;
         }
     }

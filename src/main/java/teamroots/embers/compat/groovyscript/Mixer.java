@@ -95,7 +95,9 @@ public class Mixer extends VirtualizedRegistry<FluidMixingRecipe> {
         @RecipeBuilderRegistrationMethod
         public @Nullable FluidMixingRecipe register() {
             if (!validate()) return null;
-            return new FluidMixingRecipe(fluidInput.toArray(new FluidStack[0]), fluidOutput.get(0), powerRatio);
+            FluidMixingRecipe recipe = new FluidMixingRecipe(fluidInput.toArray(new FluidStack[0]), fluidOutput.get(0), powerRatio);
+            GSPlugin.instance.mixer.add(recipe);
+            return recipe;
         }
     }
 }

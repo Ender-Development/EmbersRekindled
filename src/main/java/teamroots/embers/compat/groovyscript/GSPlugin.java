@@ -11,7 +11,7 @@ import teamroots.embers.Embers;
 public class GSPlugin implements GroovyPlugin {
 
     @GroovyBlacklist
-    protected static GSContainer instance;
+    public static GSContainer instance;
 
     @Override
     public @Nullable GroovyPropertyContainer createGroovyPropertyContainer() {
