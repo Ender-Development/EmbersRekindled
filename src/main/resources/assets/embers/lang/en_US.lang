@@ -1253,6 +1253,11 @@ subtitles.ancient_golem.step=Ancient Golem walks
 # GroovyScript Wiki
 groovyscript.wiki.embers.melter.title=Melter
 groovyscript.wiki.embers.melter.description=Converts an input item into an output fluidstack in a Melter with the ability to have a secondary output fluidstack by adding a Geologic Separator.
+groovyscript.wiki.embers.stamper.title=Stamper
+groovyscript.wiki.embers.stamper.description=Converts an input item into an output item in a Stamper
+groovyscript.wiki.embers.mixer.title=Mixer
+groovyscript.wiki.embers.mixer.description=Converts up to 3 input fluidstacks into an output fluidstack in a Mixer
+groovyscript.wiki.embers.powerratio.value=0
 
 # WIP - Stuff
 tile.seed_mithril.name=Mithril Crystal Seed

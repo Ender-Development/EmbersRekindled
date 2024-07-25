@@ -1,5 +1,6 @@
 package teamroots.embers.recipe;
 
+import com.cleanroommc.groovyscript.api.IIngredient;
 import net.minecraftforge.fluids.FluidStack;
 import teamroots.embers.util.FluidUtil;
 
@@ -43,5 +44,9 @@ public class FluidMixingRecipe {
 			}
 		}
 		return checkInputs.size() == 0;
+	}
+
+	public ArrayList<FluidStack> getInput() {
+		return new ArrayList<>(inputs);
 	}
 }

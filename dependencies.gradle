@@ -5,7 +5,7 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-" + project.version_crafttweaker
 
     implementation rfg.deobf("curse.maven:had-enough-items-557549:5471944")
-    implementation("com.cleanroommc:groovyscript:1.1.1") { transitive = false } // so it doesn't installs JEI
+    implementation("com.cleanroommc:groovyscript:1.1.2") { transitive = false } // so it doesn't installs JEI
 
     // Debug dependencies
     compileOnly rfg.deobf("curse.maven:mantle-74924:2713386")
