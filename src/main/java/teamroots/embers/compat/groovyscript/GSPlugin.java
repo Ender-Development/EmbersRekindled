@@ -1,5 +1,6 @@
 package teamroots.embers.compat.groovyscript;
 
+import com.cleanroommc.groovyscript.api.GroovyBlacklist;
 import com.cleanroommc.groovyscript.api.GroovyPlugin;
 import com.cleanroommc.groovyscript.compat.mods.GroovyContainer;
 import com.cleanroommc.groovyscript.compat.mods.GroovyPropertyContainer;
@@ -9,9 +10,13 @@ import teamroots.embers.Embers;
 
 public class GSPlugin implements GroovyPlugin {
 
+    @GroovyBlacklist
+    protected static GSContainer instance;
+
     @Override
     public @Nullable GroovyPropertyContainer createGroovyPropertyContainer() {
-        return GSContainer.instance = new GSContainer();
+        GSPlugin.instance = new GSContainer();
+        return GSPlugin.instance;
     }
 
     @Override
