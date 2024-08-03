@@ -1,0 +1,111 @@
+package teamroots.embers.compat.groovyscript;
+
+import com.cleanroommc.groovyscript.api.GroovyBlacklist;
+import com.cleanroommc.groovyscript.api.GroovyLog;
+import com.cleanroommc.groovyscript.api.IIngredient;
+import com.cleanroommc.groovyscript.api.documentation.annotations.*;
+import com.cleanroommc.groovyscript.helper.SimpleObjectStream;
+import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
+import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
+import groovyjarjarantlr4.v4.runtime.misc.Nullable;
+import teamroots.embers.recipe.ItemStampingRecipe;
+import teamroots.embers.recipe.RecipeRegistry;
+
+import java.util.Arrays;
+
+@RegistryDescription
+class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
+     @RecipeBuilderDescription(example = {
+            @Example(".input(item('minecraft:clay')).fluidInput(fluid('water') * 100).output(item('minecraft:brick'))"),
+            @Example(".input(item('minecraft:gravel'), item('minecraft:clay')).fluidInput(fluid('lava') * 50).output(item('minecraft:glass'))")
+    })
+    public RecipeBuilder recipeBuilder() {
+        return new RecipeBuilder();
+    }
+
+    @Override
+    @GroovyBlacklist
+    public void onReload() {
+        RecipeRegistry.stampingRecipes.removeAll(removeScripted());
+        RecipeRegistry.stampingRecipes.addAll(restoreFromBackup());
+    }
+
+    public void add(ItemStampingRecipe recipe) {
+        if (recipe != null) {
+            addScripted(recipe);
+            RecipeRegistry.stampingRecipes.add(recipe);
+        }
+    }
+
+    public boolean remove(ItemStampingRecipe recipe) {
+        if (RecipeRegistry.stampingRecipes.removeIf(r -> r == recipe)) {
+            addBackup(recipe);
+            return true;
+        }
+        return false;
+    }
+
+    @MethodDescription(example = @Example("item('embers:shard_ember')"))
+    public boolean removeByInput(IIngredient input) {
+        return RecipeRegistry.stampingRecipes.removeIf(r -> {
+            if (Arrays.stream(r.input.getMatchingStacks()).anyMatch(input)) {
+                addBackup(r);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    @MethodDescription(example = {@Example("item('embers:plate_iron')"), @Example(value = "item('embers:dust_ash')", commented = true)})
+    public boolean removeByOutput(IIngredient output) {
+        return RecipeRegistry.stampingRecipes.removeIf(r -> {
+            if (output.test(r.getOutputs().get(0))) {
+                addBackup(r);
+                return true;
+            }
+            return false;
+        });
+    }
+
+    @MethodDescription(type = MethodDescription.Type.QUERY)
+    public SimpleObjectStream<ItemStampingRecipe> streamRecipes() {
+        return new SimpleObjectStream<>(RecipeRegistry.stampingRecipes).setRemover(this::remove);
+    }
+
+    @MethodDescription(priority = 2000, example = @Example(commented = true))
+    public void removeAll() {
+        RecipeRegistry.stampingRecipes.forEach(this::addBackup);
+        RecipeRegistry.stampingRecipes.clear();
+    }
+
+    @Property(property = "input", valid = {@Comp(value = "1", type = Comp.Type.GTE), @Comp(value = "2", type = Comp.Type.LTE)})
+    @Property(property = "fluidInput", valid = {@Comp(value = "0", type = Comp.Type.GTE), @Comp(value = "1", type = Comp.Type.LTE)})
+    @Property(property = "output", valid = @Comp("1"))
+    public static class RecipeBuilder extends AbstractRecipeBuilder<ItemStampingRecipe> {
+
+        @Override
+        public String getErrorMsg() {
+            return "Error adding Embers Stamper recipe";
+        }
+
+        @Override
+        public void validate(GroovyLog.Msg msg) {
+            validateItems(msg, 1, 2, 1, 1);
+            validateFluids(msg, 0, 1, 0, 0);
+        }
+
+        @Override
+        @RecipeBuilderRegistrationMethod
+        public @Nullable ItemStampingRecipe register() {
+            if (!validate()) return null;
+            ItemStampingRecipe recipe;
+            if (input.getRealSize() == 1) {
+                recipe = new ItemStampingRecipe(null, fluidInput.get(0), input.get(0).toMcIngredient(), output.get(0));
+            } else {
+                recipe = new ItemStampingRecipe(input.get(1).toMcIngredient(), fluidInput.get(0), input.get(0).toMcIngredient(), output.get(0));
+            }
+            GSPlugin.instance.stamper.add(recipe);
+            return recipe;
+        }
+    }
+}
