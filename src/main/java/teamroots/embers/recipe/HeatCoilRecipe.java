@@ -25,6 +25,16 @@ public class HeatCoilRecipe {
         return Lists.newArrayList(input.getMatchingStacks());
     }
 
+    public Ingredient getInput()
+    {
+        return input;
+    }
+
+    public ItemStack getOutput()
+    {
+        return output;
+    }
+
     public List<ItemStack> getOutputs()
     {
         return Lists.newArrayList(output);

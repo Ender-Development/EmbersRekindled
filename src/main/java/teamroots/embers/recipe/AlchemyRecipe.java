@@ -131,4 +131,12 @@ public class AlchemyRecipe implements IHasAspects {
 		else
 			return result.createFailure();
 	}
+
+	public final ItemStack getOutput() {
+		return result;
+	}
+
+	public final Ingredient getCenter() {
+		return centerIngredient;
+	}
 }

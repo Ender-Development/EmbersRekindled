@@ -5,9 +5,11 @@ import com.cleanroommc.groovyscript.api.GroovyLog;
 import com.cleanroommc.groovyscript.api.IIngredient;
 import com.cleanroommc.groovyscript.api.documentation.annotations.*;
 import com.cleanroommc.groovyscript.helper.SimpleObjectStream;
+import com.cleanroommc.groovyscript.helper.ingredient.IngredientHelper;
 import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import groovyjarjarantlr4.v4.runtime.misc.Nullable;
+import net.minecraft.item.crafting.Ingredient;
 import teamroots.embers.recipe.ItemStampingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
 
@@ -16,8 +18,8 @@ import java.util.Arrays;
 @RegistryDescription
 class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
      @RecipeBuilderDescription(example = {
-            @Example(".input(item('minecraft:clay')).fluidInput(fluid('water') * 100).output(item('minecraft:brick'))"),
-            @Example(".input(item('minecraft:gravel'), item('minecraft:clay')).fluidInput(fluid('lava') * 50).output(item('minecraft:glass'))")
+            @Example(".stamp(item('minecraft:clay')).fluidInput(fluid('water') * 100).output(item('minecraft:brick'))"),
+            @Example(".input(item('minecraft:gravel')).stamp(item('minecraft:flint')).output(item('minecraft:glass'))")
     })
     public RecipeBuilder recipeBuilder() {
         return new RecipeBuilder();
@@ -78,10 +80,19 @@ class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
         RecipeRegistry.stampingRecipes.clear();
     }
 
-    @Property(property = "input", valid = {@Comp(value = "1", type = Comp.Type.GTE), @Comp(value = "2", type = Comp.Type.LTE)})
+    @Property(property = "input", valid = {@Comp(value = "0", type = Comp.Type.GTE), @Comp(value = "1", type = Comp.Type.LTE)})
     @Property(property = "fluidInput", valid = {@Comp(value = "0", type = Comp.Type.GTE), @Comp(value = "1", type = Comp.Type.LTE)})
     @Property(property = "output", valid = @Comp("1"))
     public static class RecipeBuilder extends AbstractRecipeBuilder<ItemStampingRecipe> {
+
+        @Property(defaultValue = "IIngredient.EMPTY", requirement = "groovyscript.wiki.embers.stamper.stamp.required")
+        private IIngredient stamp = IIngredient.EMPTY;
+
+        @RecipeBuilderMethodDescription
+        public RecipeBuilder stamp(IIngredient stamp) {
+            this.stamp = stamp;
+            return this;
+        }
 
         @Override
         public String getErrorMsg() {
@@ -90,8 +101,9 @@ class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
 
         @Override
         public void validate(GroovyLog.Msg msg) {
-            validateItems(msg, 1, 2, 1, 1);
+            validateItems(msg, 0, 1, 1, 1);
             validateFluids(msg, 0, 1, 0, 0);
+            msg.add(IngredientHelper.isEmpty(stamp), "stamp is required");
         }
 
         @Override
@@ -99,10 +111,10 @@ class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
         public @Nullable ItemStampingRecipe register() {
             if (!validate()) return null;
             ItemStampingRecipe recipe;
-            if (input.getRealSize() == 1) {
-                recipe = new ItemStampingRecipe(null, fluidInput.get(0), input.get(0).toMcIngredient(), output.get(0));
+            if (IngredientHelper.isEmpty(input)) {
+                recipe = new ItemStampingRecipe(Ingredient.EMPTY, fluidInput.getOrEmpty(0), stamp.toMcIngredient(), output.get(0));
             } else {
-                recipe = new ItemStampingRecipe(input.get(1).toMcIngredient(), fluidInput.get(0), input.get(0).toMcIngredient(), output.get(0));
+                recipe = new ItemStampingRecipe(input.get(0).toMcIngredient(), fluidInput.getOrEmpty(0), stamp.toMcIngredient(), output.get(0));
             }
             GSPlugin.instance.stamper.add(recipe);
             return recipe;

@@ -1,4 +1,6 @@
 dependencies {
+    // implementation 'com.github.jbredwards:fluidlogged-api:47f153989e'
+
     // Dependencies
     implementation "CraftTweaker2:CraftTweaker2-API:" + project.version_crafttweaker
     implementation "CraftTweaker2:ZenScript:" + project.version_crafttweaker
@@ -174,6 +176,11 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
         runtimeOnly rfg.deobf("curse.maven:emberforged-887375:4677874")
         runtimeOnly rfg.deobf("curse.maven:minefantasy-reforged-431996:4666619")
+    }
+
+    compileOnly rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")
+    if (project.debug_ae2.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")
     }
 
     // Runtime dependencies

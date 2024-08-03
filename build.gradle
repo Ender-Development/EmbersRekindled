@@ -85,6 +85,27 @@ minecraft {
     // Example:
     // injectedTags.put('VERSION', project.version)
     // injectedTags.put('MOD_ID', project.archives_base_name)
+
+    injectedTags.put 'GROOVY_VERSION', groovy_version
+
+    if (project.debug_use_examples_folder.toBoolean()) {
+        extraRunJvmArguments.add('-Dgroovyscript.use_examples_folder=true')
+    }
+    if (project.debug_run_ls.toBoolean()) {
+        extraRunJvmArguments.add('-Dgroovyscript.run_ls=true')
+    }
+    if (project.debug_generate_examples.toBoolean()) {
+        extraRunJvmArguments.add('-Dgroovyscript.generate_examples=true')
+    }
+    if (project.debug_generate_wiki.toBoolean()) {
+        extraRunJvmArguments.add('-Dgroovyscript.generate_wiki=true')
+    }
+    if (project.debug_generate_and_crash.toBoolean()) {
+        extraRunJvmArguments.add('-Dgroovyscript.generate_and_crash=true')
+    }
+    if (project.debug_log_missing_lang_keys.toBoolean()) {
+        extraRunJvmArguments.add('-Dgroovyscript.log_missing_lang_keys=true')
+    }
 }
 
 repositories {
@@ -94,6 +115,7 @@ repositories {
     maven { url "https://maven.blamejared.com/" }
     maven { url "https://www.ryanliptak.com/maven/" }
     maven { url "https://maven.thiakil.com/" }
+    maven { url 'https://jitpack.io' }
     maven {
         name 'GTNH Maven'
         url 'https://nexus.gtnewhorizons.com/repository/public/'
