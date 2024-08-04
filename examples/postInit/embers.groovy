@@ -7,6 +7,7 @@ log.info 'mod \'embers\' detected, running script'
 // Alchemy:
 // Convert input items into an output item on a Exchange Tablet.
 
+mods.embers.alchemy.removeAspect('copper')
 mods.embers.alchemy.removeByCenter(item('minecraft:wool'))
 mods.embers.alchemy.removeByOutput(item('embers:ember_pipe'))
 // mods.embers.alchemy.removeAll()
@@ -15,17 +16,20 @@ mods.embers.alchemy.recipeBuilder()
     .input(item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'))
     .output(item('minecraft:gravel'))
     .setAspect('dawnstone', 2, 17)
+    .setAspect('glass', 1, 8)
     .register()
 
 mods.embers.alchemy.recipeBuilder()
     .input(item('minecraft:gravel'),ore('dyeGreen'),ore('dyeGreen'),ore('dyeGreen'),item('minecraft:rotten_flesh'))
     .output(item('minecraft:grass'))
     .setAspect('iron', 2, 17)
-    .setAspect('gold', 1, 8)
+    .setAspect('copper', 1, 8)
     .register()
 
 
-mods.embers.alchemy.addAspect('gold',item('minecraft:gold_ingot'))
+mods.embers.alchemy.addAspect('glass',item('minecraft:glass'))
+mods.embers.alchemy.addAspect('copper',item('minecraft:gold_ingot'))
+
 mods.embers.alchemy.getAspect(item('embers:aspectus_iron'))
 
 // Heat Coil:

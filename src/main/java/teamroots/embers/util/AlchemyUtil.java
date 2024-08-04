@@ -23,6 +23,16 @@ public class AlchemyUtil {
         ASPECT_REGISTRY.put(aspect,new AspectInfo(aspect,item));
     }
 
+    public static void removeAspect(String aspect)
+    {
+        ASPECT_REGISTRY.remove(aspect);
+    }
+
+    public static boolean hasAspect(String aspect)
+    {
+        return ASPECT_REGISTRY.containsKey(aspect);
+    }
+
     public static String getAspect(ItemStack aspect)
     {
         for (AspectInfo info : ASPECT_REGISTRY.values()) {

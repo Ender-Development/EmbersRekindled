@@ -22,8 +22,8 @@ import java.util.Arrays;
 @RegistryDescription
 public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
     @RecipeBuilderDescription(example = {
-            @Example(".input(item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay')).output(item('minecraft:gravel')).setAspect('dawnstone', 2, 17)"),
-            @Example(".input(item('minecraft:gravel'),ore('dyeGreen'),ore('dyeGreen'),ore('dyeGreen'),item('minecraft:rotten_flesh')).output(item('minecraft:grass')).setAspect('iron', 2, 17).setAspect('gold', 1, 8)")
+            @Example(".input(item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay')).output(item('minecraft:gravel')).setAspect('dawnstone', 2, 17).setAspect('glass', 1, 8)"),
+            @Example(".input(item('minecraft:gravel'),ore('dyeGreen'),ore('dyeGreen'),ore('dyeGreen'),item('minecraft:rotten_flesh')).output(item('minecraft:grass')).setAspect('iron', 2, 17).setAspect('copper', 1, 8)")
     })
     public RecipeBuilder recipeBuilder() {
         return new RecipeBuilder();
@@ -73,7 +73,14 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         });
     }
 
-    @MethodDescription(type = MethodDescription.Type.VALUE, example = @Example("'gold',item('minecraft:gold_ingot')"))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("'copper'"))
+    public boolean removeAspect(String aspect) {
+        if (!AlchemyUtil.hasAspect(aspect)) return false;
+        AlchemyUtil.removeAspect(aspect);
+        return true;
+    }
+
+    @MethodDescription(type = MethodDescription.Type.ADDITION, example = {@Example("'copper',item('minecraft:gold_ingot')"), @Example("'glass',item('minecraft:glass')")})
     public boolean addAspect(String aspect, IIngredient item) {
         if (getAspect(item) != null) return false;
         AlchemyUtil.registerAspect(aspect, item.toMcIngredient());
