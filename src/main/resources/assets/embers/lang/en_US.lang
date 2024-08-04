@@ -38,6 +38,7 @@ cfg.embers.machine.boiler=Pressure Refinery
 cfg.embers.machine.mixer=Mixer Centrifuge
 cfg.embers.machine.heat_coil=Hearth Coil
 cfg.embers.machine.steam_engine=Steam Engine
+cfg.embers.machine.reaction_chamber=Reaction Chamber
 
 cfg.embers.material=Materials
 cfg.embers.material.tooltip=(Tweak metals and tools)

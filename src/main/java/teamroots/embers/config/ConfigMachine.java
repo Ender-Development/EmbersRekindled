@@ -138,6 +138,11 @@ public class ConfigMachine {
     @Config.Comment("Options about the Pressure Refinery")
     public static final BoilerCategory BOILER = new BoilerCategory();
 
+    @Config.Name("Reaction Chamber")
+    @Config.LangKey("cfg.embers.machine.reaction_chamber")
+    @Config.Comment("Options about the Reaction Chamber")
+    public static final ReactionChamberCategory REACTION_CHAMBER = new ReactionChamberCategory();
+
     @Config.Name("Reservoir")
     @Config.LangKey("cfg.embers.machine.reservoir")
     @Config.Comment("Options about the Reservoir")
