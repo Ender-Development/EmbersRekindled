@@ -25,3 +25,6 @@ classes
 
 # python
 *.py
+
+# groovy
+*.groovy
