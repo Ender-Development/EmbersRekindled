@@ -2,6 +2,17 @@
 
 A dwarven magic mod
 
+## v1.24.0 - GroovyScript
+### Changes
+- added GroovyScript support (Thanks WaitingIdly) for:
+  - Exchange Tablet
+  - Heat Coil
+  - Melter
+  - Mixer
+  - Reaction Chamber
+  - Stamper
+- added a missing config entry for the Reaction Chamber
+
 ## v1.23.6 - Emberforged
 ### Bugfixes
 - fixed compatibility with Emberforged
