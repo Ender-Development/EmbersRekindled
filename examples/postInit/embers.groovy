@@ -83,6 +83,18 @@ mods.embers.mixer.recipeBuilder()
     .register()
 
 
+// Reaction Chamber:
+// Converts an input fluidstack into an output fluidstack in a Reaction Chamber.
+
+mods.embers.reaction_chamber.removeByOutput(fluid('steam'))
+// mods.embers.reaction_chamber.removeAll()
+
+mods.embers.reaction_chamber.recipeBuilder()
+    .fluidInput(fluid('lava') * 10)
+    .fluidOutput(fluid('steam') * 50)
+    .register()
+
+
 // Stamper:
 // Converts an input fluid into an output item with a provided stamp in a Stamper.
 

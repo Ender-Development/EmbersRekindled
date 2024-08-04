@@ -9,6 +9,7 @@ public class GSContainer extends GroovyPropertyContainer {
     public final Stamper stamper = new Stamper();
     public final HeatCoil heatcoil = new HeatCoil();
     public final Alchemy alchemy = new Alchemy();
+    public final ReactionChamber reactionchamber = new ReactionChamber();
 
     public GSContainer() {
         addProperty(melter);
@@ -16,6 +17,7 @@ public class GSContainer extends GroovyPropertyContainer {
         addProperty(stamper);
         addProperty(heatcoil);
         addProperty(alchemy);
+        addProperty(reactionchamber);
     }
 
 }

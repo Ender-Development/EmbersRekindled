@@ -1265,6 +1265,8 @@ groovyscript.wiki.embers.heat_coil.description=Convert an input item into an out
 groovyscript.wiki.embers.alchemy.title=Alchemy
 groovyscript.wiki.embers.alchemy.description=Convert input items into an output item on a Exchange Tablet.
 groovyscript.wiki.embers.alchemy.getaspect=Returns the name of the aspect of an item.
+groovyscript.wiki.embers.reaction_chamber.title=Reaction Chamber
+groovyscript.wiki.embers.reaction_chamber.description=Converts an input fluidstack into an output fluidstack in a Reaction Chamber.
 
 # WIP - Stuff
 tile.seed_mithril.name=Mithril Crystal Seed
