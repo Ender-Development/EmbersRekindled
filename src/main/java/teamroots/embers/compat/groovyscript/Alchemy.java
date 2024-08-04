@@ -22,7 +22,7 @@ import java.util.Arrays;
 @RegistryDescription
 public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
     @RecipeBuilderDescription(example = {
-            @Example(".input(item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay')).output(item('minecraft:gravel'))"),
+            @Example(".input(item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay')).output(item('minecraft:gravel')).setAspect('dawnstone', 2, 17)"),
             @Example(".input(item('minecraft:gravel'),ore('dyeGreen'),ore('dyeGreen'),ore('dyeGreen'),item('minecraft:rotten_flesh')).output(item('minecraft:grass')).setAspect('iron', 2, 17).setAspect('gold', 1, 8)")
     })
     public RecipeBuilder recipeBuilder() {
@@ -80,7 +80,7 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         return true;
     }
 
-    @MethodDescription(type = MethodDescription.Type.VALUE, example = @Example("item('embers:aspectus_iron')"))
+    @MethodDescription(type = MethodDescription.Type.VALUE, description = "groovyscript.wiki.embers.alchemy.getaspect", example = @Example("item('embers:aspectus_iron')"))
     public String getAspect(IIngredient item) {
         return AlchemyUtil.getAspect(IngredientHelper.toItemStack(item));
     }
@@ -116,6 +116,7 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         public void validate(GroovyLog.Msg msg) {
             validateItems(msg, 1, 5, 1, 1);
             validateFluids(msg);
+            msg.add(aspects.isEmpty(), "Aspects are required!");
         }
 
         @Override

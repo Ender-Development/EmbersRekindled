@@ -1259,10 +1259,11 @@ groovyscript.wiki.embers.stamper.stamp.required=Stamp Required
 groovyscript.wiki.embers.mixer.title=Mixer
 groovyscript.wiki.embers.mixer.description=Converts up to 3 input fluidstacks into an output fluidstack in a Mixer
 groovyscript.wiki.embers.powerratio.value=0
-groovyscript.wiki.embers.heatcoil.title=Heat Coil
-groovyscript.wiki.embers.heatcoil.description=Convert an input item into an output item in a Heat Coil.
+groovyscript.wiki.embers.heat_coil.title=Heat Coil
+groovyscript.wiki.embers.heat_coil.description=Convert an input item into an output item in a Heat Coil.
 groovyscript.wiki.embers.alchemy.title=Alchemy
 groovyscript.wiki.embers.alchemy.description=Convert input items into an output item on a Exchange Tablet.
+groovyscript.wiki.embers.alchemy.getaspect=Returns the name of the aspect of an item.
 
 # WIP - Stuff
 tile.seed_mithril.name=Mithril Crystal Seed

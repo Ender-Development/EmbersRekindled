@@ -111,6 +111,11 @@ public class AspectList {
             return maxAspects;
         }
 
+        public boolean isEmpty()
+        {
+            return minAspects.getTotal() == 0 && maxAspects.getTotal() == 0;
+        }
+
         public AspectRangeList() {
             minAspects = new AspectList();
             maxAspects = new AspectList();
