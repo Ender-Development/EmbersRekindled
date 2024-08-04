@@ -4,6 +4,7 @@ import com.cleanroommc.groovyscript.api.GroovyBlacklist;
 import com.cleanroommc.groovyscript.api.GroovyPlugin;
 import com.cleanroommc.groovyscript.compat.mods.GroovyContainer;
 import com.cleanroommc.groovyscript.compat.mods.GroovyPropertyContainer;
+import com.cleanroommc.groovyscript.documentation.linkgenerator.LinkGeneratorHooks;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import teamroots.embers.Embers;
@@ -31,6 +32,6 @@ public class GSPlugin implements GroovyPlugin {
 
     @Override
     public void onCompatLoaded(GroovyContainer<?> container) {
-
+        LinkGeneratorHooks.registerLinkGenerator(new EmbersLinkGenerator());
     }
 }
