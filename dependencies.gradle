@@ -183,6 +183,11 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")
     }
 
+    compileOnly rfg.deobf("curse.maven:dynaores-1056043:5541366")
+    if (project.debug_rawores.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:dynaores-1056043:5541366")
+    }
+
     // Runtime dependencies
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:5171095")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
