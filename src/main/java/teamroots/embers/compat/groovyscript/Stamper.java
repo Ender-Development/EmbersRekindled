@@ -47,7 +47,7 @@ class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
         return false;
     }
 
-    @MethodDescription(example = @Example("item('embers:shard_ember')"))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("item('embers:shard_ember')"))
     public boolean removeByInput(IIngredient input) {
         return RecipeRegistry.stampingRecipes.removeIf(r -> {
             if (Arrays.stream(r.input.getMatchingStacks()).anyMatch(input)) {
@@ -58,7 +58,7 @@ class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
         });
     }
 
-    @MethodDescription(example = {@Example("item('embers:plate_iron')"), @Example(value = "item('embers:dust_ash')", commented = true)})
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = {@Example("item('embers:plate_iron')"), @Example(value = "item('embers:dust_ash')", commented = true)})
     public boolean removeByOutput(IIngredient output) {
         return RecipeRegistry.stampingRecipes.removeIf(r -> {
             if (output.test(r.getOutputs().get(0))) {
@@ -74,7 +74,7 @@ class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
         return new SimpleObjectStream<>(RecipeRegistry.stampingRecipes).setRemover(this::remove);
     }
 
-    @MethodDescription(priority = 2000, example = @Example(commented = true))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, priority = 2000, example = @Example(commented = true))
     public void removeAll() {
         RecipeRegistry.stampingRecipes.forEach(this::addBackup);
         RecipeRegistry.stampingRecipes.clear();

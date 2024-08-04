@@ -45,7 +45,7 @@ public class Mixer extends VirtualizedRegistry<FluidMixingRecipe> {
         return false;
     }
 
-    @MethodDescription(example = {@Example("fluid('dawnstone')")})
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = {@Example("fluid('dawnstone')")})
     public boolean removeByOutput(IIngredient output) {
         return RecipeRegistry.mixingRecipes.removeIf(r -> {
             if (output.test(r.getResult(r.getInput()))) {
@@ -61,7 +61,7 @@ public class Mixer extends VirtualizedRegistry<FluidMixingRecipe> {
         return new SimpleObjectStream<>(RecipeRegistry.mixingRecipes).setRemover(this::remove);
     }
 
-    @MethodDescription(priority = 2000, example = @Example(commented = true))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, priority = 2000, example = @Example(commented = true))
     public void removeAll() {
         RecipeRegistry.mixingRecipes.forEach(this::addBackup);
         RecipeRegistry.mixingRecipes.clear();

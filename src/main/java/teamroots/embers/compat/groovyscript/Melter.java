@@ -46,7 +46,7 @@ public class Melter extends VirtualizedRegistry<ItemMeltingRecipe> {
         return false;
     }
 
-    @MethodDescription(example = @Example("item('minecraft:redstone_block')"))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("item('minecraft:redstone_block')"))
     public boolean removeByInput(IIngredient input) {
         return RecipeRegistry.meltingRecipes.removeIf(r -> {
             if (Arrays.stream(r.getInput().getMatchingStacks()).anyMatch(input)) {
@@ -57,7 +57,7 @@ public class Melter extends VirtualizedRegistry<ItemMeltingRecipe> {
         });
     }
 
-    @MethodDescription(example = {@Example("fluid('oil_soul')"), @Example(value = "fluid('iron')", commented = true)})
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = {@Example("fluid('oil_soul')"), @Example(value = "fluid('iron')", commented = true)})
     public boolean removeByOutput(IIngredient output) {
         return RecipeRegistry.meltingRecipes.removeIf(r -> {
             if (output.test(r.getFluid()) || output.test(r.getBonusOutput())) {
@@ -73,7 +73,7 @@ public class Melter extends VirtualizedRegistry<ItemMeltingRecipe> {
         return new SimpleObjectStream<>(RecipeRegistry.meltingRecipes).setRemover(this::remove);
     }
 
-    @MethodDescription(priority = 2000, example = @Example(commented = true))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, priority = 2000, example = @Example(commented = true))
     public void removeAll() {
         RecipeRegistry.meltingRecipes.forEach(this::addBackup);
         RecipeRegistry.meltingRecipes.clear();
