@@ -13,6 +13,7 @@ import teamroots.embers.recipe.RecipeRegistry;
 
 import java.util.Arrays;
 
+@RegistryDescription
 public class HeatCoil extends VirtualizedRegistry<HeatCoilRecipe> {
     @RecipeBuilderDescription(example = {
             @Example(".input(item('minecraft:clay')).output(item('minecraft:gravel'))"),
@@ -44,7 +45,7 @@ public class HeatCoil extends VirtualizedRegistry<HeatCoilRecipe> {
         return false;
     }
 
-    @MethodDescription(example = @Example("item('minecraft:iron_ore')"))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("item('minecraft:iron_ore')"))
     public boolean removeByInput(IIngredient input) {
         return RecipeRegistry.heatCoilRecipes.removeIf(r -> {
             if (Arrays.stream(r.getInput().getMatchingStacks()).anyMatch(input)) {
@@ -55,7 +56,7 @@ public class HeatCoil extends VirtualizedRegistry<HeatCoilRecipe> {
         });
     }
 
-    @MethodDescription(example = {@Example("item('minecraft:iron_ingot')"), @Example(value = "item('minecraft:glass')", commented = true)})
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = {@Example("item('minecraft:iron_ingot')"), @Example(value = "item('minecraft:glass')", commented = true)})
     public boolean removeByOutput(IIngredient output) {
         return RecipeRegistry.heatCoilRecipes.removeIf(r -> {
             if (output.test(r.getOutput())) {
@@ -71,7 +72,7 @@ public class HeatCoil extends VirtualizedRegistry<HeatCoilRecipe> {
         return new SimpleObjectStream<>(RecipeRegistry.heatCoilRecipes).setRemover(this::remove);
     }
 
-    @MethodDescription(priority = 2000, example = @Example(commented = true))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, priority = 2000, example = @Example(commented = true))
     public void removeAll() {
         RecipeRegistry.heatCoilRecipes.forEach(this::addBackup);
         RecipeRegistry.heatCoilRecipes.clear();

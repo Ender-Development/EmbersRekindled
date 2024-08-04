@@ -19,10 +19,11 @@ import teamroots.embers.util.AlchemyUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+@RegistryDescription
 public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
     @RecipeBuilderDescription(example = {
             @Example(".input(item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay')).output(item('minecraft:gravel'))"),
-            @Example(".input(item('minecraft:gravel')).output(item('minecraft:grass')).setAspect('iron', 1, 1)")
+            @Example(".input(item('minecraft:gravel'),ore('dyeGreen'),ore('dyeGreen'),ore('dyeGreen'),item('minecraft:rotten_flesh')).output(item('minecraft:grass')).setAspect('iron', 2, 17).setAspect('gold', 1, 8)")
     })
     public RecipeBuilder recipeBuilder() {
         return new RecipeBuilder();
@@ -50,8 +51,8 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         return false;
     }
 
-    @MethodDescription(example = @Example("item('minecraft:iron_ore')"))
-    public boolean removeByInput(IIngredient input) {
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("item('minecraft:wool')"))
+    public boolean removeByCenter(IIngredient input) {
         return RecipeRegistry.alchemyRecipes.removeIf(r -> {
             if (Arrays.stream(r.getCenter().getMatchingStacks()).anyMatch(input)) {
                 addBackup(r);
@@ -61,7 +62,7 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         });
     }
 
-    @MethodDescription(example = {@Example("item('minecraft:iron_ingot')"), @Example(value = "item('minecraft:glass')", commented = true)})
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("item('embers:ember_pipe')"))
     public boolean removeByOutput(IIngredient output) {
         return RecipeRegistry.alchemyRecipes.removeIf(r -> {
             if (output.test(r.getOutput())) {
@@ -72,14 +73,14 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         });
     }
 
-    @MethodDescription(example = @Example("'gold',item('minecraft:gold_ingot')"))
+    @MethodDescription(type = MethodDescription.Type.VALUE, example = @Example("'gold',item('minecraft:gold_ingot')"))
     public boolean addAspect(String aspect, IIngredient item) {
         if (getAspect(item) != null) return false;
         AlchemyUtil.registerAspect(aspect, item.toMcIngredient());
         return true;
     }
 
-    @MethodDescription(example = @Example("item('embers:aspectus_iron')"))
+    @MethodDescription(type = MethodDescription.Type.VALUE, example = @Example("item('embers:aspectus_iron')"))
     public String getAspect(IIngredient item) {
         return AlchemyUtil.getAspect(IngredientHelper.toItemStack(item));
     }
@@ -89,7 +90,7 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         return new SimpleObjectStream<>(RecipeRegistry.alchemyRecipes).setRemover(this::remove);
     }
 
-    @MethodDescription(priority = 2000, example = @Example(commented = true))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, priority = 2000, example = @Example(commented = true))
     public void removeAll() {
         RecipeRegistry.alchemyRecipes.forEach(this::addBackup);
         RecipeRegistry.alchemyRecipes.clear();
@@ -122,8 +123,8 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         public @Nullable AlchemyRecipe register() {
             if (!validate()) return null;
             ArrayList<Ingredient> outerIngredients = Lists.newArrayList();
-            for (int i = 1; i < input.size()-1; i++) {
-                outerIngredients.add(input.get(i+1).toMcIngredient());
+            for (int i = 1; i < input.size(); i++) {
+                outerIngredients.add(input.get(i).toMcIngredient());
             }
             AlchemyRecipe recipe = new AlchemyRecipe(aspects, input.get(0).toMcIngredient(), outerIngredients, output.get(0));
             GSPlugin.instance.alchemy.add(recipe);
