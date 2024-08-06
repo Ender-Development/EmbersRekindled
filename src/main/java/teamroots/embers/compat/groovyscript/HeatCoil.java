@@ -8,12 +8,13 @@ import com.cleanroommc.groovyscript.helper.SimpleObjectStream;
 import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import groovyjarjarantlr4.v4.runtime.misc.Nullable;
+import teamroots.embers.Embers;
 import teamroots.embers.recipe.HeatCoilRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
 
 import java.util.Arrays;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Embers.MODID)
 public class HeatCoil extends VirtualizedRegistry<HeatCoilRecipe> {
     @RecipeBuilderDescription(example = {
             @Example(".input(item('minecraft:clay')).output(item('minecraft:gravel'))"),

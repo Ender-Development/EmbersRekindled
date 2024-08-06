@@ -11,6 +11,7 @@ import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import com.google.common.collect.Lists;
 import groovyjarjarantlr4.v4.runtime.misc.Nullable;
 import net.minecraft.item.crafting.Ingredient;
+import teamroots.embers.Embers;
 import teamroots.embers.api.alchemy.AspectList;
 import teamroots.embers.recipe.AlchemyRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
@@ -19,7 +20,7 @@ import teamroots.embers.util.AlchemyUtil;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Embers.MODID)
 public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
     @RecipeBuilderDescription(example = {
             @Example(".input(item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay'),item('minecraft:clay')).output(item('minecraft:gravel')).setAspect('dawnstone', 2, 17).setAspect('glass', 1, 8)"),

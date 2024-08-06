@@ -8,12 +8,13 @@ import com.cleanroommc.groovyscript.helper.SimpleObjectStream;
 import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import groovyjarjarantlr4.v4.runtime.misc.Nullable;
+import teamroots.embers.Embers;
 import teamroots.embers.recipe.FluidReactionRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
 
 import java.awt.*;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Embers.MODID)
 public class ReactionChamber extends VirtualizedRegistry<FluidReactionRecipe> {
     @RecipeBuilderDescription(example = @Example(".fluidInput(fluid('lava') * 10).fluidOutput(fluid('steam') * 50)"))
     public RecipeBuilder recipeBuilder() {

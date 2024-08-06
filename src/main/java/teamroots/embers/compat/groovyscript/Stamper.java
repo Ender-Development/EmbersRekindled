@@ -10,12 +10,13 @@ import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import groovyjarjarantlr4.v4.runtime.misc.Nullable;
 import net.minecraft.item.crafting.Ingredient;
+import teamroots.embers.Embers;
 import teamroots.embers.recipe.ItemStampingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
 
 import java.util.Arrays;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Embers.MODID)
 class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
      @RecipeBuilderDescription(example = {
             @Example(".stamp(item('minecraft:clay')).fluidInput(fluid('water') * 100).output(item('minecraft:brick'))"),
