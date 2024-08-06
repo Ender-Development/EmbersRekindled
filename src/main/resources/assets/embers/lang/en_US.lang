@@ -1257,6 +1257,7 @@ groovyscript.wiki.embers.melter.description=Converts an input item into an outpu
 groovyscript.wiki.embers.stamper.title=Stamper
 groovyscript.wiki.embers.stamper.description=Converts an input fluid into an output item with a provided stamp in a Stamper.
 groovyscript.wiki.embers.stamper.stamp.required=Stamp Required
+groovyscript.wiki.embers.stamper.stamp.value=Sets the stamp used for the recipe
 groovyscript.wiki.embers.mixer.title=Mixer
 groovyscript.wiki.embers.mixer.description=Converts up to 3 input fluidstacks into an output fluidstack in a Mixer.
 groovyscript.wiki.embers.powerratio.value=0
@@ -1264,9 +1265,16 @@ groovyscript.wiki.embers.heat_coil.title=Heat Coil
 groovyscript.wiki.embers.heat_coil.description=Convert an input item into an output item in a Heat Coil.
 groovyscript.wiki.embers.alchemy.title=Alchemy
 groovyscript.wiki.embers.alchemy.description=Convert input items into an output item on a Exchange Tablet.
-groovyscript.wiki.embers.alchemy.getaspect=Returns the name of the aspect of an item.
+groovyscript.wiki.embers.alchemy.aspects.value=Sets what aspects are part of the recipe and their minimum/maximum value
+groovyscript.wiki.embers.alchemy.getaspect=Returns the name of the aspect of an item
+groovyscript.wiki.embers.alchemy.addaspect=Register the given Aspect with the given IIngredient
+groovyscript.wiki.embers.alchemy.removeaspect=Remove the given Aspect
+groovyscript.wiki.embers.alchemy.removebycenter=Removes all recipes with the center item matching the given IIngredient
 groovyscript.wiki.embers.reaction_chamber.title=Reaction Chamber
 groovyscript.wiki.embers.reaction_chamber.description=Converts an input fluidstack into an output fluidstack in a Reaction Chamber.
+groovyscript.wiki.embers.reaction_chamber.red.value=Sets the red value of the color
+groovyscript.wiki.embers.reaction_chamber.blue.value=Sets the blue value of the color
+groovyscript.wiki.embers.reaction_chamber.green.value=Sets the green value of the color
 
 # WIP - Stuff
 tile.seed_mithril.name=Mithril Crystal Seed

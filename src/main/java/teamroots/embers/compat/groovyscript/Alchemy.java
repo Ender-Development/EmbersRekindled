@@ -52,7 +52,7 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         return false;
     }
 
-    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("item('minecraft:wool')"))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, description = "groovyscript.wiki.embers.alchemy.removebycenter", example = @Example("item('minecraft:wool')"))
     public boolean removeByCenter(IIngredient input) {
         return RecipeRegistry.alchemyRecipes.removeIf(r -> {
             if (Arrays.stream(r.getCenter().getMatchingStacks()).anyMatch(input)) {
@@ -74,14 +74,14 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
         });
     }
 
-    @MethodDescription(type = MethodDescription.Type.REMOVAL, example = @Example("'copper'"))
+    @MethodDescription(type = MethodDescription.Type.REMOVAL, description = "groovyscript.wiki.embers.alchemy.removeaspect", example = @Example("'copper'"))
     public boolean removeAspect(String aspect) {
         if (!AlchemyUtil.hasAspect(aspect)) return false;
         AlchemyUtil.removeAspect(aspect);
         return true;
     }
 
-    @MethodDescription(type = MethodDescription.Type.ADDITION, example = {@Example("'copper',item('minecraft:gold_ingot')"), @Example("'glass',item('minecraft:glass')")})
+    @MethodDescription(type = MethodDescription.Type.ADDITION, description = "groovyscript.wiki.embers.alchemy.addaspect", example = {@Example("'copper',item('minecraft:gold_ingot')"), @Example("'glass',item('minecraft:glass')")})
     public boolean addAspect(String aspect, IIngredient item) {
         if (getAspect(item) != null) return false;
         AlchemyUtil.registerAspect(aspect, item.toMcIngredient());
@@ -107,9 +107,10 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
     @Property(property = "input", valid = {@Comp(value = "1", type = Comp.Type.GTE), @Comp(value = "5", type = Comp.Type.LTE)})
     @Property(property = "output", valid = @Comp("1"))
     public static class RecipeBuilder extends AbstractRecipeBuilder<AlchemyRecipe> {
+        @Property(valid = @Comp(value = "empty", type = Comp.Type.NOT))
         private final AspectList.AspectRangeList aspects = new AspectList.AspectRangeList();
 
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "aspects")
         public RecipeBuilder setAspect(String aspect, int min, int max) {
             this.aspects.setRange(aspect, min, max);
             return this;
