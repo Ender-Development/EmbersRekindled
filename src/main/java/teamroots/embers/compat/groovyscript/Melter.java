@@ -8,12 +8,13 @@ import com.cleanroommc.groovyscript.helper.SimpleObjectStream;
 import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import org.jetbrains.annotations.Nullable;
+import teamroots.embers.Embers;
 import teamroots.embers.recipe.ItemMeltingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
 
 import java.util.Arrays;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Embers.MODID)
 public class Melter extends VirtualizedRegistry<ItemMeltingRecipe> {
 
     @RecipeBuilderDescription(example = {

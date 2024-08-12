@@ -9,12 +9,13 @@ import com.cleanroommc.groovyscript.helper.recipe.AbstractRecipeBuilder;
 import com.cleanroommc.groovyscript.registry.VirtualizedRegistry;
 import groovyjarjarantlr4.v4.runtime.misc.Nullable;
 import net.minecraftforge.fluids.FluidStack;
+import teamroots.embers.Embers;
 import teamroots.embers.recipe.FluidMixingRecipe;
 import teamroots.embers.recipe.RecipeRegistry;
 
 import java.util.Arrays;
 
-@RegistryDescription
+@RegistryDescription(linkGenerator = Embers.MODID)
 public class Mixer extends VirtualizedRegistry<FluidMixingRecipe> {
     @RecipeBuilderDescription(example = {
             @Example(".fluidInput(fluid('water') * 100, fluid('lava') * 100).fluidOutput(fluid('dawnstone') * 100)")
