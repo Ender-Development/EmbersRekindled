@@ -522,7 +522,7 @@ public class Misc {
         Vec3d vec3d = start.subtract(pos.getX(), pos.getY(), pos.getZ());
         Vec3d vec3d1 = end.subtract(pos.getX(), pos.getY(), pos.getZ());
         RayTraceResult raytraceresult = boundingBox.calculateIntercept(vec3d, vec3d1);
-        return raytraceresult == null ? null : new RayTraceResult(raytraceresult.hitVec.addVector(pos.getX(), pos.getY(), pos.getZ()), raytraceresult.sideHit, pos);
+        return raytraceresult == null ? null : new RayTraceResult(raytraceresult.hitVec.add(pos.getX(), pos.getY(), pos.getZ()), raytraceresult.sideHit, pos);
     }
 
     public static Quaternion slerp(Quaternion a, Quaternion b, float slide) {
@@ -591,7 +591,7 @@ public class Misc {
     }
 
     public static EnumFacing readNullableFacing(int index) {
-        return index > 0 ? EnumFacing.getFront(index) : null;
+        return index > 0 ? EnumFacing.byIndex(index) : null;
     }
 
     public static int writeNullableFacing(EnumFacing facing) {

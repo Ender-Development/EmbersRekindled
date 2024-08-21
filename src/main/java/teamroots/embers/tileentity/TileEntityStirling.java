@@ -123,8 +123,8 @@ public class TileEntityStirling extends TileEntity implements ITickable, ITileEn
             float yoffset = 0.2f;
             float wideoffset = 0.5f;
             float breadthoffset = 0.4f;
-            Vec3d frontOffset = new Vec3d(0.5 - facing.getFrontOffsetX() * frontoffset, 0.5 - facing.getFrontOffsetY() * frontoffset, 0.5 - facing.getFrontOffsetZ() * frontoffset);
-            Vec3d baseOffset = new Vec3d(0.5 - facing.getFrontOffsetX() * yoffset, 0.5 - facing.getFrontOffsetY() * yoffset, 0.5 - facing.getFrontOffsetZ() * yoffset);
+            Vec3d frontOffset = new Vec3d(0.5 - facing.getXOffset() * frontoffset, 0.5 - facing.getYOffset() * frontoffset, 0.5 - facing.getZOffset() * frontoffset);
+            Vec3d baseOffset = new Vec3d(0.5 - facing.getXOffset() * yoffset, 0.5 - facing.getYOffset() * yoffset, 0.5 - facing.getZOffset() * yoffset);
             EnumFacing[] planars;
             switch(facing.getAxis()) {
                 case X:
@@ -141,16 +141,16 @@ public class TileEntityStirling extends TileEntity implements ITickable, ITileEn
                 if(sideState.getBlockFaceShape(world,pos.offset(planar),planar.getOpposite()) != BlockFaceShape.UNDEFINED)
                     continue;
                 EnumFacing cross = facing.rotateAround(planar.getAxis());
-                float x1 = getPos().getX() + (float) baseOffset.x + planar.getFrontOffsetX() * wideoffset;
-                float y1 = getPos().getY() + (float) baseOffset.y + planar.getFrontOffsetY() * wideoffset;
-                float z1 = getPos().getZ() + (float) baseOffset.z + planar.getFrontOffsetZ() * wideoffset;
-                float x2 = getPos().getX() + (float) frontOffset.x + planar.getFrontOffsetX() * wideoffset + cross.getFrontOffsetX() * (random.nextFloat()-0.5f) * 2 * breadthoffset;
-                float y2 = getPos().getY() + (float) frontOffset.y + planar.getFrontOffsetY() * wideoffset + cross.getFrontOffsetY() * (random.nextFloat()-0.5f) * 2 * breadthoffset;
-                float z2 = getPos().getZ() + (float) frontOffset.z + planar.getFrontOffsetZ() * wideoffset + cross.getFrontOffsetZ() * (random.nextFloat()-0.5f) * 2 * breadthoffset;
+                float x1 = getPos().getX() + (float) baseOffset.x + planar.getXOffset() * wideoffset;
+                float y1 = getPos().getY() + (float) baseOffset.y + planar.getYOffset() * wideoffset;
+                float z1 = getPos().getZ() + (float) baseOffset.z + planar.getZOffset() * wideoffset;
+                float x2 = getPos().getX() + (float) frontOffset.x + planar.getXOffset() * wideoffset + cross.getXOffset() * (random.nextFloat()-0.5f) * 2 * breadthoffset;
+                float y2 = getPos().getY() + (float) frontOffset.y + planar.getYOffset() * wideoffset + cross.getYOffset() * (random.nextFloat()-0.5f) * 2 * breadthoffset;
+                float z2 = getPos().getZ() + (float) frontOffset.z + planar.getZOffset() * wideoffset + cross.getZOffset() * (random.nextFloat()-0.5f) * 2 * breadthoffset;
                 int lifetime = 24 + random.nextInt(8);
-                //float motionx = facing.getFrontOffsetX() * (1.0f/lifetime) - 0.01f + random.nextFloat() * 0.02f;
-                //float motiony = facing.getFrontOffsetY() * (1.0f/lifetime) - 0.01f + random.nextFloat() * 0.02f;
-                //float motionz = facing.getFrontOffsetZ() * (1.0f/lifetime) - 0.01f + random.nextFloat() * 0.02f;
+                //float motionx = facing.getXOffset()() * (1.0f/lifetime) - 0.01f + random.nextFloat() * 0.02f;
+                //float motiony = facing.getYOffset()() * (1.0f/lifetime) - 0.01f + random.nextFloat() * 0.02f;
+                //float motionz = facing.getZOffset()() * (1.0f/lifetime) - 0.01f + random.nextFloat() * 0.02f;
                 float motionx = (x2 - x1) / lifetime;
                 float motiony = (y2 - y1) / lifetime;
                 float motionz = (z2 - z1) / lifetime;
@@ -160,9 +160,9 @@ public class TileEntityStirling extends TileEntity implements ITickable, ITileEn
             float y = getPos().getY() + (float) frontOffset.y;
             float z = getPos().getZ() + (float) frontOffset.z;
             int lifetime = 16 + random.nextInt(16);
-            float motionx = (Math.abs(facing.getFrontOffsetX()) - 1) * (random.nextFloat()-0.5f) * 2 * wideoffset / lifetime;
-            float motiony = (Math.abs(facing.getFrontOffsetY()) - 1) * (random.nextFloat()-0.5f) * 2 * wideoffset / lifetime;
-            float motionz = (Math.abs(facing.getFrontOffsetZ()) - 1) * (random.nextFloat()-0.5f) * 2 * wideoffset / lifetime;
+            float motionx = (Math.abs(facing.getXOffset()) - 1) * (random.nextFloat()-0.5f) * 2 * wideoffset / lifetime;
+            float motiony = (Math.abs(facing.getYOffset()) - 1) * (random.nextFloat()-0.5f) * 2 * wideoffset / lifetime;
+            float motionz = (Math.abs(facing.getZOffset()) - 1) * (random.nextFloat()-0.5f) * 2 * wideoffset / lifetime;
 
             ParticleUtil.spawnParticleVapor(getWorld(), x, y, z, motionx, motiony, motionz, 255, 64, 16, 1.0f, 3.0f, 4.0f, lifetime*2);
         }

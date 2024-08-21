@@ -205,7 +205,7 @@ public class EntityEmberProjectile extends Entity/* implements ILightProvider*/ 
                 double targetY = homingTarget.posY+homingTarget.height/2;
                 double targetZ = homingTarget.posZ;
                 Vec3d targetVector = new Vec3d(targetX-posX,targetY-posY,targetZ-posZ);
-                double length = targetVector.lengthVector();
+                double length = targetVector.length();
                 targetVector = targetVector.scale(0.3/length);
                 double weight  = 0;
                 if (length <= homingRange){

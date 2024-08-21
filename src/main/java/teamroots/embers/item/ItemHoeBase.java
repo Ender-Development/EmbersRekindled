@@ -9,7 +9,7 @@ public class ItemHoeBase extends ItemHoe implements IModeledItem {
 
 	public ItemHoeBase(ToolMaterial material, String name, boolean addToTab) {
 		super(material);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

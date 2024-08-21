@@ -102,7 +102,7 @@ public class EntityEmberPacket extends Entity/* implements ILightProvider*/ {
 				double targetY = dest.getY()+0.5;
 				double targetZ = dest.getZ()+0.5;
 				Vec3d targetVector = new Vec3d(targetX-posX,targetY-posY,targetZ-posZ);
-				double length = targetVector.lengthVector();
+				double length = targetVector.length();
 				targetVector = targetVector.scale(0.3/length);
 				double weight  = 0;
 				if (length <= 3){

@@ -20,7 +20,7 @@ public class BlockStructureMarker extends BlockBase {
 	@SideOnly(Side.CLIENT)
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list){
-		if (tab == this.getCreativeTabToDisplayOn()){
+		if (tab == this.getCreativeTab()){
 			list.clear();
 		}
 	}

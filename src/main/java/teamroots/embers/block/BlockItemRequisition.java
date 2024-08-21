@@ -46,7 +46,7 @@ public class BlockItemRequisition extends BlockTEBase implements IDial {
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta){
-		return getDefaultState().withProperty(facing,EnumFacing.getFront(meta));
+		return getDefaultState().withProperty(facing,EnumFacing.byIndex(meta));
 	}
 	
 	@Override

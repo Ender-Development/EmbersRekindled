@@ -12,7 +12,7 @@ public class BlockCaminiteLever extends BlockLever implements IBlock, IModeledBl
 
 	public BlockCaminiteLever(String name, boolean addToTab) {
 		super();
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

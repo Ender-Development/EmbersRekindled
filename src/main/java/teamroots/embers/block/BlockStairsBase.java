@@ -16,7 +16,7 @@ public class BlockStairsBase extends BlockStairs implements IModeledBlock, IBloc
 	public BlockStairsBase(IBlockState state, String name, boolean addToTab){
 		super(state);
 		this.useNeighborBrightness = true;
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

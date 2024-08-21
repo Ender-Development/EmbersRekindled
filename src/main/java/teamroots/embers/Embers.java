@@ -37,7 +37,7 @@ public class Embers {
     	}
 		@Override
 		@SideOnly(Side.CLIENT)
-		public ItemStack getTabIconItem(){
+		public ItemStack createIcon(){
 			return new ItemStack(ItemRegister.CRYSTAL_EMBER,1);
 		}
 	};
@@ -49,7 +49,7 @@ public class Embers {
     	}
 		@Override
 		@SideOnly(Side.CLIENT)
-		public ItemStack getTabIconItem(){
+		public ItemStack createIcon(){
 			return new ItemStack(ItemRegister.INGOT_DAWNSTONE,1);
 		}
 	};

@@ -66,7 +66,7 @@ public class BlockAdvancedEdge extends BlockBase {
 	}
 
 	@Override
-	public void onBlockDestroyedByExplosion(World world, BlockPos pos, Explosion explosion) {
+	public void onExplosionDestroy(World world, BlockPos pos, Explosion explosion) {
 		yeetBlocks(world,pos,null,true);
 	}
 

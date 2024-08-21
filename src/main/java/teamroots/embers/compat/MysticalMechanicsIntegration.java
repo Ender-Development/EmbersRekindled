@@ -150,13 +150,13 @@ public class MysticalMechanicsIntegration {
                             float zOff = 0.1f + random.nextFloat() * 0.8f;
                             switch (facing.getAxis()) {
                                 case X:
-                                    xOff = 0.5f + facing.getFrontOffsetX() / 2.0f;
+                                    xOff = 0.5f + facing.getXOffset() / 2.0f;
                                     break;
                                 case Y:
-                                    yOff = 0.5f + facing.getFrontOffsetY() / 2.0f;
+                                    yOff = 0.5f + facing.getYOffset() / 2.0f;
                                     break;
                                 case Z:
-                                    zOff = 0.5f + facing.getFrontOffsetZ() / 2.0f;
+                                    zOff = 0.5f + facing.getZOffset() / 2.0f;
                                     break;
                             }
                             ParticleUtil.spawnParticleGlow(tile.getWorld(), tile.getPos().getX() + xOff, tile.getPos().getY() + yOff, tile.getPos().getZ() + zOff, 0, 0, 0, 255, 64, 16, 2.0f, 24);

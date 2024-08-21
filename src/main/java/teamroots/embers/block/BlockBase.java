@@ -18,7 +18,7 @@ public class BlockBase extends Block implements IModeledBlock, IBlock {
 	public BlockRenderLayer layer = BlockRenderLayer.SOLID;
 	public BlockBase(Material material, String name, boolean addToTab){
 		super(material);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

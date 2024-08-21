@@ -43,7 +43,7 @@ public class FluidMixingRecipe {
 				}
 			}
 		}
-		return checkInputs.size() == 0;
+		return checkInputs.isEmpty();
 	}
 
 	public ArrayList<FluidStack> getInput() {

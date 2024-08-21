@@ -28,7 +28,7 @@ public class ItemGrandhammer extends ItemTool implements IModeledItem, IEmberCha
 	
 	public ItemGrandhammer(String name, boolean addToTab) {
 		super(materialGrandhammer,Sets.newHashSet(new Block[]{Blocks.STONE}));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

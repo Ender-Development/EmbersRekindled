@@ -64,7 +64,7 @@ public class ModifierBlastingCore extends ModifierBase {
 	public Iterable<BlockPos> getBlastAdjacent(World world, BlockPos pos, EntityPlayer player, double chance) {
 		ArrayList<BlockPos> posList = new ArrayList<>();
 		for (int i = 0; i < 6; i ++){
-			EnumFacing face = EnumFacing.getFront(i);
+			EnumFacing face = EnumFacing.byIndex(i);
 			if (Misc.random.nextDouble() < chance){
 				posList.add(pos.offset(face));
 			}

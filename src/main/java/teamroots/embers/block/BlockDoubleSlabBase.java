@@ -35,7 +35,7 @@ public class BlockDoubleSlabBase extends BlockSlab implements IModeledBlock, IBl
 	
 	public BlockDoubleSlabBase(Material material, String name, boolean addToTab){
 		super(material);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);
@@ -89,7 +89,7 @@ public class BlockDoubleSlabBase extends BlockSlab implements IModeledBlock, IBl
 	protected static boolean isHalfSlab(IBlockState state){
 		return true;
 	}
-	
+
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void initModel(){
@@ -135,7 +135,7 @@ public class BlockDoubleSlabBase extends BlockSlab implements IModeledBlock, IBl
 	}
 
 	@Override
-	public String getUnlocalizedName(int meta)
+	public String getTranslationKey(int meta)
 	{
 		return null;
 	}

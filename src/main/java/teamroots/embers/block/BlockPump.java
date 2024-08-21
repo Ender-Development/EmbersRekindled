@@ -46,7 +46,7 @@ public class BlockPump extends BlockTEBase {
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta){
-		return getDefaultState().withProperty(facing, EnumFacing.getFront(meta % 6)).withProperty(isTop,meta >= 6 ? true : false);
+		return getDefaultState().withProperty(facing, EnumFacing.byIndex(meta % 6)).withProperty(isTop,meta >= 6 ? true : false);
 	}
 	
 	@Override

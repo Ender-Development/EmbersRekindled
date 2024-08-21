@@ -56,8 +56,8 @@ jar {
 minecraft {
     mcVersion = project.mc_version
     // MCP Mappings
-    mcpMappingChannel = 'snapshot'
-    mcpMappingVersion = '20171003'
+    mcpMappingChannel = 'stable'
+    mcpMappingVersion = '39'
 
     // Set username here, the UUID will be looked up automatically
     username = '_MasterEnderman_'
@@ -141,7 +141,7 @@ dependencies {
     annotationProcessor 'com.google.code.gson:gson:2.8.9'
 
     // RetroFuturaGradle:
-    String mixinBooter = modUtils.enableMixins('zone.rong:mixinbooter:9.1')
+    String mixinBooter = modUtils.enableMixins('zone.rong:mixinbooter:9.3')
     // modUtils.enableMixins('zone.rong:mixinbooter:9.1', 'mod_id.mixins.refmap.json') << add refmap name as 2nd arg (optional)
     api(mixinBooter) {
         transitive = false

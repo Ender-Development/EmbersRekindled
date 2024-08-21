@@ -160,6 +160,7 @@ public class TileEntityMixerBottom extends TileEntity implements ITileEntityBase
         if (capability == CapabilityFluidHandler.FLUID_HANDLER_CAPABILITY) {
             switch (facing) {
                 case DOWN:
+                case UP:
                     break;
                 case EAST:
                     return (T) east;
@@ -167,8 +168,6 @@ public class TileEntityMixerBottom extends TileEntity implements ITileEntityBase
                     return (T) north;
                 case SOUTH:
                     return (T) south;
-                case UP:
-                    break;
                 case WEST:
                     return (T) west;
             }

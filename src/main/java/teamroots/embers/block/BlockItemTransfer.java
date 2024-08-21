@@ -33,7 +33,7 @@ public class BlockItemTransfer extends BlockTEBase {
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta){
-		return getDefaultState().withProperty(facing,EnumFacing.getFront(meta >> 1)).withProperty(filter,meta % 2 == 1);
+		return getDefaultState().withProperty(facing,EnumFacing.byIndex(meta >> 1)).withProperty(filter,meta % 2 == 1);
 	}
 	
 	@Override

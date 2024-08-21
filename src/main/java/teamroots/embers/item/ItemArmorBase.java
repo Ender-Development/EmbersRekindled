@@ -12,19 +12,19 @@ public class ItemArmorBase extends ItemArmor implements IModeledItem {
 		super(material, reduction, slot);
 		switch(slot){
 		case CHEST: {
-			setUnlocalizedName(name+"_chest");
+			setTranslationKey(name+"_chest");
 			break;
 		}
 		case FEET:{
-			setUnlocalizedName(name+"_boots");
+			setTranslationKey(name+"_boots");
 			break;
 		}
 		case HEAD:{
-			setUnlocalizedName(name+"_head");
+			setTranslationKey(name+"_head");
 			break;
 		}
 		case LEGS:{
-			setUnlocalizedName(name+"_legs");
+			setTranslationKey(name+"_legs");
 			break;
 		}
 		default:
@@ -32,7 +32,7 @@ public class ItemArmorBase extends ItemArmor implements IModeledItem {
 		}
 		this.setMaxStackSize(1);
 		
-		setRegistryName(Embers.MODID+":"+getUnlocalizedName().substring(5));
+		setRegistryName(Embers.MODID+":"+getTranslationKey().substring(5));
 		if (addToTab){
 			setCreativeTab(Embers.tab);
 		}

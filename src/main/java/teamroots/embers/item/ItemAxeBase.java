@@ -15,7 +15,7 @@ public class ItemAxeBase extends ItemTool implements IModeledItem {
 
 	public ItemAxeBase(ToolMaterial material, String name, boolean addToTab) {
 		super(material,Sets.newHashSet(new Block[]{Blocks.PLANKS}));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

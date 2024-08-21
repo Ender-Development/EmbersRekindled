@@ -98,7 +98,7 @@ public class TileEntityMechActuator extends TileEntity implements ITickable, ITi
     public TileEntityMechActuator() {
         upgrade = new UpgradeActuator(this);
         for(int i = 0; i < gears.length; i++)
-            gears[i] = new GearHelperTile(this, EnumFacing.getFront(i));
+            gears[i] = new GearHelperTile(this, EnumFacing.byIndex(i));
         capability.setAdditive(true); //Possible balance mistake but we shall see
     }
 

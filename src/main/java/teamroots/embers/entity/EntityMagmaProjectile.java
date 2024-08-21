@@ -293,7 +293,7 @@ public class EntityMagmaProjectile extends Entity {
             double targetY = homingPosition.y;
             double targetZ = homingPosition.z;
             Vec3d targetVector = new Vec3d(targetX - posX, targetY - posY, targetZ - posZ);
-            double length = targetVector.lengthVector();
+            double length = targetVector.length();
             targetVector = targetVector.scale(homingVelocity / length);
             motionX = (1 - homingRatio) * motionX + (homingRatio) * targetVector.x;
             motionY = (1 - homingRatio) * motionY + (homingRatio) * targetVector.y;

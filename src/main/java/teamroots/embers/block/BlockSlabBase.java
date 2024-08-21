@@ -21,7 +21,7 @@ public class BlockSlabBase extends BlockSlab {
 	
 	public BlockSlabBase(Block block, String name, boolean addToTab){
 		super(block.getDefaultState().getMaterial());
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		this.doubleSlab = block;
 		if (addToTab){
@@ -94,7 +94,7 @@ public class BlockSlabBase extends BlockSlab {
 	}
 
 	@Override
-	public String getUnlocalizedName(int meta)
+	public String getTranslationKey(int meta)
 	{
 		return null;
 	}

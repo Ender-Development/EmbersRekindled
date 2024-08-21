@@ -9,7 +9,7 @@ public class ItemShovelBase extends ItemSpade implements IModeledItem {
 
 	public ItemShovelBase(ToolMaterial material, String name, boolean addToTab) {
 		super(material);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

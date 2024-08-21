@@ -9,7 +9,7 @@ public class ItemSwordBase extends ItemSword implements IModeledItem {
 
 	public ItemSwordBase(ToolMaterial material, String name, boolean addToTab) {
 		super(material);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

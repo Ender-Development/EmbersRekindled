@@ -1218,12 +1218,14 @@ public class RecipeRegistry {
             public boolean match(ItemStack stack1, ItemStack stack2) {
                 ResourceLocation resLoc1 = stack1.getItem().getRegistryName();
                 ResourceLocation resLoc2 = stack2.getItem().getRegistryName();
-                return resLoc1.getResourceDomain().equals(resLoc2.getResourceDomain());
+                String s1 = resLoc1 != null ? resLoc1.getNamespace() : "";
+                String s2 = resLoc2 != null ? resLoc2.getNamespace() : "";
+                return s1.equals(s2);
             }
 
             @Override
             public String format(ItemStack stack1, ItemStack stack2, EnumFilterSetting setting, boolean inverted) {
-                return I18n.format("embers.filter.mod", stack1.getItem().getRegistryName().getResourceDomain());
+                return I18n.format("embers.filter.mod", stack1.getItem().getRegistryName().getNamespace());
             }
         });
         FilterUtil.registerComparator(new ComparatorNormal("durability", 30) {

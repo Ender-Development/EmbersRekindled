@@ -28,7 +28,7 @@ public class ItemClockworkPickaxe extends ItemTool implements IModeledItem, IEmb
 	
 	public ItemClockworkPickaxe(String name, boolean addToTab) {
 		super(materialClockworkPickaxe,Sets.newHashSet(new Block[]{Blocks.STONE}));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

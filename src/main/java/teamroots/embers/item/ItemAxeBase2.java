@@ -9,7 +9,7 @@ public class ItemAxeBase2 extends ItemAxe implements IModeledItem {
 
 	public ItemAxeBase2(ToolMaterial material, String name, boolean addToTab, float damage, float speed) {
 		super(material, damage-1.0f, speed-4.0f);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

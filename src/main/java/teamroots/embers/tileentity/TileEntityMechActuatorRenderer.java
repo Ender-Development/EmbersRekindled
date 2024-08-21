@@ -29,7 +29,7 @@ public class TileEntityMechActuatorRenderer extends TileEntitySpecialRenderer<Ti
                 ItemStack gearHologram = player.getHeldItemMainhand();
 
                 for (int i = 0; i < 6; i ++){
-                    EnumFacing face = EnumFacing.getFront(i);
+                    EnumFacing face = EnumFacing.byIndex(i);
                     GearHelperTile gear = tile.gears[i];
 
                     boolean sideHit = MysticalMechanicsAPI.IMPL.isGearHit(tile, face);

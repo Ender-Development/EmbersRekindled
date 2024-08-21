@@ -35,7 +35,7 @@ public class BlockMechActuator extends BlockTEBase implements ITileEntityProvide
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta){
-		return getDefaultState().withProperty(facing,EnumFacing.getFront(meta));
+		return getDefaultState().withProperty(facing,EnumFacing.byIndex(meta));
 	}
 
 	@Override

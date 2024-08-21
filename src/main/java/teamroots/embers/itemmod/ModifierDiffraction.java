@@ -25,38 +25,37 @@ public class ModifierDiffraction extends ModifierProjectileBase {
         ListIterator<IProjectilePreset> projectiles = event.getProjectiles().listIterator();
 
         ItemStack weapon = event.getStack();
-        if(!weapon.isEmpty() && ItemModUtil.hasHeat(weapon)) {
+        if (!weapon.isEmpty() && ItemModUtil.hasHeat(weapon)) {
             int level = ItemModUtil.getModifierLevel(weapon, EmbersAPI.DIFFRACTION);
             Entity shooter = event.getShooter();
             Random random = shooter.world.rand;
-            if(level > 0)
-            while (projectiles.hasNext()) {
-                IProjectilePreset projectile = projectiles.next();
-                Vec3d velocity = projectile.getVelocity();
-                double speed = velocity.lengthVector();
-                int bullets = 3 + level;
-                IProjectileEffect effect = projectile.getEffect();
-                if (projectile instanceof ProjectileRay) {
-                    double newspeed = 1.0;
-                    adjustEffect(effect, 1.0 / 3.0);
-                    projectiles.remove();
-                    for (int i = 0; i < bullets; i++) {
-                        double spread = 0.1 * level;
-                        Vec3d newVelocity = velocity.addVector((random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread).scale(newspeed / speed);
-                        projectiles.add(new ProjectileFireball(projectile.getShooter(), projectile.getPos(), newVelocity, 2.4, 80, effect));
+            if (level > 0)
+                while (projectiles.hasNext()) {
+                    IProjectilePreset projectile = projectiles.next();
+                    Vec3d velocity = projectile.getVelocity();
+                    double speed = velocity.length();
+                    int bullets = 3 + level;
+                    IProjectileEffect effect = projectile.getEffect();
+                    if (projectile instanceof ProjectileRay) {
+                        double newspeed = 1.0;
+                        adjustEffect(effect, 1.0 / 3.0);
+                        projectiles.remove();
+                        for (int i = 0; i < bullets; i++) {
+                            double spread = 0.1 * level;
+                            Vec3d newVelocity = velocity.add((random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread).scale(newspeed / speed);
+                            projectiles.add(new ProjectileFireball(projectile.getShooter(), projectile.getPos(), newVelocity, 2.4, 80, effect));
+                        }
+                    } else if (projectile instanceof ProjectileFireball) {
+                        ProjectileFireball fireball = (ProjectileFireball) projectile;
+                        adjustEffect(effect, 1.0 / 3.0);
+                        projectiles.remove();
+                        for (int i = 0; i < bullets; i++) {
+                            double spread = 0.1 * level;
+                            Vec3d newVelocity = velocity.add((random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread);
+                            projectiles.add(new ProjectileFireball(projectile.getShooter(), projectile.getPos(), newVelocity, fireball.getSize() / 3, fireball.getLifetime() / 2, effect));
+                        }
                     }
                 }
-                else if(projectile instanceof ProjectileFireball) {
-                    ProjectileFireball fireball = (ProjectileFireball) projectile;
-                    adjustEffect(effect, 1.0 / 3.0);
-                    projectiles.remove();
-                    for (int i = 0; i < bullets; i++) {
-                        double spread = 0.1 * level;
-                        Vec3d newVelocity = velocity.addVector((random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread, (random.nextDouble() - 0.5) * speed * 2 * spread);
-                        projectiles.add(new ProjectileFireball(projectile.getShooter(), projectile.getPos(), newVelocity, fireball.getSize() / 3, fireball.getLifetime() / 2, effect));
-                    }
-                }
-            }
         }
     }
 
@@ -66,7 +65,7 @@ public class ModifierDiffraction extends ModifierProjectileBase {
             adjustEffect(areaEffect.getEffect(), multiplier);
         } else if (effect instanceof EffectMulti) {
             for (IProjectileEffect subEffect : ((EffectMulti) effect).getEffects()) {
-                adjustEffect(subEffect,multiplier);
+                adjustEffect(subEffect, multiplier);
             }
         } else if (effect instanceof EffectDamage) {
             EffectDamage damageEffect = (EffectDamage) effect;

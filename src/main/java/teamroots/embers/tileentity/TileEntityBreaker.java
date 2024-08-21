@@ -195,7 +195,7 @@ public class TileEntityBreaker extends TileEntity implements ITileEntityBase, IT
 		IBlockState state = this.world.getBlockState(pos);
 		boolean flag = state.getBlock().removedByPlayer(state, world, pos, player, canHarvest);
 		if (flag) {
-			state.getBlock().onBlockDestroyedByPlayer(this.world, pos, state);
+			state.getBlock().onPlayerDestroy(this.world, pos, state);
 		}
 		return flag;
 	}

@@ -9,7 +9,7 @@ import teamroots.embers.Embers;
 public class ItemBase extends Item implements IModeledItem {
 	public ItemBase(String name, boolean addToTab){
 		super();
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(new ResourceLocation(Embers.MODID,name));
 		if (addToTab){
 			setCreativeTab(Embers.tab);

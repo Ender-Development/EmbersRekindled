@@ -187,7 +187,7 @@ public class TileEntitySteamEngine extends TileEntity implements ITileEntityBase
         tank.readFromNBT(tag.getCompoundTag("tank"));
         currentFuel.readFromNBT(tag.getCompoundTag("progress"));
         inventory.deserializeNBT(tag.getCompoundTag("inventory"));
-        front = EnumFacing.getFront(tag.getInteger("front"));
+        front = EnumFacing.byIndex(tag.getInteger("front"));
     }
 
     @Override

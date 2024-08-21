@@ -60,7 +60,7 @@ public class BlockDawnstoneAnvil extends BlockTEBase {
 	
 	@Override
 	public IBlockState getStateFromMeta(int meta){
-		return getDefaultState().withProperty(facing, EnumFacing.getHorizontal(meta));
+		return getDefaultState().withProperty(facing, EnumFacing.byHorizontalIndex(meta));
 	}
 
 	@Override

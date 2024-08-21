@@ -28,7 +28,7 @@ public class ItemClockworkAxe extends ItemTool implements IModeledItem, IEmberCh
 	
 	public ItemClockworkAxe(String name, boolean addToTab) {
 		super(materialClockworkAxe,Sets.newHashSet(new Block[]{Blocks.PLANKS}));
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);

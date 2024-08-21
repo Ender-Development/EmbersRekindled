@@ -135,7 +135,7 @@ public class TileEntityCatalyticPlug extends TileEntity implements ITickable, IT
             EnumFacing facing = state.getValue(BlockCatalyticPlug.FACING);
             float yoffset = 0.4f;
             float wideoffset = 0.5f;
-            Vec3d baseOffset = new Vec3d(0.5 - facing.getFrontOffsetX() * yoffset, 0.5 - facing.getFrontOffsetY() * yoffset, 0.5 - facing.getFrontOffsetZ() * yoffset);
+            Vec3d baseOffset = new Vec3d(0.5 - facing.getXOffset() * yoffset, 0.5 - facing.getYOffset() * yoffset, 0.5 - facing.getZOffset() * yoffset);
             EnumFacing[] planars;
             switch(facing.getAxis()) {
                 case X:
@@ -151,12 +151,12 @@ public class TileEntityCatalyticPlug extends TileEntity implements ITickable, IT
                 IBlockState sideState = world.getBlockState(pos.offset(planar));
                 if(sideState.getBlockFaceShape(world,pos.offset(planar),planar.getOpposite()) != BlockFaceShape.UNDEFINED)
                     continue;
-                float x = getPos().getX() + (float) baseOffset.x + planar.getFrontOffsetX() * wideoffset;
-                float y = getPos().getY() + (float) baseOffset.y + planar.getFrontOffsetY() * wideoffset;
-                float z = getPos().getZ() + (float) baseOffset.z + planar.getFrontOffsetZ() * wideoffset;
-                float motionx = planar.getFrontOffsetX() * 0.03f - facing.getFrontOffsetX() * 0.015f - 0.01f + random.nextFloat() * 0.02f;
-                float motiony = planar.getFrontOffsetY() * 0.03f - facing.getFrontOffsetY() * 0.015f - 0.01f + random.nextFloat() * 0.02f;
-                float motionz = planar.getFrontOffsetZ() * 0.03f - facing.getFrontOffsetZ() * 0.015f - 0.01f + random.nextFloat() * 0.02f;
+                float x = getPos().getX() + (float) baseOffset.x + planar.getXOffset() * wideoffset;
+                float y = getPos().getY() + (float) baseOffset.y + planar.getYOffset() * wideoffset;
+                float z = getPos().getZ() + (float) baseOffset.z + planar.getZOffset() * wideoffset;
+                float motionx = planar.getXOffset() * 0.03f - facing.getXOffset() * 0.015f - 0.01f + random.nextFloat() * 0.02f;
+                float motiony = planar.getYOffset() * 0.03f - facing.getYOffset() * 0.015f - 0.01f + random.nextFloat() * 0.02f;
+                float motionz = planar.getZOffset() * 0.03f - facing.getZOffset() * 0.015f - 0.01f + random.nextFloat() * 0.02f;
                 ParticleUtil.spawnParticleVapor(getWorld(), x, y, z, motionx, motiony, motionz, 255, 16, 16, 1.0f, 1.0f, 2.0f, 24);
             }
         }

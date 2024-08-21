@@ -64,7 +64,7 @@ public class TileEntityPumpBottom extends TileEntity implements ITileEntityBase,
 	public void readFromNBT(NBTTagCompound tag){
 		super.readFromNBT(tag);
 		capability.readFromNBT(tag);
-		front = EnumFacing.getFront(tag.getInteger("front"));
+		front = EnumFacing.byIndex(tag.getInteger("front"));
 	}
 
 	@Override

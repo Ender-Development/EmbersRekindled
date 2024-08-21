@@ -21,7 +21,7 @@ public class BlockWallBase extends BlockWall implements IModeledBlock, IBlock {
 	public Item itemBlock = null;
 	public BlockWallBase(Block block, String name, boolean addToTab){
 		super(block);
-		setUnlocalizedName(name);
+		setTranslationKey(name);
 		setRegistryName(Embers.MODID+":"+name);
 		if (addToTab){
 			setCreativeTab(Embers.tab);
@@ -36,7 +36,7 @@ public class BlockWallBase extends BlockWall implements IModeledBlock, IBlock {
 	
 	@Override
 	public void getSubBlocks(CreativeTabs tab, NonNullList<ItemStack> list){
-		if (tab == this.getCreativeTabToDisplayOn()){
+		if (tab == this.getCreativeTab()){
 			list.add(new ItemStack(this,1));
 		}
 	}
