@@ -7,7 +7,7 @@ dependencies {
     implementation "CraftTweaker2:CraftTweaker2-MC1120-Main:1.12-" + project.version_crafttweaker
 
     implementation rfg.deobf("curse.maven:had-enough-items-557549:5471944")
-    implementation("com.cleanroommc:groovyscript:1.1.2") { transitive = false } // so it doesn't installs JEI
+    implementation("com.cleanroommc:groovyscript:1.1.3") { transitive = false } // so it doesn't installs JEI
 
     // Debug dependencies
     compileOnly rfg.deobf("curse.maven:mantle-74924:2713386")
@@ -82,10 +82,10 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:jaopca-266936:" + project.version_jaopca)
     }
 
-    compileOnly rfg.deobf("curse.maven:aetherworks-extended-life-1003576:5263747")
+    compileOnly rfg.deobf("curse.maven:aetherworks-extended-life-1003576:5628247")
     if (project.debug_aetherworks.toBoolean()
             || project.debug_aetheriumashenarmor.toBoolean()) {
-        runtimeOnly rfg.deobf("curse.maven:aetherworks-extended-life-1003576:5263747")
+        runtimeOnly rfg.deobf("curse.maven:aetherworks-extended-life-1003576:5628247")
     }
 
     compileOnly rfg.deobf("curse.maven:aetherium-ashen-armor-359467:3022388")
@@ -169,12 +169,12 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:spartan-weaponry-arcana-unofficial-620760:3836926")
     }
 
-    compileOnly rfg.deobf("curse.maven:emberforged-887375:4677874")
+    compileOnly rfg.deobf("curse.maven:emberforged-887375:5582901")
     compileOnly rfg.deobf("curse.maven:minefantasy-reforged-431996:4666619")
     compileOnly rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
     if (project.debug_emberforged.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:codechicken-lib-1-8-242818:2779848")
-        runtimeOnly rfg.deobf("curse.maven:emberforged-887375:4677874")
+        runtimeOnly rfg.deobf("curse.maven:emberforged-887375:5582901")
         runtimeOnly rfg.deobf("curse.maven:minefantasy-reforged-431996:4666619")
     }
 
@@ -193,10 +193,10 @@ dependencies {
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
     runtimeOnly rfg.deobf("curse.maven:startup-timer-782070:5001902")
 
-    runtimeOnly "com.cleanroommc:configanytime:2.0"
-    runtimeOnly rfg.deobf("curse.maven:red-core-873867:4883852")
-    runtimeOnly rfg.deobf("curse.maven:alfheim-lighting-engine-910715:4949716")
-    runtimeOnly rfg.deobf("curse.maven:valkyrie-874067:4591076")
+    runtimeOnly "com.cleanroommc:configanytime:3.0"
+    runtimeOnly rfg.deobf("curse.maven:red-core-873867:5618189")
+    runtimeOnly rfg.deobf("curse.maven:alfheim-lighting-engine-910715:5637644")
+    runtimeOnly rfg.deobf("curse.maven:valkyrie-874067:5235356")
     // runtimeOnly rfg.deobf("curse.maven:carbon-config-898104:4952983") // will be used later
     // runtimeOnly rfg.deobf("curse.maven:lolasm-460609:4800875") // causes a mapping error, thus making baubles unusable
 }
