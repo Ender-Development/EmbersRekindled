@@ -89,7 +89,7 @@ class Stamper extends VirtualizedRegistry<ItemStampingRecipe>{
         @Property(defaultValue = "IIngredient.EMPTY", requirement = "groovyscript.wiki.embers.stamper.stamp.required")
         private IIngredient stamp = IIngredient.EMPTY;
 
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "stamp")
         public RecipeBuilder stamp(IIngredient stamp) {
             this.stamp = stamp;
             return this;
