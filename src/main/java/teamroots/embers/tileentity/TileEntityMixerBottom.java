@@ -184,7 +184,7 @@ public class TileEntityMixerBottom extends TileEntity implements ITileEntityBase
         TileEntityMixerTop top = (TileEntityMixerTop) world.getTileEntity(pos.up());
         isWorking = false;
         if (top != null) {
-            upgrades = UpgradeUtil.getUpgrades(world, pos.up(), EnumFacing.VALUES);
+            upgrades = UpgradeUtil.getUpgrades(world, pos, EnumFacing.VALUES);
             UpgradeUtil.verifyUpgrades(this, upgrades);
             if (UpgradeUtil.doTick(this, upgrades))
                 return;
