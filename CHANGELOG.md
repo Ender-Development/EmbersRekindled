@@ -2,6 +2,16 @@
 
 A dwarven magic mod
 
+## v1.24.1 - some polish
+### Changes
+- the alchemy table now supports recipes with NBT data
+- removed the JEI cheat for the alchemy table (for now)
+- switched to latest forge mappings
+
+### Bugfixes
+- fixed a few issues with the GroovyScript support
+- improved the description of the PowerRation for Mixer recipes
+
 ## v1.24.0 - GroovyScript
 ### Changes
 - added GroovyScript support (Thanks WaitingIdly) for:

@@ -11,7 +11,8 @@
       "preInit/"
     ],
     "postInit": [
-      "postInit/embers.groovy"
+      "postInit/embers.groovy",
+      "postInit/NBT_test.groovy"
     ]
   },
   "packmode": {
