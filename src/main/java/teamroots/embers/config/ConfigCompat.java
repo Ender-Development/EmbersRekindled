@@ -7,7 +7,10 @@ import teamroots.embers.Embers;
 @Config.LangKey("cfg.embers.compat")
 public class ConfigCompat {
     @Config.Name("Enable JEI Cheats")
-    @Config.Comment("If true, JEI will show the exact amount of Ash needed in an Alchemy recipe.")
+    @Config.Comment({
+            "If true, JEI will show the exact amount of Ash needed in an Alchemy recipe.",
+            "This currently is without any functionality, but will be used in the future."
+    })
     public static boolean enableJeiCheat = false;
 
     @Config.RequiresMcRestart
