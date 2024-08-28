@@ -3,6 +3,7 @@ package teamroots.embers.recipe;
 import com.google.common.collect.Lists;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.Ingredient;
+import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import teamroots.embers.api.alchemy.AlchemyResult;
@@ -10,10 +11,7 @@ import teamroots.embers.api.alchemy.AspectList;
 import teamroots.embers.api.alchemy.AspectList.AspectRangeList;
 import teamroots.embers.util.IHasAspects;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 public class AlchemyRecipe implements IHasAspects {
 	//Binary compat
@@ -89,16 +87,34 @@ public class AlchemyRecipe implements IHasAspects {
 		if (!centerIngredient.apply(center))
 			return false;
 
+		if (center.getTagCompound() != null) {
+			if (Arrays.stream(centerIngredient.getMatchingStacks()).noneMatch(x -> {
+				assert x.getTagCompound() != null;
+				return x.getTagCompound().equals(center.getTagCompound());
+			})) {
+				return false;
+			}
+		}
+
 		ArrayList<Ingredient> ingredients = new ArrayList<>(outsideIngredients);
 		while (test.size() > ingredients.size()) {
 			ingredients.add(Ingredient.EMPTY);
 		}
 		for (ItemStack stack : test) {
 			Optional<Ingredient> found = ingredients.stream().filter(x -> x.apply(stack)).findFirst();
-			if (found.isPresent())
+			if (found.isPresent()) {
+				if (stack.getTagCompound() != null) {
+					if (Arrays.stream(found.get().getMatchingStacks()).noneMatch(x -> {
+						assert x.getTagCompound() != null;
+						return x.getTagCompound().equals(stack.getTagCompound());
+					})) {
+						return false;
+					}
+				}
 				ingredients.remove(found.get());
-			else
+			} else {
 				return false;
+			}
 		}
 
 		return true;
