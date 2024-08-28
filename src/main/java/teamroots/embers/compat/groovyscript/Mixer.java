@@ -77,10 +77,10 @@ public class Mixer extends VirtualizedRegistry<FluidMixingRecipe> {
             return "Error adding Embers Mixing recipe";
         }
 
-        @Property(defaultValue = "0.5", valid = @Comp(value = "0", type = Comp.Type.GT), value = "groovyscript.wiki.embers.powerratio.value")
+        @Property(defaultValue = "0.5", valid = @Comp(value = "0", type = Comp.Type.GTE), value = "groovyscript.wiki.embers.mixer.powerratio.value")
         private double powerRatio = 0.5;
 
-        @RecipeBuilderMethodDescription
+        @RecipeBuilderMethodDescription(field = "powerRatio")
         public RecipeBuilder powerRatio(int powerRatio) {
             this.powerRatio = powerRatio;
             return this;
@@ -90,6 +90,7 @@ public class Mixer extends VirtualizedRegistry<FluidMixingRecipe> {
         public void validate(GroovyLog.Msg msg) {
             validateItems(msg);
             validateFluids(msg, 2, 3, 1, 1);
+            msg.add(powerRatio < 0, "Power ratio must be greater than or equal to 0, yet it was {}", powerRatio);
         }
 
         @Override
