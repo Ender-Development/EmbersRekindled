@@ -136,7 +136,7 @@ public class Alchemy extends VirtualizedRegistry<AlchemyRecipe> {
             for (int i = 1; i < input.size(); i++) {
                 outerIngredients.add(input.get(i).toMcIngredient());
             }
-            AlchemyRecipe recipe = new AlchemyRecipe(aspects, input.get(0).toMcIngredient(), outerIngredients, output.get(0));
+            AlchemyRecipe recipe = new AlchemyRecipe(aspects.fixMathematicalError(), input.get(0).toMcIngredient(), outerIngredients, output.get(0));
             GSPlugin.instance.alchemy.add(recipe);
             return recipe;
         }
