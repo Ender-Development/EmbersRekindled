@@ -7,6 +7,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.fluids.FluidStack;
 import teamroots.embers.util.IHasSize;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class ItemMeltingRecipe {
@@ -60,7 +61,16 @@ public class ItemMeltingRecipe {
 	}
 
 	public boolean matches(ItemStack stack){
-		return input.apply(stack);
+		if (!input.apply(stack))
+			return false;
+
+		if (stack.getTagCompound() != null) {
+            return Arrays.stream(input.getMatchingStacks()).anyMatch(x -> {
+                assert x.getTagCompound() != null;
+                return x.getTagCompound().equals(stack.getTagCompound());
+            });
+		}
+		return true;
 	}
 
 	public FluidStack getResult(TileEntity tile, ItemStack input){

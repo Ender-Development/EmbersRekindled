@@ -7,3 +7,13 @@ mods.embers.alchemy.recipeBuilder()
     .output(item('minecraft:anvil'))
     .setAspect('dawnstone', 1, 3)
     .register()
+
+mods.embers.melter.recipeBuilder()
+    .input(item('minefantasyreforged:bar').withNbt(['mf_custom_materials': ['main_material': 'dawnstone']]))
+    .fluidOutput(fluid('dawnstone') * 144)
+    .register()
+
+mods.embers.melter.recipeBuilder()
+    .input(item('minefantasyreforged:bar').withNbt(['mf_custom_materials': ['main_material': 'pig_iron']]))
+    .fluidOutput(fluid('molten_pig_iron') * 144)
+    .register()

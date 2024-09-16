@@ -2,6 +2,10 @@
 
 A dwarven magic mod
 
+## v1.24.2 - GroovyScript improvements
+### Changes
+- the melter now supports recipes with NBT data
+
 ## v1.24.1 - some polish
 ### Changes
 - the alchemy table now supports recipes with NBT data
@@ -10,7 +14,7 @@ A dwarven magic mod
 
 ### Bugfixes
 - fixed a few issues with the GroovyScript support
-- improved the description of the PowerRation for Mixer recipes
+- improved the description of the PowerRatio for Mixer recipes
 
 ## v1.24.0 - GroovyScript
 ### Changes
