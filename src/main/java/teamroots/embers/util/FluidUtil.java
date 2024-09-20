@@ -10,7 +10,7 @@ import net.minecraftforge.fluids.*;
 public class FluidUtil {
 	public static FluidStack getFluid(World world, BlockPos pos, IBlockState state){
 		if (state.getBlock() instanceof IFluidBlock && ((IFluidBlock)state.getBlock()).canDrain(world, pos)){
-			return new FluidStack(((BlockFluidBase)state.getBlock()).getFluid(),1000);
+			return new FluidStack(((IFluidBlock)state.getBlock()).getFluid(),1000);
 		}
 		if (state.getBlock() instanceof BlockStaticLiquid){
 			if (state.getValue(BlockStaticLiquid.LEVEL) == 0){
