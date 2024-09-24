@@ -5,6 +5,10 @@ A dwarven magic mod
 ## v1.24.2 - GroovyScript improvements
 ### Changes
 - the melter now supports recipes with NBT data
+- AE2 Tiny TNT now respects the Explosion Charm
+
+### Bugfixes
+- fixed compatibility with Applied Integrations
 
 ## v1.24.1 - some polish
 ### Changes

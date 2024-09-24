@@ -4,6 +4,9 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 ## [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 
+## [Applied Engergistics 2](https://www.curseforge.com/minecraft/mc-mods/ae2-extended-life)
+- the Tiny TNT now respects the Explosion Charm
+
 ## [Applied Integrations](https://www.curseforge.com/minecraft/mc-mods/applied-integrations)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 
