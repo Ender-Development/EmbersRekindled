@@ -4,6 +4,9 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 ## [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 
+## [Applied Integrations](https://www.curseforge.com/minecraft/mc-mods/applied-integrations)
+- redirect all calls from the old `RegistryManager` to `ItemRegiser`
+
 ## [Emberforged](https://www.curseforge.com/minecraft/mc-mods/emberforged)
 - redirect all calls from the old `RegistryManager` to `FluidRegister`, `ItemRegiser` and `BlockRegiser`
 - respect my fluid to ingot ratio when creating its recipes

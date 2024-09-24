@@ -179,8 +179,13 @@ dependencies {
     }
 
     compileOnly rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")
-    if (project.debug_ae2.toBoolean()) {
+    if (project.debug_ae2.toBoolean() || project.debug_appliedintegrations.toBoolean()) {
         runtimeOnly rfg.deobf("curse.maven:ae2-extended-life-570458:5411078")
+    }
+
+    compileOnly rfg.deobf("curse.maven:applied-integrations-301924:2866504")
+    if (project.debug_appliedintegrations.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:applied-integrations-301924:2866504")
     }
 
     compileOnly rfg.deobf("curse.maven:dynaores-1056043:5541366")
