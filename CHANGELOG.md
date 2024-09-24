@@ -9,6 +9,7 @@ A dwarven magic mod
 
 ### Bugfixes
 - fixed compatibility with Applied Integrations
+- fixed crash with Fluidlogged API (Thanks to SapphiCat)
 
 ## v1.24.1 - some polish
 ### Changes
