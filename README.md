@@ -33,9 +33,9 @@ You can download the latest files here on [curseforge](https://curseforge.com/mi
 - added a config option to register all WIP items and blocks (useful for pack makers)
 - compatibility with Immersive Engineering's Metal Rods
 - compatibility with EnderIO & Endergy Grinding Balls
+- AE2 Tiny TNT now respects the Explosion Charm
 
 **Planned Changes:**
-- native [GroovyScript](https://github.com/CleanroomMC/GroovyScript) support
 - allow addition of custom seeds
 - forking various Embers addons, while:
   - fixing various bugs, that were never fixed in the original addons
@@ -68,6 +68,7 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 - [Planar Artifice(TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/planar-artifice)
 - [Polymancy (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/polymancy)
 - [Spartan Weaponry Arcana](https://www.curseforge.com/minecraft/mc-mods/spartan-weaponry-arcana-unofficial)
+- [Survivaltools](https://www.curseforge.com/minecraft/mc-mods/survival-tools) (Only version v1.0.0)
 - [Thaumic Periphery (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/thaumic-periphery)
 - [Tinkering with Embers](https://www.curseforge.com/minecraft/mc-mods/tinkering-with-embers) (Please use Embers' Construct instead)
 

@@ -2,6 +2,14 @@
 
 A dwarven magic mod
 
+## v1.24.3 - Survivaltools
+### Changes
+- added `strip-latest-forge-requirements` to the build.gradle to allow loading mods build for newer forge versions
+
+### Bugfixes
+- fixed compatibility with Survivaltools (this mixin uses a version check as the author stated he wants to fix this issue on his side)
+- renamed the texture for the Exchange Tablet JEI integration to address [#46](https://github.com/Ender-Development/Embers-Extended-Life/issues/46)
+
 ## v1.24.2 - GroovyScript improvements
 ### Changes
 - the melter now supports recipes with NBT data

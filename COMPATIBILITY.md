@@ -54,6 +54,10 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 ## [Spartan Weaponry Arcana](https://www.curseforge.com/minecraft/mc-mods/spartan-weaponry-arcana-unofficial)
 - redirect all calls from the old `RegistryManager` to `ToolMaterialRegister`
 
+## [Survivaltools](https://www.curseforge.com/minecraft/mc-mods/survival-tools)
+- redirect all calls from the old `RegistryManager` to `ItemRegiser`
+- I only implemented the compatibility for the version v1.0.0 as the author wants to fix the issue himself in the future
+
 ## [Thaumic Periphery (TC6 Addon)](https://www.curseforge.com/minecraft/mc-mods/thaumic-periphery)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 - it now uses my config fluid ratios when creating its recipes
