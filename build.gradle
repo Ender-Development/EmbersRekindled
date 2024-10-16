@@ -149,6 +149,8 @@ dependencies {
     annotationProcessor(mixinBooter) {
         transitive = false
     }
+
+    runtimeOnly 'com.cleanroommc:strip-latest-forge-requirements:1.0'
 }
 
 if (getFile('dependencies.gradle').exists()) {
