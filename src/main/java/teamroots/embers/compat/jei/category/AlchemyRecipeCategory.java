@@ -28,7 +28,7 @@ public class AlchemyRecipeCategory implements IRecipeCategory<AlchemyRecipeWrapp
 	@Nonnull
 	private final String localizedName;
 	private final AspectRenderUtil helper;
-	private static final ResourceLocation resourceLocation = new ResourceLocation(Embers.MODID, "textures/gui/jei_alchemy.png");
+	private static final ResourceLocation resourceLocation = new ResourceLocation(Embers.MODID, "textures/gui/jei_alchemy_uel.png");
 
 	public AlchemyRecipeCategory(IGuiHelper helper)
 	{
