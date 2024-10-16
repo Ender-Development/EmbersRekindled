@@ -193,6 +193,13 @@ dependencies {
         runtimeOnly rfg.deobf("curse.maven:dynaores-1056043:5541366")
     }
 
+    compileOnly rfg.deobf("curse.maven:simpledifficulty-360779:3613814")
+    compileOnly rfg.deobf("curse.maven:survival-tools-1120531:5807832")
+    if (project.debug_survivaltools.toBoolean()) {
+        runtimeOnly rfg.deobf("curse.maven:simpledifficulty-360779:3613814")
+        runtimeOnly rfg.deobf("curse.maven:survival-tools-1120531:5807832")
+    }
+
     // Runtime dependencies
     runtimeOnly rfg.deobf("curse.maven:the-one-probe-community-edition-885670:5171095")
     runtimeOnly rfg.deobf("curse.maven:vintagefix-871198:5010926")
