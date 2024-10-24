@@ -1,5 +1,6 @@
 package teamroots.embers.mixin;
 
+import com.Lenvill.EmberforgedMain;
 import com.google.common.collect.ImmutableList;
 import com.invadermonky.survivaltools.SurvivalTools;
 import net.minecraftforge.fml.common.Loader;
@@ -36,9 +37,19 @@ public class LateMixin implements ILateMixinLoader {
     }
 
     private boolean checkMod(String modid) {
-        if (modid.equals("survivaltools")) {
-            return Loader.isModLoaded(modid) && SurvivalTools.VERSION.equals("1.12.2-1.0.0");
+        boolean check = false;
+        switch (modid) {
+            case "survivaltools":
+                check = Loader.isModLoaded(modid) && SurvivalTools.VERSION.equals("1.12.2-1.0.0");
+                break;
+            case "emberforged":
+                check = Loader.isModLoaded(modid) && !EmberforgedMain.VERSION.equals("1.12.2-2.0.0");
+                break;
+            default:
+                check = Loader.isModLoaded(modid);
+                break;
         }
-        return Loader.isModLoaded(modid);
+        Embers.LOG.debug("Checking for mod {}. Load Mixins: {}", modid, check);
+        return check;
     }
 }

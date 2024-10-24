@@ -2,6 +2,13 @@
 
 A dwarven magic mod
 
+## v1.24.4 - Bugfixes
+### Changes
+- added a version check for the Emberforged mixins to disable them if someone uses the 2.0.0 version of Emberforged
+
+### Bugfixes
+- fixed Tinker's Hammer Crafting Clearing Hammer NBT to address [#48](https://github.com/Ender-Development/Embers-Extended-Life/issues/48)
+
 ## v1.24.3 - Survivaltools
 ### Changes
 - added `strip-latest-forge-requirements` to the build.gradle to allow loading mods build for newer forge versions

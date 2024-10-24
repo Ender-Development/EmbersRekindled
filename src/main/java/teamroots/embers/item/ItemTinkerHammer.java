@@ -84,7 +84,7 @@ public class ItemTinkerHammer extends ItemBase {
 	
 	@Override
 	public ItemStack getContainerItem(ItemStack stack){
-		return new ItemStack(this,1);
+		return stack.copy();
 	}
 	
 	@Override

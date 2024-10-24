@@ -11,6 +11,8 @@ import net.minecraftforge.fml.common.SidedProxy;
 import net.minecraftforge.fml.common.event.*;
 import net.minecraftforge.fml.relauncher.Side;
 import net.minecraftforge.fml.relauncher.SideOnly;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import teamroots.embers.proxy.CommonProxy;
 import teamroots.embers.recipe.RecipeRegistry;
 import teamroots.embers.register.ItemRegister;
@@ -26,6 +28,8 @@ public class Embers {
 	public static final String CFG_ADDONS_FOLDER = "Embers/addons/";
 	public static final String VERSIONS = "[1.12.2]";
 	public static final String DEPENDENCIES = "after:mysticalmechanics;after:mixinbooter@[9.1,);";
+
+	public static final Logger LOG = LogManager.getLogger(Embers.MODNAME);
 
 	@SidedProxy(clientSide = "teamroots.embers.proxy.ClientProxy",serverSide = "teamroots.embers.proxy.ServerProxy")
     public static CommonProxy proxy;
