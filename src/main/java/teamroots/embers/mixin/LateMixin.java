@@ -20,6 +20,7 @@ public class LateMixin implements ILateMixinLoader {
             "embersconstruct",
             "embersified",
             "embersifiedextended",
+            "environmentaltech",
             "jaopca",
             "moreclimate",
             "mystgears",
@@ -28,7 +29,8 @@ public class LateMixin implements ILateMixinLoader {
             "polymancy",
             "spartanweaponryarcana",
             "survivaltools",
-            "thaumicperiphery"
+            "thaumicperiphery",
+            "valkyrielib"
     );
 
     @Override

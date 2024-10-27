@@ -39,6 +39,7 @@ import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.EnderioIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
 import teamroots.embers.compat.Util;
+import teamroots.embers.compat.environmentaltech.EnvironmentalTechIntegration;
 import teamroots.embers.config.ConfigMachine;
 import teamroots.embers.config.ConfigMaterial;
 import teamroots.embers.config.ConfigMisc;
@@ -1060,6 +1061,9 @@ public class RecipeRegistry {
         }
         if (Util.isMysticalMechanicsIntegrationEnabled()) {
             MysticalMechanicsIntegration.registerRecipes(event);
+        }
+        if (Util.isEnvironmentalTechIntegrationEnabled()) {
+            EnvironmentalTechIntegration.registerRecipes(event);
         }
         if (Util.isTinkersIntegrationEnabled() && Util.isEnderIOIntegrationEnabled()) {
             EnderioIntegration.registerRecipes(event);

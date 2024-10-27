@@ -18,6 +18,10 @@ public final class Util {
         return ConfigCompat.enableEnderIOIntegration && Loader.isModLoaded("enderio");
     }
 
+    public static boolean isEnvironmentalTechIntegrationEnabled() {
+        return ConfigCompat.enableEnvironmentalTechIntegration && Loader.isModLoaded("environmentaltech");
+    }
+
     public static boolean isTinkersIntegrationEnabled() {
         return ConfigCompat.enableTinkersIntegration && Loader.isModLoaded("tconstruct");
     }

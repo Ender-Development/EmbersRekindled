@@ -2,6 +2,7 @@ package teamroots.embers.config;
 
 import net.minecraftforge.common.config.Config;
 import teamroots.embers.Embers;
+import teamroots.embers.config.compat.EnvironmentalTechCategory;
 
 @Config(modid = Embers.MODID, category = "compat", name = Embers.CFG_FOLDER + "compat")
 @Config.LangKey("cfg.embers.compat")
@@ -27,6 +28,19 @@ public class ConfigCompat {
     public static boolean enableEnderIOIntegration = true;
 
     @Config.RequiresMcRestart
+    @Config.Name("Enable Environmental Tech Integration")
+    @Config.Comment({
+            "If true, Embers will register items, blocks and recipes providing Environmental Tech integration.",
+            "This enabled a new Modifier to allow any Void Miner to access the Ember Bore loot pool."
+    })
+    public static boolean enableEnvironmentalTechIntegration = true;
+
+    @Config.Name("Environmental Tech")
+    @Config.LangKey("cfg.embers.compat.environmental_tech")
+    @Config.Comment("Options about the Environmental Tech integration")
+    public static final EnvironmentalTechCategory ENVIRONMENTAL_TECH = new EnvironmentalTechCategory();
+
+    @Config.RequiresMcRestart
     @Config.Name("Enable Mystical Mechanics Integration")
     @Config.Comment("If true, Embers will register items, blocks and recipes providing Mystical Mechanics integration.")
     public static boolean enableMysticalMechanicsIntegration = true;
@@ -35,7 +49,8 @@ public class ConfigCompat {
     @Config.Name("Enable Tinkers' Construct Integration")
     @Config.Comment({
             "If true, Embers will register items, blocks and recipes providing Tinkers' Construct integration.",
-            "Right now this only adds grinding ball recipes if EnderIO is installed as well."
+            "Right now this only adds grinding ball recipes if EnderIO is installed as well",
+            "as it needs to be present to load the required fluids."
     })
     public static boolean enableTinkersIntegration = true;
 }

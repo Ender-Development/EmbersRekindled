@@ -2,6 +2,13 @@
 
 A dwarven magic mod
 
+## v1.25.0 - Environmental Tech Compatibility
+### Changes
+- added a new Modifier if Environmental Tech is installed
+  - the modifier allows all ET Void Miners to 'simulate' the behavior of an Ember Bore
+  - so each time a Void Miner finishes a cycle, it will also 'mine' something from the Ember Bore loot pool
+  - this comes with an increased power cost for the Void Miner, the amount of power is configurable
+
 ## v1.24.4 - Bugfixes
 ### Changes
 - added a version check for the Emberforged mixins to disable them if someone uses the 2.0.0 version of Emberforged

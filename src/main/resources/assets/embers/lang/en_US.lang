@@ -230,6 +230,11 @@ tile.inferno_forge_edge.name=Inferno Forge Edge
 tile.mech_edge.name=Mechanical Edge
 tile.turret.name=Turret
 
+tile.embers.modifier_ember.name=Ember Modifier
+tooltip.embers.modifier_ember.info=Enables any Void Miner to act as an Ember Bore
+tooltip.environmentaltech.modifier_core.info=Can be used without any effect.
+tooltip.environmentaltech.modifier_core.info2=Won't increase Power Usage.
+
 fluid.iron=Molten Iron
 fluid.gold=Molten Gold
 fluid.copper=Molten Copper

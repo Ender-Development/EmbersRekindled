@@ -27,7 +27,7 @@ public class Embers {
 	public static final String CFG_FOLDER = "Embers/";
 	public static final String CFG_ADDONS_FOLDER = "Embers/addons/";
 	public static final String VERSIONS = "[1.12.2]";
-	public static final String DEPENDENCIES = "after:mysticalmechanics;after:mixinbooter@[9.1,);";
+	public static final String DEPENDENCIES = "after:mysticalmechanics;after:mixinbooter@[9.1,);after:environmentaltech";
 
 	public static final Logger LOG = LogManager.getLogger(Embers.MODNAME);
 

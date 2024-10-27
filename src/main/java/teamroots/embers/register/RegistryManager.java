@@ -37,6 +37,7 @@ import teamroots.embers.block.IBlock;
 import teamroots.embers.block.IModeledBlock;
 import teamroots.embers.compat.BaublesIntegration;
 import teamroots.embers.compat.MysticalMechanicsIntegration;
+import teamroots.embers.compat.environmentaltech.EnvironmentalTechIntegration;
 import teamroots.embers.compat.Util;
 import teamroots.embers.config.ConfigMob;
 import teamroots.embers.entity.EntityAncientGolem;
@@ -110,6 +111,8 @@ public class RegistryManager {
             BaublesIntegration.registerAll();
         if (Util.isMysticalMechanicsIntegrationEnabled())
             MysticalMechanicsIntegration.registerAll();
+        if (Util.isEnvironmentalTechIntegrationEnabled())
+            EnvironmentalTechIntegration.registerAll();
     }
 
     private static void registerCapabilities() {
