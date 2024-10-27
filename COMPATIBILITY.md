@@ -1,4 +1,4 @@
-# Compatability
+# Compatibility
 I used Mixins to make Embers Unofficial Extended Life compatible with as many mods as possible, while also fixing a few issues I encountered during my testing. Here is a changelog for the compatibility mixins:
 
 ## [Aetherium Ashen Armor](https://www.curseforge.com/minecraft/mc-mods/aetherium-ashen-armor)
