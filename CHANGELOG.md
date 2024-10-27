@@ -8,6 +8,8 @@ A dwarven magic mod
   - the modifier allows all ET Void Miners to 'simulate' the behavior of an Ember Bore
   - so each time a Void Miner finishes a cycle, it will also 'mine' something from the Ember Bore loot pool
   - this comes with an increased power cost for the Void Miner, the amount of power is configurable
+- added a few more configs for various Environmental Tech modifier to tweak the energy consumption
+  - this way they are more in line with how I implemented my own modifier
 
 ## v1.24.4 - Bugfixes
 ### Changes

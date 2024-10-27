@@ -22,7 +22,6 @@ You can download the latest files here on [curseforge](https://curseforge.com/mi
 ## Changes
 
 **Current Changes to Embers Rekindled v1.19:**
-- added a config option to display the exact amount of Ash needed in an Alchemy recipe
 - registered Heat Coil in HEI as a smelting catalyst
 - switched to [RetroFuturaGradle](https://github.com/GTNewHorizons/RetroFuturaGradle)
 - updated dependencies to maintained forks
@@ -33,6 +32,7 @@ You can download the latest files here on [curseforge](https://curseforge.com/mi
 - added a config option to register all WIP items and blocks (useful for pack makers)
 - compatibility with Immersive Engineering's Metal Rods
 - compatibility with EnderIO & Endergy Grinding Balls
+- compatibility with Environmental Tech's Void Miners (new Modifier)
 - AE2 Tiny TNT now respects the Explosion Charm
 
 **Planned Changes:**
@@ -60,6 +60,7 @@ Embers Unofficial Extended Life has been tested and is compatible with the follo
 - [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct) (Please use the latest RELEASE instead of the latest BETA)
 - [Embersified](https://www.curseforge.com/minecraft/mc-mods/embersified)
 - [Embersified Extended](https://www.curseforge.com/minecraft/mc-mods/embersified-extended)
+- [Environmental Tech](https://www.curseforge.com/minecraft/mc-mods/environmental-tech)
 - [JAOPCA](https://www.curseforge.com/minecraft/mc-mods/jaopca)
 - [More Climate](https://www.curseforge.com/minecraft/mc-mods/more-climate)
 - [Mystical Gears](https://www.curseforge.com/minecraft/mc-mods/mystical-gears)

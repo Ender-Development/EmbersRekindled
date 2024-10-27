@@ -36,7 +36,7 @@ public class BlockModifierEmber extends BlockModifier {
     @Override
     public void addAttributes(List<IAttribute> list, ConfigCategory configCategory) {
         list.add(EmbersAttributes.EM_EMBER);
-        list.add(new AttributeForgeEnergyMultiplier((float) ConfigCompat.ENVIRONMENTAL_TECH.energy_increase / 100.0F));
+        list.add(new AttributeForgeEnergyMultiplier((float) ConfigCompat.ENVIRONMENTAL_TECH.ember_energy_increase / 100.0F));
     }
 
     @Override

@@ -6,6 +6,7 @@ cfg.embers.client.tooltip=(Client-only settings)
 
 cfg.embers.compat=Compatibility
 cfg.embers.compat.tooltip=(Compatibility settings)
+cfg.embers.compat.environmental_tech=Environmental Tech
 
 cfg.embers.machine=Machines
 cfg.embers.machine.tooltip=(Tweak various Machine parameters)

@@ -11,8 +11,13 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
 
 ## [Emberforged](https://www.curseforge.com/minecraft/mc-mods/emberforged)
-- redirect all calls from the old `RegistryManager` to `FluidRegister`, `ItemRegiser` and `BlockRegiser`
-- respect my fluid to ingot ratio when creating its recipes
+- prior version `2.0.0`
+  - redirect all calls from the old `RegistryManager` to `FluidRegister`, `ItemRegiser` and `BlockRegiser`
+  - respect my fluid to ingot ratio when creating its recipes
+- after version `2.0.0`
+  - Emberforged now depends on our Embers fork
+  - that means it's now compatible out of the box
+- mixins will automatically disable themselves if Emberforged is version `2.0.0` or higher
 
 ## [Embers' Construct](https://www.curseforge.com/minecraft/mc-mods/embersconstruct)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser` and `BlockRegiser`
@@ -27,6 +32,10 @@ I used Mixins to make Embers Unofficial Extended Life compatible with as many mo
 ## [Embersified Extended](https://www.curseforge.com/minecraft/mc-mods/embersified-extended)
 - simplified the override methods and unified the recipe registration
 - now respects my config options for all blocks
+
+## [Environmental Tech](https://www.curseforge.com/minecraft/mc-mods/environmental-tech)
+- added a new modifier that allows any Void Miner to function as Ember Bore
+- added config options to tweak the energy consumption of other Environmental Tech modifiers
 
 ## [JAOPCA](https://www.curseforge.com/minecraft/mc-mods/jaopca)
 - redirect all calls from the old `RegistryManager` to `ItemRegiser`
