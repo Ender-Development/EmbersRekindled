@@ -6,12 +6,12 @@ public class EmberBoreCategory {
     @Config.RequiresMcRestart
     @Config.Name("Dimension Blacklist")
     @Config.Comment("A list of all dimension IDs in which Embers Ember Bore will not mine.")
-    public int[] blacklist = new int[]{};
+    public int[] blacklistDimension = new int[]{};
 
     @Config.RequiresMcRestart
     @Config.Name("Is Whitelist?")
     @Config.Comment("Whether the Ember Bore blacklist is a whitelist.")
-    public boolean isWhiteList = false;
+    public boolean isWhitelistDimension = false;
 
     @Config.RequiresMcRestart
     @Config.Name("Max Y-Height")
@@ -32,4 +32,14 @@ public class EmberBoreCategory {
     @Config.Name("Fuel Cost")
     @Config.Comment("The amount of fuel consumed each tick")
     public double fuelCost = 3.0;
+
+    @Config.RequiresMcRestart
+    @Config.Name("Block Blacklist")
+    @Config.Comment("A list of all block IDs on which the Ember Bore will not mine.")
+    public String[] blacklistBlock = new String[]{};
+
+    @Config.RequiresMcRestart
+    @Config.Name("Is Block Whitelist?")
+    @Config.Comment("Whether the Ember Bore block blacklist is a whitelist.")
+    public boolean isWhitelistBlock = false;
 }

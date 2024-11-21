@@ -1,5 +1,6 @@
 package teamroots.embers.tileentity;
 
+import net.minecraft.block.Block;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.EntityPlayer;
@@ -39,6 +40,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
 
 public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, ITickable, IMultiblockMachine, ISoundController, IMechanicallyPowered, IExtraDialInformation, IExtraCapabilityInformation {
     public static final int MAX_LEVEL = 7;
@@ -50,7 +52,8 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
     public static final int SOUND_ON_DRILL = 2;
     public static final int[] SOUND_IDS = new int[]{SOUND_ON, SOUND_ON_DRILL};
 
-    public static final List<Integer> BLACKLIST = IntStream.of(ConfigMachine.EMBER_BORE.blacklist).boxed().collect(Collectors.toList());
+    public static final List<Integer> BLACKLIST = IntStream.of(ConfigMachine.EMBER_BORE.blacklistDimension).boxed().collect(Collectors.toList());
+    public static final List<Block> BLACKLIST_BLOCK = Stream.of(ConfigMachine.EMBER_BORE.blacklistBlock).map(Block::getBlockFromName).collect(Collectors.toList());
 
     Random random = new Random();
     public long ticksExisted = 0;
@@ -135,11 +138,18 @@ public class TileEntityEmberBore extends TileEntity implements ITileEntityBase, 
     }
 
     public boolean canMine() {
+        // Check Dimension
         boolean onBlacklist = BLACKLIST.contains(world.provider.getDimension());
-        boolean isWhitelist = ConfigMachine.EMBER_BORE.isWhiteList;
-        boolean isAvailable = onBlacklist == isWhitelist; // XNOR
+        boolean isWhitelistDimension = ConfigMachine.EMBER_BORE.isWhitelistDimension;
+        boolean isAvailable = onBlacklist == isWhitelistDimension; // XNOR
+        // Check Block
+        boolean matchesBlock = BLACKLIST_BLOCK.stream().anyMatch(block -> block == world.getBlockState(getPos().down()).getBlock());
+        boolean isWhitelistBlock = ConfigMachine.EMBER_BORE.isWhitelistBlock;
+        boolean checkBlock = matchesBlock == isWhitelistBlock; // XNOR
+        // Check Y-Level
         boolean underYMax = getPos().getY() <= ConfigMachine.EMBER_BORE.yMax;
-        return isAvailable && underYMax;
+
+        return isAvailable && underYMax && checkBlock;
     }
 
     public boolean canInsert(ArrayList<ItemStack> returns) {
