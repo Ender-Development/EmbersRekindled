@@ -2,6 +2,14 @@
 
 A dwarven magic mod
 
+## v1.25.1 - Ember Bore Block Blacklist
+### Changes
+- added a new config option for the Ember Bore
+  - allows modpack makers to force the Ember Bore to only mine when placed on specific blocks
+  - can be used as a blacklist or whitelist
+  - doesn't support individual block states (e.g. `minecraft:stone` will blacklist all stone variants)
+  - explaining these restrictions to the user is on the modpack maker
+
 ## v1.25.0 - Environmental Tech Compatibility
 ### Changes
 - added a new Modifier if Environmental Tech is installed
